@@ -1,715 +1,141 @@
-import React from 'react'
+import React, { useState } from 'react'
 import {
-  Layers3,
+  Database,
+  Network,
+  Tags,
+  Calculator,
   GitBranch,
-  CircleDollarSign,
-  Users,
+  CheckCircle2,
   FileCheck2,
-  Check,
+  ChevronRight,
 } from 'lucide-react'
 
-export default function ComplexStructuresSection() {
+const WORKFLOW_STAGES = [
+  { number: '01', title: 'Connect', description: 'Integrate raw data from existing systems and files.', icon: Database },
+  { number: '02', title: 'Structure', description: 'Map entities, funds, ownership, and relationships.', icon: Network },
+  { number: '03', title: 'Classify', description: 'Identify tax categories, income, and transactions.', icon: Tags },
+  { number: '04', title: 'Calculate', description: 'Apply deterministic tax logic for repeatable outputs.', icon: Calculator },
+  { number: '05', title: 'Allocate', description: 'Distribute results across funds, classes, and partners.', icon: GitBranch },
+  { number: '06', title: 'Validate', description: 'Reconcile figures, handle exceptions, and verify data.', icon: CheckCircle2 },
+  { number: '07', title: 'Report', description: 'Generate structured, audit-ready compliance filings.', icon: FileCheck2 },
+]
+
+export default function CompactWorkflowSection() {
+  const [activeStage, setActiveStage] = useState(0)
+
   return (
-    <section
-      id="structures"
-      className="
-        relative
-        py-[105px]
-        px-[5vw]
-        max-[700px]:py-[75px]
-        max-[700px]:px-[20px]
-        bg-white
-        overflow-hidden
-      "
-    >
-      {/* =====================================================
-          SUBTLE BACKGROUND
-      ====================================================== */}
-
-      <div
-        className="
-          absolute
-          w-[550px]
-          h-[550px]
-          -right-[300px]
-          -top-[250px]
-          rounded-full
-          bg-[radial-gradient(circle,rgba(21,159,141,0.055),transparent_68%)]
-          pointer-events-none
-        "
-      />
-
-      <div className="max-w-[1180px] mx-auto relative z-10">
-
-        {/* =====================================================
-            HEADER
-        ====================================================== */}
-
-        <div
-          className="
-            grid
-            grid-cols-1
-            lg:grid-cols-[1fr_0.65fr]
-            gap-[35px]
-            lg:gap-[90px]
-            items-end
-            mb-[48px]
-          "
-        >
-
-          <div>
-
-            <span
-              className="
-                text-[9px]
-                font-bold
-                tracking-[0.15em]
-                text-[#159f8d]
-              "
-            >
-              COMPLEX STRUCTURES
-            </span>
-
-            <h2
-              className="
-                mt-[14px]
-                mb-0
-                font-sans
-                text-[45px]
-                sm:text-[54px]
-                lg:text-[65px]
-                leading-[0.95]
-                tracking-[-0.065em]
-                text-[#121a16]
-                font-bold
-              "
-            >
-              Built for the way
-              <br />
-
-              <em
-                className="
-                  not-italic
-                  bg-gradient-to-r
-                  from-[#079b82]
-                  via-[#438ec6]
-                  to-[#695bd9]
-                  bg-clip-text
-                  text-transparent
-                "
-              >
-                funds are structured.
-              </em>
-            </h2>
-
+    <section id="workflow" className="relative overflow-hidden bg-slate-50 px-6 py-20 lg:px-12">
+      <div className="mx-auto max-w-7xl">
+        {/* Section Header */}
+        <div className="mb-12 max-w-3xl">
+          <div className="flex items-center gap-2 text-xs font-bold tracking-widest text-blue-600 uppercase">
+            <span className="h-2 w-2 rounded-full bg-blue-600" />
+            Operating Model
           </div>
-
-
-          <p
-            className="
-              m-0
-              max-w-[430px]
-              text-[#69766f]
-              text-[14px]
-              leading-[1.75]
-              lg:pb-[4px]
-            "
-          >
-            Keep fund-level data, share classes, units, and investor
-            allocations connected throughout the tax reporting process.
+          <h2 className="mt-3 text-3xl font-semibold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+            From source data to tax reporting in{' '}
+            <span className="text-blue-600">one controlled workflow.</span>
+          </h2>
+          <p className="mt-4 text-base leading-relaxed text-slate-600">
+            A single, connected pipeline that maintains complete auditability from raw ingestion to final jurisdiction reporting.
           </p>
-
         </div>
 
+        {/* Pipeline Container */}
+        <div className="rounded-2xl border border-slate-200 bg-white p-6 shadow-sm sm:p-8">
+          
+          {/* Desktop Flow: Ultra-Compact Horizontal Grid */}
+          <div className="hidden lg:grid lg:grid-cols-7 lg:gap-3">
+            {WORKFLOW_STAGES.map((stage, idx) => {
+              const Icon = stage.icon
+              const isLast = idx === WORKFLOW_STAGES.length - 1
 
-        {/* =====================================================
-            STRUCTURE DIAGRAM
-        ====================================================== */}
-
-        <div
-          className="
-            relative
-            rounded-[22px]
-            border border-[rgba(18,31,26,0.09)]
-            bg-[#f8faf8]
-            shadow-[0_25px_70px_rgba(18,31,26,0.055)]
-            overflow-hidden
-          "
-        >
-
-          {/* Top label */}
-
-          <div
-            className="
-              flex
-              items-center
-              justify-between
-              px-[25px]
-              py-[15px]
-              border-b border-[rgba(18,31,26,0.07)]
-              bg-white/70
-            "
-          >
-
-            <div>
-
-              <span
-                className="
-                  block
-                  text-[8px]
-                  font-bold
-                  tracking-[0.14em]
-                  text-[#929c97]
-                "
-              >
-                FUND STRUCTURE
-              </span>
-
-              <span
-                className="
-                  block
-                  mt-[3px]
-                  text-[10px]
-                  text-[#7d8983]
-                "
-              >
-                Connected calculation hierarchy
-              </span>
-
-            </div>
-
-
-            <div
-              className="
-                flex
-                items-center
-                gap-[6px]
-                text-[8px]
-                font-semibold
-                text-[#159f8d]
-              "
-            >
-              <Check size={12} />
-              STRUCTURE-AWARE
-            </div>
-
-          </div>
-
-
-          {/* =================================================
-              DIAGRAM AREA
-          ================================================== */}
-
-          <div
-            className="
-              relative
-              px-[45px]
-              py-[48px]
-              max-[700px]:px-[20px]
-              max-[700px]:py-[35px]
-            "
-          >
-
-            {/* =================================================
-                FUND
-            ================================================== */}
-
-            <div className="flex justify-center">
-
-              <div
-                className="
-                  w-[300px]
-                  max-[700px]:w-full
-                  rounded-[18px]
-                  bg-white
-                  border border-[#159f8d]/20
-                  shadow-[0_15px_40px_rgba(18,31,26,0.075)]
-                  px-[23px]
-                  py-[19px]
-                "
-              >
-
-                <div className="flex items-center gap-[13px]">
-
-                  <div
-                    className="
-                      w-[43px]
-                      h-[43px]
-                      rounded-[12px]
-                      bg-[#e9f8f3]
-                      grid
-                      place-items-center
-                      text-[#159f8d]
-                      shrink-0
-                    "
-                  >
-                    <Layers3 size={21} />
-                  </div>
-
+              return (
+                <div key={stage.number} className="relative flex flex-col justify-between rounded-xl border border-slate-100 bg-slate-50/50 p-4 transition-all hover:border-blue-200 hover:bg-blue-50/30 hover:shadow-sm">
+                  {/* Step Connector Arrow */}
+                  {!isLast && (
+                    <div className="absolute -right-3 top-1/2 z-10 -translate-y-1/2 text-slate-300">
+                      <ChevronRight className="h-4 w-4" />
+                    </div>
+                  )}
 
                   <div>
+                    {/* Header: Icon + Step # */}
+                    <div className="flex items-center justify-between">
+                      <div className="flex h-8 w-8 items-center justify-center rounded-lg bg-blue-100/60 text-blue-600">
+                        <Icon className="h-4 w-4" />
+                      </div>
+                      <span className="text-[11px] font-bold text-slate-400">{stage.number}</span>
+                    </div>
 
-                    <span
-                      className="
-                        block
-                        text-[8px]
-                        font-bold
-                        tracking-[0.13em]
-                        text-[#159f8d]
-                      "
-                    >
-                      ROOT LEVEL
-                    </span>
-
-                    <h3
-                      className="
-                        mt-[3px]
-                        mb-0
-                        text-[20px]
-                        font-semibold
-                        tracking-[-0.045em]
-                        text-[#25312b]
-                      "
-                    >
-                      Fund structure
-                    </h3>
-
+                    {/* Title */}
+                    <h3 className="mt-4 text-sm font-semibold text-slate-900">{stage.title}</h3>
+                    
+                    {/* One-Line Explanation */}
+                    <p className="mt-1 text-xs leading-normal text-slate-500">{stage.description}</p>
                   </div>
-
                 </div>
-
-
-                <p
-                  className="
-                    mt-[12px]
-                    mb-0
-                    text-[11px]
-                    leading-[1.6]
-                    text-[#7c8782]
-                  "
-                >
-                  The central layer where financial data enters the
-                  reporting calculation.
-                </p>
-
-              </div>
-
-            </div>
-
-
-            {/* =================================================
-                MAIN CONNECTOR
-            ================================================== */}
-
-            <div
-              className="
-                relative
-                h-[55px]
-                max-[700px]:h-[40px]
-              "
-            >
-
-              <div
-                className="
-                  absolute
-                  left-1/2
-                  top-0
-                  bottom-0
-                  w-px
-                  bg-[#cfdad5]
-                "
-              />
-
-              <div
-                className="
-                  absolute
-                  left-[16.66%]
-                  right-[16.66%]
-                  bottom-0
-                  h-px
-                  bg-[#cfdad5]
-                "
-              />
-
-            </div>
-
-
-            {/* =================================================
-                SHARE CLASSES
-            ================================================== */}
-
-            <div
-              className="
-                grid
-                grid-cols-3
-                max-[700px]:grid-cols-1
-                gap-[13px]
-                relative
-              "
-            >
-
-              <ClassCard
-                icon={<GitBranch size={18} />}
-                label="CLASS A"
-                title="Share class"
-                description="Separate economics and tax allocation."
-              />
-
-              <ClassCard
-                icon={<CircleDollarSign size={18} />}
-                label="CLASS B"
-                title="Share class"
-                description="Independent calculation and allocation."
-                featured
-              />
-
-              <ClassCard
-                icon={<Users size={18} />}
-                label="CLASS C"
-                title="Share class"
-                description="Connected to the same reporting model."
-              />
-
-            </div>
-
-
-            {/* =================================================
-                LOWER CONNECTOR
-            ================================================== */}
-
-            <div
-              className="
-                relative
-                h-[50px]
-                max-[700px]:hidden
-              "
-            >
-
-              <div
-                className="
-                  absolute
-                  left-[16.66%]
-                  right-[16.66%]
-                  top-0
-                  h-px
-                  bg-[#cfdad5]
-                "
-              />
-
-              <div
-                className="
-                  absolute
-                  left-1/2
-                  top-0
-                  bottom-0
-                  w-px
-                  bg-[#cfdad5]
-                "
-              />
-
-            </div>
-
-
-            {/* =================================================
-                TAX OUTPUT
-            ================================================== */}
-
-            <div className="flex justify-center">
-
-              <div
-                className="
-                  flex
-                  items-center
-                  gap-[12px]
-                  px-[21px]
-                  py-[13px]
-                  rounded-[13px]
-                  bg-white
-                  border border-[rgba(18,31,26,0.09)]
-                  shadow-[0_12px_30px_rgba(18,31,26,0.055)]
-                "
-              >
-
-                <div
-                  className="
-                    w-[34px]
-                    h-[34px]
-                    rounded-[9px]
-                    bg-[#eaf8f3]
-                    grid
-                    place-items-center
-                    text-[#159f8d]
-                  "
-                >
-                  <FileCheck2 size={17} />
-                </div>
-
-
-                <div>
-
-                  <span
-                    className="
-                      block
-                      text-[8px]
-                      font-bold
-                      tracking-[0.12em]
-                      text-[#159f8d]
-                    "
-                  >
-                    FINAL OUTPUT
-                  </span>
-
-                  <strong
-                    className="
-                      block
-                      mt-[2px]
-                      text-[16px]
-                      font-semibold
-                      tracking-[-0.035em]
-                      text-[#28342e]
-                    "
-                  >
-                    Connected tax reporting
-                  </strong>
-
-                </div>
-
-
-                <Check
-                  size={16}
-                  className="text-[#159f8d]"
-                />
-
-              </div>
-
-            </div>
-
+              )
+            })}
           </div>
 
+          {/* Mobile/Tablet View: Interactive Stepper */}
+          <div className="block lg:hidden">
+            {/* Step Selection Tabs */}
+            <div className="flex snap-x snap-mandatory overflow-x-auto pb-4 pt-1 gap-2 border-b border-slate-100">
+              {WORKFLOW_STAGES.map((stage, idx) => {
+                const Icon = stage.icon
+                const isActive = activeStage === idx
 
-          {/* =================================================
-              BOTTOM INFORMATION
-          ================================================== */}
+                return (
+                  <button
+                    key={stage.number}
+                    onClick={() => setActiveStage(idx)}
+                    className={`flex shrink-0 snap-center items-center gap-2 rounded-lg px-3 py-2 text-xs font-medium transition-all ${
+                      isActive
+                        ? 'bg-blue-600 text-white shadow-sm'
+                        : 'bg-slate-100 text-slate-600 hover:bg-slate-200'
+                    }`}
+                  >
+                    <Icon className="h-3.5 w-3.5" />
+                    <span>{stage.number}. {stage.title}</span>
+                  </button>
+                )
+              })}
+            </div>
 
-          <div
-            className="
-              grid
-              grid-cols-1
-              md:grid-cols-3
-              border-t border-[rgba(18,31,26,0.07)]
-              bg-white/65
-            "
-          >
-
-            <InfoBlock
-              title="Fund level"
-              text="Source data remains connected."
-            />
-
-            <InfoBlock
-              title="Share classes"
-              text="Different structures stay separate."
-            />
-
-            <InfoBlock
-              title="Tax output"
-              text="Results remain traceable."
-              last
-            />
-
+            {/* Active Stage Detail */}
+            <div className="mt-6 rounded-xl border border-blue-100 bg-blue-50/40 p-5">
+              <div className="flex items-center justify-between">
+                <span className="text-xs font-bold text-blue-600 uppercase tracking-wider">
+                  Stage {WORKFLOW_STAGES[activeStage].number} of 07
+                </span>
+                <span className="text-xs text-slate-400">Step Detail</span>
+              </div>
+              <h3 className="mt-2 text-lg font-semibold text-slate-900">
+                {WORKFLOW_STAGES[activeStage].title}
+              </h3>
+              <p className="mt-2 text-sm text-slate-600 leading-relaxed">
+                {WORKFLOW_STAGES[activeStage].description}
+              </p>
+            </div>
           </div>
 
+          {/* Bottom Micro Summary Bar */}
+          <div className="mt-6 flex flex-wrap items-center justify-between gap-4 border-t border-slate-100 pt-5 text-xs text-slate-500">
+            <span className="font-medium text-slate-700">
+              Complete Lineage Auditability
+            </span>
+            <div className="flex items-center gap-2 font-mono text-[11px] text-slate-400">
+              <span>Ingestion</span>
+              <span>→</span>
+              <span>Calculation</span>
+              <span>→</span>
+              <span>Filing</span>
+            </div>
+          </div>
         </div>
-
-
-        {/* =====================================================
-            BOTTOM LINE
-        ====================================================== */}
-
-        <div
-          className="
-            flex
-            items-center
-            justify-center
-            gap-[7px]
-            mt-[22px]
-            text-[10px]
-            font-semibold
-            text-[#7e8983]
-          "
-        >
-
-          <Check
-            size={13}
-            className="text-[#159f8d]"
-          />
-
-          Complex fund structures. One connected reporting model.
-
-        </div>
-
       </div>
-
     </section>
-  )
-}
-
-
-/* =============================================================
-   CLASS CARD
-============================================================= */
-
-function ClassCard({
-  icon,
-  label,
-  title,
-  description,
-  featured = false,
-}) {
-  return (
-    <div
-      className={`
-        relative
-        rounded-[15px]
-        border
-        p-[18px]
-        min-h-[155px]
-        ${
-          featured
-            ? `
-              bg-white
-              border-[#159f8d]/20
-              shadow-[0_15px_35px_rgba(18,31,26,0.065)]
-            `
-            : `
-              bg-white/75
-              border-[rgba(18,31,26,0.08)]
-            `
-        }
-      `}
-    >
-
-      {featured && (
-        <div
-          className="
-            absolute
-            top-0
-            left-[20px]
-            right-[20px]
-            h-[2px]
-            rounded-full
-            bg-[#159f8d]
-          "
-        />
-      )}
-
-
-      <div className="flex items-center justify-between">
-
-        <div
-          className="
-            w-[37px]
-            h-[37px]
-            rounded-[10px]
-            bg-[#f0f6f3]
-            grid
-            place-items-center
-            text-[#159f8d]
-          "
-        >
-          {icon}
-        </div>
-
-
-        <span
-          className="
-            text-[8px]
-            font-bold
-            tracking-[0.12em]
-            text-[#9aa39e]
-          "
-        >
-          {label}
-        </span>
-
-      </div>
-
-
-      <h3
-        className="
-          mt-[17px]
-          mb-0
-          text-[18px]
-          font-semibold
-          tracking-[-0.04em]
-          text-[#2c3832]
-        "
-      >
-        {title}
-      </h3>
-
-
-      <p
-        className="
-          mt-[6px]
-          mb-0
-          text-[11px]
-          leading-[1.55]
-          text-[#7c8782]
-        "
-      >
-        {description}
-      </p>
-
-    </div>
-  )
-}
-
-
-/* =============================================================
-   INFO BLOCK
-============================================================= */
-
-function InfoBlock({
-  title,
-  text,
-  last = false,
-}) {
-  return (
-    <div
-      className={`
-        px-[21px]
-        py-[15px]
-        ${
-          !last
-            ? 'border-b md:border-b-0 md:border-r border-[rgba(18,31,26,0.07)]'
-            : ''
-        }
-      `}
-    >
-
-      <strong
-        className="
-          block
-          text-[9px]
-          font-bold
-          text-[#536159]
-        "
-      >
-        {title}
-      </strong>
-
-      <span
-        className="
-          block
-          mt-[3px]
-          text-[9px]
-          text-[#929c97]
-        "
-      >
-        {text}
-      </span>
-
-    </div>
   )
 }

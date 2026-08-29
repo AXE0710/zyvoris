@@ -1,272 +1,200 @@
+
 'use client'
 
-import { useEffect, useState } from 'react'
-import {
-  ArrowRight,
-  Menu,
-  X,
-  ChevronDown,
-} from 'lucide-react'
+import { useState } from 'react'
+import { ArrowRight, Menu, X } from 'lucide-react'
+
+const navigation = [
+  {
+    label: 'Why ZYVORIS',
+    href: '#problem',
+  },
+  {
+    label: 'Platform',
+    href: '#solutions',
+  },
+  {
+    label: 'How It Works',
+    href: '#workflow',
+  },
+  {
+    label: 'Use Cases',
+    href: '#use-cases',
+  },
+  {
+    label: 'Technology',
+    href: '#technology',
+  },
+]
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false)
-  const [scrolled, setScrolled] = useState(false)
-
-  useEffect(() => {
-    const handleScroll = () => {
-      setScrolled(window.scrollY > 20)
-    }
-
-    window.addEventListener('scroll', handleScroll)
-
-    return () => {
-      window.removeEventListener('scroll', handleScroll)
-    }
-  }, [])
-
-  const navigation = [
-    {
-      label: 'Platform',
-      href: '#solutions',
-    },
-    {
-      label: 'Workflow',
-      href: '#problem',
-    },
-    {
-      label: 'Structures',
-      href: '#structures',
-    },
-    {
-      label: 'Verification',
-      href: '#verification',
-    },
-  ]
 
   return (
-    <header
-      className={`
-        fixed
-        top-0
-        left-0
-        right-0
-        z-50
-        transition-all
-        duration-300
-        ${
-          scrolled
-            ? 'bg-white/85 backdrop-blur-xl border-b border-[rgba(18,31,26,0.07)] shadow-[0_8px_30px_rgba(18,31,26,0.035)]'
-            : 'bg-transparent'
-        }
-      `}
-    >
-
-      <div
-        className="
-          max-w-[1420px]
-          mx-auto
-          px-[5vw]
-          max-[700px]:px-[20px]
-          h-[76px]
-          flex
-          items-center
-          justify-between
-        "
-      >
-
-        {/* =================================================
-            LOGO
-        ================================================== */}
-
-        <a
-          href="#"
-          className="
-            group
-            flex
-            items-center
-            gap-[10px]
-            no-underline
-          "
-        >
-
-          
-
-
-          <div className="leading-none">
-
-            <span
-              className="
-                block
-                text-[24px]
-                font-bold
-                tracking-[-0.045em]
-                text-[#17221d]
-              "
-            >
-              zyvoris
-            </span>
-
-          
-          </div>
-
-        </a>
-
-
-        {/* =================================================
-            DESKTOP NAV
-        ================================================== */}
-
-        <nav
-          className="
-            hidden
-            lg:flex
-            items-center
-            gap-[5px]
-            absolute
-            left-1/2
-            -translate-x-1/2
-          "
-        >
-
-          {navigation.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              className="
-                group
-                flex
-                items-center
-                gap-[5px]
-                px-[13px]
-                py-[8px]
-                rounded-[8px]
-                text-[#69766f]
-                text-[20px]
-                font-semibold
-                no-underline
-                transition-all
-                duration-200
-                hover:bg-[#f3f7f5]
-                hover:text-[#17221d]
-              "
-            >
-              {item.label}
-
-              {item.label === 'Platform' && (
-                <ChevronDown
-                  size={11}
-                  className="
-                    text-[#a0aaa5]
-                    transition-transform
-                    duration-200
-                    group-hover:rotate-180
-                  "
-                />
-              )}
-            </a>
-          ))}
-
-        </nav>
-
-
-   
-
-
-        {/* =================================================
-            MOBILE BUTTON
-        ================================================== */}
-
-        <button
-          type="button"
-          onClick={() => setMenuOpen(!menuOpen)}
-          aria-label={menuOpen ? 'Close menu' : 'Open menu'}
-          className="
-            lg:hidden
-            w-[40px]
-            h-[40px]
-            rounded-[10px]
-            bg-white
-            border border-[rgba(18,31,26,0.08)]
-            grid
-            place-items-center
-            text-[#26322c]
-          "
-        >
-          {menuOpen ? (
-            <X size={18} />
-          ) : (
-            <Menu size={18} />
-          )}
-        </button>
-
-      </div>
-
-
-      {/* =================================================
-          MOBILE MENU
-      ================================================== */}
-
-      <div
-        className={`
-          lg:hidden
-          overflow-hidden
-          transition-all
-          duration-300
-          ${
-            menuOpen
-              ? 'max-h-[420px] opacity-100'
-              : 'max-h-0 opacity-0'
-          }
-        `}
-      >
-
+    <header className="fixed left-0 right-0 top-0 z-50">
+      <div className="mx-auto max-w-[1420px] px-[5vw] pt-4 max-[700px]:px-5">
         <div
           className="
-            mx-[20px]
-            mb-[15px]
+            flex h-[68px] items-center
+            justify-between
             rounded-[16px]
-            border border-[rgba(18,31,26,0.08)]
+            border border-[#0b1533]/[0.08]
             bg-white/95
+            px-5
+            shadow-[0_8px_35px_rgba(15,35,70,0.06)]
             backdrop-blur-xl
-            p-[9px]
-            shadow-[0_20px_50px_rgba(18,31,26,0.08)]
+            lg:px-6
           "
         >
+          <a
+            href="#top"
+            className="flex items-center text-[#09132f] no-underline"
+            onClick={() => setMenuOpen(false)}
+          >
+            <span className="text-[25px] font-bold tracking-[-0.055em]">
+              zyvoris
+            </span>
+          </a>
 
-          {navigation.map((item) => (
-            <a
-              key={item.label}
-              href={item.href}
-              onClick={() => setMenuOpen(false)}
-              className="
-                flex
-                items-center
-                justify-between
-                px-[13px]
-                py-[13px]
-                rounded-[9px]
-                text-[#536159]
-                text-[16px]
-                font-semibold
-                no-underline
-                hover:bg-[#f4f7f5]
-              "
-            >
-              {item.label}
+          <nav className="hidden items-center gap-1 lg:flex">
+            {navigation.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                className="
+                  rounded-[9px]
+                  px-3.5
+                  py-2.5
+                  text-[13px]
+                  font-medium
+                  tracking-[-0.01em]
+                  text-[#09132f]/60
+                  no-underline
+                  transition-colors
+                  duration-150
+                  hover:bg-[#f4f7fb]
+                  hover:text-[#09132f]
+                "
+              >
+                {item.label}
+              </a>
+            ))}
+          </nav>
 
-              <ArrowRight
-                size={12}
-                className="text-[#9ba49f]"
-              />
-            </a>
-          ))}
+          <a
+            href="#contact"
+            className="
+              hidden
+              items-center
+              gap-2
+              rounded-[9px]
+              bg-[#09132f]
+              px-4
+              py-2.5
+              text-[13px]
+              font-semibold
+              text-white
+              no-underline
+              transition-colors
+              duration-150
+              hover:bg-blue-600
+              lg:flex
+            "
+          >
+            Talk to ZYVORIS
+            <ArrowRight size={14} />
+          </a>
 
-
-       
+          <button
+            type="button"
+            onClick={() => setMenuOpen(!menuOpen)}
+            aria-label={menuOpen ? 'Close menu' : 'Open menu'}
+            aria-expanded={menuOpen}
+            className="
+              grid
+              h-[40px]
+              w-[40px]
+              place-items-center
+              rounded-[10px]
+              border
+              border-[#0b1533]/[0.08]
+              bg-[#f7f9fc]
+              text-[#09132f]
+              lg:hidden
+            "
+          >
+            {menuOpen ? <X size={18} /> : <Menu size={18} />}
+          </button>
         </div>
 
-      </div>
+        {menuOpen && (
+          <div
+            className="
+              mt-2
+              overflow-hidden
+              rounded-[16px]
+              border border-[#0b1533]/[0.08]
+              bg-white
+              p-2
+              shadow-[0_15px_45px_rgba(15,35,70,0.08)]
+              lg:hidden
+            "
+          >
+            {navigation.map((item) => (
+              <a
+                key={item.label}
+                href={item.href}
+                onClick={() => setMenuOpen(false)}
+                className="
+                  flex
+                  items-center
+                  justify-between
+                  rounded-[10px]
+                  px-4
+                  py-3.5
+                  text-[15px]
+                  font-medium
+                  text-[#09132f]/70
+                  no-underline
+                  hover:bg-[#f5f8fc]
+                  hover:text-[#09132f]
+                "
+              >
+                {item.label}
+                <ArrowRight size={14} className="text-[#09132f]/30" />
+              </a>
+            ))}
 
+            <div className="mt-1 border-t border-[#0b1533]/[0.07] pt-2">
+              <a
+                href="#contact"
+                onClick={() => setMenuOpen(false)}
+                className="
+                  flex
+                  items-center
+                  justify-center
+                  gap-2
+                  rounded-[10px]
+                  bg-[#09132f]
+                  px-4
+                  py-3.5
+                  text-[14px]
+                  font-semibold
+                  text-white
+                  no-underline
+                "
+              >
+                Talk to ZYVORIS
+                <ArrowRight size={14} />
+              </a>
+            </div>
+          </div>
+        )}
+      </div>
     </header>
   )
 }
+
+
+
+

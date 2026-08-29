@@ -1,576 +1,169 @@
+'use client'
 
 import React from 'react'
 import {
   ArrowRight,
-  ArrowDown,
+  Mail,
   ShieldCheck,
-  FileCheck2,
-  LockKeyhole,
-  Sparkles,
-  Check,
+  GitBranch,
+  Calculator,
+  Database,
 } from 'lucide-react'
 
 export default function CallToActionSection() {
   return (
     <section
-      id="company"
-      className="
-        relative
-        py-[105px]
-        px-[5vw]
-        max-[700px]:py-[75px]
-        max-[700px]:px-[20px]
-        bg-white
-        overflow-hidden
-      "
+      id="contact"
+      className="relative overflow-hidden border-t border-slate-200 bg-white px-6 py-16 text-[#0b1735]"
     >
+      {/* Background Radial Orbs */}
+      <div className="pointer-events-none absolute -right-48 -top-48 h-[500px] w-[500px] rounded-full bg-[radial-gradient(circle,rgba(39,89,215,0.08),transparent_67%)]" />
+      <div className="pointer-events-none absolute -bottom-48 -left-48 h-[450px] w-[450px] rounded-full bg-[radial-gradient(circle,rgba(39,89,215,0.045),transparent_68%)]" />
 
-      {/* =====================================================
-          BACKGROUND
-      ====================================================== */}
-
+      {/* Grid Pattern Backdrop */}
       <div
-        className="
-          absolute
-          w-[600px]
-          h-[600px]
-          right-[-260px]
-          top-[-280px]
-          rounded-full
-          bg-[radial-gradient(circle,rgba(21,159,141,0.065),transparent_68%)]
-          pointer-events-none
-        "
+        className="pointer-events-none absolute inset-0 opacity-[0.2]"
+        style={{
+          backgroundImage:
+            'linear-gradient(to right, #e9eef5 1px, transparent 1px), linear-gradient(to bottom, #e9eef5 1px, transparent 1px)',
+          backgroundSize: '60px 60px',
+          maskImage:
+            'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)',
+        }}
       />
 
-      <div
-        className="
-          absolute
-          w-[450px]
-          h-[450px]
-          left-[-250px]
-          bottom-[-280px]
-          rounded-full
-          bg-[radial-gradient(circle,rgba(91,91,220,0.035),transparent_68%)]
-          pointer-events-none
-        "
-      />
+      <div className="relative mx-auto max-w-6xl">
+        {/* Card Outer Container */}
+        <div className="relative overflow-hidden rounded-2xl border border-slate-200 bg-[#f7f9fc] shadow-lg">
+          {/* Top Decorative Line */}
+          <div className="absolute left-[15%] right-[15%] top-0 h-px bg-gradient-to-r from-transparent via-[#2759d7]/60 to-transparent" />
 
+          <div className="grid grid-cols-1 lg:grid-cols-[1.2fr_0.8fr]">
+            {/* Left Content Column */}
+            <div className="flex flex-col justify-between p-8 sm:p-10 lg:p-12">
+              <div>
+                {/* Header Tag */}
+                <div className="flex items-center gap-2.5">
+                  <span className="h-px w-6 bg-[#2759d7]" />
+                  <span className="text-xs font-semibold uppercase tracking-widest text-[#2759d7]">
+                    Next step
+                  </span>
+                </div>
 
-      <div className="relative z-10 max-w-[1180px] mx-auto">
+                {/* Main Headline */}
+                <h2 className="mt-4 text-3xl font-medium tracking-tight sm:text-4xl lg:text-5xl text-[#0b1735]">
+                  Build tax reporting on infrastructure designed for{' '}
+                  <span className="text-[#2759d7]">complexity.</span>
+                </h2>
 
-        {/* =================================================
-            MAIN CTA
-        ================================================== */}
-
-        <div
-          className="
-            relative
-            rounded-[24px]
-            max-[700px]:rounded-[19px]
-            overflow-hidden
-            border border-[rgba(18,31,26,0.09)]
-            bg-[#f8faf8]
-            shadow-[0_25px_70px_rgba(18,31,26,0.07)]
-          "
-        >
-
-          {/* Top accent */}
-
-          <div
-            className="
-              absolute
-              top-0
-              left-[18%]
-              right-[18%]
-              h-px
-              bg-gradient-to-r
-              from-transparent
-              via-[#159f8d]/60
-              to-transparent
-            "
-          />
-
-
-          {/* =================================================
-              CONTENT GRID
-          ================================================== */}
-
-          <div
-            className="
-              grid
-              grid-cols-1
-              lg:grid-cols-[1fr_0.72fr]
-              gap-[45px]
-              lg:gap-[70px]
-              items-center
-              px-[65px]
-              py-[65px]
-              max-[700px]:px-[23px]
-              max-[700px]:py-[48px]
-            "
-          >
-
-            {/* =================================================
-                LEFT CONTENT
-            ================================================== */}
-
-            <div>
-
-              {/* Kicker */}
-
-              <div
-                className="
-                  inline-flex
-                  items-center
-                  gap-[7px]
-                  px-[9px]
-                  py-[5px]
-                  rounded-full
-                  bg-white
-                  border border-[rgba(18,31,26,0.08)]
-                  text-[12px]
-                  font-bold
-                  tracking-[0.13em]
-                  text-[#7e8983]
-                "
-              >
-
-                <span className="w-[5px] h-[5px] rounded-full bg-[#159f8d]" />
-
-                NEXT STEP
-
+                {/* Subtitle */}
+                <p className="mt-4 max-w-xl text-sm leading-relaxed text-slate-600 sm:text-base">
+                  See how ZYVORIS connects financial data, fund structures, tax logic,
+                  calculations, and reporting across complex private-market workflows.
+                </p>
               </div>
 
-
-              {/* Heading */}
-
-              <h2
-                className="
-                  mt-[18px]
-                  mb-0
-                  font-sans
-                  text-[43px]
-                  sm:text-[51px]
-                  lg:text-[62px]
-                  leading-[0.95]
-                  tracking-[-0.065em]
-                  text-[#131c18]
-                  font-bold
-                "
-              >
-                Make tax reporting
-                <br />
-
-                <em
-                  className="
-                    not-italic
-                    bg-gradient-to-r
-                    from-[#079b82]
-                    via-[#438ec6]
-                    to-[#695bd9]
-                    bg-clip-text
-                    text-transparent
-                  "
-                >
-                  easier to control.
-                </em>
-              </h2>
-
-
-              {/* Description */}
-
-              <p
-                className="
-                  max-w-[555px]
-                  mt-[20px]
-                  mb-0
-                  text-[#6c7973]
-                  text-[13px]
-                  leading-[1.75]
-                "
-              >
-                See how Zyvoris transforms complex fund and asset data into
-                calculated, validated, and traceable tax reporting outputs —
-                without losing visibility into how the numbers were produced.
-              </p>
-
-
-              {/* CTA */}
-
-              <div className="flex items-center gap-[10px] flex-wrap mt-[27px]">
-
-              
-
-                <a
-                  href="#platform"
-                  className="
-                    inline-flex
-                    items-center
-                    justify-center
-                    gap-[7px]
-                    px-[16px]
-                    py-[10px]
-                    rounded-[9px]
-                    bg-white
-                    border border-[rgba(18,31,26,0.09)]
-                    text-[#65726b]
-                    text-[15px]
-                    font-semibold
-                    no-underline
-                    transition-all
-                    duration-200
-                    hover:-translate-y-[2px]
-                    hover:border-[#159f8d]/30
-                  "
-                >
-                  See how it works
-
-                  <ArrowDown size={12} />
-                </a>
-
-              </div>
-
+              {/* Action Buttons */}
+{/* ACTION BUTTONS */} <div className="mt-8 flex flex-wrap items-center gap-3"> <a href="mailto:mubashar.khan@me.com?subject=ZYVORIS%20Demo%20Request" className="group inline-flex items-center justify-center gap-2 rounded-lg bg-[#0b1735] px-5 py-3 text-xs font-semibold text-white no-underline transition-all duration-200 hover:bg-[#17284b]" > Book a Demo <ArrowRight size={14} className="transition-transform duration-200 group-hover:translate-x-1" /> </a> <a href="mailto:mubashar.khan@me.com?subject=Contact%20ZYVORIS" className="inline-flex items-center justify-center gap-2 rounded-lg border border-slate-300 bg-white px-5 py-3 text-xs font-semibold text-[#26344d] no-underline transition-all duration-200 hover:border-[#2759d7]/40 hover:text-[#2759d7]" > <Mail size={14} /> Contact ZYVORIS </a> </div>
             </div>
 
+            {/* Right Architectural Diagram Column */}
+            <div className="relative border-t border-slate-200 bg-white p-6 lg:border-l lg:border-t-0 sm:p-8">
+              <div className="absolute inset-0 opacity-[0.35] bg-[linear-gradient(#edf1f6_1px,transparent_1px),linear-gradient(90deg,#edf1f6_1px,transparent_1px)] bg-[size:32px_32px]" />
 
-            {/* =================================================
-                RIGHT — PRODUCT FLOW
-            ================================================== */}
-
-            <div className="relative">
-
-              <div
-                className="
-                  relative
-                  rounded-[19px]
-                  bg-white
-                  border border-[rgba(18,31,26,0.08)]
-                  p-[18px]
-                  shadow-[0_20px_50px_rgba(18,31,26,0.06)]
-                "
-              >
-
-                {/* Header */}
-
-                <div className="flex items-center justify-between">
-
+              <div className="relative z-10 flex h-full flex-col justify-center gap-2">
+                {/* 1. Source Block */}
+                <div className="flex items-center gap-3 rounded-lg border border-slate-200/80 bg-slate-50/50 p-3">
+                  <div className="flex h-9 w-9 items-center justify-center rounded-md border border-slate-200 bg-white text-[#2759d7] shadow-sm">
+                    <Database size={16} />
+                  </div>
                   <div>
-
-                    <span
-                      className="
-                        block
-                        text-[12px]
-                        font-bold
-                        tracking-[0.14em]
-                        text-[#98a19d]
-                      "
-                    >
-                      ZYVORIS WORKFLOW
+                    <span className="block text-[9px] font-bold uppercase tracking-wider text-slate-400">
+                      Source
                     </span>
+                    <p className="text-xs font-semibold text-slate-700">
+                      Financial &amp; fund data
+                    </p>
+                  </div>
+                </div>
 
-                    <strong
-                      className="
-                        block
-                        mt-[3px]
-                        text-[16px]
-                        text-[#2d3933]
-                      "
-                    >
-                      From data to reporting
-                    </strong>
+                {/* Connector Line */}
+                <div className="ml-[23px] h-3 w-px bg-slate-200" />
 
+                {/* 2. ZYVORIS Core Block */}
+                <div className="rounded-xl border border-[#cbd8f3] bg-[#f3f6ff] p-4 shadow-sm">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-md bg-[#0b1735] text-white">
+                      <GitBranch size={16} />
+                    </div>
+                    <div>
+                      <span className="block text-[9px] font-bold uppercase tracking-wider text-[#2759d7]">
+                        ZYVORIS Core
+                      </span>
+                      <p className="text-xs font-semibold text-[#17284b]">
+                        Tax infrastructure engine
+                      </p>
+                    </div>
                   </div>
 
-                  <div
-                    className="
-                      flex
-                      items-center
-                      gap-[5px]
-                      px-[7px]
-                      py-[5px]
-                      rounded-full
-                      bg-[#e9f8f3]
-                      text-[#159a82]
-                      text-[6px]
-                      font-bold
-                    "
-                  >
-                    <span className="w-[4px] h-[4px] rounded-full bg-[#159a82]" />
-                    ACTIVE
+                  <div className="mt-3 grid grid-cols-2 gap-2">
+                    {['Tax logic', 'Calculations', 'Allocations', 'Validation'].map(
+                      (item) => (
+                        <div
+                          key={item}
+                          className="rounded-md border border-[#d9e1f2] bg-white px-3 py-1.5 text-center text-[10px] font-medium text-slate-600"
+                        >
+                          {item}
+                        </div>
+                      )
+                    )}
                   </div>
-
                 </div>
 
+                {/* Connector Line */}
+                <div className="ml-[23px] h-3 w-px bg-slate-200" />
 
-                {/* Flow */}
-
-                <div className="relative mt-[22px]">
-
-                  {/* Vertical line */}
-
-                  <div
-                    className="
-                      absolute
-                      left-[16px]
-                      top-[22px]
-                      bottom-[22px]
-                      w-px
-                      bg-gradient-to-b
-                      from-[#cbded8]
-                      via-[#159f8d]
-                      to-[#cbded8]
-                    "
-                  />
-
-
-                  <FlowStep
-                    icon={<DatabaseIcon />}
-                    label="FUND DATA"
-                    text="Transactions, income & expenses"
-                  />
-
-                  <FlowStep
-                    icon={<Sparkles size={13} />}
-                    label="TAX ENGINE"
-                    text="Classify, calculate & allocate"
-                    active
-                  />
-
-                  <FlowStep
-                    icon={<FileCheck2 size={13} />}
-                    label="REPORTING"
-                    text="Validated, traceable outputs"
-                  />
-
+                {/* 3. Output Block */}
+                <div className="flex items-center justify-between rounded-lg border border-slate-200/80 bg-slate-50/50 p-3">
+                  <div className="flex items-center gap-3">
+                    <div className="flex h-9 w-9 items-center justify-center rounded-md border border-[#cbd8f3] bg-[#f3f6ff] text-[#2759d7]">
+                      <Calculator size={16} />
+                    </div>
+                    <div>
+                      <span className="block text-[9px] font-bold uppercase tracking-wider text-slate-400">
+                        Output
+                      </span>
+                      <p className="text-xs font-semibold text-slate-700">
+                        Controlled tax reporting
+                      </p>
+                    </div>
+                  </div>
+                  <div className="flex items-center gap-1.5 rounded-full border border-blue-200/80 bg-blue-50 px-2.5 py-1">
+                    <ShieldCheck size={12} className="text-[#2759d7]" />
+                    <span className="text-[10px] font-semibold text-[#2759d7]">Verified</span>
+                  </div>
                 </div>
-
-
-                {/* Footer */}
-
-                <div
-                  className="
-                    mt-[14px]
-                    pt-[12px]
-                    border-t border-[rgba(18,31,26,0.07)]
-                    flex
-                    items-center
-                    justify-between
-                  "
-                >
-
-                  <span className="text-[6px] font-bold tracking-[0.12em] text-[#9ba49f]">
-                    CONTROLLED WORKFLOW
-                  </span>
-
-                  <span className="flex items-center gap-[4px] text-[12px] font-semibold text-[#159f8d]">
-                    <ShieldCheck size={10} />
-                    TRACEABLE
-                  </span>
-
-                </div>
-
               </div>
-
             </div>
-
           </div>
 
-
-          {/* =================================================
-              TRUST BAR
-          ================================================== */}
-
-          <div
-            className="
-              grid
-              grid-cols-1
-              sm:grid-cols-3
-              border-t
-              border-[rgba(18,31,26,0.07)]
-              bg-white/65
-            "
-          >
-
-            <TrustItem
-              icon={<ShieldCheck size={13} />}
-              text="Deterministic calculations"
-            />
-
-            <TrustItem
-              icon={<FileCheck2 size={13} />}
-              text="Traceable reporting outputs"
-            />
-
-            <TrustItem
-              icon={<LockKeyhole size={13} />}
-              text="Controlled data processing"
-              last
-            />
-
+          {/* Bottom Trust Items Bar */}
+          <div className="grid grid-cols-1 border-t border-slate-200 bg-white text-center divide-y sm:divide-y-0 sm:divide-x divide-slate-200 sm:grid-cols-3">
+            <TrustItem text="Financial Data" />
+            <TrustItem text="Fund Structures" />
+            <TrustItem text="Tax Logic & Reporting" />
           </div>
-
         </div>
-
-
-        {/* Bottom statement */}
-
-        <div className="flex justify-center mt-[20px]">
-
-          <span
-            className="
-              text-[13px]
-              text-[#929c97]
-              flex
-              items-center
-              gap-[6px]
-            "
-          >
-            <Check size={11} className="text-[#159f8d]" />
-
-            One controlled workflow from source data to tax reporting.
-
-          </span>
-
-        </div>
-
       </div>
-
     </section>
   )
 }
 
-
-/* =============================================================
-   FLOW STEP
-============================================================= */
-
-function FlowStep({
-  icon,
-  label,
-  text,
-  active = false,
-}) {
+function TrustItem({ text }: { text: string }) {
   return (
-    <div className="relative flex items-center gap-[11px] py-[8px]">
-
-      <div
-        className={`
-          relative
-          z-10
-          w-[33px]
-          h-[33px]
-          shrink-0
-          rounded-[10px]
-          grid
-          place-items-center
-          border
-          ${
-            active
-              ? `
-                bg-[#e9f8f3]
-                border-[#159f8d]/20
-                text-[#159f8d]
-              `
-              : `
-                bg-[#f5f7f5]
-                border-[rgba(18,31,26,0.07)]
-                text-[#7c8882]
-              `
-          }
-        `}
-      >
-        {icon}
-      </div>
-
-
-      <div>
-
-        <span
-          className={`
-            block
-            text-[12px]
-            font-bold
-            tracking-[0.12em]
-            ${
-              active
-                ? 'text-[#159f8d]'
-                : 'text-[#89948e]'
-            }
-          `}
-        >
-          {label}
-        </span>
-
-        <span className="block mt-[2px] text-[13px] text-[#9aa39e]">
-          {text}
-        </span>
-
-      </div>
-
-    </div>
-  )
-}
-
-
-/* =============================================================
-   TRUST ITEM
-============================================================= */
-
-function TrustItem({
-  icon,
-  text,
-  last = false,
-}) {
-  return (
-    <div
-      className={`
-        flex
-        items-center
-        justify-center
-        gap-[7px]
-        py-[14px]
-        text-[#7f8b85]
-        text-[13px]
-        font-semibold
-        ${
-          !last
-            ? 'border-b sm:border-b-0 sm:border-r border-[rgba(18,31,26,0.07)]'
-            : ''
-        }
-      `}
-    >
-
-      <span className="text-[#159f8d]">
-        {icon}
-      </span>
-
+    <div className="flex items-center justify-center gap-2 py-3.5 text-[11px] font-semibold uppercase tracking-wider text-slate-500">
+      <span className="h-1.5 w-1.5 rounded-full bg-[#2759d7]" />
       {text}
-
     </div>
   )
 }
-
-
-/* =============================================================
-   SMALL DATABASE ICON
-============================================================= */
-
-function DatabaseIcon() {
-  return (
-    <span
-      className="
-        relative
-        w-[13px]
-        h-[13px]
-        rounded-[3px]
-        border
-        border-[#8f9c95]
-        inline-block
-      "
-    >
-      <span className="absolute left-[2px] right-[2px] top-[3px] h-[1px] rounded-full bg-[#8f9c95]" />
-      <span className="absolute left-[2px] right-[2px] bottom-[3px] h-[1px] rounded-full bg-[#8f9c95]" />
-    </span>
-  )
-}
-

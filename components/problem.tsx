@@ -1,293 +1,330 @@
-
 import React from 'react'
-
 import {
-  Calculator,
-  AlertCircle,
-  ArrowRight,
-  Layers3,
-  Clock3,
+  Database,
   GitBranch,
+  Globe2,
+  SearchCheck,
 } from 'lucide-react'
 
 export default function ProblemSection() {
+  const problems = [
+    {
+      number: '01',
+      category: 'DATA',
+      icon: Database,
+      title: 'Fragmented Data',
+      text: 'Important fund data sits across different systems, administrators, spreadsheets, and operational sources.',
+    },
+    {
+      number: '02',
+      category: 'LOGIC',
+      icon: GitBranch,
+      title: 'Manual Tax Logic',
+      text: 'Complex classifications and calculations often depend on spreadsheets, workpapers, and institutional knowledge.',
+    },
+    {
+      number: '03',
+      category: 'GLOBAL',
+      icon: Globe2,
+      title: 'Cross-Border Complexity',
+      text: 'Each jurisdiction introduces different rules, classifications, allocation methods, and reporting requirements.',
+    },
+    {
+      number: '04',
+      category: 'AUDIT',
+      icon: SearchCheck,
+      title: 'Limited Traceability',
+      text: 'Reviewers often need to reconstruct how a number moved from source data through calculation to final reporting.',
+    },
+  ]
+
   return (
     <section
       id="problem"
       className="
         relative
-        py-[135px]
-        px-[5vw]
-        max-[700px]:py-[85px]
-        max-[700px]:px-[20px]
-        bg-white
         overflow-hidden
+        bg-[#fcfdfe]
+        px-[5vw]
+        py-[120px]
+        max-[700px]:px-[20px]
+        max-[700px]:py-[80px]
       "
     >
-      {/* =====================================================
-          BACKGROUND
-      ====================================================== */}
+      {/* Background Radial Glows */}
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -right-[260px]
+          top-[80px]
+          h-[600px]
+          w-[600px]
+          rounded-full
+          bg-[radial-gradient(circle,rgba(40,97,223,0.04)_0%,transparent_70%)]
+        "
+      />
+      <div
+        className="
+          pointer-events-none
+          absolute
+          -left-[280px]
+          bottom-[-250px]
+          h-[550px]
+          w-[550px]
+          rounded-full
+          bg-[radial-gradient(circle,rgba(40,97,223,0.03)_0%,transparent_70%)]
+        "
+      />
 
-      <div className="absolute w-[650px] h-[650px] -right-[300px] top-[100px] rounded-full bg-[radial-gradient(circle,rgba(91,105,226,0.055)_0%,transparent_68%)] pointer-events-none" />
-
-      <div className="absolute w-[500px] h-[500px] -left-[300px] bottom-[-200px] rounded-full bg-[radial-gradient(circle,rgba(21,159,141,0.055)_0%,transparent_68%)] pointer-events-none" />
-
-      <div className="max-w-[1420px] mx-auto relative z-10">
-
+      <div className="relative z-10 mx-auto max-w-[1420px]">
         {/* =====================================================
-            HEADER
+            SECTION HEADER
         ====================================================== */}
-
-        <div className="grid grid-cols-1 lg:grid-cols-[1fr_0.72fr] gap-8 lg:gap-[110px] items-end mb-[75px]">
-
+        <div
+          className="
+            grid
+            grid-cols-1
+            items-end
+            gap-[28px]
+            lg:grid-cols-[1.1fr_0.8fr]
+            lg:gap-[90px]
+          "
+        >
           <div>
-            <h2
+            <div
               className="
-                mt-[19px]
-                mb-0
-                font-sans
-                text-[44px]
-                sm:text-[52px]
-                lg:text-[70px]
-                leading-[0.96]
-                tracking-[-0.065em]
-                text-[#121a16]
-                font-bold
+                flex
+                items-center
+                gap-[10px]
+                text-[11px]
+                font-extrabold
+                tracking-[0.14em]
+                text-[#2861df]
               "
             >
-              Tax reporting gets
-              <br />
-              complicated{' '}
-              <em
-                className="
-                  not-italic
-                  bg-gradient-to-r
-                  from-[#079b82]
-                  via-[#438ec6]
-                  to-[#695bd9]
-                  bg-clip-text
-                  text-transparent
-                "
-              >
-                before the report.
-              </em>
+              <span className="h-[1px] w-[24px] bg-[#2861df]" />
+              THE OPERATING PROBLEM
+            </div>
+
+            <h2
+              className="
+                mt-[20px]
+                mb-0
+                max-w-[850px]
+                font-sans
+                text-[42px]
+                font-semibold
+                leading-[1.04]
+                tracking-[-0.045em]
+                text-[#0b132a]
+                sm:text-[54px]
+                lg:text-[68px]
+              "
+            >
+              Private markets have scaled.{' '}
+              <span className="text-[#2861df]">
+                Tax infrastructure has not.
+              </span>
             </h2>
           </div>
 
-          <div className="pb-[3px]">
-            <p className="m-0 text-[#69766f] text-[15px] leading-[1.8] max-w-[525px]">
-              The difficult part is rarely the final document. It is bringing
-              together the underlying data, applying the right logic, managing
-              allocations, and proving how every number was produced.
+          <div className="pb-[6px]">
+            <p
+              className="
+                m-0
+                max-w-[520px]
+                text-[16px]
+                leading-[1.7]
+                text-[#556075]
+              "
+            >
+              As fund structures become more complex and reporting expands
+              across jurisdictions, tax workflows increasingly depend on
+              fragmented data, manual processes, and knowledge that is
+              difficult to reproduce and review.
             </p>
           </div>
-
         </div>
 
         {/* =====================================================
-            MAIN VISUAL
+            PROBLEM CARDS
         ====================================================== */}
+        <div
+          className="
+            mt-[64px]
+            grid
+            grid-cols-1
+            gap-[20px]
+            sm:grid-cols-2
+            lg:grid-cols-4
+          "
+        >
+          {problems.map((problem) => {
+            const Icon = problem.icon
 
-        <div className="grid grid-cols-1 lg:grid-cols-[0.95fr_1.05fr] gap-[16px]">
+            return (
+              <div
+                key={problem.number}
+                className="
+                  group
+                  relative
+                  flex
+                  flex-col
+                  justify-between
+                  rounded-[16px]
+                  border
+                  border-[#e5e9f0]
+                  bg-white
+                  p-[32px]
+                  shadow-[0_10px_30px_rgba(15,23,42,0.03)]
+                  transition-all
+                  duration-250
+                  ease-in-out
+                  hover:-translate-y-[4px]
+                  hover:border-[#2861df]/40
+                  hover:shadow-[0_20px_40px_rgba(40,97,223,0.08)]
+                "
+              >
+                {/* Accent Top Bar on Hover */}
+                <div
+                  className="
+                    absolute
+                    left-0
+                    right-0
+                    top-0
+                    h-[3px]
+                    rounded-t-[16px]
+                    bg-[#2861df]
+                    opacity-0
+                    transition-opacity
+                    duration-200
+                    group-hover:opacity-100
+                  "
+                />
 
-          {/* =================================================
-              LEFT — FULL EXCEL IMAGE
-          ================================================== */}
-
-          <div
-            className="
-              relative
-              min-h-[475px]
-              rounded-[22px]
-              overflow-hidden
-              border border-[rgba(18,31,26,0.08)]
-              bg-[#f7f8f6]
-              shadow-[0_20px_60px_rgba(18,31,26,0.035)]
-            "
-          >
-            <img
-              src="/excel.jpg"
-              alt="Financial data in Excel"
-              className="
-                absolute
-                inset-0
-                w-full
-                h-full
-                object-cover
-              "
-            />
-
-            <div className="absolute inset-0 bg-white/5 pointer-events-none" />
-          </div>
-
-          {/* =================================================
-              RIGHT — MANUAL WORKFLOW
-          ================================================== */}
-
-          <div
-            className="
-              relative
-              min-h-[475px]
-              rounded-[22px]
-              overflow-hiddenMap financial data
-              border border-[rgba(18,31,26,0.08)]
-              bg-white
-              shadow-[0_20px_60px_rgba(18,31,26,0.045)]
-            "
-          >
-
-            {/* Header */}
-
-            <div className="p-[28px] max-sm:p-[21px]">
-              <span className="text-[13px] font-bold tracking-[0.14em] text-[#929c97]">
-                THE MANUAL LAYER
-              </span>
-
-              <h3 className="mt-[10px] mb-0 text-[25px] tracking-[-0.045em] text-[#202a25] font-semibold">
-                More steps. More room for inconsistency.
-              </h3>
-            </div>
-
-            {/* Workflow */}
-
-            <div className="px-[28px] max-sm:px-[21px] pb-[30px]">
-
-              {[
-                {
-                  icon: Calculator,
-                  title: 'Map financial data',
-                  text: 'Identify and classify relevant income, costs, and transactions.',
-                },
-                {
-                  icon: GitBranch,
-                  title: 'Apply tax logic',
-                  text: 'Determine which calculations and rules apply to each item.',
-                },
-                {
-                  icon: Layers3,
-                  title: 'Allocate results',
-                  text: 'Distribute calculated amounts across the relevant structures.',
-                },
-                {
-                  icon: Clock3,
-                  title: 'Reconcile & review',
-                  text: 'Check calculations, resolve differences, and prepare reporting.',
-                },
-              ].map((item, i) => {
-                const Icon = item.icon
-
-                return (
-                  <div
-                    key={item.title}
-                    className="relative flex gap-[16px] py-[16px]"
-                  >
-
-                    {/* Timeline */}
-
-                    {i !== 3 && (
-                      <div className="absolute left-[15px] top-[45px] bottom-[-16px] w-px bg-[#e4e8e5]" />
-                    )}
-
-                    {/* Icon */}
+                {/* Card Top: Header Metadata & Icon */}
+                <div>
+                  <div className="flex items-center justify-between border-b border-[#f0f3f8] pb-[20px]">
+                    <div className="flex items-center gap-[8px]">
+                      <span className="font-mono text-[12px] font-bold text-[#2861df]">
+                        {problem.number}
+                      </span>
+                      <span className="text-[10px] font-bold tracking-[0.1em] text-[#94a3b8]">
+                        / {problem.category}
+                      </span>
+                    </div>
 
                     <div
                       className="
-                        relative
-                        z-10
-                        w-[31px]
-                        h-[31px]
-                        shrink-0
-                        rounded-[9px]
-                        bg-[#f3f6f4]
-                        border border-[rgba(18,31,26,0.06)]
-                        grid place-items-center
-                        text-[#68766f]
+                        flex
+                        h-[40px]
+                        w-[40px]
+                        items-center
+                        justify-center
+                        rounded-[10px]
+                        bg-[#f1f5fd]
+                        text-[#2861df]
+                        transition-colors
+                        duration-200
+                        group-hover:bg-[#2861df]
+                        group-hover:text-white
                       "
                     >
-                      <Icon size={14} />
+                      <Icon size={20} strokeWidth={1.8} />
                     </div>
-
-                    {/* Text */}
-
-                    <div className="pt-[1px]">
-                      <strong className="block text-[16px] font-bold text-[#35413b]">
-                        {item.title}
-                      </strong>
-
-                      <p className="mt-[5px] mb-0 max-w-[390px] text-[15px] leading-[1.6] text-[#89938e]">
-                        {item.text}
-                      </p>
-                    </div>
-
                   </div>
-                )
-              })}
 
-            </div>
+                  {/* Card Main Body */}
+                  <div className="mt-[24px]">
+                    <h3
+                      className="
+                        m-0
+                        text-[20px]
+                        font-semibold
+                        leading-[1.25]
+                        tracking-[-0.02em]
+                        text-[#0f172a]
+                      "
+                    >
+                      {problem.title}
+                    </h3>
 
-            {/* Bottom warning */}
-
-            <div
-              className="
-                absolute
-                bottom-0
-                left-0
-                right-0
-                px-[28px]
-                py-[17px]
-                max-sm:px-[21px]
-                bg-[#faf8f4]
-                border-t border-[rgba(18,31,26,0.07)]
-              "
-            >
-
-              <div className="flex items-center gap-[9px]">
-
-                <div className="w-[28px] h-[28px] rounded-full bg-[#f3eadc] grid place-items-center text-[#a17f53]">
-                  <AlertCircle size={14} />
+                    <p
+                      className="
+                        mt-[12px]
+                        mb-0
+                        text-[14px]
+                        leading-[1.65]
+                        text-[#64748b]
+                      "
+                    >
+                      {problem.text}
+                    </p>
+                  </div>
                 </div>
 
-                <div>
-                  <strong className="block text-[14px] font-bold text-[#625747]">
-                    Manual dependency
-                  </strong>
-
-                  <span className="block mt-[2px] text-[13px] text-[#948a7d]">
-                    More handoffs make consistency harder to maintain.
+                {/* Card Bottom Indicator */}
+                <div className="mt-[32px] flex items-center gap-[6px]">
+                  <span className="h-[4px] w-[4px] rounded-full bg-[#cbd5e1] group-hover:bg-[#2861df]" />
+                  <span className="text-[10px] font-bold tracking-[0.08em] text-[#a1a9b6] uppercase group-hover:text-[#2861df]">
+                    Operating Bottleneck
                   </span>
                 </div>
-
               </div>
-
-            </div>
-
-          </div>
-
+            )
+          })}
         </div>
 
         {/* =====================================================
-            BOTTOM STATEMENT
+            BOTTOM SUMMARY BAR
         ====================================================== */}
+        <div
+          className="
+            mt-[48px]
+            flex
+            flex-col
+            items-start
+            justify-between
+            gap-[16px]
+            border-t
+            border-[#e2e8f0]
+            pt-[24px]
+            sm:flex-row
+            sm:items-center
+          "
+        >
+          <p
+            className="
+              m-0
+              text-[13px]
+              font-semibold
+              text-[#64748b]
+            "
+          >
+            The complexity sits upstream of the final report.
+          </p>
 
-        <div className="mt-[30px] flex items-center justify-center gap-[10px] text-[#8a9590] text-[14px] font-semibold">
-
-          <span>
-            THE GOAL ISN&apos;T MORE SPREADSHEETS.
-          </span>
-
-          <ArrowRight
-            size={12}
-            className="text-[#159f8d]"
-          />
-
-          <span className="text-[#159f8d]">
-            IT&apos;S A CONTROLLED TAX WORKFLOW.
-          </span>
-
+          <div
+            className="
+              flex
+              items-center
+              gap-[8px]
+              text-[10px]
+              font-extrabold
+              tracking-[0.1em]
+              text-[#2861df]
+            "
+          >
+            <span className="h-[1px] w-[20px] bg-[#2861df]" />
+            DATA
+            <span className="text-[#cbd5e1]">→</span>
+            LOGIC
+            <span className="text-[#cbd5e1]">→</span>
+            REPORTING
+          </div>
         </div>
-
       </div>
     </section>
   )
 }
-

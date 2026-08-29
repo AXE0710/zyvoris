@@ -1,801 +1,817 @@
-import React from 'react'
+'use client'
+
+import React, { useState } from 'react'
 import {
   ArrowRight,
-  Check,
+  Database,
+  Network,
+  Scale,
+  Calculator,
   FileCheck2,
   ShieldCheck,
+  CheckCircle2,
   Sparkles,
+  ArrowDown,
 } from 'lucide-react'
+
+const STAGES = [
+  {
+    id: '01',
+    title: 'Source Data Ingestion',
+    desc: 'Financial, portfolio & transaction feeds',
+    tags: ['Raw Extracts', 'ERP Sync', 'GL Data'],
+    icon: Database,
+  },
+  {
+    id: '02',
+    title: 'Entity & Structure Mapping',
+    desc: 'Multi-tier fund, GP/LP & holding graphs',
+    tags: ['Ownership %', 'Jurisdictions', 'Look-Through'],
+    icon: Network,
+  },
+  {
+    id: '03',
+    title: 'Tax Logic Engine',
+    desc: 'Cross-border tax rules & treaties',
+    tags: ['WHT Treaties', 'Pillar Two', 'Local Code'],
+    icon: Scale,
+  },
+  {
+    id: '04',
+    title: 'Deterministic Calculation',
+    desc: 'Automated allocations & tax basis tracking',
+    tags: ['Audit Logging', 'Versioned Rules'],
+    icon: Calculator,
+    featured: true,
+  },
+  {
+    id: '05',
+    title: 'Jurisdiction Reporting',
+    desc: 'Filing-ready outputs & partner statements',
+    tags: ['XML/PDF Output', 'Human Sign-off'],
+    icon: FileCheck2,
+  },
+]
 
 export default function ZyvorisHero({
   setDemoOpen = () => {},
 }: {
   setDemoOpen?: (open: boolean) => void
 }) {
-  const colors = {
-    bg: '#F8FAF8',
-    white: '#FFFFFF',
-    text: '#111713',
-    muted: '#68716B',
-    soft: '#E9ECE7',
-    border: '#DDE2DC',
-    accent: '#0C8B72',
-    accentDark: '#076652',
-    accentSoft: '#E5F4EF',
-  }
+  const [activeStage, setActiveStage] = useState<number | null>(3) // Default highlighted to Calculation Engine
 
   return (
-    <section
-      id="top"
-      style={{
-        minHeight: '100vh',
-        background: colors.bg,
-        color: colors.text,
-        fontFamily: "'Inter', system-ui, -apple-system, sans-serif",
-        position: 'relative',
-        overflow: 'hidden',
-        display: 'flex',
-        alignItems: 'center',
-        padding: '110px 24px 90px',
-      }}
-    >
-      {/* =========================================================
-          ANIMATED GIF BACKGROUND
-      ========================================================== */}
+    <section id="top" className="zyvoris-hero">
+      {/* Background Grids & Ambient Glows */}
+      <div className="hero-grid" />
+      <div className="hero-glow hero-glow-one" />
+      <div className="hero-glow hero-glow-two" />
 
-        <div
-        style={{
-            position: 'absolute',
-            inset: 0,
-            zIndex: 0,
-            backgroundImage: "url('/background.gif')",
-            backgroundSize: 'cover',
-            backgroundPosition: 'center right',
-            backgroundRepeat: 'no-repeat',
-            opacity: 0.22,
-            pointerEvents: 'none',
-        }}
-        />
-
-        {/* White gradient overlay */}
-        <div
-        style={{
-            position: 'absolute',
-            inset: 0,
-            zIndex: 1,
-            background:
-            'linear-gradient(90deg, rgba(248,250,248,0.96) 0%, rgba(248,250,248,0.82) 42%, rgba(248,250,248,0.35) 100%)',
-            pointerEvents: 'none',
-        }}
-        />
-
-      {/* =========================================================
-          SUBTLE GRID
-      ========================================================== */}
-
-      <div
-        style={{
-          position: 'absolute',
-          inset: 0,
-          pointerEvents: 'none',
-          zIndex: 1,
-          opacity: 0.35,
-          backgroundImage: `
-            linear-gradient(rgba(17,23,19,0.035) 1px, transparent 1px),
-            linear-gradient(90deg, rgba(17,23,19,0.035) 1px, transparent 1px)
-          `,
-          backgroundSize: '72px 72px',
-          maskImage: 'linear-gradient(to bottom, black, transparent 75%)',
-          WebkitMaskImage:
-            'linear-gradient(to bottom, black, transparent 75%)',
-        }}
-      />
-
-      {/* =========================================================
-          SOFT GLOW
-      ========================================================== */}
-
-      <div
-        style={{
-          position: 'absolute',
-          width: '650px',
-          height: '650px',
-          right: '-180px',
-          top: '-180px',
-          borderRadius: '50%',
-          background:
-            'radial-gradient(circle, rgba(12,139,114,0.13), transparent 68%)',
-          filter: 'blur(20px)',
-          pointerEvents: 'none',
-          zIndex: 1,
-        }}
-      />
-
-      {/* =========================================================
-          MAIN CONTENT
-      ========================================================== */}
-
-      <div
-        style={{
-          width: '100%',
-          maxWidth: '1320px',
-          margin: '0 auto',
-          position: 'relative',
-          zIndex: 2,
-        }}
-      >
-        <div
-          style={{
-            display: 'grid',
-            gridTemplateColumns: 'minmax(0, 1fr) minmax(460px, 0.9fr)',
-            gap: '70px',
-            alignItems: 'center',
-          }}
-        >
-          {/* =====================================================
+      <div className="hero-container">
+        <div className="hero-layout">
+          {/* =================================================
               LEFT — HERO COPY
-          ====================================================== */}
-
-          <div
-            style={{
-              maxWidth: '690px',
-              display: 'flex',
-              flexDirection: 'column',
-              alignItems: 'flex-start',
-            }}
-          >
-            {/* KICKER */}
-
-            <div
-              style={{
-                display: 'inline-flex',
-                alignItems: 'center',
-                gap: '9px',
-                padding: '7px 12px',
-                border: `1px solid ${colors.border}`,
-                borderRadius: '999px',
-                background: 'rgba(255,255,255,0.78)',
-                backdropFilter: 'blur(10px)',
-                WebkitBackdropFilter: 'blur(10px)',
-                marginBottom: '28px',
-                fontSize: '12px',
-                fontWeight: 650,
-                letterSpacing: '0.04em',
-                color: colors.muted,
-              }}
-            >
-              <span
-                style={{
-                  width: '7px',
-                  height: '7px',
-                  borderRadius: '50%',
-                  background: colors.accent,
-                  boxShadow: `0 0 0 4px ${colors.accentSoft}`,
-                }}
-              />
-
-              TAX OPERATIONS, AUTOMATED
+          ================================================= */}
+          <div className="hero-copy">
+            <div className="hero-kicker">
+              <span className="kicker-line" />
+              TAX INFRASTRUCTURE FOR PRIVATE MARKETS
             </div>
 
-            {/* HEADLINE */}
-
-            <h1
-              style={{
-                margin: 0,
-                fontSize: 'clamp(3.3rem, 6vw, 6.3rem)',
-                lineHeight: 0.94,
-                letterSpacing: '-0.065em',
-                fontWeight: 700,
-                maxWidth: '760px',
-              }}
-            >
+            <h1>
               Turn complex fund data into{' '}
-              <span
-                style={{
-                  color: colors.accent,
-                  fontStyle: 'italic',
-                  fontWeight: 500,
-                }}
-              >
-                clear tax reporting.
-              </span>
+              <span>jurisdiction-ready tax reporting.</span>
             </h1>
 
-            {/* DESCRIPTION */}
-
-            <p
-              style={{
-                margin: '30px 0 0',
-                maxWidth: '570px',
-                fontSize: '17px',
-                lineHeight: 1.65,
-                color: colors.muted,
-                letterSpacing: '-0.01em',
-              }}
-            >
-              Zyvoris automates fund-level and share-class tax calculations,
-              transforms complex financial data into structured outputs, and
-              keeps every result traceable from source to report.
+            <p className="hero-description">
+              ZYVORIS connects financial data, fund structures, tax logic,
+              calculations, and reporting in one controlled infrastructure
+              layer built for cross-border private markets.
             </p>
 
-            {/* CTA */}
-
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                gap: '12px',
-                flexWrap: 'wrap',
-                marginTop: '34px',
-              }}
-            >
+            <div className="hero-actions">
               <button
+                className="hero-primary-btn"
                 onClick={() => setDemoOpen(true)}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '10px',
-                  padding: '15px 21px 15px 23px',
-                  borderRadius: '8px',
-                  border: 'none',
-                  background: colors.text,
-                  color: '#fff',
-                  fontSize: '14px',
-                  fontWeight: 650,
-                  cursor: 'pointer',
-                  boxShadow: '0 12px 30px rgba(17,23,19,0.14)',
-                  transition: 'transform 0.2s ease, box-shadow 0.2s ease',
-                }}
-                onMouseEnter={(e) => {
-                  e.currentTarget.style.transform = 'translateY(-2px)'
-                  e.currentTarget.style.boxShadow =
-                    '0 16px 36px rgba(17,23,19,0.18)'
-                }}
-                onMouseLeave={(e) => {
-                  e.currentTarget.style.transform = 'translateY(0)'
-                  e.currentTarget.style.boxShadow =
-                    '0 12px 30px rgba(17,23,19,0.14)'
-                }}
               >
-                See how it works
+                Book a Demo
                 <ArrowRight size={16} />
               </button>
 
               <button
-                onClick={() => setDemoOpen(true)}
-                style={{
-                  display: 'inline-flex',
-                  alignItems: 'center',
-                  gap: '9px',
-                  padding: '15px 18px',
-                  borderRadius: '8px',
-                  border: `1px solid ${colors.border}`,
-                  background: 'rgba(255,255,255,0.72)',
-                  color: colors.text,
-                  fontSize: '14px',
-                  fontWeight: 600,
-                  cursor: 'pointer',
-                  backdropFilter: 'blur(10px)',
-                  WebkitBackdropFilter: 'blur(10px)',
+                className="hero-secondary-btn"
+                onClick={() => {
+                  document
+                    .getElementById('platform')
+                    ?.scrollIntoView({ behavior: 'smooth' })
                 }}
               >
-                <Sparkles size={15} color={colors.accent} />
-                Interactive demo
+                Explore the Platform
               </button>
             </div>
 
-            {/* TRUST ROW */}
-
-            <div
-              style={{
-                display: 'flex',
-                alignItems: 'center',
-                flexWrap: 'wrap',
-                gap: '18px',
-                marginTop: '34px',
-                paddingTop: '24px',
-                borderTop: `1px solid ${colors.border}`,
-                width: '100%',
-              }}
-            >
-              {[
-                'Automated calculations',
-                'Traceable outputs',
-                'Multi-currency ready',
-              ].map((item) => (
-                <div
-                  key={item}
-                  style={{
-                    display: 'flex',
-                    alignItems: 'center',
-                    gap: '7px',
-                    color: colors.muted,
-                    fontSize: '12px',
-                    fontWeight: 550,
-                  }}
-                >
-                  <Check size={14} color={colors.accent} strokeWidth={2.5} />
-                  {item}
-                </div>
-              ))}
+            {/* Proof Badges */}
+            <div className="hero-proof">
+              <div className="proof-item">
+                <ShieldCheck size={16} />
+                <span>Controlled calculations</span>
+              </div>
+              <div className="proof-item">
+                <Network size={16} />
+                <span>Source-to-output traceability</span>
+              </div>
+              <div className="proof-item">
+                <Scale size={16} />
+                <span>Multi-jurisdiction architecture</span>
+              </div>
+              <div className="proof-item">
+                <FileCheck2 size={16} />
+                <span>Human oversight</span>
+              </div>
             </div>
           </div>
 
-          {/* =====================================================
-              RIGHT — 3D ENGINE VISUAL
-          ====================================================== */}
-
-          <div
-            style={{
-              position: 'relative',
-              minHeight: '590px',
-              display: 'flex',
-              alignItems: 'center',
-              justifyContent: 'center',
-              perspective: '1200px',
-            }}
-          >
-            {/* ORBIT */}
-
-            <div
-              style={{
-                position: 'absolute',
-                width: '470px',
-                height: '470px',
-                borderRadius: '50%',
-                border: '1px solid rgba(12,139,114,0.13)',
-                transform: 'rotateX(67deg) rotateZ(-12deg)',
-              }}
-            />
-
-            <div
-              style={{
-                position: 'absolute',
-                width: '350px',
-                height: '350px',
-                borderRadius: '50%',
-                border: '1px dashed rgba(12,139,114,0.18)',
-                transform: 'rotateX(67deg) rotateZ(28deg)',
-              }}
-            />
-
-            {/* GLOW */}
-
-            <div
-              style={{
-                position: 'absolute',
-                width: '280px',
-                height: '280px',
-                borderRadius: '50%',
-                background:
-                  'radial-gradient(circle, rgba(12,139,114,0.2), transparent 68%)',
-                filter: 'blur(20px)',
-              }}
-            />
-
-            {/* MAIN 3D OBJECT */}
-
-            <div
-              style={{
-                width: '255px',
-                height: '255px',
-                position: 'relative',
-                transform:
-                  'rotateX(58deg) rotateZ(-45deg) rotateY(8deg)',
-                transformStyle: 'preserve-3d',
-                animation: 'zyvorisFloat 6s ease-in-out infinite',
-              }}
-            >
-              {/* TOP */}
-
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  borderRadius: '28px',
-                  background:
-                    'linear-gradient(145deg, #FFFFFF 0%, #EAF5F1 100%)',
-                  border: '1px solid rgba(12,139,114,0.22)',
-                  boxShadow:
-                    '25px 25px 60px rgba(17,23,19,0.12), inset 0 1px 0 rgba(255,255,255,0.9)',
-                  transform: 'translateZ(42px)',
-                }}
-              >
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: '25px',
-                    left: '25px',
-                    right: '25px',
-                    height: '6px',
-                    borderRadius: '999px',
-                    background: colors.accent,
-                    opacity: 0.85,
-                  }}
-                />
-
-                <div
-                  style={{
-                    position: 'absolute',
-                    top: '58px',
-                    left: '25px',
-                    fontSize: '11px',
-                    fontWeight: 700,
-                    letterSpacing: '0.12em',
-                    color: colors.muted,
-                  }}
-                >
-                  ZYVORIS ENGINE
-                </div>
-
-                <div
-                  style={{
-                    position: 'absolute',
-                    left: '25px',
-                    bottom: '27px',
-                    fontSize: '38px',
-                    fontWeight: 700,
-                    letterSpacing: '-0.05em',
-                    color: colors.text,
-                  }}
-                >
-                  TAX
-                </div>
+          {/* =================================================
+              RIGHT — ENHANCED INFRASTRUCTURE DIAGRAM
+          ================================================= */}
+          <div className="hero-visual">
+            {/* Visual Top Header */}
+            <div className="visual-header">
+              <div className="visual-title-wrap">
+                <span className="visual-label">ZYVORIS PIPELINE</span>
+                <span className="visual-sublabel">End-to-End Control Layer</span>
               </div>
 
-              {/* SIDE 1 */}
-
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  borderRadius: '28px',
-                  background: '#D9E5E0',
-                  border: '1px solid rgba(12,139,114,0.15)',
-                  transform: 'translateZ(0) translateY(42px)',
-                }}
-              />
-
-              {/* SIDE 2 */}
-
-              <div
-                style={{
-                  position: 'absolute',
-                  inset: 0,
-                  borderRadius: '28px',
-                  background: '#C9D9D3',
-                  border: '1px solid rgba(12,139,114,0.15)',
-                  transform: 'translateZ(0) translateX(42px)',
-                }}
-              />
-            </div>
-
-            {/* FLOATING DATA CARD */}
-
-            <div
-              style={{
-                position: 'absolute',
-                top: '90px',
-                right: '8px',
-                width: '205px',
-                padding: '16px',
-                borderRadius: '14px',
-                background: 'rgba(255,255,255,0.82)',
-                border: `1px solid ${colors.border}`,
-                boxShadow: '0 18px 45px rgba(17,23,19,0.1)',
-                backdropFilter: 'blur(16px)',
-                WebkitBackdropFilter: 'blur(16px)',
-                animation: 'zyvorisCardOne 5s ease-in-out infinite',
-              }}
-            >
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                  marginBottom: '14px',
-                }}
-              >
-                <span
-                  style={{
-                    fontSize: '10px',
-                    color: colors.muted,
-                    fontWeight: 650,
-                    letterSpacing: '0.08em',
-                  }}
-                >
-                  DATA INPUT
-                </span>
-
-                <div
-                  style={{
-                    width: '7px',
-                    height: '7px',
-                    borderRadius: '50%',
-                    background: colors.accent,
-                    boxShadow: `0 0 0 4px ${colors.accentSoft}`,
-                  }}
-                />
-              </div>
-
-              <strong
-                style={{
-                  fontSize: '22px',
-                  letterSpacing: '-0.04em',
-                }}
-              >
-                12,482
-              </strong>
-
-              <div
-                style={{
-                  marginTop: '4px',
-                  color: colors.muted,
-                  fontSize: '11px',
-                }}
-              >
-                financial data points
-              </div>
-
-              <div
-                style={{
-                  height: '4px',
-                  borderRadius: '999px',
-                  background: colors.soft,
-                  marginTop: '14px',
-                  overflow: 'hidden',
-                }}
-              >
-                <div
-                  style={{
-                    width: '82%',
-                    height: '100%',
-                    background: colors.accent,
-                    borderRadius: '999px',
-                  }}
-                />
+              <div className="visual-status">
+                <span className="status-dot" />
+                DETERMINISTIC WORKFLOW
               </div>
             </div>
 
-            {/* FLOATING OUTPUT CARD */}
+            {/* Interactive Workflow Diagram */}
+            <div className="workflow">
+              {STAGES.map((stage, idx) => {
+                const Icon = stage.icon
+                const isActive = activeStage === idx
+                const isConnected =
+                  activeStage !== null && Math.abs(activeStage - idx) <= 1
 
-            <div
-              style={{
-                position: 'absolute',
-                bottom: '82px',
-                left: '0px',
-                width: '225px',
-                padding: '17px',
-                borderRadius: '14px',
-                background: 'rgba(17,23,19,0.94)',
-                color: '#fff',
-                boxShadow: '0 22px 50px rgba(17,23,19,0.18)',
-                animation: 'zyvorisCardTwo 6s ease-in-out infinite',
-              }}
-            >
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  gap: '8px',
-                  marginBottom: '13px',
-                }}
-              >
-                <div
-                  style={{
-                    width: '28px',
-                    height: '28px',
-                    borderRadius: '8px',
-                    display: 'flex',
-                    alignItems: 'center',
-                    justifyContent: 'center',
-                    background: 'rgba(12,139,114,0.2)',
-                  }}
-                >
-                  <FileCheck2 size={15} color="#6BD5BF" />
-                </div>
+                return (
+                  <React.Fragment key={stage.id}>
+                    <div
+                      className={`workflow-node ${stage.featured ? 'featured' : ''} ${
+                        isActive ? 'active' : ''
+                      }`}
+                      onMouseEnter={() => setActiveStage(idx)}
+                    >
+                      <div className="node-left">
+                        <div className="node-icon">
+                          <Icon size={18} />
+                        </div>
+                        <div className="node-content">
+                          <div className="node-meta">
+                            <span className="node-number">{stage.id}</span>
+                            {stage.featured && (
+                              <span className="node-badge">CORE ENGINE</span>
+                            )}
+                          </div>
+                          <h3>{stage.title}</h3>
+                          <p>{stage.desc}</p>
+                        </div>
+                      </div>
 
-                <span
-                  style={{
-                    fontSize: '10px',
-                    fontWeight: 650,
-                    letterSpacing: '0.08em',
-                    color: '#A9B5AF',
-                  }}
-                >
-                  VERIFIED OUTPUT
-                </span>
+                      {/* Micro Tags */}
+                      <div className="node-tags">
+                        {stage.tags.map((tag, tIdx) => (
+                          <span key={tIdx} className="node-tag">
+                            {tag}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+
+                    {/* Connecting Line with Flow Animation */}
+                    {idx < STAGES.length - 1 && (
+                      <div
+                        className={`workflow-connector ${
+                          isConnected ? 'active' : ''
+                        }`}
+                      >
+                        <div className="connector-line" />
+                        <div className="connector-pulse" />
+                        <ArrowDown size={12} className="connector-arrow" />
+                      </div>
+                    )}
+                  </React.Fragment>
+                )
+              })}
+            </div>
+
+            {/* Visual Footer Stage Summary */}
+            <div className="visual-footer">
+              <div className="footer-step">
+                <CheckCircle2 size={12} className="check-icon" />
+                <span>DATA</span>
               </div>
-
-              <div
-                style={{
-                  display: 'flex',
-                  alignItems: 'center',
-                  justifyContent: 'space-between',
-                }}
-              >
-                <div>
-                  <strong
-                    style={{
-                      display: 'block',
-                      fontSize: '24px',
-                      letterSpacing: '-0.04em',
-                    }}
-                  >
-                    100%
-                  </strong>
-
-                  <span
-                    style={{
-                      color: '#9AA69F',
-                      fontSize: '11px',
-                    }}
-                  >
-                    traceable calculation
-                  </span>
-                </div>
-
-                <ShieldCheck size={24} color="#6BD5BF" />
+              <span className="footer-divider">→</span>
+              <div className="footer-step">
+                <CheckCircle2 size={12} className="check-icon" />
+                <span>STRUCTURE</span>
+              </div>
+              <span className="footer-divider">→</span>
+              <div className="footer-step">
+                <CheckCircle2 size={12} className="check-icon" />
+                <span>LOGIC</span>
+              </div>
+              <span className="footer-divider">→</span>
+              <div className="footer-step">
+                <CheckCircle2 size={12} className="check-icon" />
+                <span>CALCULATION</span>
+              </div>
+              <span className="footer-divider">→</span>
+              <div className="footer-step">
+                <CheckCircle2 size={12} className="check-icon" />
+                <span>REPORTING</span>
               </div>
             </div>
 
-            {/* SMALL FLOATING NODE */}
-
-            <div
-              style={{
-                position: 'absolute',
-                top: '185px',
-                left: '40px',
-                width: '52px',
-                height: '52px',
-                borderRadius: '50%',
-                background: colors.white,
-                border: `1px solid ${colors.border}`,
-                boxShadow: '0 15px 35px rgba(17,23,19,0.1)',
-                display: 'flex',
-                alignItems: 'center',
-                justifyContent: 'center',
-                color: colors.accent,
-                fontSize: '11px',
-                fontWeight: 750,
-              }}
-            >
-              FX
-            </div>
-
-            {/* LABEL */}
-
-            <div
-              style={{
-                position: 'absolute',
-                right: '25px',
-                bottom: '30px',
-                fontSize: '10px',
-                color: colors.muted,
-                letterSpacing: '0.1em',
-                fontWeight: 650,
-              }}
-            >
-              DATA → LOGIC → OUTPUT
-            </div>
+            {/* Decorative Architectural Elements */}
+            <div className="architecture architecture-one" />
+            <div className="architecture architecture-two" />
           </div>
         </div>
 
-        {/* =====================================================
-            BOTTOM STATEMENT
-        ====================================================== */}
-
-        <div
-          style={{
-            marginTop: '70px',
-            paddingTop: '24px',
-            borderTop: `1px solid ${colors.border}`,
-            display: 'flex',
-            alignItems: 'center',
-            justifyContent: 'space-between',
-            gap: '30px',
-            flexWrap: 'wrap',
-          }}
-        >
-          <span
-            style={{
-              fontSize: '11px',
-              letterSpacing: '0.08em',
-              color: colors.muted,
-              fontWeight: 650,
-            }}
-          >
-            ONE ENGINE. EVERY CALCULATION. FULL TRACEABILITY.
-          </span>
-
-          <span
-            style={{
-              fontSize: '12px',
-              color: colors.muted,
-            }}
-          >
-            Built for complex fund structures and digital assets.
-          </span>
+        {/* Bottom Banner Statements */}
+        <div className="hero-bottom">
+          <div className="bottom-item">
+            <span className="bottom-dot" />
+            ONE INFRASTRUCTURE LAYER
+          </div>
+          <div className="bottom-item">COMPLEX FUND STRUCTURES</div>
+          <div className="bottom-item">CROSS-BORDER TAX REPORTING</div>
+          <div className="bottom-arrow">
+            <ArrowRight size={15} />
+          </div>
         </div>
       </div>
 
-      {/* =========================================================
-          ANIMATIONS + RESPONSIVE
-      ========================================================== */}
-
       <style>{`
-        @keyframes zyvorisFloat {
-          0%, 100% {
-            transform:
-              rotateX(58deg)
-              rotateZ(-45deg)
-              rotateY(8deg)
-              translateY(0);
-          }
+        /* =====================================================
+           HERO BASE & LAYOUT
+        ====================================================== */
+        .zyvoris-hero {
+          position: relative;
+          min-height: 100vh;
+          display: flex;
+          align-items: center;
+          overflow: hidden;
+          background: #fbfcfe;
+          color: #10162b;
+          font-family: Inter, ui-sans-serif, system-ui, -apple-system, sans-serif;
+          padding: 140px 5vw 60px;
+        }
 
+        .hero-grid {
+          position: absolute;
+          inset: 0;
+          pointer-events: none;
+          opacity: 0.4;
+          background-image:
+            linear-gradient(rgba(24, 53, 104, 0.04) 1px, transparent 1px),
+            linear-gradient(90deg, rgba(24, 53, 104, 0.04) 1px, transparent 1px);
+          background-size: 64px 64px;
+          mask-image: linear-gradient(to bottom, black 0%, black 50%, transparent 95%);
+          -webkit-mask-image: linear-gradient(to bottom, black 0%, black 50%, transparent 95%);
+        }
+
+        .hero-glow {
+          position: absolute;
+          border-radius: 50%;
+          pointer-events: none;
+          filter: blur(80px);
+        }
+
+        .hero-glow-one {
+          width: 550px;
+          height: 550px;
+          right: -150px;
+          top: 0px;
+          background: radial-gradient(circle, rgba(54, 103, 239, 0.08), transparent 65%);
+        }
+
+        .hero-glow-two {
+          width: 400px;
+          height: 400px;
+          left: -150px;
+          bottom: -100px;
+          background: radial-gradient(circle, rgba(54, 103, 239, 0.05), transparent 65%);
+        }
+
+        .hero-container {
+          position: relative;
+          z-index: 2;
+          width: 100%;
+          max-width: 1440px;
+          margin: 0 auto;
+        }
+
+        .hero-layout {
+          display: grid;
+          grid-template-columns: minmax(0, 0.9fr) minmax(520px, 1.1fr);
+          gap: clamp(40px, 5vw, 80px);
+          align-items: center;
+        }
+
+        /* =====================================================
+           LEFT CONTENT
+        ====================================================== */
+        .hero-copy {
+          max-width: 680px;
+        }
+
+        .hero-kicker {
+          display: flex;
+          align-items: center;
+          gap: 10px;
+          margin-bottom: 24px;
+          color: #2861df;
+          font-size: 11px;
+          font-weight: 750;
+          letter-spacing: 0.14em;
+        }
+
+        .kicker-line {
+          width: 24px;
+          height: 1px;
+          background: #2861df;
+        }
+
+        .hero-copy h1 {
+          margin: 0;
+          font-size: clamp(3.2rem, 4.8vw, 5.2rem);
+          line-height: 1.02;
+          letter-spacing: -0.05em;
+          font-weight: 650;
+          color: #0b132a;
+        }
+
+        .hero-copy h1 span {
+          color: #2861df;
+        }
+
+        .hero-description {
+          max-width: 580px;
+          margin: 24px 0 0;
+          color: #556075;
+          font-size: 17px;
+          line-height: 1.6;
+        }
+
+        .hero-actions {
+          display: flex;
+          align-items: center;
+          gap: 12px;
+          flex-wrap: wrap;
+          margin-top: 32px;
+        }
+
+        .hero-primary-btn,
+        .hero-secondary-btn {
+          height: 48px;
+          padding: 0 22px;
+          border-radius: 8px;
+          font-family: inherit;
+          font-size: 13.5px;
+          font-weight: 600;
+          cursor: pointer;
+          transition: all 0.2s ease;
+        }
+
+        .hero-primary-btn {
+          display: inline-flex;
+          align-items: center;
+          gap: 8px;
+          border: 1px solid #2861df;
+          background: #2861df;
+          color: #ffffff;
+          box-shadow: 0 8px 20px rgba(40, 97, 223, 0.2);
+        }
+
+        .hero-primary-btn:hover {
+          background: #1e52c8;
+          transform: translateY(-1px);
+          box-shadow: 0 12px 26px rgba(40, 97, 223, 0.28);
+        }
+
+        .hero-secondary-btn {
+          border: 1px solid #d4dbe8;
+          background: #ffffff;
+          color: #172136;
+        }
+
+        .hero-secondary-btn:hover {
+          border-color: #b0bdbe;
+          background: #f8fafc;
+          transform: translateY(-1px);
+        }
+
+        .hero-proof {
+          display: flex;
+          align-items: center;
+          flex-wrap: wrap;
+          gap: 18px 24px;
+          margin-top: 40px;
+          padding-top: 24px;
+          border-top: 1px solid #e5e9f0;
+        }
+
+        .proof-item {
+          display: flex;
+          align-items: center;
+          gap: 7px;
+          color: #616e85;
+          font-size: 11px;
+          font-weight: 600;
+        }
+
+        .proof-item svg {
+          color: #2861df;
+          flex-shrink: 0;
+        }
+
+        /* =====================================================
+           RIGHT VISUAL — ARCHITECTURE CONTAINER
+        ====================================================== */
+        .hero-visual {
+          position: relative;
+          padding: 24px;
+          border: 1px solid #e2e7f0;
+          border-radius: 20px;
+          background: rgba(255, 255, 255, 0.85);
+          backdrop-filter: blur(12px);
+          box-shadow:
+            0 20px 50px rgba(15, 30, 60, 0.06),
+            inset 0 1px 0 rgba(255, 255, 255, 0.9);
+        }
+
+        .visual-header {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding-bottom: 16px;
+          border-bottom: 1px solid #ecf0f6;
+        }
+
+        .visual-title-wrap {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .visual-label {
+          color: #111827;
+          font-size: 11px;
+          font-weight: 800;
+          letter-spacing: 0.1em;
+        }
+
+        .visual-sublabel {
+          color: #717d93;
+          font-size: 10px;
+        }
+
+        .visual-status {
+          display: flex;
+          align-items: center;
+          gap: 6px;
+          color: #2861df;
+          background: #f0f5ff;
+          padding: 4px 10px;
+          border-radius: 12px;
+          font-size: 9px;
+          font-weight: 750;
+          letter-spacing: 0.06em;
+        }
+
+        .status-dot {
+          width: 6px;
+          height: 6px;
+          border-radius: 50%;
+          background: #2861df;
+          box-shadow: 0 0 0 3px rgba(40, 97, 223, 0.18);
+        }
+
+        /* =====================================================
+           WORKFLOW NODES
+        ====================================================== */
+        .workflow {
+          display: flex;
+          flex-direction: column;
+          gap: 0px;
+          margin-top: 16px;
+        }
+
+        .workflow-node {
+          position: relative;
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          padding: 12px 16px;
+          border: 1px solid #e6ebf3;
+          border-radius: 12px;
+          background: #ffffff;
+          transition: all 0.25 ease;
+          cursor: pointer;
+        }
+
+        .workflow-node:hover,
+        .workflow-node.active {
+          border-color: #2861df;
+          box-shadow: 0 8px 20px rgba(40, 97, 223, 0.08);
+          transform: scale(1.01);
+        }
+
+        .workflow-node.featured {
+          background: linear-gradient(95deg, #f8fafc 0%, #ffffff 100%);
+          border-color: #cbdcfc;
+        }
+
+        .workflow-node.featured.active,
+        .workflow-node.featured:hover {
+          border-color: #2861df;
+          background: #ffffff;
+        }
+
+        .node-left {
+          display: flex;
+          align-items: center;
+          gap: 14px;
+        }
+
+        .node-icon {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 38px;
+          height: 38px;
+          border-radius: 10px;
+          background: #f1f5fd;
+          color: #2861df;
+          border: 1px solid #e1ebfa;
+          flex-shrink: 0;
+        }
+
+        .workflow-node.active .node-icon {
+          background: #2861df;
+          color: #ffffff;
+          border-color: #2861df;
+        }
+
+        .node-content {
+          display: flex;
+          flex-direction: column;
+        }
+
+        .node-meta {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .node-number {
+          color: #94a3b8;
+          font-size: 9px;
+          font-weight: 800;
+        }
+
+        .node-badge {
+          font-size: 8px;
+          font-weight: 800;
+          color: #2861df;
+          background: #eef4ff;
+          padding: 1px 5px;
+          border-radius: 4px;
+          letter-spacing: 0.05em;
+        }
+
+        .node-content h3 {
+          margin: 1px 0 0;
+          color: #0f172a;
+          font-size: 13.5px;
+          font-weight: 650;
+        }
+
+        .node-content p {
+          margin: 1px 0 0;
+          color: #64748b;
+          font-size: 11px;
+        }
+
+        .node-tags {
+          display: flex;
+          gap: 6px;
+        }
+
+        .node-tag {
+          font-size: 9.5px;
+          color: #475569;
+          background: #f1f5f9;
+          padding: 3px 8px;
+          border-radius: 6px;
+          font-weight: 500;
+          white-space: nowrap;
+        }
+
+        /* CONNECTORS & ANIMATED PULSE */
+        .workflow-connector {
+          position: relative;
+          height: 20px;
+          display: flex;
+          align-items: center;
+          justify-content: center;
+        }
+
+        .connector-line {
+          position: absolute;
+          width: 1px;
+          height: 100%;
+          background: #e2e8f0;
+        }
+
+        .workflow-connector.active .connector-line {
+          background: #93c5fd;
+        }
+
+        .connector-arrow {
+          position: absolute;
+          bottom: -2px;
+          color: #cbd5e1;
+        }
+
+        .workflow-connector.active .connector-arrow {
+          color: #2861df;
+        }
+
+        .connector-pulse {
+          position: absolute;
+          width: 3px;
+          height: 6px;
+          background: #2861df;
+          border-radius: 3px;
+          opacity: 0;
+          animation: pulseDown 2s infinite ease-in-out;
+        }
+
+        @keyframes pulseDown {
+          0% {
+            top: 0;
+            opacity: 0;
+          }
           50% {
-            transform:
-              rotateX(58deg)
-              rotateZ(-45deg)
-              rotateY(8deg)
-              translateY(-14px);
+            opacity: 1;
+          }
+          100% {
+            top: 100%;
+            opacity: 0;
           }
         }
 
-        @keyframes zyvorisCardOne {
-          0%, 100% {
-            transform: translateY(0) rotate(0deg);
-          }
+        /* =====================================================
+           VISUAL FOOTER
+        ====================================================== */
+        .visual-footer {
+          display: flex;
+          align-items: center;
+          justify-content: space-between;
+          margin-top: 16px;
+          padding-top: 14px;
+          border-top: 1px solid #ecf0f6;
+        }
 
-          50% {
-            transform: translateY(-9px) rotate(1deg);
+        .footer-step {
+          display: flex;
+          align-items: center;
+          gap: 4px;
+          color: #475569;
+          font-size: 9px;
+          font-weight: 750;
+          letter-spacing: 0.05em;
+        }
+
+        .check-icon {
+          color: #2861df;
+        }
+
+        .footer-divider {
+          color: #cbd5e1;
+          font-size: 10px;
+        }
+
+        /* DECORATIVE BACKGROUND SQUARES */
+        .architecture {
+          position: absolute;
+          pointer-events: none;
+          border: 1px solid rgba(40, 97, 223, 0.06);
+        }
+
+        .architecture-one {
+          width: 240px;
+          height: 240px;
+          right: -100px;
+          top: 100px;
+          transform: rotate(45deg);
+        }
+
+        .architecture-two {
+          width: 160px;
+          height: 160px;
+          left: -80px;
+          bottom: 40px;
+          transform: rotate(45deg);
+        }
+
+        /* =====================================================
+           BOTTOM BAR
+        ====================================================== */
+        .hero-bottom {
+          display: flex;
+          align-items: center;
+          gap: 28px;
+          margin-top: 48px;
+          padding-top: 20px;
+          border-top: 1px solid #e2e8f0;
+          color: #64748b;
+          font-size: 10px;
+          font-weight: 750;
+          letter-spacing: 0.08em;
+        }
+
+        .bottom-item {
+          display: flex;
+          align-items: center;
+          gap: 8px;
+        }
+
+        .bottom-dot {
+          width: 5px;
+          height: 5px;
+          border-radius: 50%;
+          background: #2861df;
+        }
+
+        .bottom-arrow {
+          display: flex;
+          align-items: center;
+          justify-content: center;
+          width: 28px;
+          height: 28px;
+          margin-left: auto;
+          border: 1px solid #cbd5e1;
+          border-radius: 50%;
+          color: #2861df;
+        }
+
+        /* =====================================================
+           RESPONSIVE BREAKPOINTS
+        ====================================================== */
+        @media (max-width: 1180px) {
+          .hero-layout {
+            grid-template-columns: 1fr;
+            gap: 50px;
+          }
+          .hero-copy {
+            max-width: 100%;
           }
         }
 
-        @keyframes zyvorisCardTwo {
-          0%, 100% {
-            transform: translateY(0) rotate(0deg);
+        @media (max-width: 768px) {
+          .node-tags {
+            display: none;
           }
-
-          50% {
-            transform: translateY(10px) rotate(-1deg);
+          .visual-footer {
+            flex-wrap: wrap;
+            gap: 8px;
           }
-        }
-
-        @media (max-width: 1050px) {
-          section#top > div > div {
-            grid-template-columns: 1fr !important;
-            gap: 20px !important;
-          }
-
-          section#top h1 {
-            font-size: clamp(3rem, 9vw, 5rem) !important;
-          }
-
-          section#top > div > div > div:nth-child(2) {
-            min-height: 500px !important;
-            margin-top: 10px;
+          .footer-divider {
+            display: none;
           }
         }
 
-        @media (max-width: 600px) {
-          section#top {
-            padding: 90px 18px 60px !important;
+        @media (max-width: 640px) {
+          .zyvoris-hero {
+            padding-top: 110px;
           }
-
-          section#top > div > div > div:nth-child(2) {
-            transform: scale(0.82);
-            transform-origin: center;
-            margin: -40px 0 -50px;
-          }
-
-          section#top p {
-            font-size: 15px !important;
-          }
-
-          section#top button {
+          .hero-primary-btn,
+          .hero-secondary-btn {
             width: 100%;
             justify-content: center;
+          }
+          .hero-bottom {
+            flex-direction: column;
+            align-items: flex-start;
+            gap: 12px;
+          }
+          .bottom-arrow {
+            display: none;
           }
         }
       `}</style>

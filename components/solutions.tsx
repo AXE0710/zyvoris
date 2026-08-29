@@ -1,500 +1,199 @@
-import React from 'react';
+import React, { useState } from 'react'
 import {
+  Database,
+  Network,
+  Scale,
   Calculator,
+  Sparkles,
   FileCheck2,
-  GitBranch,
-  Layers3,
-  ArrowRight,
-  ShieldCheck,
-} from 'lucide-react';
+  ChevronRight,
+  Cpu,
+} from 'lucide-react'
 
-const MODULES_DATA = [
-  [
-    '01',
-    'Data Intake',
-    'Bring together NAV, transactions, income, expenses, distributions, and asset data in one structured layer.',
-    Calculator,
-  ],
-  [
-    '02',
-    'Tax Calculation',
-    'Apply configurable tax rules to calculate taxable income, deductions, gains, and fund-level obligations.',
-    GitBranch,
-  ],
-  [
-    '03',
-    'Allocation Engine',
-    'Automatically distribute calculated tax amounts across funds, share classes, investors, and eligible units.',
-    Layers3,
-  ],
-  [
-    '04',
-    'Reporting & Audit',
-    'Generate structured tax outputs with every calculation traceable back to its underlying source data.',
-    FileCheck2,
-  ],
-];
+const ARCHITECTURE_LAYERS = [
+  {
+    number: '01',
+    title: 'Data Layer',
+    group: 'FOUNDATION',
+    description:
+      'Ingests and standardizes financial, accounting, portfolio, and operational data into a unified schema.',
+    icon: Database,
+  },
+  {
+    number: '02',
+    title: 'Structure Layer',
+    group: 'FOUNDATION',
+    description:
+      'Maps funds, entities, share classes, ownership trees, and relationships across complex structures.',
+    icon: Network,
+  },
+  {
+    number: '03',
+    title: 'Tax Logic Layer',
+    group: 'ENGINE & RULES',
+    description:
+      'Applies jurisdiction-specific tax rules, classifications, and calculation algorithms.',
+    icon: Scale,
+  },
+  {
+    number: '04',
+    title: 'Calculation Engine',
+    group: 'ENGINE & RULES',
+    description:
+      'Executes deterministic calculations and allocations using controlled, fully auditable logic.',
+    icon: Calculator,
+  },
+  {
+    number: '05',
+    title: 'AI Intelligence Layer',
+    group: 'ENGINE & RULES',
+    description:
+      'Assists with document interpretation, classification, and workflow automation safely.',
+    icon: Sparkles,
+  },
+  {
+    number: '06',
+    title: 'Reporting Layer',
+    group: 'OUTPUT',
+    description:
+      'Transforms validated calculations into structured, jurisdiction-ready tax filings and reports.',
+    icon: FileCheck2,
+  },
+]
 
-const STATS_DATA = [
-  ['01', 'Unified tax engine', 'One workflow from source data to reporting'],
-  ['100%', 'Traceable outputs', 'Every result linked to its calculation path'],
-  ['24/7', 'Automated processing', 'Consistent rules applied at scale'],
-];
+export default function CompactSolutionsSection() {
+  const [activeLayer, setActiveLayer] = useState<number | null>(null)
 
-export default function SolutionsSection() {
   return (
     <section
       id="solutions"
-      className="relative py-[130px] px-[5vw] bg-[#f7f8f5] overflow-hidden"
+      className="relative border-y border-slate-200/80 bg-slate-50/60 px-4 py-16 sm:px-6 lg:px-8"
     >
-      {/* Background atmosphere */}
-      <div className="absolute w-[720px] h-[720px] -right-[300px] top-[40px] rounded-full bg-[radial-gradient(circle,rgba(18,170,145,0.07)_0%,transparent_68%)] pointer-events-none" />
+      {/* Background Architectural Grid Pattern */}
+      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:24px_24px] opacity-40" />
 
-      <div className="absolute w-[500px] h-[500px] -left-[250px] bottom-[0] rounded-full bg-[radial-gradient(circle,rgba(80,105,220,0.045)_0%,transparent_70%)] pointer-events-none" />
-
-      <div className="max-w-[1420px] mx-auto relative z-10">
-
-        {/* =====================================================
-            HEADER
-        ====================================================== */}
-        <div className="grid grid-cols-1 lg:grid-cols-[1.05fr_0.72fr] gap-8 lg:gap-[120px] items-end mb-[72px]">
-
-          <div>
-           
+      <div className="relative mx-auto max-w-5xl">
+        {/* SECTION HEADER */}
+        <div className="mb-10 text-center">
          
+          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
+            One infrastructure layer for{' '}
+            <span className="text-blue-600">fund tax reporting.</span>
+          </h2>
+          <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base">
+            ZYVORIS connects source data to final outputs through a unified,
+            deterministic pipeline.
+          </p>
+        </div>
 
-            <h2 className="mt-[19px] font-sans text-4xl lg:text-[70px] leading-[0.96] tracking-[-0.065em] text-[#121a16] font-bold">
-              From financial data
-              <br />
-              to{' '}
-              <em className="not-italic bg-gradient-to-r from-[#079c83] via-[#398fc7] to-[#695cda] bg-clip-text text-transparent">
-                tax-ready output.
-              </em>
-            </h2>
+        {/* INTEGRATED ARCHITECTURE DIAGRAM STACK */}
+        <div className="relative rounded-2xl border border-slate-200/90 bg-white p-4 shadow-xl shadow-slate-200/50 sm:p-6 lg:p-8">
+          
+          {/* Continuous Flow Pipeline Indicator Line */}
+          <div className="pointer-events-none absolute top-12 bottom-12 left-8 hidden w-0.5 bg-gradient-to-b from-blue-400 via-blue-600 to-indigo-500 sm:block" />
+
+          <div className="space-y-3">
+            {ARCHITECTURE_LAYERS.map((layer, index) => {
+              const Icon = layer.icon
+              const isHovered = activeLayer === index
+
+              return (
+                <div
+                  key={layer.number}
+                  onMouseEnter={() => setActiveLayer(index)}
+                  onMouseLeave={() => setActiveLayer(null)}
+                  className={`group relative flex flex-col gap-4 rounded-xl border p-4 transition-all duration-200 sm:flex-row sm:items-center sm:justify-between sm:pl-12 ${
+                    isHovered
+                      ? 'border-blue-300 bg-blue-50/30 shadow-md ring-1 ring-blue-400/20'
+                      : 'border-slate-200/70 bg-white hover:border-slate-300'
+                  }`}
+                >
+                  {/* Pipeline Connector Node */}
+                  <div
+                    className={`absolute top-1/2 -left-2.5 hidden h-5 w-5 -translate-y-1/2 items-center justify-center rounded-full border-2 bg-white transition-all duration-200 sm:flex ${
+                      isHovered
+                        ? 'border-blue-600 bg-blue-600 text-white scale-110'
+                        : 'border-slate-300 text-slate-400'
+                    }`}
+                  >
+                    <div
+                      className={`h-1.5 w-1.5 rounded-full ${
+                        isHovered ? 'bg-white' : 'bg-slate-400'
+                      }`}
+                    />
+                  </div>
+
+                  {/* Left Metadata & Title */}
+                  <div className="flex items-center gap-4 sm:w-1/3">
+                    <div
+                      className={`grid h-10 w-10 shrink-0 place-items-center rounded-lg border transition-colors ${
+                        isHovered
+                          ? 'border-blue-200 bg-blue-600 text-white'
+                          : 'border-slate-200 bg-slate-50 text-blue-600'
+                      }`}
+                    >
+                      <Icon size={18} />
+                    </div>
+
+                    <div>
+                      <div className="flex items-center gap-2">
+                        <span className="text-[10px] font-bold tracking-wider text-slate-400">
+                          LAYER {layer.number}
+                        </span>
+                        <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[9px] font-semibold text-slate-500">
+                          {layer.group}
+                        </span>
+                      </div>
+                      <h3 className="text-base font-bold text-slate-900">
+                        {layer.title}
+                      </h3>
+                    </div>
+                  </div>
+
+                  {/* Description Box */}
+                  <div className="border-t border-slate-100 pt-2 sm:w-1/2 sm:border-t-0 sm:pt-0">
+                    <p className="text-xs leading-relaxed text-slate-600 sm:text-sm">
+                      {layer.description}
+                    </p>
+                  </div>
+
+                  {/* Right Status Indicator */}
+                  <div className="hidden items-center justify-end sm:flex sm:w-12">
+                    <ChevronRight
+                      size={16}
+                      className={`transition-transform duration-200 ${
+                        isHovered
+                          ? 'translate-x-1 text-blue-600'
+                          : 'text-slate-300'
+                      }`}
+                    />
+                  </div>
+                </div>
+              )
+            })}
           </div>
 
-          <div className="pb-[4px]">
-            <p className="m-0 text-[#69766f] text-[15px] leading-[1.8] max-w-[510px]">
-              Zyvoris brings the complete tax reporting workflow into one
-              controlled engine — from raw fund data and calculations to
-              allocation, validation, and final reporting.
-            </p>
-
-            <div className="flex items-center gap-2 mt-6 text-[#7d8883] text-[14px] font-bold tracking-[0.08em]">
-              <ShieldCheck size={14} color="#159f8d" />
-              CONTROLLED · TRACEABLE · REPORTING-READY
+          {/* DIAGRAM FOOTER RUNTIME METRICS */}
+          <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-slate-100 pt-4 text-xs font-medium text-slate-500">
+            <div className="flex items-center gap-2">
+              <span className="relative flex h-2 w-2">
+                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
+                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
+              </span>
+              <span>Deterministic & Controlled Execution</span>
+            </div>
+            <div className="flex items-center gap-1.5 text-slate-400">
+              <span>Data</span>
+              <ChevronRight size={12} />
+              <span>Logic</span>
+              <ChevronRight size={12} />
+              <span>Calculations</span>
+              <ChevronRight size={12} />
+              <span className="font-semibold text-blue-600">Filing</span>
             </div>
           </div>
         </div>
-
-        {/* =====================================================
-            PROCESS / MODULE GRID
-        ====================================================== */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-[14px]">
-
-          {MODULES_DATA.map(
-            ([num, title, text, Icon], i) => (
-              <ModuleCard
-                key={num}
-                num={num}
-                title={title}
-                text={text}
-                Icon={Icon}
-                featured={i === 0}
-              />
-            )
-          )}
-
-        </div>
-
-        {/* =====================================================
-            FLOW LINE
-        ====================================================== */}
-        <div className="hidden lg:flex items-center justify-center gap-3 mt-[24px] mb-[18px]">
-          <span className="text-[13px] font-bold tracking-[0.12em] text-[#99a29d]">
-            SOURCE DATA
-          </span>
-
-          <div className="w-[80px] h-px bg-[rgba(18,31,26,0.12)]" />
-
-          <ArrowRight size={12} className="text-[#159f8d]" />
-
-          <div className="w-[80px] h-px bg-[rgba(18,31,26,0.12)]" />
-
-          <span className="text-[13px] font-bold tracking-[0.12em] text-[#99a29d]">
-            TAX LOGIC
-          </span>
-
-          <div className="w-[80px] h-px bg-[rgba(18,31,26,0.12)]" />
-
-          <ArrowRight size={12} className="text-[#159f8d]" />
-
-          <div className="w-[80px] h-px bg-[rgba(18,31,26,0.12)]" />
-
-          <span className="text-[13px] font-bold tracking-[0.12em] text-[#99a29d]">
-            REPORTING
-          </span>
-        </div>
-
-        {/* =====================================================
-            PLATFORM BAR
-        ====================================================== */}
-        <div className="mt-[18px] grid grid-cols-1 md:grid-cols-3 border border-[rgba(18,31,26,0.08)] rounded-[15px] overflow-hidden bg-white">
-
-          {STATS_DATA.map(([value, label, description], i) => (
-            <StatItem
-              key={label}
-              value={value}
-              label={label}
-              description={description}
-              isLast={i === STATS_DATA.length - 1}
-            />
-          ))}
-
-        </div>
-
       </div>
     </section>
-  );
-}
-
-
-/* =============================================================
-   MODULE CARD
-============================================================= */
-
-
-function ModuleCard({
-  num,
-  title,
-  text,
-  Icon,
-  featured,
-}) {
-  return (
-    <article
-      className={`
-        group relative min-h-[340px]
-        rounded-[24px]
-        border
-        overflow-hidden
-        transition-all duration-500 ease-out
-        hover:-translate-y-2
-        ${
-          featured
-            ? `
-              bg-gradient-to-br
-              from-[#edf9f5]
-              via-white
-              to-[#f3f5ff]
-              border-[#159f8d]/20
-              shadow-[0_18px_55px_rgba(21,159,141,0.08)]
-            `
-            : `
-              bg-white
-              border-[rgba(18,31,26,0.08)]
-              shadow-[0_15px_45px_rgba(18,31,26,0.035)]
-            `
-        }
-      `}
-    >
-
-      {/* Soft hover glow */}
-      <div
-        className="
-          absolute
-          -right-[80px]
-          -top-[80px]
-          w-[190px]
-          h-[190px]
-          rounded-full
-          bg-[#159f8d]/[0.045]
-          blur-[2px]
-          transition-all duration-500
-          group-hover:scale-[1.35]
-          group-hover:bg-[#159f8d]/[0.08]
-        "
-      />
-
-      {/* Large background number */}
-      <span
-        className={`
-          absolute
-          right-[-5px]
-          top-[-22px]
-          font-sans
-          text-[130px]
-          font-extrabold
-          tracking-[-0.1em]
-          leading-none
-          select-none
-          pointer-events-none
-          transition-all duration-500
-          group-hover:translate-x-[-6px]
-          ${
-            featured
-              ? 'text-[#159f8d]/[0.065]'
-              : 'text-[#18221e]/[0.035]'
-          }
-        `}
-      >
-        {num}
-      </span>
-
-      {/* Main content */}
-      <div className="relative z-10 h-full p-[28px] flex flex-col">
-
-        {/* Top row */}
-        <div className="flex items-start justify-between">
-
-          {/* Step indicator */}
-          <div>
-            <span
-              className={`
-                inline-flex
-                items-center
-                gap-[7px]
-                text-[13px]
-                font-bold
-                tracking-[0.16em]
-                ${
-                  featured
-                    ? 'text-[#159f8d]'
-                    : 'text-[#929c97]'
-                }
-              `}
-            >
-              <span
-                className={`
-                  w-[5px]
-                  h-[5px]
-                  rounded-full
-                  ${
-                    featured
-                      ? 'bg-[#159f8d]'
-                      : 'bg-[#b8c0bc]'
-                  }
-                `}
-              />
-
-              STEP {num}
-            </span>
-          </div>
-
-          {/* Icon */}
-          <div
-            className={`
-              relative
-              w-[48px]
-              h-[48px]
-              rounded-[15px]
-              grid
-              place-items-center
-              border
-              transition-all
-              duration-500
-              group-hover:rotate-[-4deg]
-              group-hover:scale-110
-              ${
-                featured
-                  ? `
-                    bg-white
-                    border-[#159f8d]/15
-                    text-[#159f8d]
-                    shadow-[0_8px_25px_rgba(21,159,141,0.10)]
-                  `
-                  : `
-                    bg-[#f6f8f6]
-                    border-[rgba(18,31,26,0.07)]
-                    text-[#69766f]
-                    group-hover:bg-[#eef7f4]
-                    group-hover:text-[#159f8d]
-                  `
-              }
-            `}
-          >
-            <Icon
-              size={20}
-              strokeWidth={1.7}
-            />
-          </div>
-
-        </div>
-
-        {/* Divider */}
-        <div
-          className={`
-            mt-[30px]
-            w-full
-            h-px
-            ${
-              featured
-                ? 'bg-[#159f8d]/10'
-                : 'bg-[rgba(18,31,26,0.07)]'
-            }
-          `}
-        />
-
-        {/* Text */}
-        <div className="mt-[28px]">
-
-          <h3
-            className="
-              m-0
-              font-sans
-              text-[23px]
-              leading-[1.08]
-              tracking-[-0.055em]
-              text-[#18221e]
-              font-semibold
-              max-w-[250px]
-            "
-          >
-            {title}
-          </h3>
-
-          <p
-            className="
-              mt-[13px]
-              mb-0
-              max-w-[285px]
-              text-[#748079]
-              text-[16px]
-              leading-[1.75]
-            "
-          >
-            {text}
-          </p>
-
-        </div>
-
-        {/* Bottom */}
-        <div className="mt-auto pt-[28px] flex items-end justify-between">
-
-          <div>
-            <span
-              className="
-                block
-                text-[12px]
-                font-bold
-                tracking-[0.14em]
-                text-[#a0aaa5]
-              "
-            >
-              {featured
-                ? 'CORE INPUT'
-                : 'ENGINE LAYER'}
-            </span>
-
-            <span
-              className="
-                block
-                mt-[4px]
-                text-[13px]
-                text-[#aab2ae]
-              "
-            >
-              Zyvoris platform
-            </span>
-          </div>
-
-          {/* Arrow */}
-          <span
-            className={`
-              w-[36px]
-              h-[36px]
-              rounded-full
-              grid
-              place-items-center
-              transition-all
-              duration-500
-              group-hover:translate-x-1
-              ${
-                featured
-                  ? `
-                    bg-[#e2f5f0]
-                    text-[#159f8d]
-                    group-hover:bg-[#159f8d]
-                    group-hover:text-white
-                  `
-                  : `
-                    bg-[#f3f5f3]
-                    text-[#748079]
-                    group-hover:bg-[#e8f5f1]
-                    group-hover:text-[#159f8d]
-                  `
-              }
-            `}
-          >
-            <ArrowRight
-              size={15}
-              strokeWidth={1.8}
-            />
-          </span>
-
-        </div>
-
-      </div>
-
-      {/* Bottom accent */}
-      <div
-        className={`
-          absolute
-          bottom-0
-          left-0
-          h-[2px]
-          transition-all duration-500
-          ${
-            featured
-              ? 'w-full bg-[#159f8d]/50'
-              : 'w-0 bg-[#159f8d]/40 group-hover:w-full'
-          }
-        `}
-      />
-
-    </article>
   )
-}
-
-
-
-/* =============================================================
-   STAT ITEM
-============================================================= */
-
-function StatItem({
-  value,
-  label,
-  description,
-  isLast,
-}) {
-  return (
-    <div
-      className={`
-        flex items-center gap-4
-        p-5 md:px-[25px]
-        ${
-          !isLast
-            ? 'border-b md:border-b-0 md:border-r border-[rgba(18,31,26,0.07)]'
-            : ''
-        }
-      `}
-    >
-
-      <strong className="font-sans text-[22px] tracking-[-0.04em] text-[#159f8d] font-bold">
-        {value}
-      </strong>
-
-      <div>
-        <span className="block text-[#39453f] text-[15px] font-bold">
-          {label}
-        </span>
-
-        <span className="block mt-[3px] text-[#8a948f] text-[14px]">
-          {description}
-        </span>
-      </div>
-
-    </div>
-  );
 }
