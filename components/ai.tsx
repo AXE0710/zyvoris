@@ -1,284 +1,130 @@
 'use client'
 
 import React from 'react'
-import {
-  BrainCircuit,
-  Search,
-  Tags,
-  FileSearch,
-  TriangleAlert,
-  Scale,
-  Calculator,
-  GitBranch,
-  FileOutput,
-  UserCheck,
-  Eye,
-  CheckCircle2,
-  ShieldCheck,
-} from 'lucide-react'
-
-const aiCapabilities = [
-  {
-    icon: FileSearch,
-    title: 'Data extraction',
-    text: 'Extract relevant information from financial and tax documents.',
-  },
-  {
-    icon: Tags,
-    title: 'Classification',
-    text: 'Identify and classify transactions, entities and tax-relevant data.',
-  },
-  {
-    icon: Search,
-    title: 'Interpretation',
-    text: 'Assist professionals in interpreting complex source information.',
-  },
-  {
-    icon: TriangleAlert,
-    title: 'Anomaly detection',
-    text: 'Surface unusual data, inconsistencies and potential exceptions.',
-  },
-  {
-    icon: Scale,
-    title: 'Tax research support',
-    text: 'Support research and contextual understanding of tax requirements.',
-  },
-  {
-    icon: BrainCircuit,
-    title: 'Exception handling',
-    text: 'Help identify cases that require professional attention.',
-  },
-]
-
-const deterministicCapabilities = [
-  {
-    icon: Calculator,
-    title: 'Calculations',
-    text: 'Execute controlled and reproducible tax calculations.',
-  },
-  {
-    icon: GitBranch,
-    title: 'Allocations',
-    text: 'Apply defined allocation methodologies across structures.',
-  },
-  {
-    icon: Scale,
-    title: 'Tax rules',
-    text: 'Execute configured jurisdiction-specific tax logic.',
-  },
-  {
-    icon: FileOutput,
-    title: 'Reporting mappings',
-    text: 'Transform calculated results into defined reporting outputs.',
-  },
-]
-
-const professionalResponsibilities = [
-  'Review',
-  'Judgement',
-  'Approval',
-  'Exceptions',
-]
+import { useLanguage } from './language-provider'
 
 export default function AISection() {
+  const { t } = useLanguage()
+
+  const LAYERS = [
+    {
+      step: '01',
+      title: t('ai_layer_1_title', 'AI Interpretation Layer'),
+      desc: t(
+        'ai_layer_1_desc',
+        'Extract structured tax facts from partnership agreements, financial statements, and K-1 documents with confidence scoring.'
+      ),
+      tags: ['Document OCR', 'Entity Extraction', 'Tax Fact Classification', 'Zero Retention'],
+    },
+    {
+      step: '02',
+      title: t('ai_layer_2_title', 'Deterministic Rule Engine'),
+      desc: t(
+        'ai_layer_2_desc',
+        'Execute 100% auditable mathematical calculations. Zero hallucination risk in numbers, allocations, and filings.'
+      ),
+      tags: ['Deterministic Math', 'Zero Guesswork', 'Versioned Rulesets', 'Audit Lineage'],
+      highlight: true,
+    },
+    {
+      step: '03',
+      title: t('ai_layer_3_title', 'Human Review & Sign-off'),
+      desc: t(
+        'ai_layer_3_desc',
+        'Professional users inspect flagged variances, approve classification decisions, and authorize final reporting datasets.'
+      ),
+      tags: ['Exception Review', 'Variance Thresholds', 'Audit Approval', 'Sign-Off Trail'],
+    },
+  ]
+
   return (
     <section
-      id="ai"
-      className="relative overflow-hidden border-t border-slate-200 bg-white px-[5vw] py-20 text-[#0b1735]"
+      id="ai-architecture"
+      className="
+        relative overflow-hidden
+        border-t-2 border-slate-900 dark:border-slate-800
+        bg-white dark:bg-[#080d1a]
+        px-4 sm:px-6 lg:px-[5vw]
+        py-16 sm:py-24
+        text-[#0b1735] dark:text-slate-100
+        transition-colors duration-200
+      "
     >
-      {/* Background grid */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.3]"
-        style={{
-          backgroundImage:
-            'linear-gradient(to right, #e9eef6 1px, transparent 1px), linear-gradient(to bottom, #e9eef6 1px, transparent 1px)',
-          backgroundSize: '64px 64px',
-          maskImage:
-            'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)',
-        }}
-      />
-
-      <div className="relative mx-auto max-w-[1280px]">
+      <div className="relative mx-auto max-w-[1420px]">
         {/* Header */}
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.1fr_0.9fr] lg:gap-12">
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_0.8fr] lg:items-end">
           <div>
-            <div className="mb-4 flex items-center gap-3">
-              <span className="h-[1px] w-6 bg-[#2759d7]" />
-              <span className="text-[10px] font-semibold uppercase tracking-[0.2em] text-[#2759d7]">
-                AI &amp; Controlled Intelligence
+            <div className="mb-4 flex items-center gap-2.5">
+              <span className="h-px w-6 bg-blue-600 dark:bg-blue-400" />
+              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+                {t('ai_kicker', 'AI & CONTROLLED INTELLIGENCE')}
               </span>
             </div>
 
-            <h2 className="text-[clamp(32px,3.5vw,52px)] font-medium leading-[1.05] tracking-[-0.04em]">
-              AI where interpretation matters.
-              <br />
-              <span className="text-[#2759d7]">
-                Deterministic logic where calculation matters.
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl text-slate-950 dark:text-white leading-tight">
+              {t('ai_title_1', 'AI where interpretation matters.')}{' '}
+              <span className="text-blue-600 dark:text-blue-400">
+                {t('ai_title_2', 'Deterministic calculation where precision is non-negotiable.')}
               </span>
             </h2>
           </div>
 
-          <div className="flex items-end">
-            <p className="max-w-[500px] text-[14px] leading-[1.6] text-slate-600">
-              ZYVORIS uses AI to assist with the parts of tax workflows that
-              require interpretation and pattern recognition — while controlled
-              logic executes the calculations and reporting processes that
-              require consistency and traceability.
-            </p>
-          </div>
-        </div>
-
-        {/* Main architecture */}
-        <div className="mt-14 overflow-hidden rounded-[20px] border border-slate-200 bg-[#f8fafc] shadow-sm">
-          <div className="grid grid-cols-1 lg:grid-cols-3">
-            
-            {/* Layer 01: AI */}
-            <div className="flex flex-col border-b border-slate-200 p-6 lg:border-b-0 lg:border-r lg:p-8">
-              <div className="mb-6">
-                <div className="mb-2 flex items-center gap-2.5">
-                  <div className="flex h-7 w-7 items-center justify-center rounded-md bg-[#eaf0ff] text-[#2759d7]">
-                    <BrainCircuit size={15} strokeWidth={2} />
-                  </div>
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-slate-500">
-                    Layer 01
-                  </span>
-                </div>
-                <h3 className="text-[20px] font-medium tracking-[-0.02em]">
-                  AI assistance
-                </h3>
-                <p className="mt-1 text-[13px] leading-relaxed text-slate-500">
-                  Supports interpretation without becoming the uncontrolled calculation layer.
-                </p>
-              </div>
-
-              <div className="flex-1 space-y-4">
-                {aiCapabilities.map((item) => {
-                  const Icon = item.icon
-                  return (
-                    <div key={item.title} className="flex gap-3">
-                      <Icon size={16} className="mt-0.5 shrink-0 text-slate-400" />
-                      <div>
-                        <h4 className="text-[13px] font-semibold text-slate-800">
-                          {item.title}
-                        </h4>
-                        <p className="text-[12px] leading-snug text-slate-500">
-                          {item.text}
-                        </p>
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
-            </div>
-
-            {/* Layer 02: Deterministic */}
-            <div className="flex flex-col border-b border-slate-200 p-6 lg:border-b-0 lg:border-r lg:p-8">
-              <div className="mb-6">
-                <div className="mb-2 flex items-center gap-2.5">
-                  <div className="flex h-7 w-7 items-center justify-center rounded-md bg-[#eaf0ff] text-[#2759d7]">
-                    <Calculator size={15} strokeWidth={2} />
-                  </div>
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-slate-500">
-                    Layer 02
-                  </span>
-                </div>
-                <h3 className="text-[20px] font-medium tracking-[-0.02em]">
-                  Deterministic logic
-                </h3>
-                <p className="mt-1 text-[13px] leading-relaxed text-slate-500">
-                  Executes defined calculations, allocations, rules and mappings consistently.
-                </p>
-              </div>
-
-              <div className="flex-1 space-y-4">
-                {deterministicCapabilities.map((item) => {
-                  const Icon = item.icon
-                  return (
-                    <div key={item.title} className="flex gap-3">
-                      <Icon size={16} className="mt-0.5 shrink-0 text-slate-400" />
-                      <div>
-                        <h4 className="text-[13px] font-semibold text-slate-800">
-                          {item.title}
-                        </h4>
-                        <p className="text-[12px] leading-snug text-slate-500">
-                          {item.text}
-                        </p>
-                      </div>
-                    </div>
-                  )
-                })}
-              </div>
-
-              <div className="mt-6 rounded-lg border border-[#cdd9f7] bg-[#f3f6ff] p-3">
-                <div className="flex items-start gap-2.5">
-                  <ShieldCheck size={16} className="mt-0.5 shrink-0 text-[#2759d7]" />
-                  <p className="text-[11.5px] leading-snug text-slate-700">
-                    Logic remains defined, reproducible and independently reviewable.
-                  </p>
-                </div>
-              </div>
-            </div>
-
-            {/* Layer 03: Human */}
-            <div className="flex flex-col p-6 lg:p-8">
-              <div className="mb-6">
-                <div className="mb-2 flex items-center gap-2.5">
-                  <div className="flex h-7 w-7 items-center justify-center rounded-md bg-slate-800 text-white">
-                    <UserCheck size={15} strokeWidth={2} />
-                  </div>
-                  <span className="text-[10px] font-semibold uppercase tracking-[0.15em] text-slate-500">
-                    Layer 03
-                  </span>
-                </div>
-                <h3 className="text-[20px] font-medium tracking-[-0.02em]">
-                  Professional control
-                </h3>
-                <p className="mt-1 text-[13px] leading-relaxed text-slate-500">
-                  Professionals review outputs, exercise judgement and approve the final result.
-                </p>
-              </div>
-
-              <div className="flex-1">
-                <div className="mb-4 text-[11px] font-semibold uppercase tracking-[0.1em] text-slate-400">
-                  Retained Responsibilities
-                </div>
-                <div className="flex flex-wrap gap-2">
-                  {professionalResponsibilities.map((item) => (
-                    <div
-                      key={item}
-                      className="flex items-center gap-1.5 rounded-full border border-slate-200 bg-white px-3 py-1.5"
-                    >
-                      <CheckCircle2 size={13} className="text-[#2759d7]" strokeWidth={2.5} />
-                      <span className="text-[12px] font-medium text-slate-700">
-                        {item}
-                      </span>
-                    </div>
-                  ))}
-                </div>
-              </div>
-
-              <div className="mt-6 flex items-start gap-2.5 px-1">
-                <Eye size={16} className="mt-0.5 shrink-0 text-slate-400" />
-                <p className="text-[11.5px] leading-snug text-slate-500">
-                  Outputs are designed to support review and traceability, rather than obscure how a result was produced.
-                </p>
-              </div>
-            </div>
-          </div>
-        </div>
-
-        {/* Bottom statement */}
-        <div className="mt-12 flex flex-col gap-4 border-t border-slate-200 pt-8 md:flex-row md:items-start md:gap-12">
-          <span className="shrink-0 text-[10px] font-semibold uppercase tracking-[0.2em] text-[#2759d7]">
-            Responsible AI
-          </span>
-          <p className="max-w-[700px] text-[clamp(18px,2vw,24px)] font-medium leading-[1.3] tracking-[-0.02em] text-[#0b1735]">
-            AI helps professionals understand the data.
-            <br />
-            <span className="text-slate-400">
-              Controlled infrastructure determines how it is calculated, reviewed and reported.
-            </span>
+          <p className="text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-300">
+            {t(
+              'ai_desc',
+              'ZYVORIS uses AI specifically for document extraction, classification, and tax rule interpretation. Calculations are always executed deterministically by a verified mathematical rule engine.'
+            )}
           </p>
+        </div>
+
+        {/* 3 Layer Cards - Bold Black Borders & No Icons */}
+        <div className="mt-12 sm:mt-16 grid grid-cols-1 gap-5 md:grid-cols-3">
+          {LAYERS.map((layer) => (
+            <div
+              key={layer.step}
+              className={`
+                flex flex-col justify-between
+                rounded-2xl
+                border-2 p-6 sm:p-7
+                transition-all duration-150
+                ${
+                  layer.highlight
+                    ? 'border-blue-600 bg-blue-50/50 dark:border-blue-500 dark:bg-slate-900 shadow-md ring-1 ring-blue-600'
+                    : 'border-slate-900 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-blue-600'
+                }
+              `}
+            >
+              <div>
+                <div className="flex items-center justify-between border-b-2 border-slate-900/80 dark:border-slate-800 pb-3">
+                  <span className="font-mono text-sm font-extrabold text-blue-600 dark:text-blue-400">
+                    [{layer.step}]
+                  </span>
+                  <span className="font-mono text-xs font-bold text-slate-900 dark:text-slate-200">
+                    LAYER {layer.step}
+                  </span>
+                </div>
+
+                <h3 className="mt-4 text-base sm:text-lg font-bold text-slate-950 dark:text-white">
+                  {layer.title}
+                </h3>
+
+                <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+                  {layer.desc}
+                </p>
+              </div>
+
+              <div className="mt-6 flex flex-wrap gap-1.5 pt-3.5 border-t border-slate-900/40 dark:border-slate-800">
+                {layer.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="rounded border border-slate-900/60 dark:border-slate-700 bg-white dark:bg-slate-800 px-2 py-0.5 font-mono text-[9px] font-bold text-slate-800 dark:text-slate-300"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          ))}
         </div>
       </div>
     </section>

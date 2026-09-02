@@ -1,203 +1,151 @@
 'use client'
 
 import React from 'react'
-import {
-  FileSpreadsheet,
-  Layers3,
-  GitBranch,
-  Calculator,
-  Globe2,
-  CheckCircle2,
-  SearchCheck,
-  Database,
-  Workflow,
-  ArrowRight,
-  ShieldCheck,
-} from 'lucide-react'
-
-const COMPARISONS = [
-  {
-    traditional: 'Excel workpapers',
-    traditionalDetail: 'Knowledge held in spreadsheets',
-    zyvoris: 'Connected data model',
-    zyvorisDetail: 'Structured tax data across workflow',
-    icon: FileSpreadsheet,
-  },
-  {
-    traditional: 'Manual classifications',
-    traditionalDetail: 'Knowledge held by individuals',
-    zyvoris: 'Structured classification workflow',
-    zyvorisDetail: 'Defined classifications & review paths',
-    icon: GitBranch,
-  },
-  {
-    traditional: 'Manual calculations',
-    traditionalDetail: 'Calculations across workpapers',
-    zyvoris: 'Controlled calculation engine',
-    zyvorisDetail: 'Configured logic executes consistently',
-    icon: Calculator,
-  },
-  {
-    traditional: 'Separate jurisdiction workflows',
-    traditionalDetail: 'Multiple processes & deliverables',
-    zyvoris: 'Multi-jurisdiction architecture',
-    zyvorisDetail: 'A connected operating model',
-    icon: Globe2,
-  },
-  {
-    traditional: 'Manual reconciliation',
-    traditionalDetail: 'Review across disconnected sources',
-    zyvoris: 'Automated validation',
-    zyvorisDetail: 'Structured checks across workflow',
-    icon: SearchCheck,
-  },
-  {
-    traditional: 'Difficult traceability',
-    traditionalDetail: 'Source and output connections break',
-    zyvoris: 'Source-to-output traceability',
-    zyvorisDetail: 'Calculation paths stay connected',
-    icon: Workflow,
-  },
-  {
-    traditional: 'Knowledge held by individuals',
-    traditionalDetail: 'Tax logic lives in people & docs',
-    zyvoris: 'Versioned tax rules',
-    zyvorisDetail: 'Logic represented as structured rules',
-    icon: Layers3,
-  },
-  {
-    traditional: 'Static tax data',
-    traditionalDetail: 'Information distributed across files',
-    zyvoris: 'Structured tax data',
-    zyvorisDetail: 'Data designed to move seamlessly',
-    icon: Database,
-  },
-]
+import { useLanguage } from './language-provider'
 
 export default function ComparisonSection() {
-  return (
-    <section id="comparison" className="relative bg-white px-6 py-16 text-[#0b1735]">
-      {/* Background Grid Pattern */}
-      <div
-        className="pointer-events-none absolute inset-0 opacity-[0.25]"
-        style={{
-          backgroundImage:
-            'linear-gradient(to right, #edf1f6 1px, transparent 1px), linear-gradient(to bottom, #edf1f6 1px, transparent 1px)',
-          backgroundSize: '60px 60px',
-          maskImage: 'linear-gradient(to bottom, transparent, black 15%, black 85%, transparent)',
-        }}
-      />
+  const { t } = useLanguage()
 
-      <div className="relative mx-auto max-w-6xl">
-        {/* Header Block */}
-        <div className="flex flex-col gap-4 lg:flex-row lg:items-end lg:justify-between">
-          <div className="max-w-2xl">
-            <div className="mb-3 flex items-center gap-2">
-              <span className="h-px w-6 bg-[#2759d7]" />
-              <span className="text-xs font-semibold uppercase tracking-widest text-[#2759d7]">
-                The Operating Model
+  const ROWS = [
+    {
+      id: '01',
+      category: 'DATA MODEL',
+      tradTitle: t('comp_row_1_trad_title', 'Excel workpapers'),
+      tradDesc: t('comp_row_1_trad_desc', 'Knowledge held in spreadsheets and personal desktop files'),
+      zyvTitle: t('comp_row_1_zyv_title', 'Connected data model'),
+      zyvDesc: t('comp_row_1_zyv_desc', 'Structured tax data across workflow with database integrity'),
+    },
+    {
+      id: '02',
+      category: 'CLASSIFICATION',
+      tradTitle: t('comp_row_2_trad_title', 'Manual classifications'),
+      tradDesc: t('comp_row_2_trad_desc', 'Re-evaluated for every period and every separate fund'),
+      zyvTitle: t('comp_row_2_zyv_title', 'Structured classification workflow'),
+      zyvDesc: t('comp_row_2_zyv_desc', 'Consistent, rule-based classification with audit trails'),
+    },
+    {
+      id: '03',
+      category: 'CALCULATION',
+      tradTitle: t('comp_row_3_trad_title', 'Opaque calculations'),
+      tradDesc: t('comp_row_3_trad_desc', 'Formula errors and broken links difficult to detect'),
+      zyvTitle: t('comp_row_3_zyv_title', 'Deterministic calculation engine'),
+      zyvDesc: t('comp_row_3_zyv_desc', 'Rules and formulas execute with mathematical precision'),
+    },
+    {
+      id: '04',
+      category: 'AUDIT TRACEABILITY',
+      tradTitle: t('comp_row_4_trad_title', 'Disconnected reviews'),
+      tradDesc: t('comp_row_4_trad_desc', 'Reviewers must manually trace numbers back to source'),
+      zyvTitle: t('comp_row_4_zyv_title', 'Full calculation lineage'),
+      zyvDesc: t('comp_row_4_zyv_desc', 'Trace any output value back to source data and rule versions'),
+    },
+    {
+      id: '05',
+      category: 'OPERATIONAL EFFICIENCY',
+      tradTitle: t('comp_row_5_trad_title', 'Filing-period bottlenecks'),
+      tradDesc: t('comp_row_5_trad_desc', 'Peak season stress with limited visibility into progress'),
+      zyvTitle: t('comp_row_5_zyv_title', 'Repeatable operational workflow'),
+      zyvDesc: t('comp_row_5_zyv_desc', 'Continuous processing and real-time status across funds'),
+    },
+  ]
+
+  return (
+    <section
+      id="comparison"
+      className="
+        relative overflow-hidden
+        border-t-2 border-slate-900 dark:border-slate-800
+        bg-[#f0f4f9] dark:bg-[#090e1c]
+        px-4 sm:px-6 lg:px-[5vw]
+        py-16 sm:py-24
+        text-[#0b1735] dark:text-slate-100
+        transition-colors duration-200
+      "
+    >
+      <div className="relative mx-auto max-w-[1420px]">
+        {/* Header */}
+        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1fr_0.8fr] lg:items-end">
+          <div>
+            <div className="mb-4 flex items-center gap-2.5">
+              <span className="h-px w-6 bg-blue-600 dark:bg-blue-400" />
+              <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+                {t('comp_kicker', 'THE OPERATING MODEL')}
               </span>
             </div>
-            <h2 className="text-3xl font-medium tracking-tight sm:text-4xl lg:text-5xl">
-              Replace fragmented tax workflows with{' '}
-              <span className="text-[#2759d7]">connected infrastructure.</span>
+
+            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl text-slate-950 dark:text-white leading-tight">
+              {t('comp_title_1', 'Replace fragmented tax workflows with')}{' '}
+              <span className="text-blue-600 dark:text-blue-400">
+                {t('comp_title_2', 'connected infrastructure.')}
+              </span>
             </h2>
           </div>
-          <p className="max-w-md text-sm leading-relaxed text-slate-600">
-            Traditional tax processes rely on disconnected workpapers and manual handoffs. ZYVORIS
-            unifies data, rules, logic, and reporting into a single system.
+
+          <p className="text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-300">
+            {t(
+              'comp_desc',
+              'Traditional tax processes rely on disconnected workpapers and manual handoffs. ZYVORIS unifies data, rules, logic, and reporting into a single system.'
+            )}
           </p>
         </div>
 
-        {/* Comparison Table Container */}
-        <div className="mt-10 overflow-hidden rounded-2xl border border-slate-200 bg-white">
-          {/* Header Row */}
-          <div className="grid grid-cols-1 border-b border-slate-200 bg-slate-50/80 text-xs font-semibold uppercase tracking-wider md:grid-cols-[1fr_40px_1fr]">
-            <div className="px-5 py-3.5 text-slate-500">Traditional Tax Workflow</div>
-            <div className="hidden items-center justify-center md:flex" />
-            <div className="bg-[#f3f6ff] px-5 py-3.5 text-[#2759d7]">ZYVORIS Model</div>
+        {/* Comparison Table Box with bold black border */}
+        <div className="mt-12 sm:mt-16 overflow-hidden rounded-3xl border-2 border-slate-900 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-lg">
+          {/* Table Header */}
+          <div className="grid grid-cols-1 sm:grid-cols-2 border-b-2 border-slate-900 dark:border-slate-800">
+            <div className="bg-slate-100 dark:bg-slate-800/80 p-4 sm:p-5 border-b sm:border-b-0 sm:border-r-2 border-slate-900 dark:border-slate-800">
+              <span className="font-mono text-xs font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+                {t('comp_trad_header', 'TRADITIONAL WORKFLOW')}
+              </span>
+            </div>
+            <div className="bg-blue-50 dark:bg-blue-950/40 p-4 sm:p-5">
+              <span className="font-mono text-xs font-bold uppercase tracking-wider text-blue-700 dark:text-blue-400">
+                {t('comp_zyv_header', 'ZYVORIS INFRASTRUCTURE')}
+              </span>
+            </div>
           </div>
 
-          {/* Compact Comparison Grid */}
-          <div className="divide-y divide-slate-100">
-            {COMPARISONS.map((item) => {
-              const Icon = item.icon
-              return (
-                <div
-                  key={item.traditional}
-                  className="grid grid-cols-1 text-xs md:grid-cols-[1fr_40px_1fr] md:items-center"
-                >
-                  {/* Traditional Side */}
-                  <div className="flex items-center gap-3 bg-[#fafafa]/60 px-5 py-3">
-                    <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded bg-white text-slate-400 border border-slate-200">
-                      <FileSpreadsheet size={13} />
-                    </div>
-                    <div className="min-w-0">
-                      <span className="font-semibold text-slate-700 block">{item.traditional}</span>
-                      <span className="text-[11px] text-slate-400 truncate block">
-                        {item.traditionalDetail}
-                      </span>
-                    </div>
+          {/* Table Rows */}
+          <div className="divide-y-2 divide-slate-900/60 dark:divide-slate-800">
+            {ROWS.map((row) => (
+              <div
+                key={row.id}
+                className="grid grid-cols-1 sm:grid-cols-2 group hover:bg-slate-50/80 dark:hover:bg-slate-800/30 transition-colors"
+              >
+                {/* Traditional Side */}
+                <div className="p-5 sm:p-6 border-b sm:border-b-0 sm:border-r-2 border-slate-900/60 dark:border-slate-800">
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <span className="font-mono text-[10px] font-bold text-slate-500">[{row.id}]</span>
+                    <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-slate-500">
+                      {row.category}
+                    </span>
                   </div>
-
-                  {/* Transition Icon */}
-                  <div className="hidden h-full items-center justify-center bg-white md:flex">
-                    <ArrowRight size={12} className="text-slate-300" />
-                  </div>
-
-                  {/* ZYVORIS Side */}
-                  <div className="flex items-center justify-between gap-3 bg-[#f3f6ff]/40 px-5 py-3">
-                    <div className="flex items-center gap-3 min-w-0">
-                      <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded bg-white text-[#2759d7] shadow-sm">
-                        <Icon size={13} />
-                      </div>
-                      <div className="min-w-0">
-                        <span className="font-semibold text-[#17284b] block">{item.zyvoris}</span>
-                        <span className="text-[11px] text-slate-500 truncate block">
-                          {item.zyvorisDetail}
-                        </span>
-                      </div>
-                    </div>
-                    <CheckCircle2 size={14} className="shrink-0 text-[#2759d7]" />
-                  </div>
+                  <h4 className="text-sm sm:text-base font-bold text-slate-900 dark:text-slate-200">
+                    {row.tradTitle}
+                  </h4>
+                  <p className="mt-1 text-xs text-slate-600 dark:text-slate-400">
+                    {row.tradDesc}
+                  </p>
                 </div>
-              )
-            })}
-          </div>
 
-          {/* Bottom Summary Strip */}
-          <div className="grid grid-cols-1 border-t border-slate-200 bg-slate-50/50 text-xs sm:grid-cols-3 divide-y sm:divide-y-0 sm:divide-x divide-slate-200">
-            <div className="px-5 py-3">
-              <span className="block text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                Traditional
-              </span>
-              <span className="font-semibold text-slate-600">Files · Handoffs · Individuals</span>
-            </div>
-            <div className="px-5 py-3">
-              <span className="block text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                Operating Model
-              </span>
-              <span className="font-semibold text-[#2759d7]">Data · Logic · Workflows</span>
-            </div>
-            <div className="px-5 py-3">
-              <span className="block text-[10px] font-bold uppercase tracking-wider text-slate-400">
-                Outcome
-              </span>
-              <span className="font-semibold text-slate-700">Connected · Controlled · Traceable</span>
-            </div>
+                {/* ZYVORIS Side */}
+                <div className="p-5 sm:p-6 bg-blue-50/30 dark:bg-blue-950/10">
+                  <div className="flex items-center gap-2 mb-1.5">
+                    <span className="font-mono text-[10px] font-bold text-blue-600 dark:text-blue-400">[{row.id}]</span>
+                    <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+                      VERIFIED STANDARD
+                    </span>
+                  </div>
+                  <h4 className="text-sm sm:text-base font-bold text-blue-950 dark:text-white">
+                    {row.zyvTitle}
+                  </h4>
+                  <p className="mt-1 text-xs text-slate-700 dark:text-slate-300">
+                    {row.zyvDesc}
+                  </p>
+                </div>
+              </div>
+            ))}
           </div>
-        </div>
-
-        {/* Operating Principle Callout */}
-        <div className="mt-8 flex items-center gap-3.5 rounded-xl border border-blue-200/80 bg-[#f5f7fc] px-5 py-3.5">
-          <div className="flex h-7 w-7 shrink-0 items-center justify-center rounded-full bg-white text-[#2759d7] shadow-sm">
-            <ShieldCheck size={15} />
-          </div>
-          <p className="text-xs text-slate-600 leading-normal">
-            <strong className="text-slate-800">Operating Principle:</strong> ZYVORIS bridges the gap
-            between manual workpapers and enterprise tax reporting, consolidating logic, rules, and
-            traceability into a single workflow.
-          </p>
         </div>
       </div>
     </section>

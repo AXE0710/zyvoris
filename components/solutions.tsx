@@ -1,197 +1,151 @@
+'use client'
+
 import React, { useState } from 'react'
-import {
-  Database,
-  Network,
-  Scale,
-  Calculator,
-  Sparkles,
-  FileCheck2,
-  ChevronRight,
-  Cpu,
-} from 'lucide-react'
+import { useLanguage } from './language-provider'
 
-const ARCHITECTURE_LAYERS = [
-  {
-    number: '01',
-    title: 'Data Layer',
-    group: 'FOUNDATION',
-    description:
-      'Ingests and standardizes financial, accounting, portfolio, and operational data into a unified schema.',
-    icon: Database,
-  },
-  {
-    number: '02',
-    title: 'Structure Layer',
-    group: 'FOUNDATION',
-    description:
-      'Maps funds, entities, share classes, ownership trees, and relationships across complex structures.',
-    icon: Network,
-  },
-  {
-    number: '03',
-    title: 'Tax Logic Layer',
-    group: 'ENGINE & RULES',
-    description:
-      'Applies jurisdiction-specific tax rules, classifications, and calculation algorithms.',
-    icon: Scale,
-  },
-  {
-    number: '04',
-    title: 'Calculation Engine',
-    group: 'ENGINE & RULES',
-    description:
-      'Executes deterministic calculations and allocations using controlled, fully auditable logic.',
-    icon: Calculator,
-  },
-  {
-    number: '05',
-    title: 'AI Intelligence Layer',
-    group: 'ENGINE & RULES',
-    description:
-      'Assists with document interpretation, classification, and workflow automation safely.',
-    icon: Sparkles,
-  },
-  {
-    number: '06',
-    title: 'Reporting Layer',
-    group: 'OUTPUT',
-    description:
-      'Transforms validated calculations into structured, jurisdiction-ready tax filings and reports.',
-    icon: FileCheck2,
-  },
-]
+export default function SolutionsSection() {
+  const [activeStep, setActiveStep] = useState<number>(0)
+  const { t } = useLanguage()
 
-export default function CompactSolutionsSection() {
-  const [activeLayer, setActiveLayer] = useState<number | null>(null)
+  const STEPS = [
+    {
+      num: '01',
+      title: t('sol_stage_1_title', 'Source Data Ingestion'),
+      desc: t(
+        'sol_stage_1_desc',
+        'Consolidate accounting records, transaction logs, entity ownership graphs, and investor registries from multiple systems into unified formats.'
+      ),
+      tags: ['GL Feeds', 'ERP Connectors', 'Document OCR', 'Validation'],
+    },
+    {
+      num: '02',
+      title: t('sol_stage_2_title', 'Tax Logic & Classification'),
+      desc: t(
+        'sol_stage_2_desc',
+        'Apply jurisdiction-specific tax rules, withholding tax treaties, hybrid mismatch logic, and income characterization to structured fund entities.'
+      ),
+      tags: ['WHT Treaties', 'Pillar Two', 'Look-Through', 'Tax Basis'],
+    },
+    {
+      num: '03',
+      title: t('sol_stage_3_title', 'Deterministic Calculation Engine'),
+      desc: t(
+        'sol_stage_3_desc',
+        'Execute fund-level tax calculations, investor-level allocations, equalization entries, and tax basis tracking with mathematical precision.'
+      ),
+      tags: ['100% Deterministic', 'Zero Guesswork', 'Equalization', 'Waterfalls'],
+    },
+    {
+      num: '04',
+      title: t('sol_stage_4_title', 'Traceability & Verification'),
+      desc: t(
+        'sol_stage_4_desc',
+        'Every calculation step is logged with full source-to-output lineage, enabling tax teams and auditors to verify every output value.'
+      ),
+      tags: ['Audit Trails', 'Lineage Graph', 'Versioned Rules', 'Sign-Off'],
+    },
+    {
+      num: '05',
+      title: t('sol_stage_5_title', 'Jurisdiction Reporting Outputs'),
+      desc: t(
+        'sol_stage_5_desc',
+        'Generate filing-ready tax returns, investor tax statements, XML submission packages, and structured management reporting datasets.'
+      ),
+      tags: ['Filing Packages', 'Investor K-1/K-3', 'Swiss/DE Filings', 'XML/PDF'],
+    },
+  ]
 
   return (
     <section
       id="solutions"
-      className="relative border-y border-slate-200/80 bg-slate-50/60 px-4 py-16 sm:px-6 lg:px-8"
+      className="
+        relative overflow-hidden
+        border-t-2 border-slate-900 dark:border-slate-800
+        bg-[#f0f4f9] dark:bg-[#090e1c]
+        px-4 sm:px-6 lg:px-[5vw]
+        py-16 sm:py-24
+        text-[#0b1735] dark:text-slate-100
+        transition-colors duration-200
+      "
     >
-      {/* Background Architectural Grid Pattern */}
-      <div className="pointer-events-none absolute inset-0 bg-[radial-gradient(#cbd5e1_1px,transparent_1px)] [background-size:24px_24px] opacity-40" />
+      <div className="relative mx-auto max-w-[1420px]">
+        {/* Header */}
+        <div className="max-w-3xl">
+          <div className="mb-4 flex items-center gap-2.5">
+            <span className="h-px w-6 bg-blue-600 dark:bg-blue-400" />
+            <span className="text-[11px] font-mono font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
+              {t('sol_kicker', 'HOW IT WORKS')}
+            </span>
+          </div>
 
-      <div className="relative mx-auto max-w-5xl">
-        {/* SECTION HEADER */}
-        <div className="mb-10 text-center">
-         
-          <h2 className="mt-3 text-3xl font-extrabold tracking-tight text-slate-900 sm:text-4xl lg:text-5xl">
-            One infrastructure layer for{' '}
-            <span className="text-blue-600">fund tax reporting.</span>
+          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl text-slate-950 dark:text-white leading-tight">
+            {t('sol_title_1', 'A structured operating model for')}{' '}
+            <span className="text-blue-600 dark:text-blue-400">
+              {t('sol_title_2', 'tax calculation and reporting.')}
+            </span>
           </h2>
-          <p className="mx-auto mt-3 max-w-2xl text-sm leading-relaxed text-slate-600 sm:text-base">
-            ZYVORIS connects source data to final outputs through a unified,
-            deterministic pipeline.
+
+          <p className="mt-4 text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-300">
+            {t(
+              'sol_desc',
+              'ZYVORIS organizes tax reporting into a predictable sequence: connecting source data, applying tax rules, calculating results, verifying calculations, and generating outputs.'
+            )}
           </p>
         </div>
 
-        {/* INTEGRATED ARCHITECTURE DIAGRAM STACK */}
-        <div className="relative rounded-2xl border border-slate-200/90 bg-white p-4 shadow-xl shadow-slate-200/50 sm:p-6 lg:p-8">
-          
-          {/* Continuous Flow Pipeline Indicator Line */}
-          <div className="pointer-events-none absolute top-12 bottom-12 left-8 hidden w-0.5 bg-gradient-to-b from-blue-400 via-blue-600 to-indigo-500 sm:block" />
+        {/* Steps Grid - Bold Black Borders & No Icons */}
+        <div className="mt-12 sm:mt-16 grid grid-cols-1 gap-5 md:grid-cols-2 lg:grid-cols-3">
+          {STEPS.map((step, idx) => {
+            const isSelected = activeStep === idx
 
-          <div className="space-y-3">
-            {ARCHITECTURE_LAYERS.map((layer, index) => {
-              const Icon = layer.icon
-              const isHovered = activeLayer === index
-
-              return (
-                <div
-                  key={layer.number}
-                  onMouseEnter={() => setActiveLayer(index)}
-                  onMouseLeave={() => setActiveLayer(null)}
-                  className={`group relative flex flex-col gap-4 rounded-xl border p-4 transition-all duration-200 sm:flex-row sm:items-center sm:justify-between sm:pl-12 ${
-                    isHovered
-                      ? 'border-blue-300 bg-blue-50/30 shadow-md ring-1 ring-blue-400/20'
-                      : 'border-slate-200/70 bg-white hover:border-slate-300'
-                  }`}
-                >
-                  {/* Pipeline Connector Node */}
-                  <div
-                    className={`absolute top-1/2 -left-2.5 hidden h-5 w-5 -translate-y-1/2 items-center justify-center rounded-full border-2 bg-white transition-all duration-200 sm:flex ${
-                      isHovered
-                        ? 'border-blue-600 bg-blue-600 text-white scale-110'
-                        : 'border-slate-300 text-slate-400'
-                    }`}
-                  >
-                    <div
-                      className={`h-1.5 w-1.5 rounded-full ${
-                        isHovered ? 'bg-white' : 'bg-slate-400'
-                      }`}
-                    />
+            return (
+              <div
+                key={step.num}
+                onClick={() => setActiveStep(idx)}
+                className={`
+                  group relative flex flex-col justify-between
+                  rounded-2xl
+                  border-2 p-6 sm:p-7
+                  transition-all duration-150 cursor-pointer
+                  ${
+                    isSelected
+                      ? 'border-blue-600 bg-white dark:border-blue-500 dark:bg-slate-900 shadow-md ring-1 ring-blue-600'
+                      : 'border-slate-900 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-blue-600'
+                  }
+                `}
+              >
+                <div>
+                  <div className="flex items-center justify-between border-b-2 border-slate-900/80 dark:border-slate-800 pb-3">
+                    <span className="font-mono text-sm font-extrabold text-blue-600 dark:text-blue-400">
+                      [{step.num}]
+                    </span>
+                    <span className="font-mono text-xs font-bold text-slate-900 dark:text-slate-200">
+                      STEP {step.num}
+                    </span>
                   </div>
 
-                  {/* Left Metadata & Title */}
-                  <div className="flex items-center gap-4 sm:w-1/3">
-                    <div
-                      className={`grid h-10 w-10 shrink-0 place-items-center rounded-lg border transition-colors ${
-                        isHovered
-                          ? 'border-blue-200 bg-blue-600 text-white'
-                          : 'border-slate-200 bg-slate-50 text-blue-600'
-                      }`}
-                    >
-                      <Icon size={18} />
-                    </div>
+                  <h3 className="mt-4 text-base sm:text-lg font-bold text-slate-950 dark:text-white">
+                    {step.title}
+                  </h3>
 
-                    <div>
-                      <div className="flex items-center gap-2">
-                        <span className="text-[10px] font-bold tracking-wider text-slate-400">
-                          LAYER {layer.number}
-                        </span>
-                        <span className="rounded bg-slate-100 px-1.5 py-0.5 text-[9px] font-semibold text-slate-500">
-                          {layer.group}
-                        </span>
-                      </div>
-                      <h3 className="text-base font-bold text-slate-900">
-                        {layer.title}
-                      </h3>
-                    </div>
-                  </div>
-
-                  {/* Description Box */}
-                  <div className="border-t border-slate-100 pt-2 sm:w-1/2 sm:border-t-0 sm:pt-0">
-                    <p className="text-xs leading-relaxed text-slate-600 sm:text-sm">
-                      {layer.description}
-                    </p>
-                  </div>
-
-                  {/* Right Status Indicator */}
-                  <div className="hidden items-center justify-end sm:flex sm:w-12">
-                    <ChevronRight
-                      size={16}
-                      className={`transition-transform duration-200 ${
-                        isHovered
-                          ? 'translate-x-1 text-blue-600'
-                          : 'text-slate-300'
-                      }`}
-                    />
-                  </div>
+                  <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-700 dark:text-slate-300">
+                    {step.desc}
+                  </p>
                 </div>
-              )
-            })}
-          </div>
 
-          {/* DIAGRAM FOOTER RUNTIME METRICS */}
-          <div className="mt-6 flex flex-wrap items-center justify-between gap-3 border-t border-slate-100 pt-4 text-xs font-medium text-slate-500">
-            <div className="flex items-center gap-2">
-              <span className="relative flex h-2 w-2">
-                <span className="absolute inline-flex h-full w-full animate-ping rounded-full bg-emerald-400 opacity-75"></span>
-                <span className="relative inline-flex h-2 w-2 rounded-full bg-emerald-500"></span>
-              </span>
-              <span>Deterministic & Controlled Execution</span>
-            </div>
-            <div className="flex items-center gap-1.5 text-slate-400">
-              <span>Data</span>
-              <ChevronRight size={12} />
-              <span>Logic</span>
-              <ChevronRight size={12} />
-              <span>Calculations</span>
-              <ChevronRight size={12} />
-              <span className="font-semibold text-blue-600">Filing</span>
-            </div>
-          </div>
+                <div className="mt-6 flex flex-wrap gap-1.5 pt-3.5 border-t border-slate-900/40 dark:border-slate-800">
+                  {step.tags.map((tag) => (
+                    <span
+                      key={tag}
+                      className="rounded border border-slate-900/60 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 font-mono text-[9px] font-bold text-slate-800 dark:text-slate-300"
+                    >
+                      {tag}
+                    </span>
+                  ))}
+                </div>
+              </div>
+            )
+          })}
         </div>
       </div>
     </section>

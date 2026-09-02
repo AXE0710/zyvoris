@@ -1,101 +1,76 @@
 'use client'
 
+import React from 'react'
 import Image from 'next/image'
-import {
-  CheckCircle2,
-  Clock3,
-  AlertCircle,
-  FileCheck2,
-} from 'lucide-react'
+import { useLanguage } from './language-provider'
 
 export default function ProductScreenshot() {
+  const { language } = useLanguage()
+
   return (
     <section
       id="product"
-      className="relative overflow-hidden bg-white px-[5vw] py-20 text-[#0b1533] lg:py-28"
+      className="
+        relative overflow-hidden
+        border-t-2 border-slate-900 dark:border-slate-800
+        bg-[#f0f4f9] dark:bg-[#090e1c]
+        px-4 sm:px-6 lg:px-[5vw]
+        py-16 sm:py-24
+        text-[#0b1533] dark:text-slate-100
+        transition-colors duration-200
+      "
     >
-      {/* Subtle background */}
-      <div className="pointer-events-none absolute inset-0">
-        <div className="absolute left-1/2 top-[-180px] h-[500px] w-[900px] -translate-x-1/2 rounded-full bg-blue-500/[0.045] blur-[140px]" />
-
-        <div
-          className="absolute inset-0 opacity-[0.35]"
-          style={{
-            backgroundImage:
-              'linear-gradient(rgba(20,45,90,.035) 1px, transparent 1px), linear-gradient(90deg, rgba(20,45,90,.035) 1px, transparent 1px)',
-            backgroundSize: '72px 72px',
-          }}
-        />
-      </div>
-
-      <div className="relative mx-auto max-w-7xl">
-
-        {/* ───────────────── INTRO ───────────────── */}
-
+      <div className="relative mx-auto max-w-[1420px]">
+        {/* Header */}
         <div className="grid grid-cols-1 gap-8 lg:grid-cols-[0.9fr_1.1fr] lg:items-end">
-
           <div>
-            <div className="mb-4 flex items-center gap-3">
-              <span className="h-px w-8 bg-blue-600" />
-
-              <span className="text-[11px] font-semibold uppercase tracking-[0.2em] text-blue-600">
-                The Platform
+            <div className="mb-4 flex items-center gap-2.5">
+              <span className="h-px w-8 bg-blue-600 dark:bg-blue-400" />
+              <span className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-blue-600 dark:text-blue-400">
+                {language === 'de' ? 'Die Plattform' : 'The Platform'}
               </span>
             </div>
 
-            <h2 className="max-w-[680px] text-3xl font-medium leading-[1.05] tracking-[-0.04em] text-[#09132f] sm:text-4xl lg:text-5xl">
-              Designed for
+            <h2 className="max-w-[680px] text-3xl font-semibold leading-[1.05] tracking-[-0.04em] text-slate-950 dark:text-white sm:text-4xl lg:text-5xl">
+              {language === 'de' ? 'Entwickelt für komplexe' : 'Designed for'}
               <br />
-              <span className="text-[#09132f]/40">
-                complex tax operations.
+              <span className="text-slate-500 dark:text-slate-400">
+                {language === 'de' ? 'Steueroperationen.' : 'complex tax operations.'}
               </span>
             </h2>
           </div>
 
           <div className="max-w-[570px] lg:ml-auto">
-            <p className="text-base leading-relaxed text-[#09132f]/65 sm:text-[17px]">
-              ZYVORIS brings fund data, tax calculations, jurisdictional
-              requirements and review workflows into one controlled operating
-              environment.
-            </p>
-
-            <p className="mt-3 text-xs leading-relaxed text-[#09132f]/40 sm:text-sm">
-              See what is being calculated, where each reporting workflow
-              stands, and which items require review before results move into
-              final reporting.
+            <p className="text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-300">
+              {language === 'de'
+                ? 'ZYVORIS vereint Fondsdaten, Steuerberechnungen, länderspezifische Anforderungen und Prüf-Workflows in einer kontrollierten Betriebsumgebung.'
+                : 'ZYVORIS brings fund data, tax calculations, jurisdictional requirements and review workflows into one controlled operating environment.'}
             </p>
           </div>
-
         </div>
 
-        {/* ───────────────── PRODUCT IMAGE & OVERLAY ───────────────── */}
-
-        <div className="relative mx-auto mt-12 max-w-[1080px] lg:mt-16">
-
-          {/* Main Frame */}
-          <div className="relative rounded-2xl border border-[#0b1533]/10 bg-[#f8faff] p-2 shadow-[0_20px_50px_rgba(20,45,90,0.08)]">
-
+        {/* Product Image & Overlay Box with bold black border */}
+        <div className="relative mx-auto mt-12 max-w-[1120px] lg:mt-16">
+          <div className="relative rounded-3xl border-2 border-slate-900 dark:border-slate-700 bg-white dark:bg-slate-900 p-2 sm:p-3 shadow-xl">
             {/* Browser Header Bar */}
-            <div className="flex h-10 items-center justify-between border-b border-[#0b1533]/[0.07] px-4">
-
-              <div className="flex items-center gap-1.5">
-                <span className="h-2.5 w-2.5 rounded-full bg-[#0b1533]/15" />
-                <span className="h-2.5 w-2.5 rounded-full bg-[#0b1533]/15" />
-                <span className="h-2.5 w-2.5 rounded-full bg-[#0b1533]/15" />
+            <div className="flex h-10 items-center justify-between border-b-2 border-slate-900/80 dark:border-slate-800 px-4">
+              <div className="flex items-center gap-1.5 font-mono text-xs font-bold text-slate-900 dark:text-slate-400">
+                <span>●</span>
+                <span>●</span>
+                <span>●</span>
               </div>
 
-              <div className="hidden rounded-md border border-[#0b1533]/[0.07] bg-white px-4 py-1 sm:flex">
-                <span className="font-mono text-[10px] tracking-wide text-[#0b1533]/40">
+              <div className="rounded border border-slate-900 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 px-4 py-0.5">
+                <span className="font-mono text-[10px] font-bold text-slate-900 dark:text-slate-300">
                   app.zyvoris.com / calculations
                 </span>
               </div>
 
               <div className="w-10" />
-
             </div>
 
-            {/* Uncropped Full Image */}
-            <div className="relative w-full overflow-hidden rounded-b-xl bg-white">
+            {/* Product Image */}
+            <div className="relative w-full overflow-hidden rounded-b-2xl bg-slate-100 dark:bg-slate-950">
               <Image
                 src="/product.png"
                 alt="ZYVORIS tax reporting platform UI"
@@ -105,156 +80,89 @@ export default function ProductScreenshot() {
                 className="h-auto w-full object-contain"
               />
             </div>
-
           </div>
 
-          {/* ───────────────── REPOSITIONED FLOATING OVERLAY ───────────────── */}
-          {/* Sits anchored to the right side without overlapping crucial center content */}
-          <div className="mt-6 w-full rounded-2xl border border-[#0b1533]/10 bg-white/95 p-4 backdrop-blur-md shadow-xl xl:absolute xl:-right-10 xl:bottom-6 xl:mt-0 xl:w-[320px] xl:p-5 xl:shadow-[0_25px_60px_rgba(20,45,90,0.18)]">
-
-            {/* Panel header */}
-            <div className="flex items-center justify-between border-b border-[#0b1533]/[0.08] pb-3">
-
+          {/* Floating Trace Overlay Box with bold black border */}
+          <div className="mt-6 w-full rounded-2xl border-2 border-slate-900 dark:border-slate-700 bg-white dark:bg-slate-900 p-4 sm:p-5 shadow-2xl xl:absolute xl:-right-8 xl:bottom-6 xl:mt-0 xl:w-[320px]">
+            <div className="flex items-center justify-between border-b-2 border-slate-900/80 dark:border-slate-800 pb-3">
               <div>
-                <p className="text-[9px] font-semibold uppercase tracking-[0.18em] text-blue-600">
+                <p className="font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-blue-600 dark:text-blue-400">
                   Calculation Trace
                 </p>
-
-                <p className="mt-0.5 text-xs font-semibold text-[#09132f] sm:text-sm">
+                <p className="mt-0.5 text-xs sm:text-sm font-bold text-slate-950 dark:text-white">
                   Private Equity Fund I
                 </p>
               </div>
 
-              <span className="rounded-full border border-emerald-600/20 bg-emerald-50 px-2 py-0.5 text-[9px] font-semibold text-emerald-600">
-                Live Audit
+              <span className="rounded border border-slate-900 dark:border-slate-700 bg-blue-50 dark:bg-blue-950 px-2 py-0.5 font-mono text-[9px] font-bold text-blue-700 dark:text-blue-400">
+                LIVE AUDIT
               </span>
-
             </div>
 
-            {/* Trace rows */}
-            <div className="grid grid-cols-2 gap-2 pt-3 xl:grid-cols-1 xl:space-y-2 xl:gap-0">
-
-              <TraceRow
-                icon={<FileCheck2 size={13} />}
-                label="Source Data"
-                value="Verified"
-              />
-
-              <TraceRow
-                icon={<FileCheck2 size={13} />}
-                label="Tax Classification"
-                value="Validated"
-              />
-
-              <TraceRow
-                icon={<Clock3 size={13} />}
-                label="Tax Logic"
-                value="Applied"
-              />
-
-              <TraceRow
-                icon={<CheckCircle2 size={13} />}
-                label="Calculation"
-                value="Complete"
-              />
-
-              <TraceRow
-                icon={<AlertCircle size={13} />}
-                label="Exceptions"
-                value="None"
-              />
-
-              <TraceRow
-                icon={<FileCheck2 size={13} />}
-                label="Reporting Output"
-                value="Ready"
-              />
-
+            <div className="space-y-2 pt-3">
+              <TraceRow label="Source Data" value="Verified" num="01" />
+              <TraceRow label="Tax Classification" value="Validated" num="02" />
+              <TraceRow label="Tax Logic" value="Applied" num="03" />
+              <TraceRow label="Calculation" value="Complete" num="04" />
+              <TraceRow label="Reporting Output" value="Ready" num="05" />
             </div>
-
-            {/* Trace explanation */}
-            <div className="mt-3 border-t border-[#0b1533]/[0.08] pt-2.5">
-              <p className="text-[10px] leading-relaxed text-[#0b1533]/50">
-                Every calculation step remains connected to its source data and applied tax logic.
-              </p>
-            </div>
-
           </div>
-
         </div>
 
-        {/* ───────────────── SUPPORTING POINTS ───────────────── */}
-
-        <div className="mt-20 grid grid-cols-1 border-t border-[#0b1533]/10 md:grid-cols-3 sm:mt-24">
-
+        {/* Supporting Points Box */}
+        <div className="mt-16 sm:mt-24 grid grid-cols-1 border-t-2 border-slate-900 dark:border-slate-800 md:grid-cols-3 divide-y md:divide-y-0 md:divide-x-2 divide-slate-900 dark:divide-slate-800 pt-6">
           <InfoItem
             number="01"
-            title="Know what is happening"
-            description="See calculation, exception and review status across active reporting workflows."
+            title={language === 'de' ? 'Vollständiger Überblick' : 'Know what is happening'}
+            description={
+              language === 'de'
+                ? 'Sehen Sie Berechnungs-, Ausnahme- und Prüfstatus über alle aktiven Reporting-Workflows.'
+                : 'See calculation, exception and review status across active reporting workflows.'
+            }
           />
-
           <InfoItem
             number="02"
-            title="Review before reporting"
-            description="Surface items requiring attention before results move into final reporting."
+            title={language === 'de' ? 'Fachliche Prüfung vor Freigabe' : 'Review before reporting'}
+            description={
+              language === 'de'
+                ? 'Identifizieren Sie prüfrelevante Positionen, bevor Ergebnisse in die finale Meldung fließen.'
+                : 'Surface items requiring attention before results move into final reporting.'
+            }
           />
-
           <InfoItem
             number="03"
-            title="Trace every result"
-            description="Connect reported outputs back to source data, classifications and tax logic."
+            title={language === 'de' ? 'Lückenlose Nachvollziehbarkeit' : 'Trace every result'}
+            description={
+              language === 'de'
+                ? 'Verbinden Sie Berichtsdaten mit Quelldaten, Klassifizierungen und Steuerregeln.'
+                : 'Connect reported outputs back to source data, classifications and tax logic.'
+            }
           />
-
         </div>
-
       </div>
     </section>
   )
 }
 
-
-/* ───────────────── TRACE ROW ───────────────── */
-
 function TraceRow({
-  icon,
   label,
   value,
+  num,
 }: {
-  icon: React.ReactNode
   label: string
   value: string
+  num: string
 }) {
   return (
-    <div className="flex items-center justify-between gap-3">
-
-      <div className="flex min-w-0 items-center gap-2">
-
-        <div className="flex h-5 w-5 shrink-0 items-center justify-center rounded bg-[#f0f4fa] text-blue-600">
-          {icon}
-        </div>
-
-        <span className="truncate text-[11px] font-medium text-[#0b1533]/70">
-          {label}
-        </span>
-
+    <div className="flex items-center justify-between gap-3 text-xs">
+      <div className="flex items-center gap-2">
+        <span className="font-mono text-[10px] font-bold text-blue-600 dark:text-blue-400">[{num}]</span>
+        <span className="font-semibold text-slate-800 dark:text-slate-200">{label}</span>
       </div>
-
-      <div className="flex shrink-0 items-center gap-1.5">
-
-        <span className="text-[10px] font-medium text-[#0b1533]/60">
-          {value}
-        </span>
-
-        <span className="h-1.5 w-1.5 rounded-full bg-emerald-500" />
-
-      </div>
-
+      <span className="font-mono text-[10px] font-bold text-emerald-600 dark:text-emerald-400">{value}</span>
     </div>
   )
 }
-
-
-/* ───────────────── INFO ITEM ───────────────── */
 
 function InfoItem({
   number,
@@ -266,20 +174,16 @@ function InfoItem({
   description: string
 }) {
   return (
-    <div className="border-b border-[#0b1533]/10 px-0 py-6 md:border-b-0 md:border-r md:px-6 md:py-8 first:md:pl-0 last:md:border-r-0">
-
-      <span className="text-[10px] font-semibold tracking-[0.18em] text-blue-600">
-        {number}
+    <div className="p-6">
+      <span className="font-mono text-sm font-extrabold text-blue-600 dark:text-blue-400">
+        [{number}]
       </span>
-
-      <h3 className="mt-3 text-base font-semibold tracking-[-0.02em] text-[#09132f] sm:text-lg">
+      <h3 className="mt-2 text-base font-bold text-slate-950 dark:text-white">
         {title}
       </h3>
-
-      <p className="mt-2 max-w-[320px] text-xs leading-relaxed text-[#09132f]/50 sm:text-[13px]">
+      <p className="mt-1 text-xs sm:text-sm leading-relaxed text-slate-700 dark:text-slate-400">
         {description}
       </p>
-
     </div>
   )
 }
