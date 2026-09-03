@@ -23,7 +23,7 @@ const mono = JetBrains_Mono({
 export const metadata: Metadata = {
   title: 'ZYVORIS — Global Fund Tax Infrastructure for Private Markets',
   description:
-    'Turn complex fund data into jurisdiction-ready tax reporting. ZYVORIS connects financial data, fund structures, tax logic, calculations, and reporting in one unified infrastructure layer.',
+    'Turn complex fund data into structured, jurisdiction-specific tax reporting through one controlled and traceable infrastructure layer.',
 }
 
 export default function RootLayout({

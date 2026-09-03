@@ -13,69 +13,72 @@ export default function Jurisdictions() {
     {
       country: 'Switzerland',
       code: 'CH',
-      title: t('jur_ch_title', 'Swiss Fund Tax Reporting'),
+      title: t('jur_ch_title', 'Switzerland'),
       status: 'MVP',
       statusType: 'mvp' as const,
       description: t(
         'jur_ch_desc',
-        'Fund-level tax calculations and reporting workflows designed specifically for Swiss private-market structures.'
+        'Available today for private market fund tax workflows.'
       ),
       capabilities: [
-        'Fund & share-class calculations',
+        'Fund-level tax calculations',
+        'Share-class calculations',
         'Taxable income allocation',
         'Tax value calculations',
-        'Reporting datasets',
+        'Structured reporting datasets',
+        'Review and validation workflows',
       ],
     },
     {
       country: 'Germany',
       code: 'DE',
-      title: t('jur_de_title', 'German Investment Tax Reporting'),
+      title: t('jur_de_title', 'Germany'),
       status: 'In Development',
       statusType: 'development' as const,
       description: t(
         'jur_de_desc',
-        'Jurisdiction-specific workflows tailored for German investment tax reporting (InvStG) and fund structures.'
+        'Active development for German investment fund taxation.'
       ),
       capabilities: [
-        'Fund tax classifications',
-        'Investment tax calculations',
-        'Share-class workflows',
-        'Reporting datasets',
+        'German investment fund tax logic',
+        'InvStG-related reporting workflows',
+        'Structured tax calculations',
+        'Jurisdiction-specific reporting outputs',
       ],
     },
     {
       country: 'Austria',
       code: 'AT',
-      title: t('jur_at_title', 'Austrian Fund Tax Reporting'),
+      title: t('jur_at_title', 'Austria'),
       status: 'Roadmap',
       statusType: 'roadmap' as const,
       description: t(
         'jur_at_desc',
-        'Planned infrastructure for Austrian fund taxation and jurisdiction-specific reporting requirements.'
+        'Planned expansion for Austrian fund taxation.'
       ),
       capabilities: [
-        'Fund-level calculations',
-        'Fund reporting',
-        'Allocation logic',
-        'Structured outputs',
+        'Austrian fund tax reporting',
+        'OeKB-related reporting workflows',
+        'Structured tax datasets',
       ],
     },
     {
       country: 'United States',
       code: 'US',
-      title: t('jur_us_title', 'US Partnership Tax Intelligence'),
+      title: t('jur_us_title', 'United States'),
       status: 'Roadmap',
       statusType: 'roadmap' as const,
       description: t(
         'jur_us_desc',
-        'Planned workflows for complex partnership structures and US-related private-market tax intelligence.'
+        'Cross-border tax intelligence layer transforming partnership tax data into structured investor-level reporting inputs.'
       ),
       capabilities: [
-        'K-1 / K-3 data workflows',
-        'Source & character analysis',
-        'Withholding-related data',
-        'Cross-border intelligence',
+        'Structured extraction & characterization',
+        'ECI & FDAP indicators',
+        'Withholding & foreign tax data analysis',
+        'Treaty relevance & PFIC indicators',
+        'Investor-specific tax consequences',
+        'Reconciliation & downstream reporting implications',
       ],
     },
   ]
@@ -99,28 +102,28 @@ export default function Jurisdictions() {
     >
       <div className="relative mx-auto max-w-[1420px]">
         {/* Header */}
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1fr_0.75fr] lg:items-end">
+        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.1fr_0.8fr] lg:items-end">
           <div>
             <div className="mb-4 flex items-center gap-2.5">
               <span className="h-px w-8 bg-blue-600 dark:bg-blue-400" />
               <span className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-blue-600 dark:text-blue-400">
-                {t('jur_kicker', 'GLOBAL COVERAGE')}
+                {t('jur_kicker', 'WHAT ZYVORIS DOES TODAY')}
               </span>
             </div>
 
-            <h2 className="max-w-[760px] text-3xl font-semibold leading-[1.05] tracking-[-0.045em] text-slate-950 dark:text-white sm:text-4xl lg:text-5xl">
-              {t('jur_title_1', 'One tax infrastructure.')}{' '}
-              <span className="text-slate-500 dark:text-slate-400">
-                {t('jur_title_2', 'Multiple jurisdictions.')}
+            <h2 className="max-w-[760px] text-3xl font-semibold leading-[1.08] tracking-[-0.04em] text-slate-950 dark:text-white sm:text-4xl lg:text-5xl">
+              {t('jur_title_1', 'Built for Cross-Border Tax.')}{' '}
+              <span className="text-blue-600 dark:text-blue-400">
+                {t('jur_title_2', 'Starting with Switzerland.')}
               </span>
             </h2>
           </div>
 
-          <div className="max-w-[510px] lg:ml-auto">
+          <div className="max-w-[540px] lg:ml-auto">
             <p className="text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-300">
               {t(
                 'jur_desc',
-                'Tax reporting requirements vary by jurisdiction. ZYVORIS is designed to provide a common infrastructure layer while keeping jurisdiction-specific tax logic distinct.'
+                'ZYVORIS is launching with Swiss fund tax reporting and expanding its infrastructure across additional jurisdictions and reporting regimes.'
               )}
             </p>
           </div>
@@ -195,7 +198,15 @@ export default function Jurisdictions() {
                   <span className="font-mono text-sm font-extrabold text-blue-600 dark:text-blue-400">
                     [{j.code}]
                   </span>
-                  <span className="rounded border border-slate-900 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 font-mono text-[10px] font-bold text-slate-900 dark:text-slate-200 uppercase">
+                  <span
+                    className={`rounded border px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase ${
+                      j.statusType === 'mvp'
+                        ? 'bg-emerald-500/15 border-emerald-600 text-emerald-700 dark:bg-emerald-950/50 dark:border-emerald-500 dark:text-emerald-300'
+                        : j.statusType === 'development'
+                        ? 'bg-amber-500/15 border-amber-600 text-amber-700 dark:bg-amber-950/50 dark:border-amber-500 dark:text-amber-300'
+                        : 'bg-slate-100 dark:bg-slate-800 border-slate-900 dark:border-slate-700 text-slate-700 dark:text-slate-300'
+                    }`}
+                  >
                     {j.status}
                   </span>
                 </div>
@@ -213,19 +224,30 @@ export default function Jurisdictions() {
                   {j.description}
                 </p>
 
-                <div className="mt-4 space-y-1.5 pt-3 border-t border-slate-900/40 dark:border-slate-800">
+                <div className="mt-4 space-y-2 pt-3.5 border-t border-slate-900/40 dark:border-slate-800">
                   {j.capabilities.map((cap) => (
-                    <div key={cap} className="flex items-center gap-2 text-xs text-slate-800 dark:text-slate-300">
-                      <span className="font-mono text-blue-600 font-bold">•</span>
-                      <span>{cap}</span>
+                    <div key={cap} className="flex items-start gap-2 text-xs text-slate-800 dark:text-slate-200">
+                      <span className="font-mono text-blue-600 dark:text-blue-400 font-bold leading-none mt-0.5">•</span>
+                      <span className="leading-snug">{cap}</span>
                     </div>
                   ))}
                 </div>
               </div>
 
-              <div className="mt-6 pt-3.5 border-t-2 border-slate-900/60 dark:border-slate-800">
-                <span className="font-mono text-[10px] font-bold text-blue-600 dark:text-blue-400 uppercase">
-                  STATUS: {j.status}
+              <div className="mt-6 pt-3.5 border-t-2 border-slate-900/60 dark:border-slate-800 flex items-center justify-between">
+                <span className="font-mono text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase">
+                  STATUS
+                </span>
+                <span
+                  className={`font-mono text-[11px] font-bold uppercase ${
+                    j.statusType === 'mvp'
+                      ? 'text-emerald-600 dark:text-emerald-400'
+                      : j.statusType === 'development'
+                      ? 'text-amber-600 dark:text-amber-400'
+                      : 'text-slate-600 dark:text-slate-400'
+                  }`}
+                >
+                  {j.status}
                 </span>
               </div>
             </article>

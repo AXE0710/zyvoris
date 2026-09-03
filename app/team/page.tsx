@@ -18,8 +18,8 @@ export default function TeamPage() {
       experience: language === 'de' ? '12+ Jahre Branchenerfahrung' : '12+ Years Institutional Experience',
       bio:
         language === 'de'
-          ? 'Ehem. KPMG & Deloitte Spezialist für internationale Fondsbesteuerung im Bereich Private Equity, UCITS, AIFMs und regulatorische Berichtsanforderungen (Luxemburg, Schweiz, USA, UK, Deutschland).'
-          : 'Ex-KPMG & Ex-Deloitte cross-border tax specialist in private equity, UCITS, AIFMs, and international regulatory workflows across Luxembourg, Switzerland, the US, UK, and Germany.',
+          ? '12+ Jahre Erfahrung in internationaler und grenzüberschreitender Besteuerung, Privatmarktfonds-Strukturen, Steuerberichterstattung, operativen Betriebsmodellen und technologiegestützten Steuerprozessen (Luxemburg, Schweiz, USA, UK, Deutschland).'
+          : '12+ years of experience across international and cross-border taxation, private-market fund structures, tax reporting, operating models, and technology-enabled tax processes.',
       quote:
         language === 'de'
           ? 'Privatmärkte sind zu einer $14T+ Anlageklasse gewachsen, doch das Steuer-Reporting beruht weiterhin auf manuellen Tabellen. ZYVORIS liefert die geschäftskritische Infrastruktur, die Fondsmanager seit langem benötigen.'
@@ -45,13 +45,13 @@ export default function TeamPage() {
           : 'Specialized in scalable distributed architectures, deterministic calculation engines, automated high-throughput data engineering, and zero-retention AI workflows for financial infrastructure.',
       quote:
         language === 'de'
-          ? 'Steuerberechnungen dulden keine Schätzungen oder KI-Halluzinationen. ZYVORIS wurde mit 100% mathematischem Determinismus, lückenloser Audit-Traceability und höchster Performance konstruiert.'
+          ? 'Steuerberechnungen dulden keine Schätzungen oder mathematischen Ungenauigkeiten. ZYVORIS wurde mit 100% mathematischem Determinismus, lückenloser Audit-Traceability und höchster Performance konstruiert.'
           : 'Tax calculations cannot tolerate black-box guesswork. We engineered ZYVORIS with strict mathematical determinism, source-to-output lineage, and high-performance scalability from day one.',
       responsibilities: [
         language === 'de' ? 'Deterministische Rechen-Engine' : 'Deterministic Calculation Engine',
         language === 'de' ? 'Verteilte Datenpipeline-Architektur' : 'Distributed Data Pipeline Architecture',
         language === 'de' ? 'KI-Extraktions- & Klassifikationsmodelle' : 'AI Extraction & Classification Models',
-        language === 'de' ? 'Mandantentrennung & Audit-Logs' : 'Tenant Isolation & Cryptographic Audit',
+        language === 'de' ? 'Mandantentrennung & Audit-Architektur' : 'Tenant Isolation & Audit Trail Architecture',
       ],
       email: 'info@zyvoris.ai',
     },
@@ -84,11 +84,11 @@ export default function TeamPage() {
     },
     {
       num: '04',
-      title: language === 'de' ? 'Zukunftssichere Architektur' : 'Future-Ready Architecture',
+      title: language === 'de' ? 'Erweiterbare Infrastruktur' : 'Extendable Infrastructure',
       desc:
         language === 'de'
-          ? 'API-First Plattform, konzipiert für traditionelle Privatmarktfonds, UCITS sowie tokenisierte Anlagevehikel.'
-          : 'API-first platform designed to handle traditional private market funds, UCITS, and tokenized alternative investment vehicles.',
+          ? 'Primärer Fokus auf Privatmärkte. ZYVORIS arbeitet unabhängig von der zugrundeliegenden Eigentumsinfrastruktur, sodass dieselbe Steuerlogik sowohl auf herkömmliche als auch auf tokenisierte Fondsstrukturen angewendet werden kann.'
+          : 'Primary focus on private markets. ZYVORIS is designed to operate independently of underlying ownership infrastructure, allowing structured tax logic to be applied across both conventional and tokenized investment structures.',
     },
   ]
 

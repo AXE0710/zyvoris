@@ -10,40 +10,40 @@ export default function CustomerSegments() {
     {
       number: '01',
       audience: t('seg_1_aud', 'Fund Managers & AIFMs'),
-      headline: t('seg_1_head', 'Centralize tax reporting across funds, entities and jurisdictions.'),
+      headline: t('seg_1_head', 'Standardize tax reporting across complex fund structures, entities, and jurisdictions.'),
       description: t(
         'seg_1_desc',
-        'Bring fund structures, financial data and jurisdiction-specific tax workflows into a controlled environment built for complex private-market operations.'
+        'Turn multi-tier fund structures, capital distributions, and cross-border tax logic into controlled, repeatable reporting workflows.'
       ),
       focus: t('seg_1_focus', 'Fund-level oversight'),
     },
     {
       number: '02',
       audience: t('seg_2_aud', 'Fund Administrators'),
-      headline: t('seg_2_head', 'Add scalable tax calculation capabilities to fund administration workflows.'),
+      headline: t('seg_2_head', 'Integrate structured tax calculation and reporting workflows into existing fund operations.'),
       description: t(
         'seg_2_desc',
-        'Extend existing administration processes with structured tax calculations, validation and reporting workflows without replacing existing systems.'
+        'Extend core administration processes with automated tax data normalization, calculation engines, and filing-ready datasets.'
       ),
       focus: t('seg_2_focus', 'Operational scalability'),
     },
     {
       number: '03',
       audience: t('seg_3_aud', 'Tax & Accounting Firms'),
-      headline: t('seg_3_head', 'Standardize complex calculations while maintaining professional review.'),
+      headline: t('seg_3_head', 'Industrialize recurring tax reporting while preserving professional judgement and review.'),
       description: t(
         'seg_3_desc',
-        'Create repeatable calculation workflows while keeping the review, judgment and oversight expected from professional tax and accounting teams.'
+        'Automate mechanical spreadsheet calculations and focus senior advisory time on exceptions, tax characterization, and partner sign-off.'
       ),
       focus: t('seg_3_focus', 'Controlled review'),
     },
     {
       number: '04',
       audience: t('seg_4_aud', 'Institutional Investors'),
-      headline: t('seg_4_head', 'Structure and analyze tax information across private-market investments.'),
+      headline: t('seg_4_head', 'Transform complex fund-level tax information into structured investor-specific tax intelligence.'),
       description: t(
         'seg_4_desc',
-        'Bring fragmented tax information into a structured framework that supports analysis across funds, investments, entities and jurisdictions.'
+        'Convert fragmented fund statements, withholding vouchers, and K-1/K-3 feeds into clean, auditable tax datasets across portfolio investments.'
       ),
       focus: t('seg_4_focus', 'Investment visibility'),
     },
@@ -150,21 +150,44 @@ export default function CustomerSegments() {
           ))}
         </div>
 
-        {/* Ecosystem Footer Line */}
-        <div className="mt-12 flex flex-col gap-4 border-t-2 border-slate-900 dark:border-slate-800 pt-6 md:flex-row md:items-center md:justify-between">
-          <div className="flex items-center gap-2">
-            <span className="font-mono text-xs font-bold text-blue-600 dark:text-blue-400">●</span>
-            <span className="font-mono text-[11px] font-bold uppercase tracking-[0.14em] text-slate-950 dark:text-slate-200">
-              {t('segments_footer_title', 'One infrastructure layer')}
-            </span>
-          </div>
+        {/* Primary Market Focus vs Extendable Infrastructure Callout */}
+        <div className="mt-12 rounded-3xl border-2 border-slate-900 dark:border-slate-700 bg-slate-50 dark:bg-slate-900/80 p-6 sm:p-8 shadow-sm">
+          <div className="grid grid-cols-1 lg:grid-cols-12 gap-6 items-start">
+            {/* Primary Focus */}
+            <div className="lg:col-span-7">
+              <div className="flex items-center gap-2 mb-2">
+                <span className="font-mono text-[10px] font-extrabold uppercase px-2 py-0.5 rounded border border-blue-600 bg-blue-50 text-blue-700 dark:border-blue-500 dark:bg-blue-950/60 dark:text-blue-300">
+                  PRIMARY FOCUS
+                </span>
+                <span className="font-mono text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider">
+                  Private Markets
+                </span>
+              </div>
+              <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 font-medium mb-3">
+                Engineered specifically for the structures, allocation logic, and cross-border reporting demands of private markets:
+              </p>
+              <div className="flex flex-wrap gap-2">
+                {['Private Equity', 'Venture Capital', 'Real Estate', 'Infrastructure', 'Private Credit'].map((asset) => (
+                  <span
+                    key={asset}
+                    className="rounded-lg border-2 border-slate-900/80 dark:border-slate-700 bg-white dark:bg-slate-800 px-2.5 py-1 text-xs font-bold text-slate-950 dark:text-slate-100"
+                  >
+                    • {asset}
+                  </span>
+                ))}
+              </div>
+            </div>
 
-          <p className="max-w-[600px] text-xs font-medium leading-5 text-slate-700 dark:text-slate-300 md:text-right">
-            {t(
-              'segments_footer_desc',
-              'Designed to connect the responsibilities of fund management, administration, tax, accounting and institutional investment without forcing every team into the same rigid workflow.'
-            )}
-          </p>
+            {/* Extendable Infrastructure */}
+            <div className="lg:col-span-5 lg:border-l-2 lg:border-slate-900/30 lg:dark:border-slate-800 lg:pl-6">
+              <span className="font-mono text-[10px] font-extrabold uppercase px-2 py-0.5 rounded border border-purple-600/60 bg-purple-50 text-purple-700 dark:border-purple-500/60 dark:bg-purple-950/50 dark:text-purple-300 inline-block mb-2">
+                EXTENDABLE INFRASTRUCTURE
+              </span>
+              <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300 leading-relaxed font-medium">
+                ZYVORIS is designed to operate independently of the underlying ownership infrastructure, allowing the same structured tax logic to be applied across both conventional and tokenized investment structures.
+              </p>
+            </div>
+          </div>
         </div>
       </div>
     </section>

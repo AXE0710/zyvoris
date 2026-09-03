@@ -1,11 +1,49 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import Image from 'next/image'
 import { useLanguage } from './language-provider'
 
 export default function ProductScreenshot() {
   const { language } = useLanguage()
+
+  const SCREENS = [
+    {
+      id: 'workspace',
+      label: language === 'de' ? 'Berechnungs-Engine' : 'Calculation Engine',
+      url: 'app.zyvoris.com/workspace',
+      src: '/2_calculation_workspace.png',
+      alt: 'ZYVORIS calculation workspace UI',
+      stepNum: '01',
+    },
+    {
+      id: 'overview',
+      label: language === 'de' ? 'Fonds-Übersicht' : 'Fund Overview',
+      url: 'app.zyvoris.com/overview',
+      src: '/1_fund_overview.png',
+      alt: 'ZYVORIS fund overview UI',
+      stepNum: '02',
+    },
+    {
+      id: 'trace',
+      label: language === 'de' ? 'Lineage-Trace' : 'Lineage Trace',
+      url: 'app.zyvoris.com/trace',
+      src: '/5_calculation_trace.png',
+      alt: 'ZYVORIS calculation lineage trace UI',
+      stepNum: '03',
+    },
+    {
+      id: 'reporting',
+      label: language === 'de' ? 'Meldepakete' : 'Reporting Packages',
+      url: 'app.zyvoris.com/reporting',
+      src: '/6_reporting_output.png',
+      alt: 'ZYVORIS reporting output packages UI',
+      stepNum: '04',
+    },
+  ]
+
+  const [activeScreenId, setActiveScreenId] = useState<string>('workspace')
+  const activeScreen = SCREENS.find((s) => s.id === activeScreenId) || SCREENS[0]
 
   return (
     <section
@@ -53,29 +91,46 @@ export default function ProductScreenshot() {
         <div className="relative mx-auto mt-12 max-w-[1120px] lg:mt-16">
           <div className="relative rounded-3xl border-2 border-slate-900 dark:border-slate-700 bg-white dark:bg-slate-900 p-2 sm:p-3 shadow-xl">
             {/* Browser Header Bar */}
-            <div className="flex h-10 items-center justify-between border-b-2 border-slate-900/80 dark:border-slate-800 px-4">
+            <div className="flex flex-wrap h-auto min-h-11 items-center justify-between gap-2 border-b-2 border-slate-900/80 dark:border-slate-800 px-3 sm:px-4 py-2">
               <div className="flex items-center gap-1.5 font-mono text-xs font-bold text-slate-900 dark:text-slate-400">
-                <span>●</span>
-                <span>●</span>
-                <span>●</span>
+                <span className="h-2.5 w-2.5 rounded-full bg-rose-500/80 inline-block" />
+                <span className="h-2.5 w-2.5 rounded-full bg-amber-500/80 inline-block" />
+                <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/80 inline-block" />
               </div>
 
-              <div className="rounded border border-slate-900 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 px-4 py-0.5">
-                <span className="font-mono text-[10px] font-bold text-slate-900 dark:text-slate-300">
-                  app.zyvoris.com / calculations
-                </span>
+              {/* View Switcher Pills */}
+              <div className="flex items-center gap-1 overflow-x-auto">
+                {SCREENS.map((screen) => {
+                  const isCurrent = screen.id === activeScreenId
+                  return (
+                    <button
+                      key={screen.id}
+                      type="button"
+                      onClick={() => setActiveScreenId(screen.id)}
+                      className={`px-2.5 py-1 rounded-lg font-mono text-[10.5px] font-bold transition-all ${
+                        isCurrent
+                          ? 'bg-slate-950 text-white dark:bg-blue-600 shadow-xs'
+                          : 'bg-slate-100 text-slate-700 hover:bg-slate-200 dark:bg-slate-800 dark:text-slate-300 dark:hover:bg-slate-700'
+                      }`}
+                    >
+                      {screen.label}
+                    </button>
+                  )
+                })}
               </div>
 
-              <div className="w-10" />
+              <div className="hidden sm:block rounded border border-slate-900/40 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 px-3 py-0.5 font-mono text-[10px] font-bold text-slate-900 dark:text-slate-300">
+                {activeScreen.url}
+              </div>
             </div>
 
             {/* Product Image */}
-            <div className="relative w-full overflow-hidden rounded-b-2xl bg-slate-100 dark:bg-slate-950">
+            <div className="relative w-full overflow-hidden rounded-b-2xl bg-slate-950">
               <Image
-                src="/product.png"
-                alt="ZYVORIS tax reporting platform UI"
+                src={activeScreen.src}
+                alt={activeScreen.alt}
                 width={1920}
-                height={1080}
+                height={945}
                 priority
                 className="h-auto w-full object-contain"
               />
@@ -90,7 +145,7 @@ export default function ProductScreenshot() {
                   Calculation Trace
                 </p>
                 <p className="mt-0.5 text-xs sm:text-sm font-bold text-slate-950 dark:text-white">
-                  Private Equity Fund I
+                  Alpine PE IV (SCSp)
                 </p>
               </div>
 

@@ -19,16 +19,16 @@ export default function ComparisonPage() {
           </div>
 
           <h1 className="text-3xl font-semibold tracking-tight sm:text-5xl lg:text-6xl text-slate-950 dark:text-white leading-[1.08]">
-            {language === 'de' ? 'Herkömmliche Tabellen vs.' : 'Traditional spreadsheets vs.'}{' '}
+            {language === 'de' ? 'Herkömmliche Steueroperationen vs.' : 'Traditional Tax Operations vs.'}{' '}
             <span className="text-blue-600 dark:text-blue-400">
-              {language === 'de' ? 'vernetzte Infrastruktur.' : 'unified infrastructure.'}
+              {language === 'de' ? 'vernetzte Steuerinfrastruktur.' : 'Connected Tax Infrastructure.'}
             </span>
           </h1>
 
           <p className="mt-5 text-base sm:text-lg leading-relaxed text-slate-700 dark:text-slate-300 max-w-2xl mx-auto">
             {language === 'de'
-              ? 'Erfahren Sie, wie ZYVORIS manuelle Arbeitspapiere, isolierte Tabellen und intransparente Prüfpfade durch kontrollierte, reproduzierbare Steuerlogik ersetzt.'
-              : 'See how ZYVORIS eliminates manual workpapers, disconnected handoffs, and audit opacity with controlled, reproducible tax logic.'}
+              ? 'Erfahren Sie, wie ZYVORIS fragmentierte Steueroperationen, manuelle Datenaufbereitung und getrennte Prüfpfade durch kontrollierte, deterministische Steuerinfrastruktur ersetzt.'
+              : 'See how ZYVORIS replaces fragmented operating workflows, manual spreadsheet preparation, and audit opacity with controlled, reproducible tax infrastructure.'}
           </p>
         </div>
       </div>

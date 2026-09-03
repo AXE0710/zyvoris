@@ -42,7 +42,7 @@ export default function ComplexStructuresSection() {
         'struct_4_desc',
         'Apply double tax treaty reductions, anti-hybrid rules, and substance verification logic across international investment paths.'
       ),
-      tags: ['WHT Relief at Source', 'ATAD 2 / 3', 'Pillar Two GloBE', 'Substance Rules'],
+      tags: ['Treaty Logic', 'Withholding Tax', 'Entity Classification', 'Cross-Border Allocation Rules'],
     },
   ]
 
@@ -137,6 +137,19 @@ export default function ComplexStructuresSection() {
               </div>
             )
           })}
+        </div>
+
+        {/* Future Expansion Callout */}
+        <div className="mt-8 rounded-2xl border-2 border-slate-900/60 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div className="flex items-start sm:items-center gap-3">
+            <span className="font-mono text-xs font-bold px-2 py-0.5 rounded border border-purple-600/60 bg-purple-500/15 text-purple-700 dark:border-purple-500/60 dark:text-purple-300">
+              EXPANSION
+            </span>
+            <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300">
+              <span className="font-bold text-slate-950 dark:text-white">Architecture designed to extend to additional regimes:</span>{' '}
+              Future expansion areas include Pillar Two, additional withholding regimes, and jurisdiction-specific regulatory frameworks.
+            </p>
+          </div>
         </div>
       </div>
     </section>

@@ -29,7 +29,7 @@ export default function ZyvorisHero({
       id: '03',
       title: t('stage_3_title', 'Tax Logic Engine'),
       desc: t('stage_3_desc', 'Cross-border tax rules & treaties'),
-      tags: ['WHT Treaties', 'Pillar Two', 'Local Code'],
+      tags: ['Treaty Logic', 'Withholding Tax', 'Entity Classification', 'Cross-Border Allocation Rules'],
     },
     {
       id: '04',
@@ -41,8 +41,8 @@ export default function ZyvorisHero({
     {
       id: '05',
       title: t('stage_5_title', 'Jurisdiction Reporting'),
-      desc: t('stage_5_desc', 'Filing-ready outputs & partner statements'),
-      tags: ['XML/PDF Output', 'Human Sign-off'],
+      desc: t('stage_5_desc', 'Structured tax datasets & review-ready outputs'),
+      tags: ['XML/PDF Where Supported', 'Human Sign-off'],
     },
   ]
 
@@ -87,16 +87,19 @@ export default function ZyvorisHero({
             {/* Main Headline */}
             <h1
               className="
-                text-[36px] sm:text-[52px] lg:text-[62px]
+                text-[36px] sm:text-[50px] lg:text-[58px]
                 font-semibold
-                leading-[1.04]
-                tracking-[-0.045em]
+                leading-[1.06]
+                tracking-[-0.04em]
                 text-slate-950 dark:text-white
               "
             >
-              {t('hero_title_1', 'Turn complex fund data into')}{' '}
+              {t('hero_title_1', 'Turn complex fund data into structured,')}{' '}
               <span className="text-blue-600 dark:text-blue-400">
-                {t('hero_title_2', 'jurisdiction-ready tax reporting.')}
+                {t('hero_title_2', 'jurisdiction-specific tax reporting')}
+              </span>{' '}
+              <span className="block sm:inline text-slate-700 dark:text-slate-300 font-normal sm:font-semibold">
+                {t('hero_title_sub', 'through one controlled and traceable infrastructure layer.')}
               </span>
             </h1>
 
@@ -104,7 +107,7 @@ export default function ZyvorisHero({
             <p
               className="
                 mt-5 sm:mt-6
-                max-w-[620px]
+                max-w-[640px]
                 text-base sm:text-lg
                 leading-[1.68]
                 text-slate-700 dark:text-slate-300
@@ -112,7 +115,7 @@ export default function ZyvorisHero({
             >
               {t(
                 'hero_desc',
-                'ZYVORIS connects financial data, fund structures, tax logic, deterministic calculations, and reporting in one unified infrastructure layer built for cross-border private markets.'
+                'ZYVORIS connects financial data, fund structures, tax logic, deterministic calculations, review workflows, and reporting outputs in one integrated infrastructure for cross-border private markets.'
               )}
             </p>
 

@@ -3,7 +3,8 @@
 import React from 'react'
 import SolutionsSection from '@/components/solutions'
 import ComplexStructuresSection from '@/components/complex'
-import ProductScreenshot from '@/components/product-screenshot'
+import CapabilityStatusMatrix from '@/components/capability-status'
+import ProductWorkspaces from '@/components/product-workspaces'
 import { useLanguage } from '@/components/language-provider'
 
 export default function ProductPage() {
@@ -21,9 +22,9 @@ export default function ProductPage() {
           </div>
 
           <h1 className="text-3xl font-semibold tracking-tight sm:text-5xl lg:text-6xl text-slate-950 dark:text-white leading-[1.08]">
-            {language === 'de' ? 'Vollständiges Betriebssystem für' : 'Complete operating system for'}{' '}
+            {language === 'de' ? 'Eine kontrollierte Betriebsschicht für' : 'A controlled operating layer for'}{' '}
             <span className="text-blue-600 dark:text-blue-400">
-              {language === 'de' ? 'Privatmarkt-Fondsbesteuerung.' : 'private fund taxation.'}
+              {language === 'de' ? 'Privatmarkt-Steuerreporting.' : 'private-market tax reporting.'}
             </span>
           </h1>
 
@@ -36,8 +37,9 @@ export default function ProductPage() {
       </div>
 
       <SolutionsSection />
+      <ProductWorkspaces />
+      <CapabilityStatusMatrix />
       <ComplexStructuresSection />
-      <ProductScreenshot />
     </div>
   )
 }

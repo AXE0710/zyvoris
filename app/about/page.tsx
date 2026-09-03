@@ -19,9 +19,12 @@ export default function AboutPage() {
       note: language === 'de' ? 'Regelwerke kodifiziert' : 'Tax logic codified',
     },
     {
-      label: language === 'de' ? 'MVP Reifegrad' : 'MVP Readiness Phase',
-      value: 'Live MVP',
-      note: language === 'de' ? 'Aktive Pipeline' : 'Active Pipeline',
+      label: language === 'de' ? 'Produktphase' : 'Product Stage',
+      value: language === 'de' ? 'Schweiz MVP' : 'Swiss MVP',
+      note:
+        language === 'de'
+          ? 'Fokus: Schweizer Fondssteuer, weitere Länder phasenweise'
+          : 'Focus: Swiss fund tax, additional regimes in phases',
     },
     {
       label: language === 'de' ? 'Geplanter Rechtssitz' : 'Planned Legal Entity',
@@ -57,11 +60,11 @@ export default function AboutPage() {
     },
     {
       num: '04',
-      title: language === 'de' ? 'Zukunftssichere Architektur' : 'Future-Ready Architecture',
+      title: language === 'de' ? 'Erweiterbare Infrastruktur' : 'Extendable Infrastructure',
       description:
         language === 'de'
-          ? 'API-First Plattform, konzipiert für traditionelle Privatmarktfonds, UCITS sowie tokenisierte Anlagevehikel.'
-          : 'API-first platform designed to handle traditional private market funds as well as digital assets and tokenized vehicles.',
+          ? 'Primärer Fokus auf Privatmärkte (PE, VC, Real Estate, Infrastructure, Private Credit). ZYVORIS arbeitet unabhängig von der zugrundeliegenden Eigentumsinfrastruktur, sodass dieselbe Steuerlogik sowohl auf herkömmliche als auch auf tokenisierte Fondsstrukturen angewendet werden kann.'
+          : 'Primary focus on private markets (PE, VC, Real Estate, Infrastructure, Private Credit). ZYVORIS operates independently of underlying ownership infrastructure, allowing the same structured tax logic to apply across both conventional and tokenized fund structures.',
     },
   ]
 
@@ -86,7 +89,7 @@ export default function AboutPage() {
           <p className="mt-5 text-base sm:text-lg leading-relaxed text-slate-700 dark:text-slate-300 max-w-2xl mx-auto">
             {t(
               'company_desc',
-              'ZYVORIS is the global fund tax infrastructure layer connecting complex private market fund structures, source financial feeds, deterministic calculations, and multi-jurisdictional reporting.'
+              'ZYVORIS is building a global tax infrastructure layer for private markets, connecting complex fund structures, source financial feeds, deterministic calculations, and multi-jurisdictional reporting.'
             )}
           </p>
         </div>
@@ -139,10 +142,12 @@ export default function AboutPage() {
                   : 'Today, fund managers, AIFMs, and administrators rely on fragmented spreadsheets, manual tax calculations, and disconnected PDF workpapers. This creates substantial operational expense, review friction, filing delays, and regulatory audit risks.'}
               </p>
               <p className="text-slate-700 dark:text-slate-300 leading-relaxed text-sm sm:text-base">
-                <strong className="text-slate-950 dark:text-white">ZYVORIS schließt diese Lücke.</strong>{' '}
+                <strong className="text-slate-950 dark:text-white">
+                  {language === 'de' ? 'ZYVORIS schließt diese Lücke.' : 'ZYVORIS closes this gap.'}
+                </strong>{' '}
                 {language === 'de'
-                  ? 'Wir bieten ein API-basiertes Betriebssystem, das komplexe grenzüberschreitende Fondsdaten in mathematisch nachprüfbare, deterministische und einreichfertige Steuerberichte umwandelt.'
-                  : 'We provide an API-first operating system that converts complex cross-border fund data into mathematically auditable, deterministic, and jurisdiction-ready tax filings.'}
+                  ? 'Wir bieten eine API-basierte Steuerinfrastruktur, die komplexe grenzüberschreitende Fondsdaten in mathematisch nachprüfbare, deterministische und länderspezifische Steuerberichte umwandelt.'
+                  : 'We provide an API-first operating layer that converts complex cross-border fund data into mathematically auditable, deterministic, and jurisdiction-ready tax datasets.'}
               </p>
 
               <div className="mt-8 flex flex-wrap gap-4">

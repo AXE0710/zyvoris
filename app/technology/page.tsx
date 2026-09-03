@@ -3,6 +3,7 @@
 import React from 'react'
 import AISection from '@/components/ai'
 import VerificationSection from '@/components/verify'
+import TechStackSection from '@/components/tech-stack'
 import SecuritySection from '@/components/security'
 import IntegrationSection from '@/components/integration'
 import { useLanguage } from '@/components/language-provider'
@@ -13,35 +14,35 @@ export default function TechnologyPage() {
   const techHighlights = [
     {
       num: '01',
-      title: language === 'de' ? 'Deterministische Rechen-Engine' : 'Deterministic Math Engine',
+      title: language === 'de' ? 'Deterministische Rechen-Engine' : 'Deterministic Calculation Engine',
       desc:
         language === 'de'
-          ? 'Kein Halluzinationsrisiko. Steuerregeln und Berechnungen laufen strikt deterministisch ab.'
-          : 'Zero hallucination risk. Rules and calculations execute deterministically.',
+          ? 'Numerische Berechnungen werden über vordefinierte und versionskontrollierte Steuerregeln statt probabilistischer KI-Ausgaben ausgeführt. Regeln rechnen. KI interpretiert. Fachleute prüfen.'
+          : 'Numerical calculations are executed using predefined and version-controlled tax rules rather than probabilistic AI outputs. Rules calculate. AI interprets. Professionals review.',
     },
     {
       num: '02',
-      title: language === 'de' ? 'Lückenlose Lineage-Traceability' : 'Immutable Lineage',
+      title: language === 'de' ? 'Nachvollziehbare Lineage' : 'Traceable Lineage',
       desc:
         language === 'de'
-          ? 'Jeder ausgewiesene Betrag lässt sich bis auf Quelldaten und Regelversionen zurückverfolgen.'
-          : 'Every reported number is traceable back to source data and rule versions.',
+          ? 'Jeder ausgewiesene Betrag lässt sich über versionierte Prüfpfade bis auf die Quelldaten zurückverfolgen.'
+          : 'Every reported number is traceable back to source data and rule versions with structured audit logging.',
     },
     {
       num: '03',
-      title: language === 'de' ? 'Zero-Retention KI-Governance' : 'Zero-Retention AI',
+      title: language === 'de' ? 'Zero-Retention KI-Architektur' : 'Zero-Retention AI Architecture',
       desc:
         language === 'de'
-          ? 'Dokumentenextraktion und Klassifikation unterliegen strengsten Datenschutzgrenzen ohne Datenspeicherung.'
-          : 'Document extraction and classification operate under strict privacy boundaries.',
+          ? 'Architekturvorgabe: Dokumentenextraktion erfolgt zustandslos ohne Speicherung von Kundendaten für Modelltrainings.'
+          : 'Architecture boundary: Document extraction runs statelessly without storing customer data for model training.',
     },
     {
       num: '04',
-      title: language === 'de' ? 'Isolierte Datenschemata' : 'Isolated Data Schemas',
+      title: language === 'de' ? 'Mandantenisolations-Architektur' : 'Tenant Isolation Architecture',
       desc:
         language === 'de'
-          ? 'Vollständige logische Mandantentrennung für hochsensible institutionelle Fondsdaten.'
-          : 'Complete logical and tenant isolation for sensitive institutional fund data.',
+          ? 'Logische Mandantentrennung und Schematrennung zum Schutz institutioneller Fondsdaten.'
+          : 'Logical namespace and schema isolation designed to protect institutional fund data.',
     },
   ]
 
@@ -105,6 +106,7 @@ export default function TechnologyPage() {
       {/* DETAILED SECTIONS */}
       <AISection />
       <VerificationSection />
+      <TechStackSection />
       <SecuritySection />
       <IntegrationSection />
     </div>

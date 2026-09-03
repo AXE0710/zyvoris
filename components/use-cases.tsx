@@ -11,6 +11,8 @@ export default function UseCases() {
       id: 'fund-tax',
       number: '01',
       title: t('uc_1_title', 'Fund Tax Calculation'),
+      status: 'MVP',
+      statusType: 'mvp' as const,
       shortDesc: t('uc_1_desc', 'Automated, jurisdiction-specific tax calculations.'),
       problem: t(
         'uc_1_prob',
@@ -23,6 +25,8 @@ export default function UseCases() {
       id: 'share-class',
       number: '02',
       title: t('uc_2_title', 'Share-Class Tax Allocation'),
+      status: 'MVP',
+      statusType: 'mvp' as const,
       shortDesc: t('uc_2_desc', 'Precise multi-tier share-class tax distribution.'),
       problem: t(
         'uc_2_prob',
@@ -35,6 +39,8 @@ export default function UseCases() {
       id: 'investor-reporting',
       number: '03',
       title: t('uc_3_title', 'Investor Tax Reporting'),
+      status: 'In Development',
+      statusType: 'development' as const,
       shortDesc: t('uc_3_desc', 'Standardized investor tax statement generation.'),
       problem: t(
         'uc_3_prob',
@@ -47,6 +53,8 @@ export default function UseCases() {
       id: 'cross-border',
       number: '04',
       title: t('uc_4_title', 'Cross-Border Tax Analysis'),
+      status: 'Roadmap',
+      statusType: 'roadmap' as const,
       shortDesc: t('uc_4_desc', 'Multi-jurisdictional tax compliance logic.'),
       problem: t(
         'uc_4_prob',
@@ -59,6 +67,8 @@ export default function UseCases() {
       id: 'k1-k3',
       number: '05',
       title: t('uc_5_title', 'K-1 / K-3 Intelligence'),
+      status: 'Roadmap',
+      statusType: 'roadmap' as const,
       shortDesc: t('uc_5_desc', 'Partnership tax data extraction and modeling.'),
       problem: t(
         'uc_5_prob',
@@ -139,8 +149,16 @@ export default function UseCases() {
                   </p>
                 </div>
 
-                <span className="font-mono text-xs font-bold text-slate-900 dark:text-slate-200">
-                  WORKFLOW
+                <span
+                  className={`rounded border px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase shrink-0 ${
+                    item.statusType === 'mvp'
+                      ? 'bg-emerald-500/15 border-emerald-600 text-emerald-700 dark:bg-emerald-950/50 dark:border-emerald-500 dark:text-emerald-300'
+                      : item.statusType === 'development'
+                      ? 'bg-amber-500/15 border-amber-600 text-amber-700 dark:bg-amber-950/50 dark:border-amber-500 dark:text-amber-300'
+                      : 'bg-slate-100 dark:bg-slate-800 border-slate-900 dark:border-slate-700 text-slate-700 dark:text-slate-300'
+                  }`}
+                >
+                  {item.status}
                 </span>
               </div>
 
