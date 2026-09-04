@@ -142,3 +142,17 @@ body {
 .dark ::-webkit-scrollbar-thumb:hover {
   background: #475569;
 }
+
+@keyframes tabProgress {
+  from {
+    width: 0%;
+  }
+  to {
+    width: 100%;
+  }
+}
+
+.animate-tab-progress {
+  animation: tabProgress 5s linear forwards;
+}
+

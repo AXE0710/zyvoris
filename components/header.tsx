@@ -14,7 +14,7 @@ export default function Header() {
   const navigation = [
     {
       label: t('nav_platform', 'Platform'),
-      href: '/product',
+      href: '/platform',
     },
     {
       label: t('nav_use_cases', 'Use Cases'),
@@ -26,28 +26,9 @@ export default function Header() {
     },
     {
       label: t('nav_company', 'Company'),
-      href: '/about',
-    },
-    {
-      label: t('nav_team', 'Team'),
-      href: '/team',
-    },
-    {
-      label: t('nav_compare', 'Compare'),
-      href: '/compare',
+      href: '/company',
     },
   ]
-
-  const scrollToFooter = (e: React.MouseEvent<HTMLAnchorElement>) => {
-    const footer = document.getElementById('footer')
-
-    if (footer) {
-      e.preventDefault()
-      footer.scrollIntoView({ behavior: 'smooth' })
-    }
-
-    setMenuOpen(false)
-  }
 
   return (
     <header className="fixed left-0 right-0 top-0 z-50 transition-all duration-200">
@@ -120,8 +101,8 @@ export default function Header() {
             <ThemeToggle />
 
             <Link
-              href="#footer"
-              onClick={scrollToFooter}
+              href="/contact"
+              onClick={() => setMenuOpen(false)}
               className="
                 group
                 flex items-center gap-2
@@ -141,7 +122,7 @@ export default function Header() {
                 hover:-translate-y-0.5
               "
             >
-              <span>{t('nav_talk', 'Talk to ZYVORIS')}</span>
+              <span>{t('nav_book_demo', 'Book a Demo')}</span>
               <span className="font-mono text-sm leading-none">→</span>
             </Link>
           </div>
@@ -219,8 +200,8 @@ export default function Header() {
               <LanguageToggle variant="full" className="w-full" />
 
               <Link
-                href="#footer"
-                onClick={scrollToFooter}
+                href="/contact"
+                onClick={() => setMenuOpen(false)}
                 className="
                   flex items-center justify-center gap-2
                   rounded-xl
@@ -235,7 +216,7 @@ export default function Header() {
                   hover:bg-blue-700
                 "
               >
-                <span>{t('nav_talk', 'Talk to ZYVORIS')}</span>
+                <span>{t('nav_book_demo', 'Book a Demo')}</span>
                 <span className="font-mono text-sm leading-none">→</span>
               </Link>
             </div>

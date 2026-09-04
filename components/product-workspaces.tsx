@@ -1,10 +1,12 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect, useRef, useCallback } from 'react'
 import Image from 'next/image'
 import { useLanguage } from './language-provider'
 
-type WorkspaceTabId = 'overview' | 'workspace' | 'allocation' | 'validation' | 'trace' | 'reporting'
+// ─── Tab configuration ────────────────────────────────────────────────────────
+
+type TabId = 'calculate' | 'review' | 'trace' | 'report'
 
 interface SubView {
   id: string
@@ -12,371 +14,197 @@ interface SubView {
   labelDe: string
   image: string
   alt: string
-  captionEn: string
-  captionDe: string
 }
 
-interface WorkspaceTabConfig {
-  id: WorkspaceTabId
+interface Tab {
+  id: TabId
   num: string
-  titleEn: string
-  titleDe: string
-  tag: string
+  en: { title: string; desc: string }
+  de: { title: string; desc: string }
   defaultImage: string
   subViews?: SubView[]
-  highlightsEn: { title: string; desc: string; badge?: string }[]
-  highlightsDe: { title: string; desc: string; badge?: string }[]
+  urlSlug: string
 }
 
-const WORKSPACES: WorkspaceTabConfig[] = [
+const TABS: Tab[] = [
   {
-    id: 'overview',
+    id: 'calculate',
     num: '01',
-    titleEn: 'Fund Overview',
-    titleDe: 'Fonds-Übersicht',
-    tag: 'PORTFOLIO STATUS',
-    defaultImage: '/1_fund_overview.png',
-    highlightsEn: [
-      {
-        title: 'Master Vehicle & Domiciles',
-        desc: 'Alpine Global PE Fund IV (SCSp) mapped across Swiss ESTV Circular 24/25 and Luxembourg jurisdictions.',
-        badge: 'SCSp / CH-LU',
-      },
-      {
-        title: 'Multi-Class Directory',
-        desc: 'Real-time tracking of Class A (CHF Inst.), Class B (EUR Retail), Class C (USD Carry), and Class S (Seed/GP).',
-        badge: '4 CLASSES',
-      },
-      {
-        title: 'Filing Readiness',
-        desc: 'Automated reconciliation and cut-off status tracking across fiscal year accounting cycles.',
-        badge: 'IN-REVIEW',
-      },
-    ],
-    highlightsDe: [
-      {
-        title: 'Master-Vehikel & Domizile',
-        desc: 'Alpine Global PE Fund IV (SCSp) abgebildet über ESTV-Kreisschreiben 24/25 und Luxemburger Rechtsräume.',
-        badge: 'SCSp / CH-LU',
-      },
-      {
-        title: 'Mehrklassen-Verzeichnis',
-        desc: 'Echtzeit-Tracking von Klasse A (CHF Inst.), Klasse B (EUR Retail), Klasse C (USD Carry) und Klasse S (Seed/GP).',
-        badge: '4 KLASSEN',
-      },
-      {
-        title: 'Meldereife & Status',
-        desc: 'Automatische Abstimmung und Stichtags-Tracking über gesamte Geschäftsjahres-Zyklen.',
-        badge: 'IN-PRÜFUNG',
-      },
-    ],
-  },
-  {
-    id: 'workspace',
-    num: '02',
-    titleEn: 'Calculation Workspace',
-    titleDe: 'Berechnungs-Workspace',
-    tag: 'DETERMINISTIC ENGINE',
+    en: { title: 'Calculate', desc: 'Run structured tax calculations and allocations.' },
+    de: { title: 'Berechnen',  desc: 'Strukturierte Steuerberechnungen und Allokationen ausführen.' },
     defaultImage: '/2_calculation_workspace.png',
-    highlightsEn: [
-      {
-        title: 'Versioned Statutory Rules',
-        desc: 'Codified Swiss ESTV KS24 capital gains exemption and KS25 dividend gross-up rules executed deterministically.',
-        badge: 'ESTV KS 24/25',
-      },
-      {
-        title: 'Real-Time Financial Ledger',
-        desc: 'Live reconciliation between accounting valuation, statutory tax adjustments, and taxable net yields.',
-        badge: 'ZERO GUESSWORK',
-      },
-      {
-        title: 'Mathematical Precision',
-        desc: 'Apportioned operating expenses and tax exemptions calculated without probabilistic approximation.',
-        badge: 'EXACT MATH',
-      },
-    ],
-    highlightsDe: [
-      {
-        title: 'Versionierte Steuerregeln',
-        desc: 'Kodifizierte ESTV KS24 Kapitalgewinnbefreiungen und KS25 Dividenden-Gross-Up-Regeln deterministisch ausgeführt.',
-        badge: 'ESTV KS 24/25',
-      },
-      {
-        title: 'Echtzeit-Steuerledger',
-        desc: 'Live-Abstimmung zwischen handelsrechtlicher Bewertung, Steuerkorrekturen und steuerbaren Nettoerträgen.',
-        badge: 'NULL SCHÄTZUNG',
-      },
-      {
-        title: 'Mathematische Exaktheit',
-        desc: 'Aufgeteilte Betriebsausgaben und Steuerbefreiungen ohne probabilistische Ungenauigkeiten berechnet.',
-        badge: 'EXAKTE MATHEMATIK',
-      },
-    ],
-  },
-  {
-    id: 'allocation',
-    num: '03',
-    titleEn: 'Share-Class Allocation',
-    titleDe: 'Anteilsklassen-Allokation',
-    tag: 'WATERFALL & ALLOCATION',
-    defaultImage: '/3_share_class_allocation.png',
     subViews: [
       {
-        id: 'allocation-waterfall',
-        labelEn: 'Class Allocation Waterfall',
-        labelDe: 'Klassen-Allokations-Wasserfall',
+        id: 'calc-workspace',
+        labelEn: 'Calculation Workspace',
+        labelDe: 'Berechnungs-Workspace',
+        image: '/2_calculation_workspace.png',
+        alt: 'ZYVORIS calculation workspace',
+      },
+      {
+        id: 'calc-allocation',
+        labelEn: 'Share-Class Allocation',
+        labelDe: 'Anteilsklassen-Allokation',
         image: '/3_share_class_allocation.png',
-        alt: 'ZYVORIS share-class allocation waterfall screenshot',
-        captionEn: 'Primary weighted equity allocation waterfall across all investor unit tranches.',
-        captionDe: 'Primärer gewichteter Eigenkapital-Allokations-Wasserfall über alle Anteilsklassen.',
-      },
-      {
-        id: 'allocation-reconciliation',
-        labelEn: 'Reconciliation Matrix',
-        labelDe: 'Abstimmungs-Matrix',
-        image: '/3b_share_class_reconciliation.png',
-        alt: 'ZYVORIS share-class reconciliation matrix screenshot',
-        captionEn: 'Detailed trial balance reconciliation matrix confirming 0.00 variance across classes.',
-        captionDe: 'Detaillierte Saldenabstimmungsmatrix mit Bestätigung von 0,00 Abweichung über alle Klassen.',
+        alt: 'ZYVORIS share-class allocation',
       },
     ],
-    highlightsEn: [
-      {
-        title: 'Weighted Equity Allocation',
-        desc: 'Deterministic distribution of taxable net income and tax asset basis under Swiss Circular 24.',
-        badge: 'CIRCULAR 24',
-      },
-      {
-        title: 'Investor Equalization',
-        desc: 'Automated equalization adjustments reconciling entry and exit cash flows across tranches.',
-        badge: 'EQUALIZATION',
-      },
-      {
-        title: '100% Reconciled Balance',
-        desc: 'Sum of share-class allocated taxable income matches fund trial balance within CHF 0.00 tolerance.',
-        badge: '0.00 VARIANCE',
-      },
-    ],
-    highlightsDe: [
-      {
-        title: 'Gewichtete Eigenkapitalallokation',
-        desc: 'Deterministische Verteilung von steuerbarem Nettoeinkommen und Steuerwerten nach ESTV-KS 24.',
-        badge: 'KREISSCHREIBEN 24',
-      },
-      {
-        title: 'Anleger-Equalization',
-        desc: 'Automatisierte Equalization-Korrekturen zum Ausgleich von Ein- und Austrittsflüssen über Tranchen.',
-        badge: 'EQUALISATION',
-      },
-      {
-        title: '100% Abgestimmter Saldo',
-        desc: 'Summe der allokierten steuerbaren Erträge stimmt exakt mit dem Fondssaldo überein (0,00 CHF Toleranz).',
-        badge: '0,00 ABWEICHUNG',
-      },
-    ],
+    urlSlug: 'calculate',
   },
   {
-    id: 'validation',
-    num: '04',
-    titleEn: 'Validation & Exceptions',
-    titleDe: 'Validierung & Ausnahmen',
-    tag: 'EXCEPTION TRIAGE',
+    id: 'review',
+    num: '02',
+    en: { title: 'Review', desc: 'Identify exceptions and validate results before reporting.' },
+    de: { title: 'Prüfen',  desc: 'Ausnahmen identifizieren und Ergebnisse vor dem Reporting validieren.' },
     defaultImage: '/4_validation_exceptions.png',
-    highlightsEn: [
-      {
-        title: 'Automated Pre-Filing Triage',
-        desc: 'Real-time detection of data variances, withholding tax ceiling breaches, and classification gaps.',
-        badge: 'PRE-FILING GATE',
-      },
-      {
-        title: 'Security Master Integrity',
-        desc: 'Full ISIN verification against official Swiss Federal Tax Administration (ESTV) security masters.',
-        badge: 'ESTV MATCH',
-      },
-      {
-        title: 'Professional Override Log',
-        desc: 'Structured audit trail capturing professional reviewer notes, rationale, and timestamps for every adjustment.',
-        badge: 'AUDIT LOGGED',
-      },
-    ],
-    highlightsDe: [
-      {
-        title: 'Automatisierte Vorab-Triage',
-        desc: 'Echtzeit-Erkennung von Datenabweichungen, Quellensteuer-DBA-Deckelüberschreitungen und Klassifikationslücken.',
-        badge: 'VORAB-PRÜFGATE',
-      },
-      {
-        title: 'Wertpapierstamm-Integrität',
-        desc: 'Vollständige ISIN-Verifikation gegen offizielle ESTV-Wertschriftenverzeichnisse.',
-        badge: 'ESTV-ABGLEICH',
-      },
-      {
-        title: 'Revisionssicheres Override-Protokoll',
-        desc: 'Strukturierter Audit-Trail zur Dokumentation von Fachkommentaren, Begründungen und Zeitstempeln.',
-        badge: 'REVISIONSFEST',
-      },
-    ],
+    urlSlug: 'review',
   },
   {
     id: 'trace',
-    num: '05',
-    titleEn: 'Calculation Trace',
-    titleDe: 'Berechnungs-Lineage',
-    tag: 'AUDIT TRAIL',
+    num: '03',
+    en: { title: 'Trace', desc: 'Understand how outputs connect back to source data and applied tax logic.' },
+    de: { title: 'Nachverfolgen', desc: 'Verstehen, wie Outputs mit Quelldaten und angewandter Steuerlogik verbunden sind.' },
     defaultImage: '/5_calculation_trace.png',
     subViews: [
       {
-        id: 'trace-pipeline',
-        labelEn: 'Lineage Pipeline DAG',
-        labelDe: 'Lineage-Pipeline-Graph',
+        id: 'trace-dag',
+        labelEn: 'Lineage Pipeline',
+        labelDe: 'Lineage-Pipeline',
         image: '/5_calculation_trace.png',
-        alt: 'ZYVORIS calculation trace pipeline screenshot',
-        captionEn: 'Visual directed acyclic graph (DAG) tracing source data through classifications and calculations.',
-        captionDe: 'Visueller Graph zur lückenlosen Nachverfolgung vom Quelldatum bis zur Berechnung.',
+        alt: 'ZYVORIS calculation trace lineage pipeline',
       },
       {
         id: 'trace-table',
-        labelEn: 'Lineage Audit Table',
-        labelDe: 'Lineage-Audit-Tabelle',
+        labelEn: 'Lineage Table',
+        labelDe: 'Lineage-Tabelle',
         image: '/5b_calculation_trace_lineage_table.png',
-        alt: 'ZYVORIS calculation trace lineage table screenshot',
-        captionEn: 'Granular step-by-step transaction table with SHA-256 cryptographic hashes and formula traces.',
-        captionDe: 'Detaillierte Transaktions-Lineage-Tabelle mit kryptografischen SHA-256-Prüfsummen.',
+        alt: 'ZYVORIS calculation trace lineage table',
       },
     ],
-    highlightsEn: [
-      {
-        title: 'Source-to-Output Lineage',
-        desc: 'Unbroken chain connecting final report numbers to raw custody transactions, GL feeds, and rule IDs.',
-        badge: 'UNBROKEN CHAIN',
-      },
-      {
-        title: 'Cryptographic Proof',
-        desc: 'SHA-256 data integrity hashes guaranteeing that source records and formulas remain untampered.',
-        badge: 'SHA-256 VERIFIED',
-      },
-      {
-        title: 'Inspection-Ready Audit',
-        desc: 'Engineered specifically for Big 4 audit teams, tax authorities, and institutional LP due diligence.',
-        badge: 'AUDITOR READY',
-      },
-    ],
-    highlightsDe: [
-      {
-        title: 'Vollständige Ursprungs-Lineage',
-        desc: 'Lückenlose Kette vom finalen Meldewert zu Rohdaten der Verwahrstelle, Hauptbuchfeeds und Regel-IDs.',
-        badge: 'LÜCKENLOSE KETTE',
-      },
-      {
-        title: 'Kryptografischer Nachweis',
-        desc: 'SHA-256-Prüfsummen gewährleisten die Unveränderbarkeit von Quelldaten und Rechenregeln.',
-        badge: 'SHA-256 GEPRÜFT',
-      },
-      {
-        title: 'Prüfungsbereiter Nachweis',
-        desc: 'Entwickelt für Big-4-Wirtschaftsprüfer, Steuerverwaltungen und Due Diligence institutioneller Anleger.',
-        badge: 'REVISIONSSICHER',
-      },
-    ],
+    urlSlug: 'trace',
   },
   {
-    id: 'reporting',
-    num: '06',
-    titleEn: 'Reporting Output',
-    titleDe: 'Berichts-Output',
-    tag: 'TAX PACKAGES',
+    id: 'report',
+    num: '04',
+    en: { title: 'Report', desc: 'Prepare structured jurisdiction-specific reporting outputs.' },
+    de: { title: 'Reporting', desc: 'Strukturierte jurisdiktionsspezifische Reporting-Outputs erstellen.' },
     defaultImage: '/6_reporting_output.png',
     subViews: [
       {
-        id: 'reporting-package',
-        labelEn: 'Tax Datasets & ICTax',
-        labelDe: 'Steuer-Datensätze & ICTax',
+        id: 'report-dataset',
+        labelEn: 'Tax Dataset & ICTax',
+        labelDe: 'Steuerdatensatz & ICTax',
         image: '/6_reporting_output.png',
-        alt: 'ZYVORIS reporting output package screenshot',
-        captionEn: 'Standardized jurisdiction datasets ready for Swiss ESTV ICTax filing integration.',
-        captionDe: 'Standardisierte Steuerdatensätze für die Schweizer ESTV ICTax-Einreichung.',
+        alt: 'ZYVORIS reporting output dataset',
       },
       {
-        id: 'reporting-approval',
-        labelEn: 'PDF/XML & Dual Sign-Off',
-        labelDe: 'PDF/XML & Freigabe-Gate',
+        id: 'report-approval',
+        labelEn: 'PDF / XML & Sign-Off',
+        labelDe: 'PDF / XML & Freigabe',
         image: '/6b_reporting_pdf_xml_and_approval.png',
-        alt: 'ZYVORIS reporting PDF XML and sign-off screenshot',
-        captionEn: 'Dual-sign-off approval workflow and downloadable investor tax certificates (PDF/XML).',
-        captionDe: 'Vier-Augen-Freigabe-Workflow und druckfertige Anleger-Steuerausweise (PDF/XML).',
+        alt: 'ZYVORIS PDF XML sign-off approval',
       },
     ],
-    highlightsEn: [
-      {
-        title: 'ESTV ICTax Schema Ready',
-        desc: 'Structured electronic dataset formatted to Swiss Federal Tax Administration reporting specifications.',
-        badge: 'CH-ESTV XML',
-      },
-      {
-        title: 'Investor Certificates',
-        desc: 'Review-ready investor tax certificates breaking down taxable dividends, capital gains, and wealth tax base.',
-        badge: 'PDF / CSV',
-      },
-      {
-        title: 'Dual-Approval Governance',
-        desc: 'Controlled four-eyes review gate requiring senior tax advisor sign-off prior to filing dispatch.',
-        badge: 'DUAL SIGN-OFF',
-      },
-    ],
-    highlightsDe: [
-      {
-        title: 'ESTV-ICTax-Konformität',
-        desc: 'Strukturierte elektronische Meldedatensätze nach Vorgaben der Eidgenössischen Steuerverwaltung.',
-        badge: 'CH-ESTV XML',
-      },
-      {
-        title: 'Anleger-Steuerausweise',
-        desc: 'Prüffähige Steuerausweise mit Aufgliederung in Dividenden, steuerfreie Kapitalgewinne und Vermögenssteuer.',
-        badge: 'PDF / CSV',
-      },
-      {
-        title: 'Vier-Augen-Governance',
-        desc: 'Kontrolliertes Freigabe-Gate mit verpflichtender Bestätigung durch den leitenden Steuerexperten.',
-        badge: 'VIER-AUGEN-PRINZIP',
-      },
-    ],
+    urlSlug: 'report',
   },
 ]
 
+const AUTOPLAY_DURATION_MS = 5000
+
 export default function ProductWorkspaces() {
   const { language } = useLanguage()
-  const [activeTab, setActiveTab] = useState<WorkspaceTabId>('overview')
-  const [subViewSelection, setSubViewSelection] = useState<Record<string, string>>({
-    allocation: 'allocation-waterfall',
-    trace: 'trace-pipeline',
-    reporting: 'reporting-package',
+  const lang = language === 'de' ? 'de' : 'en'
+
+  const [activeIdx, setActiveIdx] = useState(0)
+  const [isPaused, setIsPaused] = useState(false)
+  const [subSel, setSubSel] = useState<Record<string, string>>({
+    calculate: 'calc-workspace',
+    trace: 'trace-dag',
+    report: 'report-dataset',
   })
 
-  const currentTab = WORKSPACES.find((w) => w.id === activeTab) || WORKSPACES[0]
+  const tabRefs = useRef<(HTMLButtonElement | null)[]>([])
+  const tabsContainerRef = useRef<HTMLDivElement | null>(null)
 
-  // Determine current active image for current tab
-  const getCurrentImage = (): { src: string; alt: string; caption: string } => {
-    if (currentTab.subViews && currentTab.subViews.length > 0) {
-      const selectedSubId = subViewSelection[currentTab.id] || currentTab.subViews[0].id
-      const subView = currentTab.subViews.find((sv) => sv.id === selectedSubId) || currentTab.subViews[0]
-      return {
-        src: subView.image,
-        alt: subView.alt,
-        caption: language === 'de' ? subView.captionDe : subView.captionEn,
-      }
+  // Touch gesture state
+  const touchStartX = useRef<number | null>(null)
+  const touchStartY = useRef<number | null>(null)
+
+  const activeTab = TABS[activeIdx]
+
+  const nextTab = useCallback(() => {
+    setActiveIdx((prev) => (prev + 1) % TABS.length)
+  }, [])
+
+  const prevTab = useCallback(() => {
+    setActiveIdx((prev) => (prev - 1 + TABS.length) % TABS.length)
+  }, [])
+
+  // Auto-scroll / autoplay timer
+  useEffect(() => {
+    if (isPaused) return
+
+    const timer = setInterval(() => {
+      nextTab()
+    }, AUTOPLAY_DURATION_MS)
+
+    return () => clearInterval(timer)
+  }, [isPaused, nextTab, activeIdx])
+
+  // Keep active tab horizontally in view within the strip — no full-page scroll
+  useEffect(() => {
+    const container = tabsContainerRef.current
+    const el = tabRefs.current[activeIdx]
+    if (!container || !el) return
+
+    const containerLeft = container.scrollLeft
+    const containerRight = containerLeft + container.clientWidth
+    const elLeft = el.offsetLeft
+    const elRight = elLeft + el.offsetWidth
+
+    if (elLeft < containerLeft) {
+      container.scrollTo({ left: elLeft - 12, behavior: 'smooth' })
+    } else if (elRight > containerRight) {
+      container.scrollTo({ left: elRight - container.clientWidth + 12, behavior: 'smooth' })
     }
-    return {
-      src: currentTab.defaultImage,
-      alt: `ZYVORIS ${currentTab.titleEn} platform screenshot`,
-      caption:
-        language === 'de'
-          ? `Authentische Benutzeroberfläche: ${currentTab.titleDe}`
-          : `Authentic platform interface: ${currentTab.titleEn}`,
-    }
+  }, [activeIdx])
+
+  // Touch handlers for swipe scroll
+  const handleTouchStart = (e: React.TouchEvent) => {
+    touchStartX.current = e.touches[0].clientX
+    touchStartY.current = e.touches[0].clientY
+    setIsPaused(true)
   }
 
-  const activeImage = getCurrentImage()
-  const highlights = language === 'de' ? currentTab.highlightsDe : currentTab.highlightsEn
+  const handleTouchEnd = (e: React.TouchEvent) => {
+    if (touchStartX.current === null || touchStartY.current === null) return
+    const deltaX = e.changedTouches[0].clientX - touchStartX.current
+    const deltaY = e.changedTouches[0].clientY - touchStartY.current
+
+    // Detect horizontal swipe if deltaX is larger than vertical scroll
+    if (Math.abs(deltaX) > Math.abs(deltaY) && Math.abs(deltaX) > 40) {
+      if (deltaX < 0) {
+        nextTab()
+      } else {
+        prevTab()
+      }
+    }
+
+    touchStartX.current = null
+    touchStartY.current = null
+    // Resume autoplay after brief delay
+    setTimeout(() => setIsPaused(false), 2500)
+  }
+
+  // Active image calculation
+  const activeImage = (() => {
+    if (activeTab.subViews?.length) {
+      const selId = subSel[activeTab.id] ?? activeTab.subViews[0].id
+      const sv = activeTab.subViews.find((s) => s.id === selId) ?? activeTab.subViews[0]
+      return { src: sv.image, alt: sv.alt }
+    }
+    return { src: activeTab.defaultImage, alt: `ZYVORIS ${activeTab.en.title} workspace` }
+  })()
 
   return (
     <section
@@ -390,183 +218,260 @@ export default function ProductWorkspaces() {
         text-[#0b1533] dark:text-slate-100
         transition-colors duration-200
       "
+      onMouseEnter={() => setIsPaused(true)}
+      onMouseLeave={() => setIsPaused(false)}
     >
       <div className="relative mx-auto max-w-[1420px]">
-        {/* Header */}
-        <div className="grid grid-cols-1 gap-6 lg:grid-cols-[1.1fr_0.8fr] lg:items-end">
-          <div>
+
+        {/* ── Section header ── */}
+        <div className="flex flex-col sm:flex-row sm:items-end sm:justify-between gap-6 mb-8 sm:mb-12">
+          <div className="max-w-3xl">
             <div className="mb-4 flex items-center gap-2.5">
               <span className="h-px w-8 bg-blue-600 dark:bg-blue-400" />
               <span className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-blue-600 dark:text-blue-400">
-                {language === 'de' ? 'PRODUKT-OBERFLÄCHE & WORKSPACES' : 'LIVE PLATFORM WORKSPACES'}
+                {language === 'de' ? 'PLATTFORM-WORKSPACE' : 'PLATFORM WORKSPACE'}
               </span>
             </div>
 
-            <h2 className="max-w-[780px] text-3xl font-semibold leading-[1.08] tracking-[-0.04em] text-slate-950 dark:text-white sm:text-4xl lg:text-5xl">
-              {language === 'de' ? 'Echte Software für' : 'Controlled Software for'}{' '}
-              <span className="text-blue-600 dark:text-blue-400">
-                {language === 'de' ? 'institutionelle Steueroperationen.' : 'Institutional Tax Operations.'}
-              </span>
+            <h2 className="text-3xl font-semibold leading-[1.08] tracking-[-0.03em] text-slate-950 dark:text-white sm:text-4xl lg:text-5xl">
+              {language === 'de'
+                ? 'Steuer-Workflows an einem Ort verwalten.'
+                : 'Manage tax workflows in one place.'}
             </h2>
           </div>
 
-          <p className="max-w-[540px] text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-300 lg:ml-auto">
-            {language === 'de'
-              ? 'Keine abstrakten Folien: Erkunden Sie die interaktiven Berechnungs- und Prüf-Workspaces von ZYVORIS, die Fondsdaten, Steuergesetze und Freigabeworkflows in einer produktionsreifen Oberfläche vereinen.'
-              : 'Functioning tax software, not conceptual mockups. Explore the six operational workspaces connecting fund records, rule-based execution, exception triage, and verified tax outputs.'}
-          </p>
+          {/* Controls: Prev, Next, Autoplay indicator */}
+          <div className="flex items-center gap-3 self-start sm:self-end shrink-0">
+            <div className="flex items-center gap-1.5 rounded-xl border-2 border-slate-900 dark:border-slate-700 bg-white dark:bg-slate-900 p-1 shadow-xs">
+              <button
+                type="button"
+                onClick={() => {
+                  prevTab()
+                  setIsPaused(true)
+                  setTimeout(() => setIsPaused(false), 3000)
+                }}
+                aria-label="Previous workspace"
+                className="flex h-8 w-8 items-center justify-center rounded-lg font-mono text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              >
+                ←
+              </button>
+
+              <span className="px-2 font-mono text-xs font-extrabold text-blue-600 dark:text-blue-400">
+                0{activeIdx + 1} / 0{TABS.length}
+              </span>
+
+              <button
+                type="button"
+                onClick={() => {
+                  nextTab()
+                  setIsPaused(true)
+                  setTimeout(() => setIsPaused(false), 3000)
+                }}
+                aria-label="Next workspace"
+                className="flex h-8 w-8 items-center justify-center rounded-lg font-mono text-xs font-bold text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+              >
+                →
+              </button>
+            </div>
+          </div>
         </div>
 
-        {/* Workspace Primary Tab Navigation Bar */}
-        <div className="mt-12 flex items-center gap-2 overflow-x-auto pb-2 scrollbar-none">
-          {WORKSPACES.map((tab) => {
-            const isSelected = activeTab === tab.id
+        {/* ── Tab strip — compact pill labels only ── */}
+        <div
+          ref={tabsContainerRef}
+          className="
+            relative flex items-center gap-2 mb-6
+            overflow-x-auto pb-1 sm:pb-0
+            scrollbar-none
+          "
+        >
+          {/* Progress bar under the strip */}
+          {!isPaused && (
+            <div
+              key={`${activeIdx}-progress`}
+              className="absolute bottom-0 left-0 h-0.5 bg-blue-600 dark:bg-blue-400 rounded-full"
+              style={{
+                animation: `tabProgress ${AUTOPLAY_DURATION_MS}ms linear forwards`,
+              }}
+            />
+          )}
+
+          {TABS.map((t, idx) => {
+            const active = idx === activeIdx
             return (
               <button
-                key={tab.id}
+                key={t.id}
+                ref={(el) => { tabRefs.current[idx] = el }}
                 type="button"
-                onClick={() => setActiveTab(tab.id)}
-                className={`group flex shrink-0 items-center gap-2.5 rounded-xl border-2 px-4 py-2.5 font-mono text-xs font-bold transition-all ${
-                  isSelected
-                    ? 'border-slate-950 bg-slate-950 text-white shadow-md dark:border-blue-500 dark:bg-blue-600'
-                    : 'border-slate-900 bg-white text-slate-800 hover:border-blue-600 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-300 dark:hover:border-slate-500'
-                }`}
+                onClick={() => {
+                  setActiveIdx(idx)
+                  setIsPaused(true)
+                  setTimeout(() => setIsPaused(false), 3000)
+                }}
+                className={`
+                  shrink-0 flex items-center gap-2
+                  rounded-xl border-2 px-4 py-2
+                  font-mono text-xs font-bold
+                  transition-all duration-200 whitespace-nowrap
+                  ${active
+                    ? 'border-slate-950 bg-slate-950 text-white dark:border-blue-500 dark:bg-blue-600'
+                    : 'border-slate-900/60 bg-white text-slate-700 hover:border-slate-900 dark:border-slate-700 dark:bg-slate-900 dark:text-slate-400 dark:hover:border-slate-500'
+                  }
+                `}
               >
-                <span
-                  className={`text-[11px] font-extrabold ${
-                    isSelected ? 'text-blue-400 dark:text-blue-200' : 'text-blue-600 dark:text-blue-400'
-                  }`}
-                >
-                  [{tab.num}]
+                <span className={`text-[10px] font-extrabold ${active ? 'text-blue-300 dark:text-blue-200' : 'text-blue-600 dark:text-blue-400'}`}>
+                  [{t.num}]
                 </span>
-                <span>{language === 'de' ? tab.titleDe : tab.titleEn}</span>
+                <span className="text-sm font-bold">{t[lang].title}</span>
               </button>
             )
           })}
         </div>
 
-        {/* Workspace Display Container (Browser Frame with Bold Black Borders) */}
-        <div className="mt-6 rounded-3xl border-2 border-slate-900 dark:border-slate-700 bg-white dark:bg-slate-900 shadow-2xl overflow-hidden">
-          {/* Top Browser Window Header */}
-          <div className="flex h-11 items-center justify-between border-b-2 border-slate-900 dark:border-slate-800 bg-slate-100 dark:bg-slate-800/90 px-4 sm:px-6">
-            <div className="flex items-center gap-2 font-mono text-xs text-slate-800 dark:text-slate-400">
-              <span className="h-2.5 w-2.5 rounded-full bg-rose-500/80" />
-              <span className="h-2.5 w-2.5 rounded-full bg-amber-500/80" />
-              <span className="h-2.5 w-2.5 rounded-full bg-emerald-500/80" />
-              <span className="ml-2 hidden font-bold sm:inline text-slate-800 dark:text-slate-200">
-                ZYVORIS Platform Engine
+        {/* ── Screenshot Frame with Touch & Swipe support ── */}
+        <div
+          onTouchStart={handleTouchStart}
+          onTouchEnd={handleTouchEnd}
+          className="
+            relative rounded-3xl border-2 border-slate-900 dark:border-slate-700
+            bg-white dark:bg-slate-900 overflow-hidden shadow-2xl
+            cursor-grab active:cursor-grabbing select-none
+          "
+        >
+          {/* Browser chrome top bar */}
+          <div className="flex h-11 items-center justify-between border-b-2 border-slate-900 dark:border-slate-800 bg-slate-100 dark:bg-slate-800/90 px-3 sm:px-6 gap-2">
+            <div className="flex items-center gap-2 shrink-0">
+              <span className="h-2.5 w-2.5 rounded-full bg-rose-400/80" />
+              <span className="h-2.5 w-2.5 rounded-full bg-amber-400/80" />
+              <span className="h-2.5 w-2.5 rounded-full bg-emerald-400/80" />
+              <span className="ml-2 hidden font-mono text-xs font-bold text-slate-700 dark:text-slate-300 sm:inline">
+                ZYVORIS Platform
               </span>
             </div>
 
-            <div className="flex items-center gap-2 rounded-lg border border-slate-900/40 dark:border-slate-700 bg-white dark:bg-slate-900 px-3 py-1 font-mono text-[11px] text-slate-900 dark:text-slate-200 shadow-xs">
-              <span className="text-blue-600 dark:text-blue-400">https://</span>
-              <span>app.zyvoris.com/{activeTab}</span>
+            {/* In-bar browser URL */}
+            <div className="flex items-center gap-1.5 truncate rounded-lg border border-slate-900/30 dark:border-slate-700 bg-white dark:bg-slate-900 px-2.5 py-1 font-mono text-[10px] sm:text-[11px] text-slate-700 dark:text-slate-300 max-w-[200px] sm:max-w-none">
+              <span className="text-blue-600 dark:text-blue-400 shrink-0">https://</span>
+              <span className="truncate">app.zyvoris.ai/{activeTab.urlSlug}</span>
             </div>
 
-            <div className="flex items-center gap-2">
-              <span className="rounded border border-emerald-600 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 font-mono text-[10px] font-bold text-emerald-700 dark:text-emerald-300">
-                ENV: PROD-CH
-              </span>
-            </div>
-          </div>
-
-          {/* Sub-Header Context Bar & Sub-View Switcher */}
-          <div className="flex flex-wrap items-center justify-between gap-3 border-b-2 border-slate-900/40 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/80 px-4 sm:px-7 py-3">
-            <div className="flex flex-wrap items-center gap-2.5 sm:gap-3">
-              <span className="rounded-md border border-slate-900 dark:border-slate-700 bg-slate-200 dark:bg-slate-800 px-2.5 py-0.5 font-mono text-xs font-bold text-slate-900 dark:text-white">
-                Alpine Global PE Fund IV (SCSp)
-              </span>
-              <span className="font-mono text-xs text-slate-600 dark:text-slate-400">
-                DOMICILE: <strong>CH / LU</strong>
-              </span>
-              <span className="font-mono text-xs text-slate-600 dark:text-slate-400">
-                PERIOD: <strong>FY 2025</strong>
-              </span>
-            </div>
-
-            {/* Sub-view switcher for workspaces with multiple screenshots */}
-            {currentTab.subViews && currentTab.subViews.length > 1 && (
-              <div className="flex items-center gap-1.5 rounded-xl border-2 border-slate-900 dark:border-slate-700 bg-white dark:bg-slate-950 p-1">
-                {currentTab.subViews.map((sub) => {
-                  const isCurrent = (subViewSelection[currentTab.id] || currentTab.subViews![0].id) === sub.id
+            {/* Sub-view switcher (if multiple screenshots exist) */}
+            {activeTab.subViews && activeTab.subViews.length > 1 ? (
+              <div className="flex items-center gap-1 rounded-xl border-2 border-slate-900 dark:border-slate-700 bg-white dark:bg-slate-950 p-0.5 sm:p-1 shrink-0">
+                {activeTab.subViews.map((sv) => {
+                  const isCurrent = (subSel[activeTab.id] ?? activeTab.subViews![0].id) === sv.id
                   return (
                     <button
-                      key={sub.id}
+                      key={sv.id}
                       type="button"
-                      onClick={() =>
-                        setSubViewSelection((prev) => ({
-                          ...prev,
-                          [currentTab.id]: sub.id,
-                        }))
-                      }
-                      className={`px-3 py-1 font-mono text-[11px] font-bold rounded-lg transition-all ${
+                      onClick={(e) => {
+                        e.stopPropagation()
+                        setSubSel((prev) => ({ ...prev, [activeTab.id]: sv.id }))
+                      }}
+                      className={`px-2 sm:px-3 py-0.5 sm:py-1 font-mono text-[10px] sm:text-[11px] font-bold rounded-lg transition-all ${
                         isCurrent
-                          ? 'bg-blue-600 text-white shadow-xs'
-                          : 'text-slate-700 dark:text-slate-300 hover:bg-slate-100 dark:hover:bg-slate-800'
+                          ? 'bg-blue-600 text-white'
+                          : 'text-slate-600 dark:text-slate-400 hover:bg-slate-100 dark:hover:bg-slate-800'
                       }`}
                     >
-                      {language === 'de' ? sub.labelDe : sub.labelEn}
+                      {lang === 'de' ? sv.labelDe : sv.labelEn}
                     </button>
                   )
                 })}
               </div>
+            ) : (
+              <span className="rounded border border-emerald-600 bg-emerald-50 dark:bg-emerald-950/60 px-2 py-0.5 font-mono text-[10px] font-bold text-emerald-700 dark:text-emerald-300 shrink-0">
+                PROD-CH
+              </span>
             )}
           </div>
 
-          {/* Product Screenshot Showcase Panel */}
-          <div className="p-4 sm:p-6 lg:p-8 bg-slate-100/50 dark:bg-slate-950/40">
-            {/* Screenshot Container */}
-            <div className="relative rounded-2xl border-2 border-slate-900 dark:border-slate-700 bg-white dark:bg-slate-950 overflow-hidden shadow-xl">
-              {/* Status bar above image */}
-              <div className="flex items-center justify-between border-b border-slate-900/20 dark:border-slate-800 bg-slate-50 dark:bg-slate-900 px-4 py-2.5">
-                <div className="flex items-center gap-2">
-                  <span className="h-2 w-2 rounded-full bg-emerald-500 animate-pulse" />
-                  <span className="font-mono text-[11px] font-semibold text-slate-700 dark:text-slate-300">
-                    {activeImage.caption}
-                  </span>
-                </div>
-                <span className="rounded border border-slate-900/20 dark:border-slate-700 bg-white dark:bg-slate-800 px-2 py-0.5 font-mono text-[10px] font-bold text-slate-600 dark:text-slate-400">
-                  1920 × 945
-                </span>
-              </div>
-
-              {/* Main Image Rendering */}
-              <div className="relative overflow-hidden bg-slate-950">
-                <Image
-                  src={activeImage.src}
-                  alt={activeImage.alt}
-                  width={1920}
-                  height={945}
-                  priority
-                  className="w-full h-auto object-contain"
-                />
-              </div>
+          {/* Screenshot image container */}
+          <div className="relative bg-slate-950 overflow-hidden">
+            <div className="relative w-full aspect-[16/9] sm:aspect-[16/8.5] max-h-[680px]">
+              <Image
+                key={activeImage.src}
+                src={activeImage.src}
+                alt={activeImage.alt}
+                fill
+                priority
+                className="object-contain object-top transition-opacity duration-300"
+              />
             </div>
 
-            {/* Contextual Feature Highlights Grid Below Screenshot */}
-            <div className="mt-6 grid grid-cols-1 md:grid-cols-3 gap-4">
-              {highlights.map((h, idx) => (
-                <div
-                  key={idx}
-                  className="rounded-2xl border-2 border-slate-900/80 dark:border-slate-700 bg-white dark:bg-slate-900 p-4 sm:p-5 shadow-sm"
-                >
-                  <div className="flex items-center justify-between border-b border-slate-900/10 dark:border-slate-800 pb-2.5">
-                    <span className="font-mono text-xs font-extrabold text-blue-600 dark:text-blue-400">
-                      [ 0{idx + 1} ]
-                    </span>
-                    {h.badge && (
-                      <span className="rounded border border-slate-900/30 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 px-2 py-0.5 font-mono text-[9.5px] font-bold text-slate-800 dark:text-slate-300">
-                        {h.badge}
-                      </span>
-                    )}
-                  </div>
-                  <h4 className="mt-2.5 text-sm font-bold text-slate-950 dark:text-white">{h.title}</h4>
-                  <p className="mt-1 text-xs text-slate-700 dark:text-slate-300 leading-relaxed">{h.desc}</p>
-                </div>
+            {/* Overlay Navigation Buttons on Screenshot */}
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation()
+                prevTab()
+                setIsPaused(true)
+                setTimeout(() => setIsPaused(false), 3000)
+              }}
+              aria-label="Previous image"
+              className="
+                absolute left-3 top-1/2 -translate-y-1/2 z-10
+                flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center
+                rounded-full border-2 border-slate-900/80 bg-white/90 dark:bg-slate-900/90
+                text-slate-900 dark:text-white font-mono text-base font-bold shadow-lg
+                backdrop-blur-sm transition-transform hover:scale-110 active:scale-95
+              "
+            >
+              ←
+            </button>
+
+            <button
+              type="button"
+              onClick={(e) => {
+                e.stopPropagation()
+                nextTab()
+                setIsPaused(true)
+                setTimeout(() => setIsPaused(false), 3000)
+              }}
+              aria-label="Next image"
+              className="
+                absolute right-3 top-1/2 -translate-y-1/2 z-10
+                flex h-10 w-10 sm:h-12 sm:w-12 items-center justify-center
+                rounded-full border-2 border-slate-900/80 bg-white/90 dark:bg-slate-900/90
+                text-slate-900 dark:text-white font-mono text-base font-bold shadow-lg
+                backdrop-blur-sm transition-transform hover:scale-110 active:scale-95
+              "
+            >
+              →
+            </button>
+          </div>
+
+          {/* Bottom helper bar: dots & swipe indicator */}
+          <div className="flex items-center justify-between border-t border-slate-900/10 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/95 px-4 py-2.5">
+            <div className="flex items-center gap-1.5">
+              {TABS.map((_, i) => (
+                <button
+                  key={i}
+                  type="button"
+                  onClick={() => {
+                    setActiveIdx(i)
+                    setIsPaused(true)
+                    setTimeout(() => setIsPaused(false), 3000)
+                  }}
+                  aria-label={`Go to slide ${i + 1}`}
+                  className={`
+                    h-2 rounded-full transition-all duration-300
+                    ${i === activeIdx
+                      ? 'w-6 bg-blue-600 dark:bg-blue-400'
+                      : 'w-2 bg-slate-300 dark:bg-slate-700 hover:bg-slate-400'
+                    }
+                  `}
+                />
               ))}
             </div>
+
+            <span className="font-mono text-[10px] sm:text-[11px] font-bold text-slate-500 dark:text-slate-400">
+              {lang === 'de' ? '← Wischen oder Pfeile nutzen →' : '← Swipe or use arrows to navigate →'}
+            </span>
           </div>
+
         </div>
+
       </div>
     </section>
   )

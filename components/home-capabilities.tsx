@@ -3,51 +3,44 @@
 import React from 'react'
 import { useLanguage } from './language-provider'
 
-export default function CustomerSegments() {
-  const { t } = useLanguage()
+export default function HomeCapabilities() {
+  const { language } = useLanguage()
+  const isGerman = language === 'de'
 
-  const segments = [
+  const capabilities = [
     {
-      number: '01',
-      audience: t('seg_1_aud', 'Fund Managers & AIFMs'),
-      description: t(
-        'seg_1_desc',
-        'Gain control across tax calculations, reporting workflows, and jurisdictions.'
-      ),
-      tag: 'MANAGERS',
+      num: '01',
+      title: isGerman ? 'Fondssteuerberechnungen' : 'Fund Tax Calculations',
+      desc: isGerman
+        ? 'Strukturierte jurisdiktionsspezifische Steuerberechnungen auf Fondsebene.'
+        : 'Structured jurisdiction-specific fund-level tax calculations.',
     },
     {
-      number: '02',
-      audience: t('seg_2_aud', 'Fund Administrators'),
-      description: t(
-        'seg_2_desc',
-        'Add structured tax workflows to existing fund operations.'
-      ),
-      tag: 'ADMINISTRATORS',
+      num: '02',
+      title: isGerman ? 'Anteilsklassen- & Mehrebenen-Allokationen' : 'Share-Class & Multi-Tier Allocations',
+      desc: isGerman
+        ? 'Kontrollierte Allokation von Steuerergebnissen über komplexe Fondsstrukturen.'
+        : 'Controlled allocation of tax results across complex fund structures.',
     },
     {
-      number: '03',
-      audience: t('seg_3_aud', 'Tax & Accounting Firms'),
-      description: t(
-        'seg_3_desc',
-        'Standardize execution while preserving professional review.'
-      ),
-      tag: 'TAX ADVISORS',
+      num: '03',
+      title: isGerman ? 'Prüfung & Nachvollziehbarkeit' : 'Review & Traceability',
+      desc: isGerman
+        ? 'Validierung, Ausnahmebehandlung und Durchgängigkeit von Quelle bis Output.'
+        : 'Validation, exception management, and source-to-output visibility.',
     },
     {
-      number: '04',
-      audience: t('seg_4_aud', 'Institutional Investors'),
-      description: t(
-        'seg_4_desc',
-        'Bring structure and visibility to complex fund tax data.'
-      ),
-      tag: 'INVESTORS',
+      num: '04',
+      title: isGerman ? 'Investoren- & Steuer-Reporting' : 'Investor & Tax Reporting',
+      desc: isGerman
+        ? 'Strukturierte Steuerdaten und Reporting-Outputs für nachgelagerte Workflows.'
+        : 'Structured tax data and reporting outputs for downstream workflows.',
     },
   ]
 
   return (
     <section
-      id="customer-segments"
+      id="capabilities"
       className="
         relative overflow-hidden
         border-t-2 border-slate-900 dark:border-slate-800
@@ -64,22 +57,24 @@ export default function CustomerSegments() {
           <div className="mb-4 flex items-center gap-2.5">
             <span className="h-px w-8 bg-blue-600 dark:bg-blue-400" />
             <span className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-blue-600 dark:text-blue-400">
-              {t('segments_kicker', 'BUILT FOR PRIVATE MARKETS')}
+              {isGerman ? 'KERNFUNKTIONEN' : 'CORE CAPABILITIES'}
             </span>
           </div>
 
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl text-slate-950 dark:text-white leading-[1.08]">
-            {t('segments_title', 'For the teams responsible for complex fund tax reporting.')}
+            {isGerman
+              ? 'Entwickelt für komplexe Steuer-Workflows in den Privatmärkten.'
+              : 'Built for complex private markets tax workflows.'}
           </h2>
         </div>
 
-        {/* Four Simple Cards Grid */}
+        {/* 4 Cards */}
         <div className="mt-12 sm:mt-16 grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
-          {segments.map((segment) => (
-            <article
-              key={segment.number}
+          {capabilities.map((item) => (
+            <div
+              key={item.num}
               className="
-                group relative flex flex-col justify-between overflow-hidden
+                group relative flex flex-col justify-between
                 rounded-2xl
                 border-2 border-slate-900 dark:border-slate-700
                 bg-[#f0f4f9]/50 dark:bg-slate-900/90
@@ -91,37 +86,32 @@ export default function CustomerSegments() {
               "
             >
               <div>
-                {/* Top bar: Number & Tag */}
                 <div className="flex items-center justify-between border-b-2 border-slate-900/80 dark:border-slate-800 pb-3.5">
                   <span className="font-mono text-sm font-extrabold text-blue-600 dark:text-blue-400">
-                    [{segment.number}]
+                    [{item.num}]
                   </span>
-
-                  <span className="rounded border border-slate-900/50 dark:border-slate-700 bg-white dark:bg-slate-800 px-2 py-0.5 font-mono text-[9.5px] font-bold text-slate-800 dark:text-slate-300">
-                    {segment.tag}
+                  <span className="font-mono text-xs font-bold text-slate-500 dark:text-slate-400">
+                    {isGerman ? 'KERN' : 'CORE'}
                   </span>
                 </div>
 
-                {/* Audience Title & Description */}
                 <div className="mt-5">
-                  <h3 className="m-0 text-lg sm:text-xl font-bold leading-snug tracking-tight text-slate-950 dark:text-white">
-                    {segment.audience}
+                  <h3 className="text-lg sm:text-xl font-bold leading-snug tracking-tight text-slate-950 dark:text-white">
+                    {item.title}
                   </h3>
-
-                  <p className="mt-3 m-0 text-sm leading-[1.65] text-slate-700 dark:text-slate-300">
-                    {segment.description}
+                  <p className="mt-3 text-sm leading-[1.65] text-slate-700 dark:text-slate-300">
+                    {item.desc}
                   </p>
                 </div>
               </div>
 
-              {/* Bottom Tag */}
               <div className="mt-8 flex items-center justify-between pt-3 border-t border-slate-900/30 dark:border-slate-800">
                 <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                  TARGET 0{segment.number.replace(/^0/, '')}
+                  {isGerman ? 'ABLAUF' : 'WORKFLOW'}
                 </span>
                 <span className="font-mono text-xs font-bold text-blue-600 dark:text-blue-400">→</span>
               </div>
-            </article>
+            </div>
           ))}
         </div>
       </div>

@@ -1,7 +1,7 @@
 import type { Metadata } from 'next'
 import { Plus_Jakarta_Sans, JetBrains_Mono } from 'next/font/google'
 import Header from '@/components/header'
-import CallToActionSection from '@/components/calltoaction'
+import CallToActionSection from '@/components/footer-simple'
 import { ThemeProvider } from '@/components/theme-provider'
 import { LanguageProvider } from '@/components/language-provider'
 import PageProgress from '@/components/page-progress'

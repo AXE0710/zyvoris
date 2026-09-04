@@ -1,114 +1,283 @@
 'use client'
 
 import React from 'react'
-import AISection from '@/components/ai'
-import VerificationSection from '@/components/verify'
-import TechStackSection from '@/components/tech-stack'
-import SecuritySection from '@/components/security'
-import IntegrationSection from '@/components/integration'
 import { useLanguage } from '@/components/language-provider'
 
 export default function TechnologyPage() {
-  const { t, language } = useLanguage()
+  const { language } = useLanguage()
+  const isGerman = language === 'de'
 
-  const techHighlights = [
+  const fourPrinciples = [
     {
       num: '01',
-      title: language === 'de' ? 'Deterministische Rechen-Engine' : 'Deterministic Calculation Engine',
-      desc:
-        language === 'de'
-          ? 'Numerische Berechnungen werden über vordefinierte und versionskontrollierte Steuerregeln statt probabilistischer KI-Ausgaben ausgeführt. Regeln rechnen. KI interpretiert. Fachleute prüfen.'
-          : 'Numerical calculations are executed using predefined and version-controlled tax rules rather than probabilistic AI outputs. Rules calculate. AI interprets. Professionals review.',
+      title: isGerman ? 'Deterministische Berechnungen' : 'Deterministic Calculations',
+      desc: isGerman
+        ? 'Explizite Berechnungslogik für reproduzierbare Steuerergebnisse.'
+        : 'Explicit calculation logic designed for reproducible tax results.',
     },
     {
       num: '02',
-      title: language === 'de' ? 'Nachvollziehbare Lineage' : 'Traceable Lineage',
-      desc:
-        language === 'de'
-          ? 'Jeder ausgewiesene Betrag lässt sich über versionierte Prüfpfade bis auf die Quelldaten zurückverfolgen.'
-          : 'Every reported number is traceable back to source data and rule versions with structured audit logging.',
+      title: isGerman ? 'Nachvollziehbarkeit' : 'Traceability',
+      desc: isGerman
+        ? 'Outputs mit Quelldaten und angewandter Steuerlogik verbinden.'
+        : 'Connect outputs to source data and applied tax logic.',
     },
     {
       num: '03',
-      title: language === 'de' ? 'Zero-Retention KI-Architektur' : 'Zero-Retention AI Architecture',
-      desc:
-        language === 'de'
-          ? 'Architekturvorgabe: Dokumentenextraktion erfolgt zustandslos ohne Speicherung von Kundendaten für Modelltrainings.'
-          : 'Architecture boundary: Document extraction runs statelessly without storing customer data for model training.',
+      title: isGerman ? 'Fachliche Kontrolle' : 'Professional Control',
+      desc: isGerman
+        ? 'Materielle Steuerentscheidungen und Ausnahmen bleiben unter fachlicher Prüfung.'
+        : 'Keep material tax decisions and exceptions subject to professional review.',
     },
     {
       num: '04',
-      title: language === 'de' ? 'Mandantenisolations-Architektur' : 'Tenant Isolation Architecture',
-      desc:
-        language === 'de'
-          ? 'Logische Mandantentrennung und Schematrennung zum Schutz institutioneller Fondsdaten.'
-          : 'Logical namespace and schema isolation designed to protect institutional fund data.',
+      title: isGerman ? 'Sicherer Umgang mit Daten' : 'Secure Data Handling',
+      desc: isGerman
+        ? 'Für kontrollierten Zugriff auf sensible Finanz- und Steuerdaten entwickelt.'
+        : 'Designed for controlled access and sensitive financial and tax data.',
+    },
+  ]
+
+  const connectivityTags = [
+    'API',
+    'Excel',
+    'CSV',
+    'JSON',
+    'Structured Data Feeds',
+  ]
+
+  const securityCards = [
+    {
+      num: '01',
+      title: isGerman ? 'Kontrollierter Zugriff' : 'Controlled Access',
+      desc: isGerman
+        ? 'Rollenbasierter Zugriff auf Fonds, Workflows und Reporting-Daten.'
+        : 'Role-based access to funds, workflows, and reporting data.',
+    },
+    {
+      num: '02',
+      title: isGerman ? 'Datentrennung' : 'Data Separation',
+      desc: isGerman
+        ? 'Für eine klare Trennung von Mandantenumgebungen und Zugriffsberechtigungen konzipiert.'
+        : 'Designed to keep client environments and access clearly separated.',
+    },
+    {
+      num: '03',
+      title: isGerman ? 'Revisionssicherheit' : 'Auditability',
+      desc: isGerman
+        ? 'Strukturierte Protokollierung aller Berechnungs- und Workflow-Aktivitäten.'
+        : 'Structured records of calculation and workflow activity.',
+    },
+    {
+      num: '04',
+      title: isGerman ? 'Datenschutz' : 'Data Protection',
+      desc: isGerman
+        ? 'Sicherheitskontrollen speziell für sensible Finanz- und Steuerinformationen.'
+        : 'Security controls designed for sensitive financial and tax information.',
     },
   ]
 
   return (
-    <div className="relative min-h-screen bg-[#f0f4f9] dark:bg-[#080d1a] text-foreground pt-28 pb-20 sm:pt-32 lg:pt-36 transition-colors duration-200">
-      <div className="relative mx-auto max-w-[1420px] px-4 sm:px-6 lg:px-[5vw]">
+    <main className="relative min-h-screen bg-[#f0f4f9] px-4 pb-20 pt-28 text-foreground transition-colors duration-200 dark:bg-[#080d1a] sm:px-6 sm:pt-32 lg:px-[5vw] lg:pt-36">
+      <div className="relative mx-auto max-w-[1420px]">
+
         {/* =========================================================
-            TECHNOLOGY HERO HEADER
+            1. TECHNOLOGY HERO
         ========================================================== */}
-        <div className="mx-auto max-w-3xl text-center">
-          <div className="inline-flex items-center gap-2 rounded-full border-2 border-slate-900 bg-white px-3 py-1 text-[11px] font-mono font-bold uppercase tracking-[0.18em] text-blue-600 dark:border-blue-900/60 dark:bg-blue-950/40 dark:text-blue-400 mb-5">
-            <span>[ {t('tech_kicker', 'Architecture & Infrastructure')} ]</span>
+        <header className="max-w-3xl">
+          <div className="mb-5 inline-flex items-center gap-2 rounded-full border-2 border-slate-900 bg-white px-3 py-1 font-mono text-[11px] font-bold uppercase tracking-[0.18em] text-blue-600 dark:border-blue-900/60 dark:bg-blue-950/40 dark:text-blue-400">
+            <span>[ {isGerman ? 'TECHNOLOGIE' : 'TECHNOLOGY'} ]</span>
           </div>
 
-          <h1 className="text-3xl font-semibold tracking-tight sm:text-5xl lg:text-6xl text-slate-950 dark:text-white leading-[1.08]">
-            {t('tech_title_1', 'Deterministic by design.')}{' '}
-            <span className="text-blue-600 dark:text-blue-400">
-              {t('tech_title_2', 'Verifiable at every step.')}
-            </span>
+          <h1 className="text-3xl font-semibold leading-[1.08] tracking-tight text-slate-950 dark:text-white sm:text-5xl lg:text-6xl">
+            {isGerman
+              ? 'Kontrollierte Automatisierung für komplexe Steuer-Workflows.'
+              : 'Controlled automation for complex tax workflows.'}
           </h1>
 
-          <p className="mt-5 text-base sm:text-lg leading-relaxed text-slate-700 dark:text-slate-300 max-w-2xl mx-auto">
-            {t(
-              'tech_desc',
-              'Explore the technology stack powering ZYVORIS: isolated data layers, mathematical calculation engines, zero-retention AI governance, and enterprise connectivity.'
-            )}
+          <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg">
+            {isGerman
+              ? 'ZYVORIS kombiniert strukturierte Daten, deterministische Berechnungslogik, Nachvollziehbarkeit und kontrollierte KI-gestützte Workflows.'
+              : 'ZYVORIS combines structured data, deterministic calculation logic, traceability, and controlled AI-assisted workflows.'}
           </p>
-        </div>
+        </header>
 
         {/* =========================================================
-            TECH HIGHLIGHTS GRID (Bold Black Borders & No Icons)
+            2. TECHNOLOGY — CORE PRINCIPLE
         ========================================================== */}
-        <div className="mt-12 sm:mt-16 grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4 sm:gap-5 mb-16 sm:mb-20">
-          {techHighlights.map((h) => (
-            <div
-              key={h.title}
-              className="
-                rounded-2xl
-                border-2 border-slate-900 dark:border-slate-700
-                bg-white dark:bg-slate-900
-                p-5 sm:p-6
-                shadow-sm
-                transition-all duration-150
-                hover:-translate-y-1 hover:border-blue-600
-              "
-            >
-              <span className="font-mono text-sm font-extrabold text-blue-600 dark:text-blue-400">
-                [{h.num}]
-              </span>
-              <h3 className="mt-3 text-sm sm:text-base font-bold text-slate-950 dark:text-white">
-                {h.title}
-              </h3>
-              <p className="mt-1.5 text-xs sm:text-[13px] leading-relaxed text-slate-700 dark:text-slate-300">
-                {h.desc}
-              </p>
-            </div>
-          ))}
-        </div>
-      </div>
+        <section className="mt-16 sm:mt-24 rounded-3xl border-2 border-slate-900 bg-white p-8 shadow-md dark:border-slate-700 dark:bg-slate-900 sm:p-12 lg:p-14">
+          <div className="max-w-3xl">
+            <span className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-blue-600 dark:text-blue-400">
+              {isGerman ? 'KERNPRINZIP' : 'CORE PRINCIPLE'}
+            </span>
 
-      {/* DETAILED SECTIONS */}
-      <AISection />
-      <VerificationSection />
-      <TechStackSection />
-      <SecuritySection />
-      <IntegrationSection />
-    </div>
+            <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-semibold leading-tight text-slate-950 dark:text-white">
+              {isGerman
+                ? 'KI für Interpretation. Deterministische Logik für Berechnungen.'
+                : 'AI for interpretation. Deterministic logic for calculation.'}
+            </h2>
+
+            <p className="mt-5 text-base sm:text-lg leading-relaxed text-slate-700 dark:text-slate-300">
+              {isGerman
+                ? 'KI-gestützte Workflows unterstützen bei Extraktion, Klassifizierung und Ausnahmeanalysen. Steuerberechnungen bleiben getrennt und werden durch kontrollierte Berechnungslogik ausgeführt.'
+                : 'AI-assisted workflows can support extraction, classification, and exception analysis. Tax calculations remain separate and are executed through controlled calculation logic.'}
+            </p>
+          </div>
+        </section>
+
+        {/* =========================================================
+            3. TECHNOLOGY — FOUR PRINCIPLES
+        ========================================================== */}
+        <section className="mt-16 sm:mt-24">
+          <div className="mb-8 border-b-2 border-slate-900 pb-4 dark:border-slate-800">
+            <span className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-blue-600 dark:text-blue-400">
+              {isGerman ? 'LEITLINIEN' : 'PRINCIPLES'}
+            </span>
+          </div>
+
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {fourPrinciples.map((item) => (
+              <div
+                key={item.num}
+                className="
+                  group relative flex flex-col justify-between
+                  rounded-2xl
+                  border-2 border-slate-900 dark:border-slate-700
+                  bg-white dark:bg-slate-900
+                  p-6 sm:p-7
+                  shadow-sm
+                  transition-all duration-150
+                  hover:-translate-y-1 hover:border-blue-600 dark:hover:border-blue-500
+                "
+              >
+                <div>
+                  <div className="flex items-center justify-between border-b-2 border-slate-900/80 dark:border-slate-800 pb-3.5">
+                    <span className="font-mono text-sm font-extrabold text-blue-600 dark:text-blue-400">
+                      [{item.num}]
+                    </span>
+                    <span className="font-mono text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase">
+                      {isGerman ? 'PRINZIP' : 'PRINCIPLE'}
+                    </span>
+                  </div>
+
+                  <div className="mt-5">
+                    <h3 className="text-lg font-bold leading-snug tracking-tight text-slate-950 dark:text-white">
+                      {item.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-[1.65] text-slate-700 dark:text-slate-300">
+                      {item.desc}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-8 flex items-center justify-between pt-3 border-t border-slate-900/30 dark:border-slate-800">
+                  <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                    {isGerman ? 'KONTROLLE' : 'CONTROL'}
+                  </span>
+                  <span className="font-mono text-xs font-bold text-blue-600 dark:text-blue-400">→</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+        {/* =========================================================
+            4. TECHNOLOGY — CONNECTIVITY
+        ========================================================== */}
+        <section className="mt-16 sm:mt-24 rounded-3xl border-2 border-slate-900 bg-white p-8 shadow-md dark:border-slate-700 dark:bg-slate-900 sm:p-12 lg:p-14">
+          <div className="max-w-3xl">
+            <span className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-blue-600 dark:text-blue-400">
+              {isGerman ? 'KONNEKTIVITÄT' : 'CONNECTIVITY'}
+            </span>
+
+            <h2 className="mt-3 text-2xl sm:text-3xl lg:text-4xl font-semibold leading-tight text-slate-950 dark:text-white">
+              {isGerman
+                ? 'Entwickelt für Ihre bestehende Datenumgebung.'
+                : 'Designed to work with your existing data environment.'}
+            </h2>
+
+            <p className="mt-5 text-base leading-relaxed text-slate-700 dark:text-slate-300">
+              {isGerman
+                ? 'ZYVORIS kann strukturierte Finanz- und Fondsdaten über unterstützte Schnittstellen und dateibasierte Formate aufnehmen, sodass Teams ihre Steuer-Workflows modernisieren können, ohne bestehende Buchhaltungs- oder Administrationssysteme ersetzen zu müssen.'
+                : 'ZYVORIS can ingest structured financial and fund data through supported APIs and file-based interfaces, allowing teams to modernize tax workflows without replacing their core accounting or administration systems.'}
+            </p>
+
+            {/* Tags */}
+            <div className="mt-8 flex flex-wrap gap-2.5">
+              {connectivityTags.map((tag) => (
+                <span
+                  key={tag}
+                  className="rounded-xl border-2 border-slate-900 bg-[#f0f4f9] px-4 py-2 font-mono text-xs font-bold text-slate-900 shadow-xs dark:border-slate-700 dark:bg-slate-800 dark:text-slate-200"
+                >
+                  {tag}
+                </span>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* =========================================================
+            5. TECHNOLOGY — SECURITY & CONTROL
+        ========================================================== */}
+        <section className="mt-16 sm:mt-24">
+          <div className="mb-8 border-b-2 border-slate-900 pb-4 dark:border-slate-800">
+            <span className="font-mono text-[11px] font-bold uppercase tracking-[0.2em] text-blue-600 dark:text-blue-400">
+              {isGerman ? 'SICHERHEIT & KONTROLLE' : 'SECURITY & CONTROL'}
+            </span>
+            <h2 className="mt-2 text-2xl sm:text-3xl font-semibold tracking-tight text-slate-950 dark:text-white">
+              {isGerman
+                ? 'Für sensible Finanz- und Steuerdaten entwickelt.'
+                : 'Designed for sensitive financial and tax data.'}
+            </h2>
+          </div>
+
+          <div className="grid grid-cols-1 gap-5 sm:grid-cols-2 lg:grid-cols-4">
+            {securityCards.map((card) => (
+              <div
+                key={card.num}
+                className="
+                  group relative flex flex-col justify-between
+                  rounded-2xl
+                  border-2 border-slate-900 dark:border-slate-700
+                  bg-white dark:bg-slate-900
+                  p-6 sm:p-7
+                  shadow-sm
+                  transition-all duration-150
+                  hover:-translate-y-1 hover:border-blue-600 dark:hover:border-blue-500
+                "
+              >
+                <div>
+                  <div className="flex items-center justify-between border-b-2 border-slate-900/80 dark:border-slate-800 pb-3.5">
+                    <span className="font-mono text-sm font-extrabold text-blue-600 dark:text-blue-400">
+                      [{card.num}]
+                    </span>
+                    <span className="font-mono text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase">
+                      {isGerman ? 'SICHERHEIT' : 'SECURITY'}
+                    </span>
+                  </div>
+
+                  <div className="mt-5">
+                    <h3 className="text-lg font-bold leading-snug tracking-tight text-slate-950 dark:text-white">
+                      {card.title}
+                    </h3>
+                    <p className="mt-3 text-sm leading-[1.65] text-slate-700 dark:text-slate-300">
+                      {card.desc}
+                    </p>
+                  </div>
+                </div>
+
+                <div className="mt-8 flex items-center justify-between pt-3 border-t border-slate-900/30 dark:border-slate-800">
+                  <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                    {isGerman ? 'SCHUTZ' : 'PROTECTION'}
+                  </span>
+                  <span className="font-mono text-xs font-bold text-blue-600 dark:text-blue-400">→</span>
+                </div>
+              </div>
+            ))}
+          </div>
+        </section>
+
+      </div>
+    </main>
   )
 }

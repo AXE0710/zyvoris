@@ -11,25 +11,28 @@ export default function ProblemSection() {
       number: '01',
       category: 'DATA',
       title: t('prob_1_title', 'Fragmented Data'),
-      text: t('prob_1_desc', 'Important fund data sits across different systems, administrators, spreadsheets, and operational sources.'),
+      text: t(
+        'prob_1_desc',
+        'Fund and tax data remains distributed across systems, files, and stakeholders.'
+      ),
     },
     {
       number: '02',
-      category: 'LOGIC',
-      title: t('prob_2_title', 'Manual Tax Logic'),
-      text: t('prob_2_desc', 'Complex classifications and calculations often depend on spreadsheets, workpapers, and institutional knowledge.'),
+      category: 'PROCESS',
+      title: t('prob_2_title', 'Manual Tax Processes'),
+      text: t(
+        'prob_2_desc',
+        'Complex calculations and allocations still depend heavily on spreadsheets and manually maintained workpapers.'
+      ),
     },
     {
       number: '03',
-      category: 'GLOBAL',
-      title: t('prob_3_title', 'Cross-Border Complexity'),
-      text: t('prob_3_desc', 'Each jurisdiction introduces different rules, classifications, allocation methods, and reporting requirements.'),
-    },
-    {
-      number: '04',
       category: 'AUDIT',
-      title: t('prob_4_title', 'Limited Traceability'),
-      text: t('prob_4_desc', 'Reviewers often need to reconstruct how a number moved from source data through calculation to final reporting.'),
+      title: t('prob_3_title', 'Limited Traceability'),
+      text: t(
+        'prob_3_desc',
+        'Reviewers often need to reconstruct how reported tax values were produced.'
+      ),
     },
   ]
 
@@ -73,7 +76,7 @@ export default function ProblemSection() {
               "
             >
               <span className="h-px w-6 bg-blue-600 dark:bg-blue-400" />
-              <span>{t('problem_kicker', 'THE OPERATING PROBLEM')}</span>
+              <span>{t('problem_kicker', 'THE CHALLENGE')}</span>
             </div>
 
             <h2
@@ -101,7 +104,7 @@ export default function ProblemSection() {
             <p
               className="
                 m-0
-                max-w-[520px]
+                max-w-[540px]
                 text-sm sm:text-base
                 leading-[1.7]
                 text-slate-700 dark:text-slate-300
@@ -109,23 +112,22 @@ export default function ProblemSection() {
             >
               {t(
                 'problem_desc',
-                'As fund structures become more complex and reporting expands across jurisdictions, tax workflows increasingly depend on fragmented data, manual processes, and institutional knowledge that is difficult to reproduce and review.'
+                'Tax teams still rely on fragmented data, spreadsheet-based calculations, manual review processes, and disconnected reporting workflows.'
               )}
             </p>
           </div>
         </div>
 
         {/* =====================================================
-            PROBLEM CARDS - Bold Black Borders in Light Mode, No Icons
+            PROBLEM CARDS (3 Cards)
         ====================================================== */}
         <div
           className="
             mt-12 sm:mt-16
             grid
             grid-cols-1
-            gap-5
-            sm:grid-cols-2
-            lg:grid-cols-4
+            gap-6
+            md:grid-cols-3
           "
         >
           {problems.map((problem) => (
@@ -140,7 +142,7 @@ export default function ProblemSection() {
                 rounded-2xl
                 border-2 border-slate-900 dark:border-slate-700
                 bg-white dark:bg-slate-900
-                p-6 sm:p-7
+                p-6 sm:p-8
                 shadow-[0_4px_16px_rgba(0,0,0,0.06)]
                 dark:shadow-[0_10px_30px_rgba(0,0,0,0.4)]
                 transition-all
@@ -151,7 +153,7 @@ export default function ProblemSection() {
               "
             >
               <div>
-                {/* Card Top: Header Metadata without icon */}
+                {/* Card Top: Number & Category */}
                 <div className="flex items-center justify-between border-b-2 border-slate-900/80 dark:border-slate-800 pb-3.5">
                   <span className="font-mono text-sm font-extrabold text-blue-600 dark:text-blue-400">
                     [{problem.number}]
@@ -167,7 +169,7 @@ export default function ProblemSection() {
                   <h3
                     className="
                       m-0
-                      text-lg
+                      text-lg sm:text-xl
                       font-bold
                       leading-[1.25]
                       tracking-[-0.02em]
@@ -179,10 +181,10 @@ export default function ProblemSection() {
 
                   <p
                     className="
-                      mt-2.5
+                      mt-3
                       mb-0
-                      text-xs sm:text-sm
-                      leading-[1.65]
+                      text-sm
+                      leading-[1.7]
                       text-slate-700 dark:text-slate-300
                     "
                   >
@@ -192,9 +194,9 @@ export default function ProblemSection() {
               </div>
 
               {/* Card Bottom Indicator */}
-              <div className="mt-6 flex items-center justify-between pt-3.5 border-t border-slate-900/40 dark:border-slate-800">
-                <span className="font-mono text-[10px] font-bold uppercase tracking-[0.08em] text-slate-600 dark:text-slate-400">
-                  {t('prob_tag', 'Operating Bottleneck')}
+              <div className="mt-8 flex items-center justify-between pt-3.5 border-t border-slate-900/40 dark:border-slate-800">
+                <span className="font-mono text-[10.5px] font-bold uppercase tracking-[0.08em] text-slate-600 dark:text-slate-400">
+                  {t('prob_tag', 'Operating Challenge')}
                 </span>
                 <span className="font-mono text-xs font-bold text-blue-600 dark:text-blue-400">→</span>
               </div>
@@ -203,45 +205,35 @@ export default function ProblemSection() {
         </div>
 
         {/* =====================================================
-            BOTTOM SUMMARY BAR
+            CLOSING SENTENCE
         ====================================================== */}
         <div
           className="
-            mt-12
+            mt-12 sm:mt-14
+            rounded-2xl
+            border-2
+            border-slate-900 dark:border-slate-800
+            bg-white dark:bg-slate-900/80
+            p-6 sm:p-7
+            shadow-sm
             flex
             flex-col
-            items-start
-            justify-between
-            gap-4
-            border-t-2
-            border-slate-900 dark:border-slate-800
-            pt-6
             sm:flex-row
             sm:items-center
+            sm:justify-between
+            gap-4
           "
         >
-          <p className="m-0 text-xs sm:text-sm font-bold text-slate-900 dark:text-slate-200">
-            {t('problem_summary', 'The complexity sits upstream of the final report.')}
+          <p className="m-0 text-base sm:text-lg font-semibold text-slate-950 dark:text-white leading-snug">
+            {t(
+              'problem_closing',
+              'ZYVORIS turns these fragmented processes into structured, controlled, and traceable workflows.'
+            )}
           </p>
 
-          <div
-            className="
-              flex
-              items-center
-              gap-2
-              font-mono
-              text-[11px]
-              font-extrabold
-              tracking-[0.14em]
-              text-blue-600 dark:text-blue-400
-            "
-          >
-            <span>DATA</span>
-            <span className="text-slate-500">→</span>
-            <span>LOGIC</span>
-            <span className="text-slate-500">→</span>
-            <span>REPORTING</span>
-          </div>
+          <span className="shrink-0 font-mono text-xs font-bold text-blue-600 dark:text-blue-400">
+            [ CONTROLLED EXECUTION ]
+          </span>
         </div>
       </div>
     </section>

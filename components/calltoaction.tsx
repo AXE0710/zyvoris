@@ -46,17 +46,15 @@ export default function Footer() {
                 </div>
 
                 <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-slate-950 dark:text-white leading-tight">
-                  {t('cta_title_1', 'Build tax reporting on infrastructure designed for')}{' '}
-                  <span className="text-blue-600 dark:text-blue-400">
-                    {t('cta_title_2', 'complexity.')}
-                  </span>
+                  {language === 'de'
+                    ? 'Modernisieren Sie Ihren Steuer-Workflow für Privatmärkte.'
+                    : 'Modernize your private markets tax workflow.'}
                 </h2>
 
                 <p className="mt-2 text-xs sm:text-sm leading-relaxed text-slate-600 dark:text-slate-400 max-w-xl">
-                  {t(
-                    'cta_desc',
-                    'See how ZYVORIS connects financial data, fund structures, tax logic, calculations, and reporting across complex private-market workflows.'
-                  )}
+                  {language === 'de'
+                    ? 'Sehen Sie, wie ZYVORIS Struktur, Kontrolle und Skalierbarkeit in komplexe Steuer-Reporting-Prozesse bringt.'
+                    : 'See how ZYVORIS can bring structure, control, and scalability to complex tax reporting processes.'}
                 </p>
               </div>
 
@@ -85,7 +83,7 @@ export default function Footer() {
                     hover:-translate-y-0.5
                   "
                 >
-                  <span>{t('cta_book_demo', 'Book a Demo')}</span>
+                  <span>{language === 'de' ? 'Demo anfragen' : 'Book a Demo'}</span>
                   <span>→</span>
                 </a>
 
@@ -112,7 +110,7 @@ export default function Footer() {
                     hover:-translate-y-0.5
                   "
                 >
-                  <span>{t('cta_contact', 'Contact ZYVORIS')}</span>
+                  <span>{language === 'de' ? 'Kontakt' : 'Contact Us'}</span>
                 </a>
               </div>
             </div>

@@ -15,34 +15,40 @@ export default function ZyvorisHero({
   const STAGES = [
     {
       id: '01',
-      title: t('stage_1_title', 'Source Data Ingestion'),
-      desc: t('stage_1_desc', 'Financial, portfolio & transaction feeds'),
-      tags: ['Raw Extracts', 'ERP Sync', 'GL Feeds'],
+      title: t('stage_1_title', 'DATA'),
+      desc: t('stage_1_desc', 'Financial, GL & fund accounting source feeds'),
+      tags: ['ERP Sync', 'GL Feeds', 'Trial Balance'],
     },
     {
       id: '02',
-      title: t('stage_2_title', 'Entity & Structure Mapping'),
-      desc: t('stage_2_desc', 'Multi-tier fund, GP/LP & holding graphs'),
-      tags: ['Ownership %', 'Jurisdictions', 'Look-Through'],
+      title: t('stage_2_title', 'STRUCTURE'),
+      desc: t('stage_2_desc', 'Fund vehicles, share classes & entity graphs'),
+      tags: ['Master-Feeder', 'Share Classes', 'SPVs'],
     },
     {
       id: '03',
-      title: t('stage_3_title', 'Tax Logic Engine'),
-      desc: t('stage_3_desc', 'Cross-border tax rules & treaties'),
-      tags: ['Treaty Logic', 'Withholding Tax', 'Entity Classification', 'Cross-Border Allocation Rules'],
+      title: t('stage_3_title', 'TAX LOGIC'),
+      desc: t('stage_3_desc', 'Jurisdiction rules, treaties & classifications'),
+      tags: ['Treaty Rules', 'Withholding Tax', 'Classification'],
     },
     {
       id: '04',
-      title: t('stage_4_title', 'Deterministic Calculation'),
-      desc: t('stage_4_desc', 'Automated allocations & tax basis tracking'),
-      tags: ['Audit Logging', 'Versioned Rules'],
+      title: t('stage_4_title', 'CALCULATION'),
+      desc: t('stage_4_desc', 'Deterministic allocations & tax calculations'),
+      tags: ['Deterministic Engine', 'Versioned Rules'],
       featured: true,
     },
     {
       id: '05',
-      title: t('stage_5_title', 'Jurisdiction Reporting'),
-      desc: t('stage_5_desc', 'Structured tax datasets & review-ready outputs'),
-      tags: ['XML/PDF Where Supported', 'Human Sign-off'],
+      title: t('stage_5_title', 'REVIEW'),
+      desc: t('stage_5_desc', 'Audit lineage, verification & exception handling'),
+      tags: ['Audit Lineage', 'Exception Logs', 'Sign-Off'],
+    },
+    {
+      id: '06',
+      title: t('stage_6_title', 'REPORTING'),
+      desc: t('stage_6_desc', 'Jurisdiction-ready tax reporting outputs'),
+      tags: ['ESTV Forms', 'XML/PDF', 'Filing Datasets'],
     },
   ]
 
@@ -87,42 +93,37 @@ export default function ZyvorisHero({
             {/* Main Headline */}
             <h1
               className="
-                text-[36px] sm:text-[50px] lg:text-[58px]
+                text-[36px] sm:text-[50px] lg:text-[56px]
                 font-semibold
-                leading-[1.06]
+                leading-[1.08]
                 tracking-[-0.04em]
                 text-slate-950 dark:text-white
               "
             >
-              {t('hero_title_1', 'Turn complex fund data into structured,')}{' '}
-              <span className="text-blue-600 dark:text-blue-400">
-                {t('hero_title_2', 'jurisdiction-specific tax reporting')}
-              </span>{' '}
-              <span className="block sm:inline text-slate-700 dark:text-slate-300 font-normal sm:font-semibold">
-                {t('hero_title_sub', 'through one controlled and traceable infrastructure layer.')}
-              </span>
+              {language === 'de'
+                ? 'Von komplexen Fondsdaten zu kontrolliertem, jurisdiktionsspezifischem Steuerreporting.'
+                : 'Turn complex fund data into controlled, jurisdiction-ready tax reporting.'}
             </h1>
 
-            {/* Description */}
+            {/* Subheadline (No extra paragraphs) */}
             <p
               className="
                 mt-5 sm:mt-6
-                max-w-[640px]
+                max-w-[620px]
                 text-base sm:text-lg
                 leading-[1.68]
                 text-slate-700 dark:text-slate-300
               "
             >
-              {t(
-                'hero_desc',
-                'ZYVORIS connects financial data, fund structures, tax logic, deterministic calculations, review workflows, and reporting outputs in one integrated infrastructure for cross-border private markets.'
-              )}
+              {language === 'de'
+                ? 'ZYVORIS verbindet Fondsdaten, Steuerlogik, Berechnungen, Prüfung und Reporting in einer strukturierten Plattform für Private Markets.'
+                : 'ZYVORIS connects fund data, tax logic, calculations, review, and reporting in one structured platform built for private markets.'}
             </p>
 
-            {/* Action Buttons */}
+            {/* Action Buttons: Book a Demo & Explore the Platform */}
             <div className="mt-8 flex flex-wrap items-center gap-3.5">
-              <a
-                href="mailto:info@zyvoris.ai?subject=ZYVORIS%20Demo%20Request"
+              <Link
+                href="/contact"
                 className="
                   inline-flex items-center justify-center gap-2
                   h-12 px-6
@@ -134,15 +135,15 @@ export default function ZyvorisHero({
                   hover:bg-slate-800 dark:hover:bg-blue-500
                   hover:-translate-y-0.5
                   transition-all duration-200
+                  no-underline
                 "
               >
                 <span>{t('nav_book_demo', 'Book a Demo')}</span>
                 <span className="font-mono text-sm leading-none">→</span>
-              </a>
+              </Link>
 
-              <button
-                type="button"
-                onClick={scrollToProblem}
+              <Link
+                href="/platform"
                 className="
                   inline-flex items-center justify-center
                   h-12 px-6
@@ -155,33 +156,11 @@ export default function ZyvorisHero({
                   hover:bg-slate-900 hover:text-white dark:hover:bg-slate-700
                   hover:-translate-y-0.5
                   transition-all duration-200
+                  no-underline
                 "
               >
                 {t('nav_explore', 'Explore the Platform')}
-              </button>
-            </div>
-
-            {/* Proof Badges with Black Borders in Light Mode */}
-            <div className="mt-10 pt-6 border-t-2 border-slate-900/40 dark:border-slate-800 flex flex-wrap gap-x-6 gap-y-3">
-              <div className="flex items-center gap-2 text-xs font-bold text-slate-900 dark:text-slate-200">
-                <span className="font-mono text-blue-600 dark:text-blue-400 font-bold">[01]</span>
-                <span>{t('hero_proof_calc', 'Controlled calculations')}</span>
-              </div>
-
-              <div className="flex items-center gap-2 text-xs font-bold text-slate-900 dark:text-slate-200">
-                <span className="font-mono text-blue-600 dark:text-blue-400 font-bold">[02]</span>
-                <span>{t('hero_proof_trace', 'Source-to-output traceability')}</span>
-              </div>
-
-              <div className="flex items-center gap-2 text-xs font-bold text-slate-900 dark:text-slate-200">
-                <span className="font-mono text-blue-600 dark:text-blue-400 font-bold">[03]</span>
-                <span>{t('hero_proof_multi', 'Multi-jurisdiction architecture')}</span>
-              </div>
-
-              <div className="flex items-center gap-2 text-xs font-bold text-slate-900 dark:text-slate-200">
-                <span className="font-mono text-blue-600 dark:text-blue-400 font-bold">[04]</span>
-                <span>{t('hero_proof_human', 'Human oversight')}</span>
-              </div>
+              </Link>
             </div>
           </div>
 
@@ -300,13 +279,18 @@ export default function ZyvorisHero({
                 })}
               </div>
 
-              {/* Visual Footer */}
-              <div className="mt-4 pt-3 border-t-2 border-slate-900 dark:border-slate-800 flex items-center justify-between text-[9px] font-mono font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
-                <span className="text-blue-600 dark:text-blue-400">[DATA]</span>
+              <div className="mt-4 pt-3 border-t-2 border-slate-900 dark:border-slate-800 flex flex-wrap items-center justify-between gap-1 text-[8.5px] sm:text-[9px] font-mono font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
+                <span className="text-blue-600 dark:text-blue-400">{t('stage_1_title', 'DATA')}</span>
                 <span>→</span>
-                <span className="text-blue-600 dark:text-blue-400">[LOGIC]</span>
+                <span className="text-slate-900 dark:text-slate-200">{t('stage_2_title', 'STRUCTURE')}</span>
                 <span>→</span>
-                <span className="text-blue-600 dark:text-blue-400">[REPORT]</span>
+                <span className="text-blue-600 dark:text-blue-400">{t('stage_3_title', 'TAX LOGIC')}</span>
+                <span>→</span>
+                <span className="text-slate-900 dark:text-slate-200">{t('stage_4_title', 'CALCULATION')}</span>
+                <span>→</span>
+                <span className="text-blue-600 dark:text-blue-400">{t('stage_5_title', 'REVIEW')}</span>
+                <span>→</span>
+                <span className="text-emerald-600 dark:text-emerald-400 font-extrabold">{t('stage_6_title', 'REPORTING')}</span>
               </div>
             </div>
           </div>
