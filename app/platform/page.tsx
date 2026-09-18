@@ -4,7 +4,7 @@ import React, { useState, useEffect } from 'react'
 import Image from 'next/image'
 import Link from 'next/link'
 import PlatformSteps from '@/components/platform-steps'
-import ProductWorkspaces from '@/components/product-workspaces'
+
 import CoreCapabilities from '@/components/core-capabilities'
 import PlatformArchitecture from '@/components/platform-architecture'
 import Jurisdictions from '@/components/jurisdictions'
@@ -56,7 +56,7 @@ export default function PlatformPage() {
                       Steuerinfrastruktur{' '}
                     </span>
                     für{' '}
-                    <span className="relative inline-block px-1">
+                    <span className="relative inline-block whitespace-nowrap px-1">
                       <span className="relative z-10 font-serif italic text-blue-700 dark:text-blue-400">
                         komplexe
                       </span>
@@ -75,7 +75,7 @@ export default function PlatformPage() {
                         />
                       </svg>
                     </span>{' '}
-                    <span className="font-sans font-semibold">Privatmärkte.</span>
+                    <span className="font-sans font-semibold">Privatmärkte</span>
                   </>
                 ) : (
                   <>
@@ -83,7 +83,7 @@ export default function PlatformPage() {
                       Tax infrastructure{' '}
                     </span>
                     built for{' '}
-                    <span className="relative inline-block px-1">
+                    <span className="relative inline-block whitespace-nowrap px-1">
                       <span className="relative z-10 font-serif italic text-blue-700 dark:text-blue-400">
                         complex
                       </span>
@@ -102,7 +102,7 @@ export default function PlatformPage() {
                         />
                       </svg>
                     </span>{' '}
-                    <span className="font-sans font-semibold">private markets.</span>
+                    <span className="font-sans font-semibold">private markets</span>
                   </>
                 )}
               </h1>
@@ -124,38 +124,13 @@ export default function PlatformPage() {
               </div>
             </div>
 
-            {/* Right — Product screenshot */}
-            <div className="relative self-end">
-              <div className="flex items-center gap-2 rounded-t-2xl border-2 border-b-0 border-slate-900 bg-slate-100 px-4 py-2.5 dark:border-slate-700 dark:bg-slate-800">
-                <span className="h-2.5 w-2.5 rounded-full bg-slate-400 dark:bg-slate-600" />
-                <span className="h-2.5 w-2.5 rounded-full bg-slate-400 dark:bg-slate-600" />
-                <span className="h-2.5 w-2.5 rounded-full bg-slate-400 dark:bg-slate-600" />
-                <span className="ml-2 flex h-5 flex-1 items-center rounded bg-white px-2 font-mono text-[10px] text-slate-400 dark:bg-slate-900 dark:text-slate-500">
-                  app.zyvoris.ai/fund-overview
-                </span>
-              </div>
-              <div className="relative overflow-hidden rounded-b-2xl border-2 border-slate-900 shadow-2xl dark:border-slate-700">
-                <Image
-                  src="/1_fund_overview.png"
-                  alt="ZYVORIS Fund Overview workspace"
-                  width={1200}
-                  height={780}
-                  priority
-                  className="h-auto w-full object-cover object-top"
-                />
-                <div className="pointer-events-none absolute bottom-0 left-0 right-0 h-16 bg-gradient-to-t from-[#f0f4f9] to-transparent dark:from-[#080d1a]" />
-              </div>
-            </div>
-
+     
           </div>
         </div>
       </section>
 
       {/* 2. PLATFORM — HOW IT WORKS (6 concise steps) */}
       <PlatformSteps />
-
-      {/* 3. PLATFORM — PRODUCT WORKSPACE (Calculate, Review, Trace, Report) */}
-      <ProductWorkspaces />
 
       {/* 4. PLATFORM — CORE CAPABILITIES (Clean 8-item grid) */}
       <CoreCapabilities />

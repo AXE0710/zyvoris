@@ -89,8 +89,8 @@ export default function ProblemSection() {
               <span className="block font-serif italic font-normal text-slate-900 dark:text-slate-100">
                 {t('problem_title_1', 'Private markets have scaled.')}
               </span>
-              <span className="block font-sans font-semibold text-blue-600 dark:text-blue-400 mt-1">
-                {t('problem_title_2', 'Tax infrastructure has not.')}
+              <span className="block font-sans font-semibold text-blue-600 dark:text-blue-400 mt-1 sm:whitespace-nowrap">
+                {t('problem_title_2', 'Tax infrastructure has not')}
               </span>
             </h2>
           </div>

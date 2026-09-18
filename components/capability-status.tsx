@@ -156,8 +156,8 @@ export default function CapabilityStatusMatrix() {
 
             <h2 className="max-w-[760px] text-3xl font-semibold leading-[1.08] tracking-[-0.04em] text-slate-950 dark:text-white sm:text-4xl lg:text-5xl">
               {language === 'de' ? 'Klare Trennung zwischen' : 'Clear separation between'}{' '}
-              <span className="text-blue-600 dark:text-blue-400">
-                {language === 'de' ? 'Live-Funktionen und Roadmap.' : 'current functionality and future architecture.'}
+              <span className="text-blue-600 dark:text-blue-400 sm:whitespace-nowrap">
+                {language === 'de' ? 'Live-Funktionen und Roadmap' : 'current functionality and future architecture'}
               </span>
             </h2>
           </div>

@@ -34,8 +34,8 @@ export default function IntegrationSection() {
 
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl text-slate-950 dark:text-white leading-[1.08]">
               {language === 'de' ? 'Entwickelt für Ihre bestehende' : 'Designed to work with your existing'}{' '}
-              <span className="text-blue-600 dark:text-blue-400">
-                {language === 'de' ? 'Datenumgebung.' : 'data environment.'}
+              <span className="text-blue-600 dark:text-blue-400 sm:whitespace-nowrap">
+                {language === 'de' ? 'Datenumgebung' : 'data environment'}
               </span>
             </h2>
           </div>

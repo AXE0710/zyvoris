@@ -100,8 +100,8 @@ export default function VerificationSection() {
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl text-slate-950 dark:text-white leading-[1.08]">
               {language === 'de' ? 'Vollständige Berechnungs-Lineage.' : 'Complete calculation lineage.'}{' '}
               <br />
-              <span className="text-blue-600 dark:text-blue-400">
-                {language === 'de' ? 'Vom Quelldatum zur Meldung.' : 'From source data to reporting output.'}
+              <span className="text-blue-600 dark:text-blue-400 sm:whitespace-nowrap">
+                {language === 'de' ? 'Vom Quelldatum zur Meldung' : 'From source data to reporting output'}
               </span>
             </h2>
           </div>

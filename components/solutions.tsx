@@ -104,10 +104,10 @@ export default function SolutionsSection() {
             <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
               {isGerman ? 'Ein kontrollierter Ablauf ' : 'One controlled workflow '}
             </span>
-            <span className="font-sans font-semibold">
+            <span className="font-sans font-semibold text-blue-600 dark:text-blue-400 sm:whitespace-nowrap">
               {isGerman
-                ? 'von Fondsdaten bis zum Steuerreporting.'
-                : 'from fund data to tax reporting.'}
+                ? 'von Fondsdaten bis zum Steuerreporting'
+                : 'from fund data to tax reporting'}
             </span>
           </h2>
         </div>

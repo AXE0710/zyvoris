@@ -111,7 +111,7 @@ export default function ZyvorisHero({
                   </span>
                   komplexen Fondsdaten zu{' '}
                   <span
-                    className="relative inline-block px-1 cursor-pointer select-none"
+                    className="relative inline-block whitespace-nowrap px-1 cursor-pointer select-none"
                     onMouseEnter={handleUnderlineHover}
                     title="Hover to replay underline"
                   >
@@ -134,7 +134,7 @@ export default function ZyvorisHero({
                       />
                     </svg>
                   </span>
-                  , jurisdiktionsspezifischem Steuerreporting.
+                  , jurisdiktionsspezifischem Steuerreporting
                 </>
               ) : (
                 <>
@@ -143,12 +143,12 @@ export default function ZyvorisHero({
                   </span>
                   complex fund data into{' '}
                   <span
-                    className="relative inline-block px-1 cursor-pointer select-none"
+                    className="relative inline-block whitespace-nowrap px-1 cursor-pointer select-none"
                     onMouseEnter={handleUnderlineHover}
                     title="Hover to replay underline"
                   >
                     <span className="relative z-10 font-serif italic text-blue-700 dark:text-blue-400">
-                      controlled,
+                      controlled
                     </span>
                     <svg
                       key={inkKey}
@@ -166,9 +166,9 @@ export default function ZyvorisHero({
                       />
                     </svg>
                   </span>
-                  <br className="hidden sm:inline" />
+                  ,{' '}
                   <span className="font-sans font-semibold">
-                    jurisdiction-ready tax reporting.
+                    jurisdiction-ready tax reporting
                   </span>
                 </>
               )}

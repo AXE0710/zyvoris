@@ -81,14 +81,18 @@ export default function PlatformSteps() {
                 <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
                   Ein strukturierter{' '}
                 </span>
-                Ablauf von Quelldaten bis zum Reporting.
+                <span className="font-sans font-semibold text-blue-600 dark:text-blue-400 sm:whitespace-nowrap">
+                  Ablauf von Quelldaten bis zum Reporting
+                </span>
               </>
             ) : (
               <>
                 <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
                   One structured{' '}
                 </span>
-                workflow from source data to reporting.
+                <span className="font-sans font-semibold text-blue-600 dark:text-blue-400 sm:whitespace-nowrap">
+                  workflow from source data to reporting
+                </span>
               </>
             )}
           </h2>

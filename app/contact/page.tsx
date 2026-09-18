@@ -66,9 +66,9 @@ export default function ContactPage() {
                   Sprechen wir{' '}
                 </span>
                 über Ihren{' '}
-                <span className="relative inline-block px-1">
+                <span className="relative inline-block whitespace-nowrap px-1">
                   <span className="relative z-10 font-serif italic text-blue-700 dark:text-blue-400">
-                    Steuer-Workflow.
+                    Steuer-Workflow
                   </span>
                   <svg
                     className="absolute -bottom-1.5 sm:-bottom-2 left-0 w-full h-3 text-blue-500/80 dark:text-blue-400 overflow-visible"
@@ -92,9 +92,9 @@ export default function ContactPage() {
                   Let&apos;s discuss{' '}
                 </span>
                 your{' '}
-                <span className="relative inline-block px-1">
+                <span className="relative inline-block whitespace-nowrap px-1">
                   <span className="relative z-10 font-serif italic text-blue-700 dark:text-blue-400">
-                    tax workflow.
+                    tax workflow
                   </span>
                   <svg
                     className="absolute -bottom-1.5 sm:-bottom-2 left-0 w-full h-3 text-blue-500/80 dark:text-blue-400 overflow-visible"

@@ -69,10 +69,10 @@ export default function HomeCapabilities() {
             <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
               {isGerman ? 'Entwickelt für ' : 'Built for '}
             </span>
-            <span className="font-sans font-semibold text-slate-950 dark:text-white">
+            <span className="font-sans font-semibold text-blue-600 dark:text-blue-400 sm:whitespace-nowrap">
               {isGerman
-                ? 'komplexe Steuer-Workflows in den Privatmärkten.'
-                : 'complex private markets tax workflows.'}
+                ? 'komplexe Steuer-Workflows in den Privatmärkten'
+                : 'complex private markets tax workflows'}
             </span>
           </h2>
         </div>

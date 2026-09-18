@@ -87,8 +87,8 @@ export default function BusinessOutcomes() {
 
             <h2 className="max-w-[780px] text-3xl font-semibold leading-[1.08] tracking-[-0.04em] text-slate-950 dark:text-white sm:text-4xl lg:text-5xl">
               {language === 'de' ? 'Von manuellen Steueroperationen zu' : 'From Manual Tax Operations to'}{' '}
-              <span className="text-blue-600 dark:text-blue-400">
-                {language === 'de' ? 'kontrollierter Ausführung.' : 'Controlled Execution.'}
+              <span className="text-blue-600 dark:text-blue-400 sm:whitespace-nowrap">
+                {language === 'de' ? 'kontrollierter Ausführung' : 'Controlled Execution'}
               </span>
             </h2>
           </div>

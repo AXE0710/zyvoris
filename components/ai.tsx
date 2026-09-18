@@ -91,7 +91,7 @@ export default function AISection() {
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl text-slate-950 dark:text-white leading-tight">
               {t('ai_title_1', 'AI where interpretation matters.')}{' '}
               <span className="text-blue-600 dark:text-blue-400">
-                {t('ai_title_2', 'Deterministic calculation where precision is non-negotiable.')}
+                {t('ai_title_2', 'Deterministic calculation where precision is non-negotiable')}
               </span>
             </h2>
           </div>

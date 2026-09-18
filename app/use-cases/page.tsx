@@ -43,9 +43,9 @@ export default function UseCasesPage() {
                   Steuer-Workflows{' '}
                 </span>
                 für{' '}
-                <span className="relative inline-block px-1">
+                <span className="relative inline-block whitespace-nowrap px-1">
                   <span className="relative z-10 font-serif italic text-blue-700 dark:text-blue-400">
-                    Privatmärkte.
+                    Privatmärkte
                   </span>
                   <svg
                     className="absolute -bottom-1.5 sm:-bottom-2 left-0 w-full h-3 text-blue-500/80 dark:text-blue-400 overflow-visible"
@@ -69,9 +69,9 @@ export default function UseCasesPage() {
                   Tax workflows{' '}
                 </span>
                 built for{' '}
-                <span className="relative inline-block px-1">
+                <span className="relative inline-block whitespace-nowrap px-1">
                   <span className="relative z-10 font-serif italic text-blue-700 dark:text-blue-400">
-                    private markets.
+                    private markets
                   </span>
                   <svg
                     className="absolute -bottom-1.5 sm:-bottom-2 left-0 w-full h-3 text-blue-500/80 dark:text-blue-400 overflow-visible"

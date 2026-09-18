@@ -84,7 +84,7 @@ export default function CompanySimple() {
                   <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
                     Die Steuerinfrastruktur-{' '}
                   </span>
-                  <span className="relative inline-block px-1">
+                  <span className="relative inline-block whitespace-nowrap px-1">
                     <span className="relative z-10 font-serif italic text-blue-700 dark:text-blue-400">
                       Schicht
                     </span>
@@ -103,7 +103,7 @@ export default function CompanySimple() {
                       />
                     </svg>
                   </span>{' '}
-                  für Privatmärkte.
+                  für Privatmärkte
                 </>
               ) : (
                 <>
@@ -111,7 +111,7 @@ export default function CompanySimple() {
                     Building{' '}
                   </span>
                   the tax infrastructure{' '}
-                  <span className="relative inline-block px-1">
+                  <span className="relative inline-block whitespace-nowrap px-1">
                     <span className="relative z-10 font-serif italic text-blue-700 dark:text-blue-400">
                       layer
                     </span>
@@ -130,7 +130,7 @@ export default function CompanySimple() {
                       />
                     </svg>
                   </span>{' '}
-                  for private markets.
+                  for private markets
                 </>
               )}
             </h1>
@@ -154,7 +154,9 @@ export default function CompanySimple() {
               <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
                 {isGerman ? 'Moderne Infrastruktur ' : 'Modern infrastructure '}
               </span>
-              {isGerman ? 'für komplexe Steueroperationen.' : 'for complex tax operations.'}
+              <span className="text-blue-600 dark:text-blue-400 sm:whitespace-nowrap">
+                {isGerman ? 'für komplexe Steueroperationen' : 'for complex tax operations'}
+              </span>
             </h2>
 
             <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-slate-300">
@@ -179,7 +181,9 @@ export default function CompanySimple() {
               <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
                 {isGerman ? 'Die Menschen ' : 'The people '}
               </span>
-              {isGerman ? 'hinter ZYVORIS.' : 'behind ZYVORIS.'}
+              <span className="text-blue-600 dark:text-blue-400 sm:whitespace-nowrap">
+                {isGerman ? 'hinter ZYVORIS' : 'behind ZYVORIS'}
+              </span>
             </h2>
           </div>
 
@@ -229,7 +233,9 @@ export default function CompanySimple() {
               <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
                 {isGerman ? 'Unsere Werte ' : 'Our core '}
               </span>
-              {isGerman ? 'für den Betrieb.' : 'operating values.'}
+              <span className="text-blue-600 dark:text-blue-400 sm:whitespace-nowrap">
+                {isGerman ? 'für den Betrieb' : 'operating values'}
+              </span>
             </h2>
           </div>
 

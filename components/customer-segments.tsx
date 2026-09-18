@@ -85,10 +85,10 @@ export default function CustomerSegments() {
             <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
               {isGerman ? 'Für die zuständigen Teams ' : 'For the teams responsible '}
             </span>
-            <span className="font-sans font-semibold">
+            <span className="font-sans font-semibold text-blue-600 dark:text-blue-400 sm:whitespace-nowrap">
               {isGerman
-                ? 'für komplexes Steuerreporting.'
-                : 'for complex fund tax reporting.'}
+                ? 'für komplexes Steuerreporting'
+                : 'for complex fund tax reporting'}
             </span>
           </h2>
         </div>

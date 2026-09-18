@@ -33,24 +33,28 @@ export default function PlatformArchitecture() {
             {isGerman ? (
               <>
                 <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
-                  Daten, Logik, Berechnung{' '}
+                  Klare Trennung von Daten, Steuerlogik,{' '}
                 </span>
-                und Prüfung getrennt.
+                <span className="font-sans font-semibold text-blue-600 dark:text-blue-400 sm:whitespace-nowrap">
+                  Berechnung und Prüfung
+                </span>
               </>
             ) : (
               <>
                 <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
                   Separate data, logic,{' '}
                 </span>
-                calculation, and review.
+                <span className="font-sans font-semibold text-blue-600 dark:text-blue-400 sm:whitespace-nowrap">
+                  calculation, and review
+                </span>
               </>
             )}
           </h2>
 
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg">
             {isGerman
-              ? 'ZYVORIS trennt Steuerdaten, jurisdiktionsspezifische Regeln, Berechnungslogik und fachliche Prüfung in eigenständige Schichten, damit Workflows strukturiert, reproduzierbar und einfacher zu steuern bleiben.'
-              : 'ZYVORIS separates tax data, jurisdiction-specific rules, calculation logic, and professional review into distinct layers so workflows remain structured, reproducible, and easier to govern.'}
+              ? 'ZYVORIS trennt Steuerdaten, länderspezifische Steuerregeln, Berechnungslogik und fachliche Prüfung in klar definierte Ebenen. So bleiben Prozesse strukturiert, nachvollziehbar und kontrollierbar.'
+              : 'ZYVORIS separates tax data, jurisdiction-specific rules, calculation logic, and professional review into clearly defined layers—keeping tax workflows structured, traceable, reproducible, and controlled.'}
           </p>
         </div>
 
@@ -83,7 +87,7 @@ export default function PlatformArchitecture() {
             <span className="text-slate-400 dark:text-slate-500 font-bold sm:hidden">↓</span>
             <span className="hidden text-slate-400 dark:text-slate-500 font-bold sm:inline">→</span>
             <div className="rounded-xl border-2 border-emerald-600 bg-emerald-50 px-4 py-2.5 font-extrabold text-emerald-700 dark:border-emerald-500 dark:bg-emerald-950/60 dark:text-emerald-300">
-              {isGerman ? 'AUSGABE' : 'OUTPUT'}
+              {isGerman ? 'ERGEBNIS' : 'OUTPUT'}
             </div>
           </div>
         </div>

@@ -44,8 +44,8 @@ export const translations = {
 
     // Problem section
     problem_kicker: 'THE CHALLENGE',
-    problem_title_1: 'Private markets have scaled.',
-    problem_title_2: 'Tax infrastructure has not.',
+    problem_title_1: 'Private markets have scaled',
+    problem_title_2: 'Tax infrastructure has not',
     problem_desc:
       'Tax teams still rely on fragmented data, spreadsheet-based calculations, manual review processes, and disconnected reporting workflows.',
     problem_closing:
@@ -72,7 +72,7 @@ export const translations = {
 
     // Solutions / Platform (Section 3: How ZYVORIS Works)
     sol_kicker: 'THE PLATFORM',
-    sol_title: 'One controlled workflow from fund data to tax reporting.',
+    sol_title: 'One controlled workflow from fund data to tax reporting',
     sol_block_1_title: 'DATA',
     sol_block_1_desc: 'Financial, accounting, investor, and transaction data.',
     sol_block_2_title: 'STRUCTURE',
@@ -89,7 +89,7 @@ export const translations = {
     // Complex structures
     complex_kicker: 'STRUCTURAL COMPLEXITY',
     complex_title_1: 'Engineered for the reality of',
-    complex_title_2: 'modern fund architecture.',
+    complex_title_2: 'modern fund architecture',
     complex_desc: 'Private-market funds are rarely single entities. ZYVORIS models multi-tier master-feeder funds, parallel vehicles, blocker corporations, and SPVs.',
     struct_1_title: 'Master-Feeder & Parallel Vehicles',
     struct_1_desc: 'Model complex fund architectures across multiple jurisdictions with automated aggregation and pass-through tax logic.',
@@ -103,7 +103,7 @@ export const translations = {
     // Comparison
     comp_kicker: 'THE OPERATING MODEL',
     comp_title_1: 'Replace fragmented tax workflows with',
-    comp_title_2: 'connected infrastructure.',
+    comp_title_2: 'connected infrastructure',
     comp_desc: 'Traditional tax processes rely on disconnected workpapers and manual handoffs. ZYVORIS unifies data, rules, logic, and reporting into a single system.',
     comp_trad_header: 'TRADITIONAL WORKFLOW',
     comp_zyv_header: 'ZYVORIS INFRASTRUCTURE',
@@ -131,7 +131,7 @@ export const translations = {
     // AI & Verification
     ai_kicker: 'TECHNOLOGY PRINCIPLE',
     ai_title_1: 'AI for interpretation.',
-    ai_title_2: 'Deterministic logic for calculation.',
+    ai_title_2: 'Deterministic logic for calculation',
     ai_desc:
       'AI-assisted workflows can support extraction, classification, and exception analysis. Tax calculations remain separate and are executed through controlled calculation logic.',
     ai_layer_1_title: 'AI-Assisted Interpretation Layer',
@@ -147,7 +147,7 @@ export const translations = {
     // Verification
     verify_kicker: 'AUDIT & VERIFICATION',
     verify_title_1: 'Complete calculation lineage.',
-    verify_title_2: 'Every number explained.',
+    verify_title_2: 'Every number explained',
     verify_desc: 'Auditors and tax reviewers can inspect the exact mathematical lineage of any reported figure back to its source transaction and applied rule version.',
     verify_step_1: 'Source Transaction Ingested',
     verify_step_2: 'Tax Characterization Applied',
@@ -157,7 +157,7 @@ export const translations = {
     // Security & Governance
     sec_kicker: 'SECURITY & GOVERNANCE',
     sec_title_1: 'Built for sensitive',
-    sec_title_2: 'financial and tax data.',
+    sec_title_2: 'financial and tax data',
     sec_desc: 'ZYVORIS is designed around controlled access, operational visibility, data governance, and professional oversight.',
     sec_c1_title: 'Transport & Storage Protection',
     sec_c1_desc: 'Data architecture incorporates AES-256 cloud storage encryption and TLS 1.3 transit security.',
@@ -175,12 +175,12 @@ export const translations = {
     // Integrations
     int_kicker: 'INTEGRATIONS',
     int_title_1: 'Built to connect with your',
-    int_title_2: 'existing tax stack.',
+    int_title_2: 'existing tax stack',
     int_desc: 'ZYVORIS operates alongside your existing tools—connecting financial, fund, and tax data without forcing expensive system replacements.',
 
     // Core Capabilities (Section 4)
     cap_kicker: 'CORE CAPABILITIES',
-    cap_title: 'Built for complex private markets tax workflows.',
+    cap_title: 'Built for complex private markets tax workflows',
     cap_1_title: 'Fund Tax Calculations',
     cap_1_desc: 'Structured jurisdiction-specific fund-level tax calculations.',
     cap_2_title: 'Share-Class & Multi-Tier Allocations',
@@ -332,8 +332,8 @@ export const translations = {
 
     // Problem section
     problem_kicker: 'DIE HERAUSFORDERUNG',
-    problem_title_1: 'Private Markets sind gewachsen.',
-    problem_title_2: 'Die Steuerinfrastruktur nicht.',
+    problem_title_1: 'Private Markets sind gewachsen',
+    problem_title_2: 'Die Steuerinfrastruktur nicht',
     problem_desc:
       'Steuerteams stützen sich weiterhin auf fragmentierte Daten, tabellenbasierte Berechnungen, manuelle Prüfprozesse und getrennte Reporting-Abläufe.',
     problem_closing:
@@ -360,7 +360,7 @@ export const translations = {
 
     // Solutions / Platform (Section 3: How ZYVORIS Works)
     sol_kicker: 'DIE PLATTFORM',
-    sol_title: 'Ein kontrollierter Ablauf von Fondsdaten bis zum Steuerreporting.',
+    sol_title: 'Ein kontrollierter Ablauf von Fondsdaten bis zum Steuerreporting',
     sol_block_1_title: 'DATEN',
     sol_block_1_desc: 'Finanz-, Buchhaltungs-, Investoren- und Transaktionsdaten.',
     sol_block_2_title: 'STRUKTUR',
@@ -377,7 +377,7 @@ export const translations = {
     // Complex structures
     complex_kicker: 'STRUKTURELLE KOMPLEXITÄT',
     complex_title_1: 'Entwickelt für die Realität',
-    complex_title_2: 'moderner Fondsarchitekturen.',
+    complex_title_2: 'moderner Fondsarchitekturen',
     complex_desc: 'Private-Markets-Fonds bestehen selten aus nur einer Entität. ZYVORIS modelliert mehrstufige Master-Feeder-Fonds, Parallelvehikel, Blocker und SPVs.',
     struct_1_title: 'Master-Feeder & Parallelvehikel',
     struct_1_desc: 'Komplexe Fondsarchitekturen über mehrere Länder mit automatischer Aggregation und Durchgriffsbesteuerung modellieren.',
@@ -391,7 +391,7 @@ export const translations = {
     // Comparison
     comp_kicker: 'OPERATING MODEL VERGLEICH',
     comp_title_1: 'Herkömmliche Steueroperationen durch',
-    comp_title_2: 'vernetzte Tax Infrastructure ersetzen.',
+    comp_title_2: 'vernetzte Tax Infrastructure ersetzen',
     comp_desc: 'Herkömmliche Steuerprozesse basieren auf getrennten Arbeitspapieren und manuellen Übergaben. ZYVORIS vereint Daten, Rules, Tax Logic und Reporting in einem System.',
     comp_trad_header: 'TRADITIONELLE TAX OPERATIONS',
     comp_zyv_header: 'ZYVORIS TAX INFRASTRUCTURE',
@@ -419,7 +419,7 @@ export const translations = {
     // AI & Verification
     ai_kicker: 'TECHNOLOGIE-PRINZIP',
     ai_title_1: 'KI für Interpretation.',
-    ai_title_2: 'Deterministische Logik für Berechnungen.',
+    ai_title_2: 'Deterministische Logik für Berechnungen',
     ai_desc:
       'KI-gestützte Workflows können Extraktion, Klassifikation und Ausnahmeanalysen unterstützen. Steuerberechnungen bleiben getrennt und werden über kontrollierte Berechnungslogik ausgeführt.',
     ai_layer_1_title: 'KI-Interpretationsschicht',
@@ -435,7 +435,7 @@ export const translations = {
     // Verification
     verify_kicker: 'AUDIT & VERIFIZIERUNG',
     verify_title_1: 'Nachvollziehbarkeit der Berechnung.',
-    verify_title_2: 'Jede Zahl lückenlos erklärt.',
+    verify_title_2: 'Jede Zahl lückenlos erklärt',
     verify_desc: 'Auditoren und Steuerteams können den exakten Ursprung jedes Werts von den Quelldaten bis zum Reporting Output über den Audit Trail nachvollziehen.',
     verify_step_1: 'Quelldaten importiert',
     verify_step_2: 'Steuerlogik & Steuerregel angewendet',
@@ -445,7 +445,7 @@ export const translations = {
     // Security & Governance
     sec_kicker: 'SICHERHEIT & GOVERNANCE',
     sec_title_1: 'Entwickelt für hochsensible',
-    sec_title_2: 'Finanz- und Steuerdaten.',
+    sec_title_2: 'Finanz- und Steuerdaten',
     sec_desc: 'ZYVORIS basiert auf kontrolliertem Zugriff, operativer Sichtbarkeit, Datengovernance und professioneller Aufsicht.',
     sec_c1_title: 'Transport- & Speicherschutz',
     sec_c1_desc: 'Datenarchitektur integriert AES-256 Cloud-Speicherverschlüsselung und TLS 1.3 bei der Übertragung.',
@@ -463,12 +463,12 @@ export const translations = {
     // Integrations
     int_kicker: 'INTEGRATIONEN',
     int_title_1: 'Entwickelt zur Anbindung an Ihren',
-    int_title_2: 'bestehenden Steuer-Stack.',
+    int_title_2: 'bestehenden Steuer-Stack',
     int_desc: 'ZYVORIS arbeitet nahtlos mit Ihren bestehenden Tools zusammen – verbindet Finanz-, Fonds- und Steuerdaten ohne teure Systemwechsel.',
 
     // Core Capabilities (Section 4)
     cap_kicker: 'KERNFUNKTIONEN',
-    cap_title: 'Entwickelt für komplexe Private-Markets-Steuerprozesse.',
+    cap_title: 'Entwickelt für komplexe Private-Markets-Steuerprozesse',
     cap_1_title: 'Fondssteuer-Berechnung',
     cap_1_desc: 'Strukturierte länderspezifische Steuerberechnungen auf Fondsebene.',
     cap_2_title: 'Anteilsklassen- & mehrstufige Allokationen',

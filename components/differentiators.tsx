@@ -89,8 +89,8 @@ export default function DifferentiatorsSection() {
 
             <h2 className="max-w-[780px] text-3xl font-semibold leading-[1.08] tracking-[-0.04em] text-slate-950 dark:text-white sm:text-4xl lg:text-5xl">
               {language === 'de' ? 'Entwickelt für die Realität' : 'Engineered for the reality of'}{' '}
-              <span className="text-blue-600 dark:text-blue-400">
-                {language === 'de' ? 'institutioneller Steuern.' : 'institutional tax.'}
+              <span className="text-blue-600 dark:text-blue-400 sm:whitespace-nowrap">
+                {language === 'de' ? 'institutioneller Steuern' : 'institutional tax'}
               </span>
             </h2>
           </div>

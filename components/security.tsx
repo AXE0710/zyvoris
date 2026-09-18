@@ -378,8 +378,8 @@ export default function SecuritySection() {
 
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl text-slate-950 dark:text-white leading-tight">
               {language === 'de' ? 'Entwickelt für hochsensible' : 'Built for sensitive'}{' '}
-              <span className="text-blue-600 dark:text-blue-400">
-                {language === 'de' ? 'Finanz- und Steuerdaten.' : 'financial and tax data.'}
+              <span className="text-blue-600 dark:text-blue-400 sm:whitespace-nowrap">
+                {language === 'de' ? 'Finanz- und Steuerdaten' : 'financial and tax data'}
               </span>
             </h2>
           </div>

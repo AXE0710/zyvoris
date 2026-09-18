@@ -61,8 +61,8 @@ export default function TeamSection() {
 
             <h2 className="max-w-[780px] text-3xl font-semibold leading-[1.08] tracking-[-0.04em] text-slate-950 dark:text-white sm:text-4xl lg:text-5xl">
               {language === 'de' ? 'Entwickelt von Steuerexperten und' : 'Built by institutional tax leaders and'}{' '}
-              <span className="text-blue-600 dark:text-blue-400">
-                {language === 'de' ? 'Infrastruktur-Ingenieuren.' : 'infrastructure engineers.'}
+              <span className="text-blue-600 dark:text-blue-400 sm:whitespace-nowrap">
+                {language === 'de' ? 'Infrastruktur-Ingenieuren' : 'infrastructure engineers'}
               </span>
             </h2>
           </div>

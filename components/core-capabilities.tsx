@@ -10,59 +10,59 @@ export default function CoreCapabilities() {
   const capabilities = [
     {
       num: '01',
-      title: isGerman ? 'Fondssteuerberechnungen' : 'Fund-Level Tax Calculations',
+      title: isGerman ? 'Steuerberechnungen auf Fondsebene' : 'Fund-Level Tax Calculations',
       desc: isGerman
-        ? 'Strukturierte länderspezifische Steuerberechnungen auf Fondsebene ausführen.'
-        : 'Run controlled, jurisdiction-specific tax calculations at fund level.',
+        ? 'Führen Sie kontrollierte, länderspezifische Steuerberechnungen auf Fondsebene durch.'
+        : 'Perform controlled, jurisdiction-specific tax calculations at fund level.',
     },
     {
       num: '02',
-      title: isGerman ? 'Anteilsklassen-Allokationen' : 'Share-Class Allocations',
+      title: isGerman ? 'Allokation auf Anteilsklassenebene' : 'Share-Class Allocations',
       desc: isGerman
-        ? 'Kontrollierte Verteilung steuerlicher Ergebnisse über komplexe Anteilsklassen.'
-        : 'Controlled allocation of tax results across complex share classes.',
+        ? 'Kontrollierte und konsistente Verteilung steuerlicher Ergebnisse auf komplexe Anteilsklassenstrukturen.'
+        : 'Allocate tax results across complex share-class structures using controlled and consistent allocation logic.',
     },
     {
       num: '03',
-      title: isGerman ? 'Mehrebenen-Strukturmodellierung' : 'Multi-Tier Structure Modeling',
+      title: isGerman ? 'Modellierung mehrstufiger Strukturen' : 'Multi-Tier Structure Modeling',
       desc: isGerman
-        ? 'Gesellschaften, Beteiligungsverhältnisse und mehrstufige Fondsstrukturen abbilden.'
-        : 'Model entities, ownership hierarchies, and layered fund vehicles.',
+        ? 'Abbildung komplexer Fondsstrukturen, Gesellschaften, Beteiligungshierarchien und mehrstufiger Investmentstrukturen.'
+        : 'Model complex fund structures, entities, ownership hierarchies, and multi-tier investment vehicles.',
     },
     {
       num: '04',
-      title: isGerman ? 'Steuerwert-Berechnungen' : 'Tax Value Calculations',
+      title: isGerman ? 'Steuerliche Wertermittlung' : 'Tax Value Calculations',
       desc: isGerman
-        ? 'Relevante steuerliche Werte und Einkünfte aus Fondsdaten ermitteln.'
-        : 'Calculate taxable values and attributable income from fund data.',
+        ? 'Ermittlung länderspezifischer Steuerwerte und zurechenbarer Erträge auf Basis der zugrunde liegenden Fondsdaten.'
+        : 'Calculate jurisdiction-specific tax values and attributable income directly from underlying fund data.',
     },
     {
       num: '05',
       title: isGerman ? 'Prüfung & Validierung' : 'Review & Validation',
       desc: isGerman
-        ? 'Ergebnisse validieren, Ausnahmen behandeln und Freigabebereitschaft sichern.'
-        : 'Validate calculation results, manage exceptions, and confirm approval readiness.',
+        ? 'Validierung von Berechnungsergebnissen, Bearbeitung von Ausnahmen und Vorbereitung steuerlicher Ergebnisse für die fachliche Prüfung und Freigabe.'
+        : 'Validate calculation results, manage exceptions, and prepare tax outputs for professional review and sign-off.',
     },
     {
       num: '06',
-      title: isGerman ? 'Reporting-Outputs' : 'Reporting Outputs',
+      title: isGerman ? 'Reporting & Datenausgabe' : 'Reporting Outputs',
       desc: isGerman
-        ? 'Strukturierte Ausgabedaten für nachgelagerte Melde- und Steuerworkflows bereitstellen.'
-        : 'Prepare structured outputs and filing packages for downstream workflows.',
+        ? 'Erstellung strukturierter, länderspezifisch aufbereiteter Steuerdaten für Reporting, Prüfung und nachgelagerte Prozesse.'
+        : 'Generate structured, jurisdiction-ready tax outputs for reporting, review, and downstream workflows.',
     },
     {
       num: '07',
-      title: isGerman ? 'Berechnungs-Rückverfolgbarkeit' : 'Calculation Traceability',
+      title: isGerman ? 'Nachvollziehbarkeit von Berechnungen' : 'Calculation Traceability',
       desc: isGerman
-        ? 'Ausgabewerte lückenlos bis zu Quelldaten und angewandter Steuerlogik zurückverfolgen.'
-        : 'Trace reported values back to source transactions and applied tax logic.',
+        ? 'Nachverfolgung ausgewiesener Steuerwerte bis zu den zugrunde liegenden Quelldaten, Berechnungsschritten und angewandten Steuerregeln.'
+        : 'Trace reported tax values back to underlying source data, calculation steps, and applied tax logic.',
     },
     {
       num: '08',
-      title: isGerman ? 'Strukturierte Datenübernahme' : 'Structured Data Ingestion',
+      title: isGerman ? 'Strukturierte Datenaufnahme' : 'Structured Data Ingestion',
       desc: isGerman
-        ? 'Quelldaten aus Buchhaltung und Fonds in eine einheitliche, prüffähige Struktur überführen.'
-        : 'Bring source financial and fund data into a consistent, reviewable structure.',
+        ? 'Überführung von Finanz- und Fondsdaten aus unterschiedlichen Quellen in ein einheitliches, strukturiertes und prüfbares Format für die weitere steuerliche Verarbeitung.'
+        : 'Transform source financial and fund data into a consistent, structured, and reviewable format for downstream tax processing.',
     },
   ]
 
@@ -81,11 +81,11 @@ export default function CoreCapabilities() {
     >
       <div className="relative mx-auto max-w-[1420px]">
         {/* Header */}
-        <div className="max-w-3xl">
+        <div className="max-w-4xl">
           <div className="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full border border-blue-200/80 dark:border-blue-900/60 bg-blue-50/60 dark:bg-blue-950/40 backdrop-blur-md">
             <span className="h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400" />
             <span className="text-[10.5px] font-mono font-bold uppercase tracking-[0.2em] text-blue-800 dark:text-blue-300">
-              {isGerman ? 'KERNFUNKTIONEN' : 'CORE CAPABILITIES'}
+              {isGerman ? 'PLATTFORMFUNKTIONEN' : 'PLATFORM CAPABILITIES'}
             </span>
           </div>
 
@@ -93,16 +93,20 @@ export default function CoreCapabilities() {
             {isGerman ? (
               <>
                 <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
-                  Entwickelt{' '}
+                  Speziell entwickelt{' '}
                 </span>
-                für komplexe Private-Markets-Steuerprozesse.
+                <span className="font-sans font-semibold text-blue-600 dark:text-blue-400 sm:whitespace-nowrap">
+                  für komplexe Steuerprozesse in Private Markets
+                </span>
               </>
             ) : (
               <>
                 <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
-                  Built{' '}
+                  Purpose-built{' '}
                 </span>
-                for complex private markets tax workflows.
+                <span className="font-sans font-semibold text-blue-600 dark:text-blue-400 sm:whitespace-nowrap">
+                  for complex private markets tax workflows
+                </span>
               </>
             )}
           </h2>
@@ -130,9 +134,7 @@ export default function CoreCapabilities() {
                   <span className="font-mono text-sm font-bold text-blue-600 dark:text-blue-400">
                     [{item.num}]
                   </span>
-                  <span className="rounded-md border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/80 px-2 py-0.5 font-mono text-[9.5px] font-bold text-slate-700 dark:text-slate-300 uppercase">
-                    {isGerman ? 'FUNKTION' : 'CAPABILITY'}
-                  </span>
+
                 </div>
 
                 <div className="mt-5">

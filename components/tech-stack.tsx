@@ -205,8 +205,8 @@ export default function TechStackSection() {
 
             <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl text-slate-950 dark:text-white leading-[1.08]">
               {language === 'de' ? 'Der technische' : 'The implemented'}{' '}
-              <span className="text-blue-600 dark:text-blue-400">
-                {language === 'de' ? 'Technologie-Stack.' : 'technology stack.'}
+              <span className="text-blue-600 dark:text-blue-400 sm:whitespace-nowrap">
+                {language === 'de' ? 'Technologie-Stack' : 'technology stack'}
               </span>
             </h2>
           </div>

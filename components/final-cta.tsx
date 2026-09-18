@@ -22,7 +22,7 @@ export default function FinalCTA() {
               {isGerman ? (
                 <>
                   <span
-                    className="relative inline-block px-1 cursor-pointer select-none"
+                    className="relative inline-block whitespace-nowrap px-1 cursor-pointer select-none"
                     onMouseEnter={triggerReplay}
                     title="Hover to trigger double swish"
                   >
@@ -53,12 +53,12 @@ export default function FinalCTA() {
                       />
                     </svg>
                   </span>{' '}
-                  Ihren Steuer-Workflow für Privatmärkte.
+                  Ihren Steuer-Workflow für Privatmärkte
                 </>
               ) : (
                 <>
                   <span
-                    className="relative inline-block px-1 cursor-pointer select-none"
+                    className="relative inline-block whitespace-nowrap px-1 cursor-pointer select-none"
                     onMouseEnter={triggerReplay}
                     title="Hover to trigger double swish"
                   >
@@ -89,7 +89,7 @@ export default function FinalCTA() {
                       />
                     </svg>
                   </span>{' '}
-                  your private markets tax workflow.
+                  your private markets tax workflow
                 </>
               )}
             </h2>

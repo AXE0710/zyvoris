@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 640 480">
+  <rect width="640" height="480" fill="#B22234"/>
+  <rect y="37" width="640" height="37" fill="#FFFFFF"/>
+  <rect y="111" width="640" height="37" fill="#FFFFFF"/>
+  <rect y="185" width="640" height="37" fill="#FFFFFF"/>
+  <rect y="259" width="640" height="37" fill="#FFFFFF"/>
+  <rect y="333" width="640" height="37" fill="#FFFFFF"/>
+  <rect y="407" width="640" height="37" fill="#FFFFFF"/>
+  <rect width="256" height="259" fill="#3C3B6E"/>
+  <g fill="#FFFFFF">
+    <circle cx="42" cy="43" r="10"/>
+    <circle cx="106" cy="43" r="10"/>
+    <circle cx="170" cy="43" r="10"/>
+    <circle cx="74" cy="86" r="10"/>
+    <circle cx="138" cy="86" r="10"/>
+    <circle cx="202" cy="86" r="10"/>
+    <circle cx="42" cy="129" r="10"/>
+    <circle cx="106" cy="129" r="10"/>
+    <circle cx="170" cy="129" r="10"/>
+    <circle cx="74" cy="172" r="10"/>
+    <circle cx="138" cy="172" r="10"/>
+    <circle cx="202" cy="172" r="10"/>
+    <circle cx="42" cy="215" r="10"/>
+    <circle cx="106" cy="215" r="10"/>
+    <circle cx="170" cy="215" r="10"/>
+  </g>
+</svg>

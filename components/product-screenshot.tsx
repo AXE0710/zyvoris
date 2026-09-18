@@ -70,10 +70,9 @@ export default function ProductScreenshot() {
             </div>
 
             <h2 className="max-w-[680px] text-3xl font-semibold leading-[1.05] tracking-[-0.04em] text-slate-950 dark:text-white sm:text-4xl lg:text-5xl">
-              {language === 'de' ? 'Entwickelt für komplexe' : 'Designed for'}
-              <br />
-              <span className="text-slate-500 dark:text-slate-400">
-                {language === 'de' ? 'Steueroperationen.' : 'complex tax operations.'}
+              {language === 'de' ? 'Entwickelt für' : 'Designed for'}{' '}
+              <span className="text-blue-600 dark:text-blue-400 sm:whitespace-nowrap">
+                {language === 'de' ? 'komplexe Steueroperationen' : 'complex tax operations'}
               </span>
             </h2>
           </div>

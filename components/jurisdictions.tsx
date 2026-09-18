@@ -27,6 +27,7 @@ export default function Jurisdictions() {
   const jurisdictions = [
     {
       code: 'CH',
+      flag: '/flags/ch.svg',
       country: isGerman ? 'Schweiz' : 'Switzerland',
       status: 'mvp' as StatusType,
       description: isGerman
@@ -38,19 +39,8 @@ export default function Jurisdictions() {
         : ['ICTax XML Format Feed', 'Tax Valuation Calculation', 'Income Tax Allocation', 'Withholding Tax Verification'],
     },
     {
-      code: 'DE',
-      country: isGerman ? 'Deutschland' : 'Germany',
-      status: 'planned' as StatusType,
-      description: isGerman
-        ? 'Deutsche Investmentsteuerberechnung und Reporting-Workflows.'
-        : 'German investment tax calculation and reporting workflows.',
-      engine: 'InvStG 2018 §56 Engine',
-      modules: isGerman
-        ? ['Vorabpauschale-Berechnung', 'Teilfreistellungs-Klassifizierung', 'WM Datenservice Export', 'Akkumulierte Erträge']
-        : ['Advance Lump Sum (Vorabpauschale)', 'Partial Exemption Engine', 'WM Datenservice Feed', 'Accumulated Earnings Allocation'],
-    },
-    {
       code: 'AT',
+      flag: '/flags/at.svg',
       country: isGerman ? 'Österreich' : 'Austria',
       status: 'planned' as StatusType,
       description: isGerman
@@ -62,7 +52,21 @@ export default function Jurisdictions() {
         : ['Deemed Distributed Income (AgE)', 'OeKB Regulatory Export', 'KESt-II Calculation', 'Investor Class Partitioning'],
     },
     {
+      code: 'DE',
+      flag: '/flags/de.svg',
+      country: isGerman ? 'Deutschland' : 'Germany',
+      status: 'planned' as StatusType,
+      description: isGerman
+        ? 'Deutsche Investmentsteuerberechnung und Reporting-Workflows.'
+        : 'German investment tax calculation and reporting workflows.',
+      engine: 'InvStG 2018 §56 Engine',
+      modules: isGerman
+        ? ['Vorabpauschale-Berechnung', 'Teilfreistellungs-Klassifizierung', 'WM Datenservice Export', 'Akkumulierte Erträge']
+        : ['Advance Lump Sum (Vorabpauschale)', 'Partial Exemption Engine', 'WM Datenservice Feed', 'Accumulated Earnings Allocation'],
+    },
+    {
       code: 'US',
+      flag: '/flags/us.svg',
       country: isGerman ? 'Vereinigte Staaten' : 'United States',
       status: 'planned' as StatusType,
       description: isGerman
@@ -93,18 +97,18 @@ export default function Jurisdictions() {
           <div className="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full border border-blue-200/80 dark:border-blue-900/60 bg-blue-50/60 dark:bg-blue-950/40 backdrop-blur-md">
             <span className="h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400" />
             <span className="text-[10.5px] font-mono font-bold uppercase tracking-[0.2em] text-blue-800 dark:text-blue-300">
-              {isGerman ? 'JURISDIKTIONS-ROADMAP' : 'JURISDICTION ROADMAP'}
+              {isGerman ? 'LÄNDERSPEZIFISCHE ABDECKUNG & ROADMAP' : 'JURISDICTION COVERAGE & ROADMAP'}
             </span>
           </div>
 
-          <h2 className="max-w-170 text-3xl sm:text-4xl lg:text-5xl font-normal leading-[1.14] tracking-tight text-slate-950 dark:text-white">
+          <h2 className="max-w-4xl text-3xl sm:text-4xl lg:text-5xl font-normal leading-[1.14] tracking-tight text-slate-950 dark:text-white">
             <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
-              {isGerman ? 'Eine Plattform. ' : 'One platform. '}
+              {isGerman ? 'Eine Plattform ' : 'One platform '}
             </span>
-            <span className="font-sans font-semibold text-blue-600 dark:text-blue-400">
+            <span className="font-sans font-semibold text-blue-600 dark:text-blue-400 sm:whitespace-nowrap">
               {isGerman
-                ? 'Jurisdiktionsspezifische Steuerlogik.'
-                : 'Jurisdiction-specific tax logic.'}
+                ? 'Länderspezifische Steuerlogik'
+                : 'Country-specific tax logic'}
             </span>
           </h2>
         </div>
@@ -132,9 +136,15 @@ export default function Jurisdictions() {
               <div>
                 {/* Card header: Code & Status inside card */}
                 <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800/80 pb-3.5">
-                  <span className="font-mono text-sm font-bold text-blue-600 dark:text-blue-400">
-                    [{j.code}]
-                  </span>
+                  <div className="flex items-center gap-2 font-mono text-sm font-bold text-blue-600 dark:text-blue-400">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={j.flag}
+                      alt={`${j.country} flag`}
+                      className="h-3.5 w-5 rounded-[2px] object-cover shadow-xs border border-slate-900/15 dark:border-white/20 shrink-0"
+                    />
+                    <span>[{j.code}]</span>
+                  </div>
                   <span className={`rounded-md border px-2 py-0.5 font-mono text-[9.5px] font-bold uppercase ${STATUS_BADGE[j.status]}`}>
                     {STATUS_LABEL[j.status][isGerman ? 'de' : 'en']}
                   </span>

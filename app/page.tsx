@@ -1,7 +1,7 @@
 import ZyvorisHero from '@/components/hero'
 import ProblemSection from '@/components/problem'
 import SolutionsSection from '@/components/solutions'
-import ProductWorkspaces from '@/components/product-workspaces'
+
 import HomeCapabilities from '@/components/home-capabilities'
 import CustomerSegments from '@/components/customer-segments'
 import Jurisdictions from '@/components/jurisdictions'
@@ -20,7 +20,7 @@ export default function HomePage() {
       <SolutionsSection />
 
       {/* 4. Product Workspaces: Clean product screenshots without floating buttons */}
-      <ProductWorkspaces />
+  
 
       {/* 5. Core Capabilities: Structured fund tax calculations & allocations */}
       <HomeCapabilities />

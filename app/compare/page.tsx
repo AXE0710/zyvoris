@@ -43,9 +43,9 @@ export default function ComparisonPage() {
                   Herkömmliche Steueroperationen{' '}
                 </span>
                 vs.{' '}
-                <span className="relative inline-block px-1">
+                <span className="relative inline-block whitespace-nowrap px-1">
                   <span className="relative z-10 font-serif italic text-blue-700 dark:text-blue-400">
-                    vernetzte Steuerinfrastruktur.
+                    vernetzte Steuerinfrastruktur
                   </span>
                   <svg
                     className="absolute -bottom-1.5 sm:-bottom-2 left-0 w-full h-3 text-blue-500/80 dark:text-blue-400 overflow-visible"
@@ -69,9 +69,9 @@ export default function ComparisonPage() {
                   Traditional Tax Operations{' '}
                 </span>
                 vs.{' '}
-                <span className="relative inline-block px-1">
+                <span className="relative inline-block whitespace-nowrap px-1">
                   <span className="relative z-10 font-serif italic text-blue-700 dark:text-blue-400">
-                    Connected Tax Infrastructure.
+                    Connected Tax Infrastructure
                   </span>
                   <svg
                     className="absolute -bottom-1.5 sm:-bottom-2 left-0 w-full h-3 text-blue-500/80 dark:text-blue-400 overflow-visible"

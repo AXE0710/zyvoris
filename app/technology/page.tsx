@@ -197,7 +197,7 @@ export default function TechnologyPage() {
                     Kontrollierte Automatisierung{' '}
                   </span>
                   für{' '}
-                  <span className="relative inline-block px-1">
+                  <span className="relative inline-block whitespace-nowrap px-1">
                     <span className="relative z-10 font-serif italic text-blue-700 dark:text-blue-400">
                       komplexe
                     </span>
@@ -216,7 +216,7 @@ export default function TechnologyPage() {
                       />
                     </svg>
                   </span>{' '}
-                  <span className="font-sans font-semibold">Steuer-Workflows.</span>
+                  <span className="font-sans font-semibold">Steuer-Workflows</span>
                 </>
               ) : (
                 <>
@@ -224,7 +224,7 @@ export default function TechnologyPage() {
                     Controlled automation{' '}
                   </span>
                   for{' '}
-                  <span className="relative inline-block px-1">
+                  <span className="relative inline-block whitespace-nowrap px-1">
                     <span className="relative z-10 font-serif italic text-blue-700 dark:text-blue-400">
                       complex
                     </span>
@@ -243,7 +243,7 @@ export default function TechnologyPage() {
                       />
                     </svg>
                   </span>{' '}
-                  <span className="font-sans font-semibold">tax workflows.</span>
+                  <span className="font-sans font-semibold">tax workflows</span>
                 </>
               )}
             </h1>
@@ -266,8 +266,8 @@ export default function TechnologyPage() {
                 <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
                   {isGerman ? 'KI für Interpretation. ' : 'AI for interpretation. '}
                 </span>
-                <span className="font-sans font-semibold text-blue-600 dark:text-blue-400">
-                  {isGerman ? 'Deterministische Logik für Berechnungen.' : 'Deterministic logic for calculation.'}
+                <span className="font-sans font-semibold text-blue-600 dark:text-blue-400 sm:whitespace-nowrap">
+                  {isGerman ? 'Deterministische Logik für Berechnungen' : 'Deterministic logic for calculation'}
                 </span>
               </h3>
               <p className="mt-2 text-sm leading-relaxed text-slate-600 dark:text-slate-300">

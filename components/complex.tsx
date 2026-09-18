@@ -71,8 +71,8 @@ export default function ComplexStructuresSection() {
 
           <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl text-slate-950 dark:text-white leading-tight">
             {t('complex_title_1', 'Engineered for the reality of')}{' '}
-            <span className="text-blue-600 dark:text-blue-400">
-              {t('complex_title_2', 'modern fund architecture.')}
+            <span className="text-blue-600 dark:text-blue-400 sm:whitespace-nowrap">
+              {t('complex_title_2', 'modern fund architecture')}
             </span>
           </h2>
 
