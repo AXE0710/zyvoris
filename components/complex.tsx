@@ -94,14 +94,15 @@ export default function ComplexStructuresSection() {
                 key={struct.id}
                 onClick={() => setActiveTab(idx)}
                 className={`
-                  group relative flex flex-col justify-between
+                  tap-press group relative flex flex-col justify-between
                   rounded-2xl
                   border-2 p-6 sm:p-8
-                  transition-all duration-150 cursor-pointer
+                  transition-all duration-300 ease-out cursor-pointer
+                  hover:-translate-y-1.5 hover:shadow-xl hover:shadow-slate-900/10 dark:hover:shadow-blue-950/40
                   ${
                     isSelected
-                      ? 'border-blue-600 bg-[#f4f7fc] dark:border-blue-500 dark:bg-slate-900 shadow-md ring-1 ring-blue-600'
-                      : 'border-slate-900 dark:border-slate-700 bg-white dark:bg-slate-900 hover:border-blue-600'
+                      ? 'border-slate-400 dark:border-slate-600 bg-[#f4f7fc] dark:bg-slate-900 shadow-md'
+                      : 'border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0c152a]'
                   }
                 `}
               >
@@ -142,7 +143,7 @@ export default function ComplexStructuresSection() {
         {/* Future Expansion Callout */}
         <div className="mt-8 rounded-2xl border-2 border-slate-900/60 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/60 p-5 sm:p-6 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
           <div className="flex items-start sm:items-center gap-3">
-            <span className="font-mono text-xs font-bold px-2 py-0.5 rounded border border-purple-600/60 bg-purple-500/15 text-purple-700 dark:border-purple-500/60 dark:text-purple-300">
+            <span className="font-mono text-xs font-bold px-2 py-0.5 rounded border border-sky-600/60 bg-sky-500/15 text-sky-700 dark:border-sky-500/60 dark:text-sky-300">
               EXPANSION
             </span>
             <p className="text-xs sm:text-sm text-slate-700 dark:text-slate-300">

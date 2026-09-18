@@ -118,8 +118,8 @@ export default function CapabilityStatusMatrix() {
         )
       case 'Planned Enterprise':
         return (
-          <span className="inline-flex items-center gap-1.5 rounded-md border border-purple-600 bg-purple-500/15 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase text-purple-700 dark:border-purple-500 dark:bg-purple-950/50 dark:text-purple-300">
-            <span className="h-1.5 w-1.5 rounded-full bg-purple-600 dark:bg-purple-400" />
+          <span className="inline-flex items-center gap-1.5 rounded-md border border-sky-600 bg-sky-500/15 px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase text-sky-700 dark:border-sky-500 dark:bg-sky-950/50 dark:text-sky-300">
+            <span className="h-1.5 w-1.5 rounded-full bg-sky-600 dark:bg-sky-400" />
             {label}
           </span>
         )

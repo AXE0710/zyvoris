@@ -18,6 +18,7 @@
   --color-accent-foreground: var(--accent-foreground);
   --font-sans: var(--font-sans), 'Plus Jakarta Sans', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
   --font-mono: var(--font-mono), 'JetBrains Mono', ui-monospace, Menlo, Monaco, Consolas, monospace;
+  --font-serif: var(--font-serif), 'Source Serif 4', Georgia, serif;
 }
 
 :root {
@@ -155,4 +156,186 @@ body {
 .animate-tab-progress {
   animation: tabProgress 5s linear forwards;
 }
+
+/* Valim-inspired typography */
+.font-serif {
+  font-family: var(--font-serif), 'Source Serif 4', Georgia, Cambria, serif;
+}
+
+/* Micro-interactions: tap-press button feedback */
+.tap-press {
+  transition: transform 0.16s cubic-bezier(0.16, 1, 0.3, 1), background-color 0.16s ease, border-color 0.16s ease, box-shadow 0.16s ease;
+}
+
+.tap-press:active {
+  transform: scale(0.975);
+}
+
+/* Ink Handwriting SVG stroke animation */
+@keyframes inkDraw {
+  0% {
+    stroke-dashoffset: var(--len, 1000);
+    opacity: 0;
+  }
+  15% {
+    opacity: 1;
+  }
+  100% {
+    stroke-dashoffset: 0;
+    opacity: 1;
+  }
+}
+
+@keyframes inkSettle {
+  0% {
+    opacity: 0;
+    transform: translateY(3px);
+  }
+  100% {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.ink-path {
+  stroke-dasharray: var(--len, 1000);
+  stroke-dashoffset: var(--len, 1000);
+  animation: inkDraw var(--dur, 1.4s) cubic-bezier(0.4, 0, 0.2, 1) forwards;
+  animation-delay: var(--delay, 0.2s);
+}
+
+.ink-settle {
+  opacity: 0;
+  animation: inkSettle 0.6s cubic-bezier(0.16, 1, 0.3, 1) forwards;
+  animation-delay: var(--delay, 0.9s);
+}
+
+/* Subtle cyan/blue glow */
+.blue-glow {
+  box-shadow: 0 0 50px -10px rgba(37, 99, 235, 0.18);
+}
+
+.dark .blue-glow {
+  box-shadow: 0 0 60px -10px rgba(56, 189, 248, 0.15);
+}
+
+/* ========================================================
+   BESPOKE MICRO-ANIMATIONS & INTERACTIVE ACCENTS
+   ======================================================== */
+
+/* Marker Highlighter Sweep */
+@keyframes markerSweep {
+  0% {
+    transform: scaleX(0);
+    opacity: 0.2;
+  }
+  30% {
+    opacity: 1;
+  }
+  100% {
+    transform: scaleX(1);
+    opacity: 1;
+  }
+}
+
+.animate-marker-sweep {
+  transform-origin: left center;
+  animation: markerSweep var(--dur, 0.9s) cubic-bezier(0.25, 1, 0.5, 1) forwards;
+  animation-delay: var(--delay, 0.2s);
+}
+
+/* Sparkle / Starburst Pop */
+@keyframes sparklePop {
+  0% {
+    transform: scale(0) rotate(-45deg);
+    opacity: 0;
+  }
+  60% {
+    transform: scale(1.25) rotate(15deg);
+    opacity: 1;
+  }
+  100% {
+    transform: scale(1) rotate(0deg);
+    opacity: 1;
+  }
+}
+
+.animate-sparkle-pop {
+  animation: sparklePop var(--dur, 0.8s) cubic-bezier(0.34, 1.56, 0.64, 1) forwards;
+  animation-delay: var(--delay, 0.3s);
+}
+
+/* Radar Pulse for Active Selection Badges */
+@keyframes radarPulse {
+  0% {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  100% {
+    transform: scale(2.4);
+    opacity: 0;
+  }
+}
+
+.animate-radar-pulse {
+  animation: radarPulse 2s cubic-bezier(0, 0.2, 0.8, 1) infinite;
+}
+
+/* Button Shimmer Sweep on Hover */
+@keyframes buttonShimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(200%);
+  }
+}
+
+.shimmer-sweep {
+  position: relative;
+  overflow: hidden;
+}
+
+.shimmer-sweep::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 50%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.25),
+    transparent
+  );
+  transform: translateX(-150%);
+  pointer-events: none;
+}
+
+.shimmer-sweep:hover::after {
+  animation: buttonShimmer 0.85s ease-in-out;
+}
+
+/* Precision Reticle Corners */
+.reticle-corner {
+  transition: all 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Border Gradient Beam for Selected Cards */
+@keyframes beamGlow {
+  0%, 100% {
+    opacity: 0.6;
+    filter: drop-shadow(0 0 4px rgba(59, 130, 246, 0.4));
+  }
+  50% {
+    opacity: 1;
+    filter: drop-shadow(0 0 10px rgba(59, 130, 246, 0.7));
+  }
+}
+
+.animate-beam-glow {
+  animation: beamGlow 3s ease-in-out infinite;
+}
+
 

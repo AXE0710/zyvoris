@@ -151,7 +151,7 @@ export default function TechStackSection() {
       titleEn: 'Data Science & Financial Models',
       titleDe: 'Data Science & Finanzmodelle',
       badge: 'SCIENTIFIC COMPUTING',
-      badgeColor: 'border-purple-600/40 bg-purple-500/10 text-purple-700 dark:border-purple-500/40 dark:text-purple-300',
+      badgeColor: 'border-sky-600/40 bg-sky-500/10 text-sky-700 dark:border-sky-500/40 dark:text-sky-300',
       descEn:
         'Vectorized financial modeling and reference spreadsheets utilized for scenario testing, engine cross-validation, and prototyping.',
       descDe:

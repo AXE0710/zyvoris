@@ -22,17 +22,29 @@ export default function PlatformArchitecture() {
     >
       <div className="relative mx-auto max-w-[1420px]">
         <div className="max-w-3xl">
-          <div className="mb-4 flex items-center gap-2.5">
-            <span className="h-px w-8 bg-blue-600 dark:bg-blue-400" />
-            <span className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-blue-600 dark:text-blue-400">
+          <div className="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full border border-blue-200/80 dark:border-blue-900/60 bg-blue-50/60 dark:bg-blue-950/40 backdrop-blur-md">
+            <span className="h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400" />
+            <span className="text-[10.5px] font-mono font-bold uppercase tracking-[0.2em] text-blue-800 dark:text-blue-300">
               {isGerman ? 'PLATTFORMARCHITEKTUR' : 'PLATFORM ARCHITECTURE'}
             </span>
           </div>
 
-          <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl text-slate-950 dark:text-white leading-[1.08]">
-            {isGerman
-              ? 'Daten, Logik, Berechnung und Prüfung getrennt.'
-              : 'Separate data, logic, calculation, and review.'}
+          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-slate-950 dark:text-white leading-[1.12]">
+            {isGerman ? (
+              <>
+                <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
+                  Daten, Logik, Berechnung{' '}
+                </span>
+                und Prüfung getrennt.
+              </>
+            ) : (
+              <>
+                <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
+                  Separate data, logic,{' '}
+                </span>
+                calculation, and review.
+              </>
+            )}
           </h2>
 
           <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg">

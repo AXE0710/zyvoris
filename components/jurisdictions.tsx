@@ -17,13 +17,7 @@ const STATUS_BADGE: Record<StatusType, string> = {
   development:
     'bg-amber-500/15 border-amber-600 text-amber-700 dark:bg-amber-950/50 dark:border-amber-500 dark:text-amber-300',
   planned:
-    'bg-slate-100 dark:bg-slate-800 border-slate-400 dark:border-slate-700 text-slate-600 dark:text-slate-400',
-}
-
-const STATUS_TEXT: Record<StatusType, string> = {
-  mvp:         'text-emerald-600 dark:text-emerald-400',
-  development: 'text-amber-600 dark:text-amber-400',
-  planned:     'text-slate-500 dark:text-slate-400',
+    'bg-slate-100 dark:bg-slate-800 border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400',
 }
 
 export default function Jurisdictions() {
@@ -38,6 +32,10 @@ export default function Jurisdictions() {
       description: isGerman
         ? 'Schweizer Fondssteuerberechnungen, Allokationen, Steuerwerte und Reporting-Workflows.'
         : 'Swiss fund tax calculations, allocations, tax values, and reporting workflows.',
+      engine: 'ESTV Kreisschreiben 24/25 Engine',
+      modules: isGerman
+        ? ['ICTax XML-Format Export', 'Steuerwert-Ermittlung', 'Ertragssteuer-Allokation', 'Verrechnungssteuer-Prüfung']
+        : ['ICTax XML Format Feed', 'Tax Valuation Calculation', 'Income Tax Allocation', 'Withholding Tax Verification'],
     },
     {
       code: 'DE',
@@ -46,6 +44,10 @@ export default function Jurisdictions() {
       description: isGerman
         ? 'Deutsche Investmentsteuerberechnung und Reporting-Workflows.'
         : 'German investment tax calculation and reporting workflows.',
+      engine: 'InvStG 2018 §56 Engine',
+      modules: isGerman
+        ? ['Vorabpauschale-Berechnung', 'Teilfreistellungs-Klassifizierung', 'WM Datenservice Export', 'Akkumulierte Erträge']
+        : ['Advance Lump Sum (Vorabpauschale)', 'Partial Exemption Engine', 'WM Datenservice Feed', 'Accumulated Earnings Allocation'],
     },
     {
       code: 'AT',
@@ -54,6 +56,10 @@ export default function Jurisdictions() {
       description: isGerman
         ? 'Österreichische Investmentfonds-Steuer-Reporting-Workflows.'
         : 'Austrian investment fund tax reporting workflows.',
+      engine: 'OeKB Fund Tax Compliance Engine',
+      modules: isGerman
+        ? ['Ausschüttungsgleiche Erträge (AgE)', 'OeKB Meldedatei Generierung', 'KESt-II Vorbereitung', 'Investorensplitting']
+        : ['Deemed Distributed Income (AgE)', 'OeKB Regulatory Export', 'KESt-II Calculation', 'Investor Class Partitioning'],
     },
     {
       code: 'US',
@@ -62,6 +68,10 @@ export default function Jurisdictions() {
       description: isGerman
         ? 'K-1, K-3, 1065, 1120 und verwandte Investoren-Steuer-Workflows.'
         : 'K-1, K-3, 1065, 1120, and related investor tax workflows.',
+      engine: 'US Subchapter K Engine',
+      modules: isGerman
+        ? ['Form 1065 Partner Allokationen', 'Schedule K-1 & K-3 Pakete', 'Sec. 704(b) Kapitalkonten', 'State Withholding Feeds']
+        : ['Form 1065 Partner Allocations', 'Schedule K-1 & K-3 Production', 'Sec. 704(b) Capital Lineage', 'Multi-State Apportionment'],
     },
   ]
 
@@ -78,85 +88,85 @@ export default function Jurisdictions() {
       "
     >
       <div className="relative mx-auto max-w-[1420px]">
-        {/* ── Section Header ── */}
-        <div className="grid grid-cols-1 gap-8 lg:grid-cols-[1.1fr_0.8fr] lg:items-end">
-          <div>
-            <div className="mb-4 flex items-center gap-2.5">
-              <span className="h-px w-8 bg-blue-600 dark:bg-blue-400" />
-              <span className="text-[11px] font-mono font-bold uppercase tracking-[0.2em] text-blue-600 dark:text-blue-400">
-                {isGerman ? 'JURISDIKTIONS-ROADMAP' : 'JURISDICTION ROADMAP'}
-              </span>
-            </div>
+        {/* ── Section Header (Without the legend tags above cards) ── */}
+        <div className="max-w-3xl">
+          <div className="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full border border-blue-200/80 dark:border-blue-900/60 bg-blue-50/60 dark:bg-blue-950/40 backdrop-blur-md">
+            <span className="h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400" />
+            <span className="text-[10.5px] font-mono font-bold uppercase tracking-[0.2em] text-blue-800 dark:text-blue-300">
+              {isGerman ? 'JURISDIKTIONS-ROADMAP' : 'JURISDICTION ROADMAP'}
+            </span>
+          </div>
 
-            <h2 className="max-w-170 text-3xl font-semibold leading-[1.08] tracking-[-0.03em] text-slate-950 dark:text-white sm:text-4xl lg:text-5xl">
+          <h2 className="max-w-170 text-3xl sm:text-4xl lg:text-5xl font-normal leading-[1.14] tracking-tight text-slate-950 dark:text-white">
+            <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
               {isGerman ? 'Eine Plattform. ' : 'One platform. '}
-              <span className="text-blue-600 dark:text-blue-400">
-                {isGerman
-                  ? 'Jurisdiktionsspezifische Steuerlogik.'
-                  : 'Jurisdiction-specific tax logic.'}
-              </span>
-            </h2>
-          </div>
-
-          {/* Status legend */}
-          <div className="flex flex-wrap items-center gap-3 lg:ml-auto lg:justify-end">
-            {(['mvp', 'development', 'planned'] as StatusType[]).map((s) => (
-              <span
-                key={s}
-                className={`inline-flex items-center rounded border px-2.5 py-1 font-mono text-[10px] font-bold uppercase ${STATUS_BADGE[s]}`}
-              >
-                {STATUS_LABEL[s][isGerman ? 'de' : 'en']}
-              </span>
-            ))}
-          </div>
+            </span>
+            <span className="font-sans font-semibold text-blue-600 dark:text-blue-400">
+              {isGerman
+                ? 'Jurisdiktionsspezifische Steuerlogik.'
+                : 'Jurisdiction-specific tax logic.'}
+            </span>
+          </h2>
         </div>
 
-        {/* ── Jurisdiction Cards (4 Cards) ── */}
-        <div className="mt-12 grid grid-cols-1 gap-5 md:grid-cols-2 xl:grid-cols-4">
+        {/* ── Unified Jurisdiction Cards (Modules Inside, No Highlight Rings, Soft Shadow Lift) ── */}
+        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
           {jurisdictions.map((j) => (
             <article
               key={j.code}
               className="
+                tap-press
                 relative flex flex-col justify-between
-                rounded-3xl
-                border-2 border-slate-900 dark:border-slate-700
-                bg-white dark:bg-slate-900
+                rounded-2xl
+                border-2 border-slate-200 dark:border-slate-800
+                bg-white dark:bg-[#0c152a]
                 p-6 sm:p-7
                 shadow-sm
-                transition-all duration-150
-                hover:-translate-y-1 hover:border-blue-600
+                transition-all duration-300 ease-out
+                hover:-translate-y-1.5
+                hover:shadow-xl
+                hover:shadow-slate-900/10
+                dark:hover:shadow-blue-950/40
               "
             >
               <div>
-                {/* Card header */}
-                <div className="flex items-center justify-between border-b-2 border-slate-900/80 dark:border-slate-800 pb-3.5">
-                  <span className="font-mono text-sm font-extrabold text-blue-600 dark:text-blue-400">
+                {/* Card header: Code & Status inside card */}
+                <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800/80 pb-3.5">
+                  <span className="font-mono text-sm font-bold text-blue-600 dark:text-blue-400">
                     [{j.code}]
                   </span>
-                  <span className={`rounded border px-2.5 py-0.5 font-mono text-[10px] font-bold uppercase ${STATUS_BADGE[j.status]}`}>
+                  <span className={`rounded-md border px-2 py-0.5 font-mono text-[9.5px] font-bold uppercase ${STATUS_BADGE[j.status]}`}>
                     {STATUS_LABEL[j.status][isGerman ? 'de' : 'en']}
                   </span>
                 </div>
 
-                {/* Country + description */}
+                {/* Country + Description */}
                 <div className="mt-5">
-                  <h3 className="text-lg font-bold text-slate-950 dark:text-white sm:text-xl">
+                  <h3 className="text-xl font-bold text-slate-950 dark:text-white">
                     {j.country}
                   </h3>
-                  <p className="mt-3 text-sm text-slate-700 dark:text-slate-300 leading-relaxed">
+                  <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
                     {j.description}
                   </p>
                 </div>
-              </div>
 
-              {/* Footer status */}
-              <div className="mt-8 pt-3.5 border-t-2 border-slate-900/60 dark:border-slate-800 flex items-center justify-between">
-                <span className="font-mono text-[10px] font-bold text-slate-500 dark:text-slate-400 uppercase">
-                  STATUS
-                </span>
-                <span className={`font-mono text-[11px] font-bold uppercase ${STATUS_TEXT[j.status]}`}>
-                  {STATUS_LABEL[j.status][isGerman ? 'de' : 'en']}
-                </span>
+                {/* Integrated Engine Modules (Inside the Card) */}
+                <div className="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800/80">
+                  <span className="font-mono text-[9.5px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 block mb-2.5">
+                    {isGerman ? 'STEUERMODULE:' : 'MODULE SUITE:'}
+                  </span>
+                  <div className="space-y-1.5">
+                    {j.modules.map((mod, idx) => (
+                      <div
+                        key={idx}
+                        className="flex items-center gap-2 text-xs font-mono text-slate-700 dark:text-slate-300"
+                      >
+                        <span className="h-1.5 w-1.5 rounded-full bg-blue-500 shrink-0" />
+                        <span>{mod}</span>
+                      </div>
+                    ))}
+                  </div>
+                </div>
               </div>
             </article>
           ))}

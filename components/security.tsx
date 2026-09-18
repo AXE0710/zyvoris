@@ -340,8 +340,8 @@ export default function SecuritySection() {
       subtitleDe:
         'Geplante Enterprise-Erweiterungen, kundeneigene Schlüsselverwaltung und formelle externe Zertifizierungen.',
       badge: 'ENTERPRISE ROADMAP',
-      badgeColor: 'border-purple-600/40 bg-purple-500/10 text-purple-700 dark:border-purple-500/40 dark:text-purple-300',
-      borderTheme: 'border-purple-600/60 dark:border-purple-500/60',
+      badgeColor: 'border-sky-600/40 bg-sky-500/10 text-sky-700 dark:border-sky-500/40 dark:text-sky-300',
+      borderTheme: 'border-sky-600/60 dark:border-sky-500/60',
     },
   ]
 
@@ -433,7 +433,7 @@ export default function SecuritySection() {
               onClick={() => setActiveTier('roadmap')}
               className={`px-3 py-1.5 rounded-xl border-2 font-mono text-xs font-bold transition-all ${
                 activeTier === 'roadmap'
-                  ? 'bg-slate-950 text-white border-black dark:bg-purple-600 dark:border-purple-500'
+                  ? 'bg-slate-950 text-white border-black dark:bg-sky-600 dark:border-sky-500'
                   : 'bg-white text-slate-900 border-slate-900 dark:bg-slate-800 dark:text-slate-200 dark:border-slate-700'
               }`}
             >

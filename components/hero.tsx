@@ -1,7 +1,8 @@
 'use client'
 
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import Link from 'next/link'
+import { ArrowRight, CheckCircle2 } from 'lucide-react'
 import { useLanguage } from './language-provider'
 
 export default function ZyvorisHero({
@@ -9,110 +10,178 @@ export default function ZyvorisHero({
 }: {
   setDemoOpen?: (open: boolean) => void
 }) {
-  const [activeStage, setActiveStage] = useState<number | null>(3)
+  const [activeIndex, setActiveIndex] = useState<number>(3) // Default to stage 04 CALCULATION
+  const [animationPlayed, setAnimationPlayed] = useState(false)
+  const [inkKey, setInkKey] = useState(0)
   const { t, language } = useLanguage()
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      setAnimationPlayed(true)
+    }, 100)
+    return () => clearTimeout(timer)
+  }, [])
+
+  const handleUnderlineHover = () => {
+    setInkKey((prev) => prev + 1)
+  }
 
   const STAGES = [
     {
       id: '01',
       title: t('stage_1_title', 'DATA'),
-      desc: t('stage_1_desc', 'Financial, GL & fund accounting source feeds'),
-      tags: ['ERP Sync', 'GL Feeds', 'Trial Balance'],
     },
     {
       id: '02',
       title: t('stage_2_title', 'STRUCTURE'),
-      desc: t('stage_2_desc', 'Fund vehicles, share classes & entity graphs'),
-      tags: ['Master-Feeder', 'Share Classes', 'SPVs'],
     },
     {
       id: '03',
       title: t('stage_3_title', 'TAX LOGIC'),
-      desc: t('stage_3_desc', 'Jurisdiction rules, treaties & classifications'),
-      tags: ['Treaty Rules', 'Withholding Tax', 'Classification'],
     },
     {
       id: '04',
       title: t('stage_4_title', 'CALCULATION'),
-      desc: t('stage_4_desc', 'Deterministic allocations & tax calculations'),
-      tags: ['Deterministic Engine', 'Versioned Rules'],
       featured: true,
     },
     {
       id: '05',
       title: t('stage_5_title', 'REVIEW'),
-      desc: t('stage_5_desc', 'Audit lineage, verification & exception handling'),
-      tags: ['Audit Lineage', 'Exception Logs', 'Sign-Off'],
     },
     {
       id: '06',
       title: t('stage_6_title', 'REPORTING'),
-      desc: t('stage_6_desc', 'Jurisdiction-ready tax reporting outputs'),
-      tags: ['ESTV Forms', 'XML/PDF', 'Filing Datasets'],
     },
   ]
-
-  const scrollToProblem = () => {
-    document.getElementById('problem')?.scrollIntoView({ behavior: 'smooth' })
-  }
 
   return (
     <section
       id="top"
       className="
         relative min-h-[90vh] flex items-center overflow-hidden
-        bg-[#f0f4f9] dark:bg-[#080d1a]
-        pt-28 pb-16 sm:pt-36 sm:pb-24 lg:pt-40 lg:pb-28
-        px-4 sm:px-6 lg:px-[5vw]
-        transition-colors duration-200
+        bg-[#f6f9fd] dark:bg-[#070d18]
+        pt-28 pb-16 sm:pt-36 sm:pb-24 lg:pt-38 lg:pb-28
+        px-4 sm:px-6 lg:px-[4vw]
+        transition-colors duration-300
       "
     >
-      {/* Background Grids */}
+      {/* Ambient Blue Radial Gradients (Valim style) */}
+      <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[520px] w-[840px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.12),transparent_70%)] dark:bg-[radial-gradient(ellipse_at_center,rgba(56,189,248,0.12),transparent_70%)] blur-3xl" />
+      <div className="pointer-events-none absolute top-1/2 -left-40 h-[360px] w-[500px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(37,99,235,0.08),transparent_70%)] dark:bg-[radial-gradient(ellipse_at_center,rgba(30,58,138,0.22),transparent_70%)] blur-2xl" />
+
+      {/* Grid Pattern */}
       <div
         className="
           pointer-events-none absolute inset-0
-          opacity-40 dark:opacity-15
-          bg-[linear-gradient(rgba(15,23,42,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(15,23,42,0.06)_1px,transparent_1px)]
-          dark:bg-[linear-gradient(rgba(59,130,246,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(59,130,246,0.08)_1px,transparent_1px)]
-          bg-[size:48px_48px]
+          opacity-35 dark:opacity-15
+          bg-[linear-gradient(rgba(30,58,138,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(30,58,138,0.06)_1px,transparent_1px)]
+          dark:bg-[linear-gradient(rgba(56,189,248,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(56,189,248,0.08)_1px,transparent_1px)]
+          bg-[size:52px_52px]
         "
       />
 
-      <div className="relative z-10 mx-auto max-w-[1420px] w-full">
-        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-12 items-center">
+      <div className="relative z-10 mx-auto max-w-[1440px] w-full">
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-10 lg:gap-14 items-center">
           {/* =====================================================
-              LEFT — HERO COPY
+              LEFT — HERO COPY WITH VALIM TYPOGRAPHY & ANIMATION
           ====================================================== */}
-          <div className="lg:col-span-7 flex flex-col justify-center">
+          <div className="lg:col-span-7 flex flex-col justify-center text-left">
             {/* Kicker Eyebrow */}
-            <div className="flex items-center gap-2.5 mb-5 text-[11px] font-mono font-bold tracking-[0.16em] text-blue-600 dark:text-blue-400">
-              <span className="h-px w-6 bg-blue-600 dark:bg-blue-400" />
-              <span>{t('hero_kicker', 'TAX INFRASTRUCTURE FOR PRIVATE MARKETS')}</span>
+            <div className="inline-flex items-center gap-2 mb-5 px-3.5 py-1.5 rounded-full border border-blue-200/80 dark:border-blue-900/60 bg-blue-50/70 dark:bg-blue-950/40 backdrop-blur-md self-start">
+              <span className="h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400 animate-pulse" />
+              <span className="font-mono text-[10.5px] sm:text-xs uppercase tracking-[0.2em] font-semibold text-blue-800 dark:text-blue-300">
+                {t('hero_kicker', 'TAX INFRASTRUCTURE FOR PRIVATE MARKETS')}
+              </span>
             </div>
 
-            {/* Main Headline */}
+            {/* Main Headline with Serif Italic & Ink Stroke */}
             <h1
               className="
-                text-[36px] sm:text-[50px] lg:text-[56px]
-                font-semibold
-                leading-[1.08]
-                tracking-[-0.04em]
+                text-[34px] sm:text-[50px] lg:text-[58px]
+                font-normal
+                leading-[1.1]
+                tracking-tight
                 text-slate-950 dark:text-white
               "
             >
-              {language === 'de'
-                ? 'Von komplexen Fondsdaten zu kontrolliertem, jurisdiktionsspezifischem Steuerreporting.'
-                : 'Turn complex fund data into controlled, jurisdiction-ready tax reporting.'}
+              {language === 'de' ? (
+                <>
+                  <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
+                    Von{' '}
+                  </span>
+                  komplexen Fondsdaten zu{' '}
+                  <span
+                    className="relative inline-block px-1 cursor-pointer select-none"
+                    onMouseEnter={handleUnderlineHover}
+                    title="Hover to replay underline"
+                  >
+                    <span className="relative z-10 font-serif italic text-blue-700 dark:text-blue-400">
+                      kontrolliertem
+                    </span>
+                    <svg
+                      key={inkKey}
+                      className="absolute -bottom-1.5 sm:-bottom-2 left-0 w-full h-3 text-blue-500/80 dark:text-blue-400 overflow-visible pointer-events-none"
+                      viewBox="0 0 300 20"
+                      fill="none"
+                    >
+                      <path
+                        d="M3 14.5C65 5.5 170 -1.5 295 11.5"
+                        stroke="currentColor"
+                        strokeWidth="3.5"
+                        strokeLinecap="round"
+                        className={animationPlayed ? 'ink-path' : ''}
+                        style={{ '--len': 320, '--dur': '1.3s', '--delay': inkKey > 0 ? '0s' : '0.3s' } as React.CSSProperties}
+                      />
+                    </svg>
+                  </span>
+                  , jurisdiktionsspezifischem Steuerreporting.
+                </>
+              ) : (
+                <>
+                  <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
+                    Turn{' '}
+                  </span>
+                  complex fund data into{' '}
+                  <span
+                    className="relative inline-block px-1 cursor-pointer select-none"
+                    onMouseEnter={handleUnderlineHover}
+                    title="Hover to replay underline"
+                  >
+                    <span className="relative z-10 font-serif italic text-blue-700 dark:text-blue-400">
+                      controlled,
+                    </span>
+                    <svg
+                      key={inkKey}
+                      className="absolute -bottom-1.5 sm:-bottom-2 left-0 w-full h-3 text-blue-500/80 dark:text-blue-400 overflow-visible pointer-events-none"
+                      viewBox="0 0 300 20"
+                      fill="none"
+                    >
+                      <path
+                        d="M3 14.5C65 5.5 170 -1.5 295 11.5"
+                        stroke="currentColor"
+                        strokeWidth="3.5"
+                        strokeLinecap="round"
+                        className={animationPlayed ? 'ink-path' : ''}
+                        style={{ '--len': 320, '--dur': '1.3s', '--delay': inkKey > 0 ? '0s' : '0.3s' } as React.CSSProperties}
+                      />
+                    </svg>
+                  </span>
+                  <br className="hidden sm:inline" />
+                  <span className="font-sans font-semibold">
+                    jurisdiction-ready tax reporting.
+                  </span>
+                </>
+              )}
             </h1>
 
-            {/* Subheadline (No extra paragraphs) */}
+            {/* Subheadline */}
             <p
               className="
                 mt-5 sm:mt-6
                 max-w-[620px]
                 text-base sm:text-lg
                 leading-[1.68]
-                text-slate-700 dark:text-slate-300
+                text-slate-600 dark:text-slate-300
               "
             >
               {language === 'de'
@@ -121,176 +190,181 @@ export default function ZyvorisHero({
             </p>
 
             {/* Action Buttons: Book a Demo & Explore the Platform */}
-            <div className="mt-8 flex flex-wrap items-center gap-3.5">
+            <div className="mt-8 flex flex-col sm:flex-row items-stretch sm:items-center gap-3.5">
               <Link
                 href="/contact"
                 className="
+                  tap-press
+                  shimmer-sweep
                   inline-flex items-center justify-center gap-2
                   h-12 px-6
                   rounded-xl
-                  bg-slate-950 dark:bg-blue-600
-                  border-2 border-black dark:border-blue-500
-                  text-white font-bold text-[13px]
-                  shadow-md
-                  hover:bg-slate-800 dark:hover:bg-blue-500
-                  hover:-translate-y-0.5
-                  transition-all duration-200
-                  no-underline
+                  bg-slate-950 dark:bg-blue-600 hover:bg-slate-800 dark:hover:bg-blue-500
+                  text-white font-semibold text-xs uppercase tracking-wider
+                  shadow-md shadow-slate-950/10 dark:shadow-blue-500/25
+                  no-underline transition-all
                 "
               >
                 <span>{t('nav_book_demo', 'Book a Demo')}</span>
-                <span className="font-mono text-sm leading-none">→</span>
+                <ArrowRight className="h-4 w-4" />
               </Link>
 
               <Link
                 href="/platform"
                 className="
-                  inline-flex items-center justify-center
+                  tap-press
+                  inline-flex items-center justify-center gap-2
                   h-12 px-6
                   rounded-xl
                   border-2 border-slate-900 dark:border-slate-700
-                  bg-white dark:bg-slate-800
-                  text-slate-950 dark:text-slate-200
-                  font-bold text-[13px]
+                  bg-white dark:bg-slate-800/80 hover:bg-slate-50 dark:hover:bg-slate-700
+                  text-slate-900 dark:text-slate-200
+                  font-semibold text-xs uppercase tracking-wider
                   shadow-xs
-                  hover:bg-slate-900 hover:text-white dark:hover:bg-slate-700
-                  hover:-translate-y-0.5
-                  transition-all duration-200
-                  no-underline
+                  no-underline transition-all
                 "
               >
                 {t('nav_explore', 'Explore the Platform')}
               </Link>
             </div>
+
+            {/* Trust Badges */}
+            <div className="mt-10 pt-6 border-t border-slate-200/80 dark:border-slate-800/80 flex flex-wrap items-center gap-x-6 gap-y-2.5 text-xs font-mono text-slate-500 dark:text-slate-400">
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
+                <span>DETERMINISTIC ENGINE</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
+                <span>100% AUDIT LINEAGE</span>
+              </div>
+              <div className="flex items-center gap-1.5">
+                <CheckCircle2 className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
+                <span>CROSS-BORDER JURISDICTIONS</span>
+              </div>
+            </div>
           </div>
 
           {/* =====================================================
-              RIGHT — INFRASTRUCTURE VISUAL (Black Bordered Box)
+              RIGHT — CLEAN MINIMALIST TITLES SHOWCASE (VALIM STYLE)
+              (Only the titles: spacious, clean, zero text overload)
           ====================================================== */}
           <div className="lg:col-span-5 w-full">
             <div
               className="
                 relative
                 overflow-hidden
-                rounded-3xl
-                border-2 border-slate-950 dark:border-slate-700
-                bg-white dark:bg-slate-900
+                rounded-2xl
+                border-2 border-slate-200/90 dark:border-slate-800
+                bg-white dark:bg-[#0c152a]
                 p-5 sm:p-7
-                shadow-[0_8px_30px_rgba(0,0,0,0.12)]
-                dark:shadow-2xl dark:shadow-black/60
+                shadow-xl shadow-blue-950/5 dark:shadow-blue-950/40
+                transition-all duration-300
               "
             >
-              {/* Visual Header */}
-              <div className="flex items-center justify-between pb-4 border-b-2 border-slate-900 dark:border-slate-800">
-                <div>
-                  <div className="flex items-center gap-2">
-                    <span className="font-mono text-[10px] font-extrabold tracking-wider text-blue-600 dark:text-blue-400">
-                      [ SYS-01 ]
-                    </span>
-                    <span className="block text-[11px] font-bold uppercase tracking-[0.14em] text-slate-950 dark:text-white">
-                      {t('hero_pipeline_title', 'ZYVORIS PIPELINE')}
-                    </span>
-                  </div>
-                  <span className="text-[10px] font-medium text-slate-600 dark:text-slate-400">
-                    {t('hero_pipeline_sub', 'End-to-End Control Layer')}
+              {/* Card Header */}
+              <div className="flex items-center justify-between pb-4 border-b border-slate-200 dark:border-slate-800">
+                <div className="flex items-center gap-2">
+                  <div className="h-2 w-2 rounded-full bg-slate-300 dark:bg-slate-700" />
+                  <div className="h-2 w-2 rounded-full bg-slate-300 dark:bg-slate-700" />
+                  <div className="h-2 w-2 rounded-full bg-slate-300 dark:bg-slate-700" />
+                  <span className="ml-2 font-mono text-[10.5px] font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                    {t('hero_pipeline_title', 'OPERATIONAL SCOPE')}
                   </span>
                 </div>
 
-                <div className="flex items-center gap-1.5 rounded-lg border-2 border-blue-600 dark:border-blue-500 bg-blue-50 dark:bg-blue-950/50 px-2.5 py-1 text-[9px] font-bold text-blue-800 dark:text-blue-300">
-                  <span className="h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400" />
-                  <span>{t('hero_deterministic', 'DETERMINISTIC')}</span>
+                <div className="flex items-center gap-1.5 rounded-full border border-blue-200 dark:border-blue-900 bg-blue-50 dark:bg-blue-950/60 px-2.5 py-0.5 text-[9.5px] font-mono font-bold text-blue-700 dark:text-blue-300">
+                  <span className="h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400 animate-pulse" />
+                  <span>{t('hero_deterministic', 'STRUCTURED PLATFORM')}</span>
                 </div>
               </div>
 
-              {/* Workflow Nodes */}
+              {/* 6 Clean Numbered Rows — ONLY TITLES */}
               <div className="mt-4 space-y-2.5">
                 {STAGES.map((stage, idx) => {
-                  const isActive = activeStage === idx
+                  const isActive = activeIndex === idx
 
                   return (
-                    <div key={stage.id}>
-                      <div
-                        onMouseEnter={() => setActiveStage(idx)}
-                        className={`
-                          group relative flex flex-col sm:flex-row sm:items-center justify-between gap-3
-                          p-3 sm:p-3.5
-                          rounded-xl
-                          border-2 transition-all duration-150 cursor-pointer
-                          ${
-                            isActive
-                              ? 'border-blue-600 bg-blue-50/70 dark:border-blue-500 dark:bg-blue-950/40 shadow-xs'
-                              : 'border-slate-900/70 dark:border-slate-800 bg-slate-50/60 dark:bg-slate-800/40 hover:border-slate-950 hover:bg-white'
-                          }
-                        `}
-                      >
-                        <div className="flex items-center gap-3 min-w-0">
-                          {/* Numbered Tag without icon */}
-                          <div
-                            className={`
-                              flex h-8 w-8 shrink-0 items-center justify-center rounded-lg border-2 font-mono text-xs font-bold
-                              ${
-                                isActive
-                                  ? 'border-blue-600 bg-blue-600 text-white'
-                                  : 'border-slate-900 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-900 dark:text-slate-200'
-                              }
-                            `}
-                          >
-                            {stage.id}
-                          </div>
+                    <div
+                      key={stage.id}
+                      onClick={() => setActiveIndex(idx)}
+                      onMouseEnter={() => setActiveIndex(idx)}
+                      className={`
+                        tap-press group relative flex items-center justify-between
+                        px-4 py-3 sm:py-3.5 rounded-xl border transition-all duration-200 cursor-pointer
+                        ${
+                          isActive
+                            ? 'border-blue-600 bg-blue-50/80 dark:border-blue-500 dark:bg-blue-950/50 shadow-xs ring-1 ring-blue-500/30'
+                            : 'border-slate-200/80 dark:border-slate-800/80 bg-slate-50/40 dark:bg-slate-900/40 hover:border-slate-300 dark:hover:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-900/70'
+                        }
+                      `}
+                    >
+                      <div className="flex items-center gap-3.5">
+                        {/* Number Badge */}
+                        <span
+                          className={`
+                            flex h-7 w-7 items-center justify-center rounded-lg font-mono text-xs font-bold transition-colors
+                            ${
+                              isActive
+                                ? 'bg-blue-600 text-white'
+                                : 'border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-400 group-hover:text-blue-600'
+                            }
+                          `}
+                        >
+                          {stage.id}
+                        </span>
 
-                          <div className="min-w-0">
-                            <div className="flex items-center gap-2">
-                              {stage.featured && (
-                                <span className="rounded bg-blue-600 text-white px-1.5 py-0.2 text-[8px] font-mono font-bold uppercase">
-                                  CORE
-                                </span>
-                              )}
-                            </div>
-                            <h3 className="text-xs sm:text-sm font-bold text-slate-950 dark:text-white truncate">
-                              {stage.title}
-                            </h3>
-                            <p className="text-[10.5px] font-medium text-slate-600 dark:text-slate-400 truncate">
-                              {stage.desc}
-                            </p>
-                          </div>
-                        </div>
-
-                        {/* Node Tags */}
-                        <div className="flex flex-wrap sm:flex-nowrap gap-1 shrink-0">
-                          {stage.tags.slice(0, 2).map((tag) => (
-                            <span
-                              key={tag}
-                              className="rounded border border-slate-900/60 dark:border-slate-700 bg-white dark:bg-slate-800 px-1.5 py-0.5 text-[8.5px] font-mono font-semibold text-slate-800 dark:text-slate-300"
-                            >
-                              {tag}
-                            </span>
-                          ))}
-                        </div>
+                        {/* Clean Title */}
+                        <span
+                          className={`
+                            font-sans text-sm sm:text-[15px] font-bold tracking-tight transition-colors
+                            ${
+                              isActive
+                                ? 'text-blue-950 dark:text-white'
+                                : 'text-slate-800 dark:text-slate-200 group-hover:text-slate-950 dark:group-hover:text-white'
+                            }
+                          `}
+                        >
+                          {stage.title}
+                        </span>
                       </div>
 
-                      {/* Small line connector */}
-                      {idx < STAGES.length - 1 && (
-                        <div className="flex justify-center my-0.5">
-                          <span className="font-mono text-[10px] text-slate-500 font-bold">↓</span>
-                        </div>
-                      )}
+                      {/* Right Tag / Arrow */}
+                      <div className="flex items-center gap-2">
+                        {stage.featured && (
+                          <span className="rounded bg-blue-600 text-white px-2 py-0.5 text-[9px] font-mono font-bold uppercase tracking-wider">
+                            CORE
+                          </span>
+                        )}
+                        <ArrowRight
+                          className={`
+                            h-4 w-4 transition-all duration-200
+                            ${
+                              isActive
+                                ? 'text-blue-600 dark:text-blue-400 translate-x-0.5'
+                                : 'text-slate-300 dark:text-slate-600 group-hover:text-slate-400 group-hover:translate-x-0.5'
+                            }
+                          `}
+                        />
+                      </div>
                     </div>
                   )
                 })}
               </div>
 
-              <div className="mt-4 pt-3 border-t-2 border-slate-900 dark:border-slate-800 flex flex-wrap items-center justify-between gap-1 text-[8.5px] sm:text-[9px] font-mono font-bold uppercase tracking-wider text-slate-700 dark:text-slate-300">
-                <span className="text-blue-600 dark:text-blue-400">{t('stage_1_title', 'DATA')}</span>
+              {/* Bottom Pipeline Stepper */}
+              <div className="mt-4 pt-3.5 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-[9px] sm:text-[9.5px] font-mono font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
+                <span className="text-blue-600 dark:text-blue-400">DATA</span>
                 <span>→</span>
-                <span className="text-slate-900 dark:text-slate-200">{t('stage_2_title', 'STRUCTURE')}</span>
+                <span className="text-slate-700 dark:text-slate-300">STRUCTURE</span>
                 <span>→</span>
-                <span className="text-blue-600 dark:text-blue-400">{t('stage_3_title', 'TAX LOGIC')}</span>
+                <span className="text-blue-600 dark:text-blue-400">TAX LOGIC</span>
                 <span>→</span>
-                <span className="text-slate-900 dark:text-slate-200">{t('stage_4_title', 'CALCULATION')}</span>
+                <span className="text-slate-700 dark:text-slate-300">CALCULATION</span>
                 <span>→</span>
-                <span className="text-blue-600 dark:text-blue-400">{t('stage_5_title', 'REVIEW')}</span>
+                <span className="text-blue-600 dark:text-blue-400">REVIEW</span>
                 <span>→</span>
-                <span className="text-emerald-600 dark:text-emerald-400 font-extrabold">{t('stage_6_title', 'REPORTING')}</span>
+                <span className="text-blue-600 dark:text-blue-400 font-extrabold">REPORTING</span>
               </div>
             </div>
           </div>
