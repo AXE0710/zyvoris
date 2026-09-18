@@ -30,52 +30,88 @@ export default function Jurisdictions() {
       flag: '/flags/ch.svg',
       country: isGerman ? 'Schweiz' : 'Switzerland',
       status: 'mvp' as StatusType,
-      description: isGerman
-        ? 'Schweizer Fondssteuerberechnungen, Allokationen, Steuerwerte und Reporting-Workflows.'
-        : 'Swiss fund tax calculations, allocations, tax values, and reporting workflows.',
-      engine: 'ESTV Kreisschreiben 24/25 Engine',
+      modulesTitle: isGerman ? 'KERNFUNKTIONEN' : 'CORE CAPABILITIES',
       modules: isGerman
-        ? ['ICTax XML-Format Export', 'Steuerwert-Ermittlung', 'Ertragssteuer-Allokation', 'Verrechnungssteuer-Prüfung']
-        : ['ICTax XML Format Feed', 'Tax Valuation Calculation', 'Income Tax Allocation', 'Withholding Tax Verification'],
+        ? [
+            'Schweizer Steuerwertberechnung',
+            'Steuerberechnungen auf Fondsebene',
+            'Allokationen auf Anteilsklassenebene',
+            'Ertrags- und Ausschüttungsanalyse',
+            'Strukturierte steuerliche Reporting-Outputs',
+          ]
+        : [
+            'Swiss Tax Value Calculations',
+            'Fund-Level Tax Calculations',
+            'Share-Class Tax Allocations',
+            'Income & Distribution Analysis',
+            'Structured Tax Reporting Outputs',
+          ],
     },
     {
       code: 'AT',
       flag: '/flags/at.svg',
       country: isGerman ? 'Österreich' : 'Austria',
       status: 'planned' as StatusType,
-      description: isGerman
-        ? 'Österreichische Investmentfonds-Steuer-Reporting-Workflows.'
-        : 'Austrian investment fund tax reporting workflows.',
-      engine: 'OeKB Fund Tax Compliance Engine',
+      modulesTitle: isGerman ? 'KERNFUNKTIONEN' : 'CORE CAPABILITIES',
       modules: isGerman
-        ? ['Ausschüttungsgleiche Erträge (AgE)', 'OeKB Meldedatei Generierung', 'KESt-II Vorbereitung', 'Investorensplitting']
-        : ['Deemed Distributed Income (AgE)', 'OeKB Regulatory Export', 'KESt-II Calculation', 'Investor Class Partitioning'],
+        ? [
+            'Steuerberechnungen für österreichische Fonds',
+            'Ausschüttungsgleiche Erträge (AgE)',
+            'KESt-relevante Berechnungen',
+            'Anleger- und Anteilsklassenallokationen',
+            'Regulatorische Reporting-Outputs',
+          ]
+        : [
+            'Austrian Fund Tax Calculations',
+            'Deemed Distributed Income (AgE)',
+            'KESt-Related Calculations',
+            'Investor & Share-Class Allocations',
+            'Regulatory Reporting Outputs',
+          ],
     },
     {
       code: 'DE',
       flag: '/flags/de.svg',
       country: isGerman ? 'Deutschland' : 'Germany',
       status: 'planned' as StatusType,
-      description: isGerman
-        ? 'Deutsche Investmentsteuerberechnung und Reporting-Workflows.'
-        : 'German investment tax calculation and reporting workflows.',
-      engine: 'InvStG 2018 §56 Engine',
+      modulesTitle: isGerman ? 'KERNFUNKTIONEN' : 'CORE CAPABILITIES',
       modules: isGerman
-        ? ['Vorabpauschale-Berechnung', 'Teilfreistellungs-Klassifizierung', 'WM Datenservice Export', 'Akkumulierte Erträge']
-        : ['Advance Lump Sum (Vorabpauschale)', 'Partial Exemption Engine', 'WM Datenservice Feed', 'Accumulated Earnings Allocation'],
+        ? [
+            'Steuerliche Klassifizierung nach dem InvStG',
+            'Berechnung der Vorabpauschale',
+            'Gesonderte und einheitliche Feststellung nach § 180 AO',
+            'Allokationen auf Fonds- und Anteilsklassenebene',
+            'Steuerliche Reporting-Outputs für Deutschland',
+          ]
+        : [
+            'InvStG Tax Classification',
+            'Advance Lump Sum (Vorabpauschale)',
+            'Separate and Uniform Tax Declaration according to § 180 German Tax Code',
+            'Fund & Share-Class Allocations',
+            'German Tax Reporting Outputs',
+          ],
     },
     {
       code: 'US',
       flag: '/flags/us.svg',
       country: isGerman ? 'Vereinigte Staaten' : 'United States',
       status: 'planned' as StatusType,
-      description: isGerman
-        ? 'K-1, K-3, 1065, 1120 und verwandte Investoren-Steuer-Workflows.'
-        : 'K-1, K-3, 1065, 1120, and related investor tax workflows.',
-      engine: 'US Subchapter K Engine',
+      modulesTitle: isGerman ? 'KERNFUNKTIONEN' : 'CORE CAPABILITIES',
       modules: isGerman
-        ? ['Form 1065 Partner Allokationen', 'Schedule K-1 & K-3 Pakete', 'Sec. 704(b) Kapitalkonten', 'State Withholding Feeds']
-        : ['Form 1065 Partner Allocations', 'Schedule K-1 & K-3 Production', 'Sec. 704(b) Capital Lineage', 'Multi-State Apportionment'],
+        ? [
+            'Verarbeitung von Partnership Tax Data',
+            'Steuerliche Allokationen auf Partnerebene',
+            'K-1-/K-3-Datenprozesse',
+            'Verarbeitung von Form-1065-Daten',
+            'Steuerliche Reporting-Outputs für Investoren',
+          ]
+        : [
+            'Partnership Tax Data Processing',
+            'Partner-Level Tax Allocations',
+            'K-1 / K-3 Data Workflows',
+            'Form 1065 Data Processing',
+            'Investor Tax Reporting Outputs',
+          ],
     },
   ]
 
@@ -124,7 +160,7 @@ export default function Jurisdictions() {
                 rounded-2xl
                 border-2 border-slate-200 dark:border-slate-800
                 bg-white dark:bg-[#0c152a]
-                p-6 sm:p-7
+                p-5 sm:p-6
                 shadow-sm
                 transition-all duration-300 ease-out
                 hover:-translate-y-1.5
@@ -135,16 +171,7 @@ export default function Jurisdictions() {
             >
               <div>
                 {/* Card header: Code & Status inside card */}
-                <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800/80 pb-3.5">
-                  <div className="flex items-center gap-2 font-mono text-sm font-bold text-blue-600 dark:text-blue-400">
-                    {/* eslint-disable-next-line @next/next/no-img-element */}
-                    <img
-                      src={j.flag}
-                      alt={`${j.country} flag`}
-                      className="h-3.5 w-5 rounded-[2px] object-cover shadow-xs border border-slate-900/15 dark:border-white/20 shrink-0"
-                    />
-                    <span>[{j.code}]</span>
-                  </div>
+                <div className="flex items-center justify-end border-b border-slate-100 dark:border-slate-800/80 pb-3.5">
                   <span className={`rounded-md border px-2 py-0.5 font-mono text-[9.5px] font-bold uppercase ${STATUS_BADGE[j.status]}`}>
                     {STATUS_LABEL[j.status][isGerman ? 'de' : 'en']}
                   </span>
@@ -152,18 +179,28 @@ export default function Jurisdictions() {
 
                 {/* Country + Description */}
                 <div className="mt-5">
-                  <h3 className="text-xl font-bold text-slate-950 dark:text-white">
-                    {j.country}
+                  <h3 className="flex items-center gap-2 text-base sm:text-lg xl:text-[17px] font-bold text-slate-950 dark:text-white whitespace-nowrap">
+                    {/* eslint-disable-next-line @next/next/no-img-element */}
+                    <img
+                      src={j.flag}
+                      alt={`${j.country} flag`}
+                      className="h-[18px] w-[26px] rounded-[3px] object-cover shadow-xs border border-slate-900/15 dark:border-white/20 shrink-0"
+                    />
+                    <span className="font-mono text-base font-bold text-blue-600 dark:text-blue-400 shrink-0">
+                      [{j.code}]
+                    </span>
+                    <span className="font-bold text-lg leading-none text-slate-500 dark:text-slate-400 shrink-0">
+                      —
+                    </span>
+                    <span className="truncate">{j.country}</span>
                   </h3>
-                  <p className="mt-2 text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
-                    {j.description}
-                  </p>
+                
                 </div>
 
                 {/* Integrated Engine Modules (Inside the Card) */}
                 <div className="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800/80">
                   <span className="font-mono text-[9.5px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 block mb-2.5">
-                    {isGerman ? 'STEUERMODULE:' : 'MODULE SUITE:'}
+                    {j.modulesTitle}
                   </span>
                   <div className="space-y-1.5">
                     {j.modules.map((mod, idx) => (
