@@ -141,7 +141,7 @@ export default function ProductScreenshot() {
             <div className="flex items-center justify-between border-b-2 border-slate-900/80 dark:border-slate-800 pb-3">
               <div>
                 <p className="font-mono text-[9px] font-bold uppercase tracking-[0.18em] text-blue-600 dark:text-blue-400">
-                  Calculation Trace
+                  {language === 'de' ? 'Berechnungs-Trace' : 'Calculation Trace'}
                 </p>
                 <p className="mt-0.5 text-xs sm:text-sm font-bold text-slate-950 dark:text-white">
                   Alpine PE IV (SCSp)
@@ -149,16 +149,16 @@ export default function ProductScreenshot() {
               </div>
 
               <span className="rounded border border-slate-900 dark:border-slate-700 bg-blue-50 dark:bg-blue-950 px-2 py-0.5 font-mono text-[9px] font-bold text-blue-700 dark:text-blue-400">
-                LIVE AUDIT
+                {language === 'de' ? 'LIVE-AUDIT' : 'LIVE AUDIT'}
               </span>
             </div>
 
             <div className="space-y-2 pt-3">
-              <TraceRow label="Source Data" value="Verified" num="01" />
-              <TraceRow label="Tax Classification" value="Validated" num="02" />
-              <TraceRow label="Tax Logic" value="Applied" num="03" />
-              <TraceRow label="Calculation" value="Complete" num="04" />
-              <TraceRow label="Reporting Output" value="Ready" num="05" />
+              <TraceRow label={language === 'de' ? 'Quelldaten' : 'Source Data'} value={language === 'de' ? 'Verifiziert' : 'Verified'} num="01" />
+              <TraceRow label={language === 'de' ? 'Steuerklassifizierung' : 'Tax Classification'} value={language === 'de' ? 'Validiert' : 'Validated'} num="02" />
+              <TraceRow label={language === 'de' ? 'Steuerlogik' : 'Tax Logic'} value={language === 'de' ? 'Angewendet' : 'Applied'} num="03" />
+              <TraceRow label={language === 'de' ? 'Berechnung' : 'Calculation'} value={language === 'de' ? 'Abgeschlossen' : 'Complete'} num="04" />
+              <TraceRow label={language === 'de' ? 'Reporting-Output' : 'Reporting Output'} value={language === 'de' ? 'Bereit' : 'Ready'} num="05" />
             </div>
           </div>
         </div>

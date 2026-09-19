@@ -10,66 +10,114 @@ export default function ComparisonSection() {
     {
       id: '01',
       dimension: language === 'de' ? 'QUELLEDATEN & INTEGRATION' : 'SOURCE DATA & INTAKE',
-      trad: 'Fragmented source data',
-      tradDetail: 'Data scattered across disparate fund accounting systems, administrators, CSV dumps, and custodian portals.',
-      zyv: 'Connected source data',
-      zyvDetail: 'Unified schema ingestion normalizing portfolio, transaction, and investor feeds with audit timestamps.',
+      trad: language === 'de' ? 'Fragmentierte Quelldaten' : 'Fragmented source data',
+      tradDetail:
+        language === 'de'
+          ? 'Daten über unterschiedliche Fondsbuchhaltungssysteme, Administratoren, CSV-Exporte und Verwahrstellen-Portale verstreut.'
+          : 'Data scattered across disparate fund accounting systems, administrators, CSV dumps, and custodian portals.',
+      zyv: language === 'de' ? 'Integrierte Quelldaten' : 'Connected source data',
+      zyvDetail:
+        language === 'de'
+          ? 'Einheitliche Schema-Aufnahme zur Normalisierung von Portfolio-, Transaktions- und Investorendaten mit Audit-Zeitstempeln.'
+          : 'Unified schema ingestion normalizing portfolio, transaction, and investor feeds with audit timestamps.',
     },
     {
       id: '02',
       dimension: language === 'de' ? 'DATENAUFBEREITUNG & MODELLE' : 'DATA PREPARATION & MODELING',
-      trad: 'Manual data preparation',
-      tradDetail: 'Time-consuming manual data cleansing, vlookups, and reconciliation workpapers repeated each cycle.',
-      zyv: 'Structured entity and tax models',
-      zyvDetail: 'Multi-tier legal structure graphs with automated pass-through entity logic and look-through ownership tracking.',
+      trad: language === 'de' ? 'Manuelle Datenaufbereitung' : 'Manual data preparation',
+      tradDetail:
+        language === 'de'
+          ? 'Zeitintensive manuelle Datenbereinigung, SVERWEIS-Formeln und Abstimmungsarbeitspapiere in jedem Berichtszyklus.'
+          : 'Time-consuming manual data cleansing, vlookups, and reconciliation workpapers repeated each cycle.',
+      zyv: language === 'de' ? 'Strukturierte Gesellschafts- & Steuermodelle' : 'Structured entity and tax models',
+      zyvDetail:
+        language === 'de'
+          ? 'Mehrebenen-Beteiligungsgraphen mit automatisierter Pass-Through-Logik und Look-Through-Eigentümerstrukturen.'
+          : 'Multi-tier legal structure graphs with automated pass-through entity logic and look-through ownership tracking.',
     },
     {
       id: '03',
       dimension: language === 'de' ? 'STEUERBERECHNUNGEN' : 'TAX CALCULATIONS',
-      trad: 'Spreadsheet-heavy calculations',
-      tradDetail: 'Formulas prone to broken links, manual overwrites, and undocumented spreadsheet model dependencies.',
-      zyv: 'Deterministic calculations',
-      zyvDetail: 'Calculations execute via version-controlled, auditable mathematical rules with zero guesswork.',
+      trad: language === 'de' ? 'Excel-lastige Berechnungen' : 'Spreadsheet-heavy calculations',
+      tradDetail:
+        language === 'de'
+          ? 'Formeln anfällig für fehlerhafte Verknüpfungen, manuelle Überschreibungen und undokumentierte Tabellenabhängigkeiten.'
+          : 'Formulas prone to broken links, manual overwrites, and undocumented spreadsheet model dependencies.',
+      zyv: language === 'de' ? 'Deterministische Berechnungen' : 'Deterministic calculations',
+      zyvDetail:
+        language === 'de'
+          ? 'Berechnungen werden über versionierte, revisionssichere mathematische Regeln ohne Schätzungen ausgeführt.'
+          : 'Calculations execute via version-controlled, auditable mathematical rules with zero guesswork.',
     },
     {
       id: '04',
       dimension: language === 'de' ? 'KLASSIFIZIERUNG & LOGIK' : 'TAX CLASSIFICATION',
-      trad: 'Manual classification',
-      tradDetail: 'Tax treatment and withholding treaty eligibility evaluated ad-hoc across thousands of positions.',
-      zyv: 'Controlled classification',
-      zyvDetail: 'AI-assisted interpretation layer with rule-based classification taxonomies and confidence tagging.',
+      trad: language === 'de' ? 'Manuelle Klassifizierung' : 'Manual classification',
+      tradDetail:
+        language === 'de'
+          ? 'Steuerliche Behandlung und DBA-Quellensteuerberechtigung werden für tausende Positionen manuell bewertet.'
+          : 'Tax treatment and withholding treaty eligibility evaluated ad-hoc across thousands of positions.',
+      zyv: language === 'de' ? 'Kontrollierte Klassifizierung' : 'Controlled classification',
+      zyvDetail:
+        language === 'de'
+          ? 'KI-gestützte Interpretationsschicht mit regelbasierten Taxonomien und Konfidenz-Kennzeichnung.'
+          : 'AI-assisted interpretation layer with rule-based classification taxonomies and confidence tagging.',
     },
     {
       id: '05',
       dimension: language === 'de' ? 'PRÜFUNG & GOVERNANCE' : 'REVIEW & OVERSIGHT',
-      trad: 'Disconnected review',
-      tradDetail: 'Reviewers inspect finished PDF packages with no direct view into upstream adjustments or calculations.',
-      zyv: 'Exception-based review',
-      zyvDetail: 'Targeted workflows surfacing flagged variances, threshold exceptions, and formal sign-off checkpoints.',
+      trad: language === 'de' ? 'Getrennte Prüfprozesse' : 'Disconnected review',
+      tradDetail:
+        language === 'de'
+          ? 'Prüfer analysieren fertige PDF-Pakete ohne direkten Einblick in vorangegangene Anpassungen oder Berechnungen.'
+          : 'Reviewers inspect finished PDF packages with no direct view into upstream adjustments or calculations.',
+      zyv: language === 'de' ? 'Ausnahmebasierte Prüfung' : 'Exception-based review',
+      zyvDetail:
+        language === 'de'
+          ? 'Zielgerichtete Workflows mit Kennzeichnung von Abweichungen, Schwellenwert-Ausnahmen und formalen Prüfpunkten.'
+          : 'Targeted workflows surfacing flagged variances, threshold exceptions, and formal sign-off checkpoints.',
     },
     {
       id: '06',
       dimension: language === 'de' ? 'RÜCKVERFOLGBARKEIT' : 'CALCULATION LINEAGE',
-      trad: 'Limited calculation lineage',
-      tradDetail: 'Reconstructing the exact trail from output number back to source transaction requires days of manual auditing.',
-      zyv: 'Calculation lineage',
-      zyvDetail: 'Immutable lineage tracing every reported figure back to underlying financial transactions and rule versions.',
+      trad: language === 'de' ? 'Eingeschränkte Nachvollziehbarkeit' : 'Limited calculation lineage',
+      tradDetail:
+        language === 'de'
+          ? 'Die Rekonstruktion des genauen Pfads vom Berichtswert zurück zur Quelltransaktion erfordert tagelange manuelle Prüfungen.'
+          : 'Reconstructing the exact trail from output number back to source transaction requires days of manual auditing.',
+      zyv: language === 'de' ? 'Lückenlose Berechnungshistorie' : 'Calculation lineage',
+      zyvDetail:
+        language === 'de'
+          ? 'Unveränderliche Nachvollziehbarkeit verknüpft jeden ausgewiesenen Wert mit Quelltransaktionen und Regelversionen.'
+          : 'Immutable lineage tracing every reported figure back to underlying financial transactions and rule versions.',
     },
     {
       id: '07',
       dimension: language === 'de' ? 'OPERATIVE PROZESSE' : 'OPERATIONAL CADENCE',
-      trad: 'Filing-period bottlenecks',
-      tradDetail: 'High operational strain during tax season with limited real-time visibility into filing progress.',
-      zyv: 'Repeatable workflows',
-      zyvDetail: 'Continuous processing framework with real-time operational status across all fund entities.',
+      trad: language === 'de' ? 'Engpässe in Berichtsphasen' : 'Filing-period bottlenecks',
+      tradDetail:
+        language === 'de'
+          ? 'Hohe operative Belastung während der Steuersaison bei geringer Echtzeit-Transparenz über den Fortschritt.'
+          : 'High operational strain during tax season with limited real-time visibility into filing progress.',
+      zyv: language === 'de' ? 'Wiederholbare Workflows' : 'Repeatable workflows',
+      zyvDetail:
+        language === 'de'
+          ? 'Kontinuierliche Verarbeitung mit operativem Echtzeit-Status über alle Fondsvehikel hinweg.'
+          : 'Continuous processing framework with real-time operational status across all fund entities.',
     },
     {
       id: '08',
       dimension: language === 'de' ? 'SKALIERUNG & AUSGABEN' : 'CROSS-BORDER SCALING',
-      trad: 'Duplicated work across entities and jurisdictions',
-      tradDetail: 'Each entity, share class, and jurisdiction requires rebuilding workpapers and bespoke reporting extracts.',
-      zyv: 'Jurisdiction-ready outputs',
-      zyvDetail: 'Standardized calculations mapped into jurisdiction-specific tax datasets and compliant filing outputs.',
+      trad: language === 'de' ? 'Doppelarbeit über Vehikel und Länder' : 'Duplicated work across entities and jurisdictions',
+      tradDetail:
+        language === 'de'
+          ? 'Jedes Vehikel, jede Anteilsklasse und jedes Land erfordert neu erstellte Arbeitspapiere und Berichtsformate.'
+          : 'Each entity, share class, and jurisdiction requires rebuilding workpapers and bespoke reporting extracts.',
+      zyv: language === 'de' ? 'Länderspezifische Datensätze' : 'Jurisdiction-ready outputs',
+      zyvDetail:
+        language === 'de'
+          ? 'Standardisierte Berechnungen werden in länderspezifische Steuerdatensätze und einreichfertige Formate überführt.'
+          : 'Standardized calculations mapped into jurisdiction-specific tax datasets and compliant filing outputs.',
     },
   ]
 
@@ -119,28 +167,28 @@ export default function ComparisonSection() {
             <div className="bg-slate-100 dark:bg-slate-800/80 p-5 sm:p-6 border-b sm:border-b-0 sm:border-r-2 border-slate-900 dark:border-slate-800 flex items-center justify-between">
               <div>
                 <span className="block font-mono text-[10.5px] font-bold uppercase tracking-wider text-rose-600 dark:text-rose-400">
-                  Current Operating Challenge
+                  {language === 'de' ? 'AKTUELLE HERAUSFORDERUNG' : 'Current Operating Challenge'}
                 </span>
                 <h3 className="text-base sm:text-lg font-extrabold text-slate-950 dark:text-white mt-0.5">
                   {language === 'de' ? 'Traditionelle Steueroperationen' : 'Traditional Tax Operations'}
                 </h3>
               </div>
               <span className="font-mono text-xs font-bold px-2.5 py-1 rounded border border-rose-600/40 bg-rose-50 text-rose-700 dark:bg-rose-950/50 dark:text-rose-300">
-                FRAGMENTED
+                {language === 'de' ? 'FRAGMENTIERT' : 'FRAGMENTED'}
               </span>
             </div>
 
             <div className="bg-blue-50 dark:bg-blue-950/50 p-5 sm:p-6 flex items-center justify-between">
               <div>
                 <span className="block font-mono text-[10.5px] font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
-                  Infrastructure Standard
+                  {language === 'de' ? 'INFRASTRUKTUR-STANDARD' : 'Infrastructure Standard'}
                 </span>
                 <h3 className="text-base sm:text-lg font-extrabold text-blue-950 dark:text-white mt-0.5">
                   {language === 'de' ? 'ZYVORIS Infrastruktur' : 'ZYVORIS Infrastructure'}
                 </h3>
               </div>
               <span className="font-mono text-xs font-bold px-2.5 py-1 rounded border border-blue-600 bg-blue-600 text-white shadow-xs">
-                CONTROLLED
+                {language === 'de' ? 'KONTROLLIERT' : 'CONTROLLED'}
               </span>
             </div>
           </div>
@@ -174,7 +222,7 @@ export default function ComparisonSection() {
                   <div className="flex items-center gap-2 mb-2">
                     <span className="font-mono text-[10px] font-bold text-blue-600 dark:text-blue-400">[{dim.id}]</span>
                     <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-blue-600 dark:text-blue-400">
-                      VERIFIED OPERATING MODEL
+                      {language === 'de' ? 'VERIFIZIERTES BETRIEBSMODELL' : 'VERIFIED OPERATING MODEL'}
                     </span>
                   </div>
                   <h4 className="text-sm sm:text-base font-bold text-blue-950 dark:text-white flex items-center gap-2">

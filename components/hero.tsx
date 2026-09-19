@@ -232,15 +232,15 @@ export default function ZyvorisHero({
             <div className="mt-10 pt-6 border-t border-slate-200/80 dark:border-slate-800/80 flex flex-wrap items-center gap-x-6 gap-y-2.5 text-xs font-mono text-slate-500 dark:text-slate-400">
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
-                <span>DETERMINISTIC ENGINE</span>
+                <span>{language === 'de' ? 'DETERMINISTISCHE LOGIK' : 'DETERMINISTIC ENGINE'}</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
-                <span>100% AUDIT LINEAGE</span>
+                <span>{language === 'de' ? '100% NACHVOLLZIEHBAR' : '100% AUDIT LINEAGE'}</span>
               </div>
               <div className="flex items-center gap-1.5">
                 <CheckCircle2 className="h-3.5 w-3.5 text-blue-600 dark:text-blue-400" />
-                <span>CROSS-BORDER JURISDICTIONS</span>
+                <span>{language === 'de' ? 'GRENZÜBERSCHREITENDE JURISDIKTIONEN' : 'CROSS-BORDER JURISDICTIONS'}</span>
               </div>
             </div>
           </div>
@@ -333,7 +333,7 @@ export default function ZyvorisHero({
                       <div className="flex items-center gap-2">
                         {stage.featured && (
                           <span className="rounded bg-blue-600 text-white px-2 py-0.5 text-[9px] font-mono font-bold uppercase tracking-wider">
-                            CORE
+                            {language === 'de' ? 'KERN' : 'CORE'}
                           </span>
                         )}
                         <ArrowRight
@@ -354,17 +354,17 @@ export default function ZyvorisHero({
 
               {/* Bottom Pipeline Stepper */}
               <div className="mt-4 pt-3.5 border-t border-slate-200 dark:border-slate-800 flex items-center justify-between text-[9px] sm:text-[9.5px] font-mono font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">
-                <span className="text-blue-600 dark:text-blue-400">DATA</span>
+                <span className="text-blue-600 dark:text-blue-400">{language === 'de' ? 'DATEN' : 'DATA'}</span>
                 <span>→</span>
-                <span className="text-slate-700 dark:text-slate-300">STRUCTURE</span>
+                <span className="text-slate-700 dark:text-slate-300">{language === 'de' ? 'STRUKTUR' : 'STRUCTURE'}</span>
                 <span>→</span>
-                <span className="text-blue-600 dark:text-blue-400">TAX LOGIC</span>
+                <span className="text-blue-600 dark:text-blue-400">{language === 'de' ? 'STEUERLOGIK' : 'TAX LOGIC'}</span>
                 <span>→</span>
-                <span className="text-slate-700 dark:text-slate-300">CALCULATION</span>
+                <span className="text-slate-700 dark:text-slate-300">{language === 'de' ? 'BERECHNUNG' : 'CALCULATION'}</span>
                 <span>→</span>
-                <span className="text-blue-600 dark:text-blue-400">REVIEW</span>
+                <span className="text-blue-600 dark:text-blue-400">{language === 'de' ? 'PRÜFUNG' : 'REVIEW'}</span>
                 <span>→</span>
-                <span className="text-blue-600 dark:text-blue-400 font-extrabold">REPORTING</span>
+                <span className="text-blue-600 dark:text-blue-400 font-extrabold">{language === 'de' ? 'REPORTING' : 'REPORTING'}</span>
               </div>
             </div>
           </div>

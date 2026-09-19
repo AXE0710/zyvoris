@@ -144,11 +144,11 @@ export default function ContactPage() {
               <span className={labelClassName}>{isGerman ? 'Primäre Jurisdiktion' : 'Primary Jurisdiction'}</span>
               <select className={fieldClassName} name="jurisdiction" defaultValue="" required>
                 <option value="" disabled>{isGerman ? 'Bitte auswählen' : 'Select one'}</option>
-                <option>Switzerland</option>
-                <option>Germany</option>
-                <option>Austria</option>
-                <option>United States</option>
-                <option>Other</option>
+                <option value="Switzerland">{isGerman ? 'Schweiz' : 'Switzerland'}</option>
+                <option value="Germany">{isGerman ? 'Deutschland' : 'Germany'}</option>
+                <option value="Austria">{isGerman ? 'Österreich' : 'Austria'}</option>
+                <option value="United States">{isGerman ? 'Vereinigte Staaten' : 'United States'}</option>
+                <option value="Other">{isGerman ? 'Sonstige' : 'Other'}</option>
               </select>
             </label>
             <label className="sm:col-span-2">

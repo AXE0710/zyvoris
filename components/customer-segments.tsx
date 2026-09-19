@@ -15,7 +15,7 @@ export default function CustomerSegments() {
         'seg_1_desc',
         'Gain control across tax calculations, reporting workflows, and jurisdictions.'
       ),
-      tag: 'MANAGERS',
+      tag: isGerman ? 'FONDSMANAGER' : 'MANAGERS',
       superpower: isGerman
         ? 'Volle Kontrolle & automatisierte Abstimmungen über alle Vehikel.'
         : 'Holistic cross-vehicle control and automated reconciliations.',
@@ -27,7 +27,7 @@ export default function CustomerSegments() {
         'seg_2_desc',
         'Add structured tax workflows to existing fund operations.'
       ),
-      tag: 'ADMINISTRATORS',
+      tag: isGerman ? 'ADMINISTRATOREN' : 'ADMINISTRATORS',
       superpower: isGerman
         ? 'Nahtlose Integration in bestehende Fondsbuchhaltungs-Engines.'
         : 'Seamless integration into existing fund accounting GLs.',
@@ -39,7 +39,7 @@ export default function CustomerSegments() {
         'seg_3_desc',
         'Standardize execution while preserving professional review.'
       ),
-      tag: 'TAX ADVISORS',
+      tag: isGerman ? 'STEUERBERATER' : 'TAX ADVISORS',
       superpower: isGerman
         ? 'Revisionssichere Arbeitsberichte & Skalierung ohne Personalengpass.'
         : 'Audit-ready workpapers and execution scale without bottlenecks.',
@@ -51,7 +51,7 @@ export default function CustomerSegments() {
         'seg_4_desc',
         'Bring structure and visibility to complex fund tax data.'
       ),
-      tag: 'INVESTORS',
+      tag: isGerman ? 'INVESTOREN' : 'INVESTORS',
       superpower: isGerman
         ? 'Durchsichtstransparenz & einheitliche Steuerreporting-Pakete.'
         : 'Look-through tax transparency and unified investor tax packs.',

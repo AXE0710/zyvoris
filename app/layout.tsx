@@ -1,5 +1,5 @@
 import type { Metadata } from 'next'
-import { Plus_Jakarta_Sans, JetBrains_Mono, Source_Serif_4 } from 'next/font/google'
+import { Plus_Jakarta_Sans, Source_Serif_4 } from 'next/font/google'
 import Header from '@/components/header'
 import CallToActionSection from '@/components/footer-simple'
 import { ThemeProvider } from '@/components/theme-provider'
@@ -11,12 +11,6 @@ import './globals.css'
 const sans = Plus_Jakarta_Sans({
   subsets: ['latin'],
   variable: '--font-sans',
-  display: 'swap',
-})
-
-const mono = JetBrains_Mono({
-  subsets: ['latin'],
-  variable: '--font-mono',
   display: 'swap',
 })
 
@@ -42,7 +36,7 @@ export default function RootLayout({
     <html
       lang="en"
       suppressHydrationWarning
-      className={`${sans.variable} ${mono.variable} ${serif.variable}`}
+      className={`${sans.variable} ${serif.variable}`}
     >
       <body className="min-h-screen bg-background font-sans text-foreground antialiased selection:bg-blue-500 selection:text-white transition-colors duration-200">
         <ThemeProvider defaultTheme="light">

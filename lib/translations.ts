@@ -44,18 +44,25 @@ export const translations = {
 
     // Problem section
     problem_kicker: 'THE CHALLENGE',
-    problem_title_1: 'Private markets have scaled',
-    problem_title_2: 'Tax infrastructure has not',
+    problem_title_1: 'Private markets have scaled.',
+    problem_title_2: 'Tax infrastructure has not.',
     problem_desc:
       'Tax teams still rely on fragmented data, spreadsheet-based calculations, manual review processes, and disconnected reporting workflows.',
+    problem_transition_label: 'FROM FRAGMENTED PROCESSES → TO CONTROLLED TAX INFRASTRUCTURE',
     problem_closing:
-      'ZYVORIS turns these fragmented processes into structured, controlled, and traceable workflows.',
+      'ZYVORIS transforms fragmented tax processes into structured, controlled, and traceable workflows.',
+    prob_1_cat: 'DATA',
     prob_1_title: 'Fragmented Data',
-    prob_1_desc: 'Fund and tax data remains distributed across systems, files, and stakeholders.',
+    prob_1_desc:
+      'Fund, accounting, investor, and transaction data remains distributed across multiple systems, files, and stakeholders.',
+    prob_2_cat: 'PROCESS',
     prob_2_title: 'Manual Tax Processes',
-    prob_2_desc: 'Complex calculations and allocations still depend heavily on spreadsheets and manually maintained workpapers.',
+    prob_2_desc:
+      'Complex tax calculations and allocations still depend heavily on spreadsheets, manual adjustments, and individually maintained workpapers.',
+    prob_3_cat: 'CONTROL',
     prob_3_title: 'Limited Traceability',
-    prob_3_desc: 'Reviewers often need to reconstruct how reported tax values were produced.',
+    prob_3_desc:
+      'Reviewers often need to reconstruct how reported tax values were derived from source data, calculation logic, and manual adjustments.',
     prob_tag: 'Operating Challenge',
 
     // Customer segments (Section 5: Who It Is For)
@@ -332,30 +339,37 @@ export const translations = {
 
     // Problem section
     problem_kicker: 'DIE HERAUSFORDERUNG',
-    problem_title_1: 'Private Markets sind gewachsen',
-    problem_title_2: 'Die Steuerinfrastruktur nicht',
+    problem_title_1: 'Private Markets sind gewachsen.',
+    problem_title_2: 'Die Steuerinfrastruktur ist nicht mitgewachsen.',
     problem_desc:
-      'Steuerteams stützen sich weiterhin auf fragmentierte Daten, tabellenbasierte Berechnungen, manuelle Prüfprozesse und getrennte Reporting-Abläufe.',
+      'Steuerteams arbeiten weiterhin mit fragmentierten Daten, Excel-basierten Berechnungen, manuellen Prüfprozessen und voneinander getrennten Reporting-Prozessen.',
+    problem_transition_label: 'VON FRAGMENTIERTEN PROZESSEN → ZU KONTROLLIERTER STEUERINFRASTRUKTUR',
     problem_closing:
-      'ZYVORIS verwandelt diese fragmentierten Prozesse in strukturierte, kontrollierte und nachvollziehbare Workflows.',
+      'ZYVORIS überführt fragmentierte Steuerprozesse in strukturierte, kontrollierte und nachvollziehbare Abläufe.',
+    prob_1_cat: 'DATEN',
     prob_1_title: 'Fragmentierte Daten',
-    prob_1_desc: 'Fonds- und Steuerdaten bleiben über Systeme, Dateien und Beteiligte verteilt.',
+    prob_1_desc:
+      'Fonds-, Buchhaltungs-, Anleger- und Transaktionsdaten sind über unterschiedliche Systeme, Dateien und Beteiligte verteilt.',
+    prob_2_cat: 'PROZESS',
     prob_2_title: 'Manuelle Steuerprozesse',
-    prob_2_desc: 'Komplexe Berechnungen und Allokationen hängen weiterhin stark von Tabellenkalkulationen und manuellen Arbeitspapieren ab.',
+    prob_2_desc:
+      'Komplexe Steuerberechnungen und Allokationen basieren weiterhin häufig auf Excel-Dateien, manuellen Anpassungen und individuell gepflegten Arbeitspapieren.',
+    prob_3_cat: 'KONTROLLE',
     prob_3_title: 'Eingeschränkte Nachvollziehbarkeit',
-    prob_3_desc: 'Prüfer müssen häufig mühsam rekonstruieren, wie ausgewiesene Steuerwerte entstanden sind.',
+    prob_3_desc:
+      'Prüfer müssen häufig nachvollziehen, wie ausgewiesene Steuerwerte aus Quelldaten, Berechnungslogiken und manuellen Anpassungen abgeleitet wurden.',
     prob_tag: 'Operative Herausforderung',
 
     // Customer segments (Section 5: Who It Is For)
     segments_kicker: 'ENTWICKELT FÜR PRIVATE MARKETS',
     segments_title: 'Für die Teams, die für komplexes Fondssteuerreporting verantwortlich sind.',
-    seg_1_aud: 'Fund Manager & AIFMs',
+    seg_1_aud: 'Fondsmanager & AIFMs',
     seg_1_desc: 'Kontrolle über Steuerberechnungen, Reporting-Workflows und Jurisdiktionen gewinnen.',
-    seg_2_aud: 'Fund Administrators',
+    seg_2_aud: 'Fondsadministratoren',
     seg_2_desc: 'Strukturierte Steuer-Workflows in bestehende Fondsprozesse integrieren.',
-    seg_3_aud: 'Tax & Accounting Firms',
+    seg_3_aud: 'Steuerberater & Wirtschaftsprüfer',
     seg_3_desc: 'Ausführung standardisieren bei voller Wahrung fachlicher Prüfung.',
-    seg_4_aud: 'Institutional Investors',
+    seg_4_aud: 'Institutionelle Investoren',
     seg_4_desc: 'Struktur und Transparenz in komplexe Fondssteuerdaten bringen.',
 
     // Solutions / Platform (Section 3: How ZYVORIS Works)

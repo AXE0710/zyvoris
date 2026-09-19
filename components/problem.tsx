@@ -9,29 +9,29 @@ export default function ProblemSection() {
   const problems = [
     {
       number: '01',
-      category: 'DATA',
+      category: t('prob_1_cat', 'DATA'),
       title: t('prob_1_title', 'Fragmented Data'),
       text: t(
         'prob_1_desc',
-        'Fund and tax data remains distributed across systems, files, and stakeholders.'
+        'Fund, accounting, investor, and transaction data remains distributed across multiple systems, files, and stakeholders.'
       ),
     },
     {
       number: '02',
-      category: 'PROCESS',
+      category: t('prob_2_cat', 'PROCESS'),
       title: t('prob_2_title', 'Manual Tax Processes'),
       text: t(
         'prob_2_desc',
-        'Complex calculations and allocations still depend heavily on spreadsheets and manually maintained workpapers.'
+        'Complex tax calculations and allocations still depend heavily on spreadsheets, manual adjustments, and individually maintained workpapers.'
       ),
     },
     {
       number: '03',
-      category: 'AUDIT',
+      category: t('prob_3_cat', 'CONTROL'),
       title: t('prob_3_title', 'Limited Traceability'),
       text: t(
         'prob_3_desc',
-        'Reviewers often need to reconstruct how reported tax values were produced.'
+        'Reviewers often need to reconstruct how reported tax values were derived from source data, calculation logic, and manual adjustments.'
       ),
     },
   ]
@@ -90,7 +90,7 @@ export default function ProblemSection() {
                 {t('problem_title_1', 'Private markets have scaled.')}
               </span>
               <span className="block font-sans font-semibold text-blue-600 dark:text-blue-400 mt-1 sm:whitespace-nowrap">
-                {t('problem_title_2', 'Tax infrastructure has not')}
+                {t('problem_title_2', 'Tax infrastructure has not.')}
               </span>
             </h2>
           </div>
@@ -151,15 +151,14 @@ export default function ProblemSection() {
               "
             >
               <div>
-                {/* Card Top: Number & Category */}
+                {/* Card Top: [01] · CATEGORY */}
                 <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800/80 pb-3.5">
-                  <span className="font-mono text-sm font-bold text-blue-600 dark:text-blue-400">
-                    [{problem.number}]
-                  </span>
-
-                  <span className="rounded-md border border-slate-200 dark:border-slate-800 bg-slate-50 dark:bg-slate-900/80 px-2.5 py-0.5 font-mono text-[9.5px] font-bold uppercase text-slate-700 dark:text-slate-300">
-                    {problem.category}
-                  </span>
+                  <div className="flex items-center gap-2 font-mono text-xs sm:text-[13px] font-bold">
+                    <span className="text-blue-600 dark:text-blue-400">[{problem.number}]</span>
+                    <span className="text-slate-400 dark:text-slate-500">·</span>
+                    <span className="uppercase tracking-wider text-slate-800 dark:text-slate-200">{problem.category}</span>
+                  </div>
+                  <span className="h-2 w-2 rounded-full bg-slate-300 dark:bg-slate-700" />
                 </div>
 
                 {/* Card Main Body */}
@@ -195,25 +194,51 @@ export default function ProblemSection() {
         </div>
 
         {/* =====================================================
-            CLOSING SENTENCE
+            TRANSITIONAL STATEMENT (Flatter, sleek bridge to next section)
         ====================================================== */}
         <div
           className="
-            mt-12 sm:mt-14
+            mt-10 sm:mt-12
+            relative
+            overflow-hidden
             rounded-2xl
-            border-2
-            border-slate-900 dark:border-slate-800
-            bg-white dark:bg-slate-900/80
-            p-6 sm:p-7
-            shadow-sm
+            border border-blue-500/20 dark:border-blue-500/25
+            bg-gradient-to-r from-blue-50/60 via-white to-slate-50/70 dark:from-blue-950/25 dark:via-[#0c152a] dark:to-slate-900/40
+            px-6 py-4 sm:px-7 sm:py-5
+            shadow-xs
+            backdrop-blur-sm
           "
         >
-          <p className="m-0 text-base sm:text-lg font-semibold text-slate-950 dark:text-white leading-snug">
-            {t(
-              'problem_closing',
-              'ZYVORIS turns these fragmented processes into structured, controlled, and traceable workflows.'
-            )}
-          </p>
+          {/* Subtle ambient light highlight */}
+          <div className="pointer-events-none absolute -right-10 -top-10 h-24 w-24 rounded-full bg-blue-500/10 blur-xl" />
+
+          <div className="relative z-10 flex flex-col sm:flex-row sm:items-center sm:justify-between gap-3">
+            <div className="space-y-1">
+              {/* Transition Eyebrow / Kicker */}
+              <div className="flex items-center gap-2">
+                <span className="h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400" />
+                <span className="font-mono text-[10.5px] sm:text-xs uppercase tracking-[0.16em] font-bold text-blue-700 dark:text-blue-300">
+                  {t(
+                    'problem_transition_label',
+                    'FROM FRAGMENTED PROCESSES → TO CONTROLLED TAX INFRASTRUCTURE'
+                  )}
+                </span>
+              </div>
+
+              {/* Transformative Statement */}
+              <p className="m-0 text-sm sm:text-[15px] font-semibold text-slate-950 dark:text-white leading-snug tracking-tight">
+                {t(
+                  'problem_closing',
+                  'ZYVORIS transforms fragmented tax processes into structured, controlled, and traceable workflows.'
+                )}
+              </p>
+            </div>
+
+            {/* Subtle flow indicator */}
+            <div className="hidden lg:flex items-center gap-1.5 text-slate-400 dark:text-slate-500 font-mono text-xs shrink-0">
+              <span>↓</span>
+            </div>
+          </div>
         </div>
       </div>
     </section>

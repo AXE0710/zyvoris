@@ -37,22 +37,28 @@ export default function CompanySimple() {
 
   const principles = [
     {
-      title: isGerman ? 'Fachliche Expertise' : 'Domain Expertise',
+      num: '01',
+      title: isGerman ? 'Steuerliche Fachexpertise' : 'Domain Expertise',
+      tagline: isGerman ? 'Wir verstehen das steuerliche Problem.' : 'We understand the tax problem.',
       description: isGerman
-        ? 'Entwickelt für die Realität komplexer Steuer-Workflows in den Privatmärkten.'
-        : 'Built around the realities of complex private markets tax workflows.',
+        ? 'Entwickelt für die Strukturen, Daten und steuerlichen Prozesse komplexer Private Markets.'
+        : 'Built around the structures, data, and tax workflows of complex private markets.',
     },
     {
-      title: isGerman ? 'Kontrolle' : 'Control',
+      num: '02',
+      title: isGerman ? 'Fachliche Kontrolle' : 'Professional Control',
+      tagline: isGerman ? 'Technologie unterstützt das fachliche Urteil.' : 'Technology supports professional judgment.',
       description: isGerman
-        ? 'Automatisierung soll das fachliche Urteil stärken, nicht ersetzen.'
-        : 'Automation should strengthen professional judgment, not replace it.',
+        ? 'Automatisierung soll fachliche Beurteilung unterstützen – nicht ersetzen.'
+        : 'Automation should strengthen professional judgment—not replace it.',
     },
     {
+      num: '03',
       title: isGerman ? 'Nachvollziehbarkeit' : 'Traceability',
+      tagline: isGerman ? 'Jedes Ergebnis muss erklärbar bleiben.' : 'Every result should remain explainable.',
       description: isGerman
-        ? 'Materielle Steuerergebnisse sollen verständlich und prüfbar bleiben.'
-        : 'Material tax results should remain understandable and reviewable.',
+        ? 'Steuerliche Ergebnisse sollen mit den zugrunde liegenden Daten, Logiken und Entscheidungen nachvollziehbar verknüpft bleiben.'
+        : 'Tax results should remain connected to the data, logic, and decisions behind them.',
     },
   ]
 
@@ -220,66 +226,82 @@ export default function CompanySimple() {
         </section>
 
         {/* =========================================================
-            4. COMPANY — PRINCIPLES
+            4. COMPANY — PRINCIPLES / GRUNDSÄTZE
         ========================================================== */}
         <section className="mt-16 sm:mt-24">
           <div className="mb-8 border-b border-slate-200 dark:border-slate-800 pb-4">
             <div className="inline-flex items-center gap-2 mb-2 px-3 py-1 rounded-full border border-blue-200/60 dark:border-blue-900/40 bg-blue-50/60 dark:bg-blue-950/40">
               <span className="font-mono text-[10.5px] font-bold uppercase tracking-[0.2em] text-blue-700 dark:text-blue-300">
-                {isGerman ? 'PRINZIPIEN' : 'PRINCIPLES'}
+                {isGerman ? 'GRUNDSÄTZE' : 'PRINCIPLES'}
               </span>
             </div>
-            <h2 className="mt-2 text-2xl sm:text-3xl font-normal tracking-tight text-slate-950 dark:text-white">
-              <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
-                {isGerman ? 'Unsere Werte ' : 'Our core '}
-              </span>
-              <span className="text-blue-600 dark:text-blue-400 sm:whitespace-nowrap">
-                {isGerman ? 'für den Betrieb' : 'operating values'}
-              </span>
+            <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-normal tracking-tight text-slate-950 dark:text-white">
+              {isGerman ? (
+                <>
+                  <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
+                    Die Prinzipien,{' '}
+                  </span>
+                  nach denen wir entwickeln.
+                </>
+              ) : (
+                <>
+                  <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
+                    The principles{' '}
+                  </span>
+                  behind how we build.
+                </>
+              )}
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 gap-5 md:grid-cols-3">
-            {principles.map((principle, index) => (
+          <div className="grid grid-cols-1 gap-6 md:grid-cols-3">
+            {principles.map((principle) => (
               <article
-                key={principle.title}
+                key={principle.num}
                 className="
                   tap-press
                   group relative flex flex-col justify-between
-                  rounded-2xl
+                  rounded-3xl
                   border-2 border-slate-200 dark:border-slate-800
                   bg-white dark:bg-[#0c152a]
-                  p-6 sm:p-7
+                  p-6 sm:p-7 lg:p-8
                   shadow-sm
-                  transition-all duration-200
-                  hover:-translate-y-1 hover:border-blue-600 dark:hover:border-blue-500 hover:shadow-md
+                  transition-all duration-300 ease-out
+                  hover:-translate-y-1.5 hover:border-blue-600 dark:hover:border-blue-500 hover:shadow-xl hover:shadow-slate-900/10 dark:hover:shadow-blue-950/40
                 "
               >
                 <div>
-                  <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800/80 pb-3.5">
-                    <span className="font-mono text-sm font-bold text-blue-600 dark:text-blue-400">
-                      [{String(index + 1).padStart(2, '0')}]
+                  <div className="flex items-center justify-between border-b border-slate-100 dark:border-slate-800/80 pb-4">
+                    <span className="font-mono text-xs font-bold text-blue-600 dark:text-blue-400">
+                      [{principle.num}]
                     </span>
-                    <span className="rounded-md border border-blue-200/60 dark:border-blue-900/40 bg-blue-50/60 dark:bg-blue-950/40 px-2 py-0.5 font-mono text-[9.5px] font-bold text-blue-700 dark:text-blue-300 uppercase">
-                      {isGerman ? 'WERT' : 'VALUE'}
+                    <span className="rounded-md border border-blue-200/60 dark:border-blue-900/40 bg-blue-50/60 dark:bg-blue-950/40 px-2.5 py-0.5 font-mono text-[9px] font-bold text-blue-700 dark:text-blue-300 uppercase">
+                      {isGerman ? 'LEITPRINZIP' : 'CORE PRINCIPLE'}
                     </span>
                   </div>
 
                   <div className="mt-5">
-                    <h3 className="text-lg font-bold leading-snug tracking-tight text-slate-950 dark:text-white">
+                    <h3 className="text-base sm:text-lg font-bold tracking-tight text-slate-950 dark:text-white uppercase font-sans">
                       {principle.title}
                     </h3>
-                    <p className="mt-3 text-sm leading-[1.65] text-slate-600 dark:text-slate-300">
+                    
+                    {/* Philosophical Subtitle / Core Thesis */}
+                    <p className="mt-2 text-sm font-semibold text-blue-600 dark:text-blue-400">
+                      {principle.tagline}
+                    </p>
+
+                    {/* Operational Principle Description */}
+                    <p className="mt-3 text-sm leading-relaxed text-slate-600 dark:text-slate-300">
                       {principle.description}
                     </p>
                   </div>
                 </div>
 
-                <div className="mt-8 flex items-center justify-between pt-3 border-t border-slate-100 dark:border-slate-800/80">
+                <div className="mt-8 flex items-center justify-between pt-4 border-t border-slate-100 dark:border-slate-800/80">
                   <span className="font-mono text-[10px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500">
-                    {isGerman ? 'GRUNDSATZ' : 'FOUNDATION'}
+                    {isGerman ? 'PHILOSOPHIE' : 'PHILOSOPHY'}
                   </span>
-                  <span className="font-mono text-xs font-bold text-blue-600 dark:text-blue-400 group-hover:translate-x-0.5 transition-transform">→</span>
+                  <span className="font-mono text-xs font-bold text-blue-600 dark:text-blue-400 group-hover:translate-x-1 transition-transform">→</span>
                 </div>
               </article>
             ))}
