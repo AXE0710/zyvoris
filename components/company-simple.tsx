@@ -74,17 +74,17 @@ export default function CompanySimple() {
         {/* =========================================================
             1. COMPANY HERO & MISSION (Side-by-side)
         ========================================================== */}
-        <section className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-14 lg:items-center">
+        <section className="grid grid-cols-1 gap-8 lg:grid-cols-2 lg:gap-14 lg:items-center">
           {/* Left: Company Intro */}
           <div>
 
-            <h1 className="text-3xl font-normal leading-[1.08] tracking-tight text-slate-950 dark:text-white sm:text-5xl lg:text-5xl xl:text-6xl">
+            <h1 className="text-3xl font-normal leading-[1.12] sm:leading-[1.08] tracking-tight text-slate-950 dark:text-white sm:text-5xl lg:text-5xl xl:text-6xl break-words">
               {isGerman ? (
                 <>
                   <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
                     Die Steuerinfrastruktur-{' '}
                   </span>
-                  <span className="relative inline-block whitespace-nowrap px-1">
+                  <span className="relative inline-block sm:whitespace-nowrap px-1">
                     <span className="relative z-10 font-serif italic text-blue-700 dark:text-blue-400">
                       Schicht
                     </span>
@@ -111,7 +111,7 @@ export default function CompanySimple() {
                     Building{' '}
                   </span>
                   the tax infrastructure{' '}
-                  <span className="relative inline-block whitespace-nowrap px-1">
+                  <span className="relative inline-block sm:whitespace-nowrap px-1">
                     <span className="relative z-10 font-serif italic text-blue-700 dark:text-blue-400">
                       layer
                     </span>
@@ -135,7 +135,7 @@ export default function CompanySimple() {
               )}
             </h1>
 
-            <p className="mt-5 text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg">
+            <p className="mt-4 sm:mt-5 text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg">
               {isGerman
                 ? 'ZYVORIS wurde gegründet, um die Strukturierung, Berechnung, Prüfung und das Reporting komplexer Fondssteuerdaten zu modernisieren.'
                 : 'ZYVORIS was created to modernize how complex fund tax data is structured, calculated, reviewed, and reported.'}
@@ -143,9 +143,9 @@ export default function CompanySimple() {
           </div>
 
           {/* Right: Mission Card */}
-          <div className="rounded-3xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0c152a] p-7 sm:p-9 lg:p-10 shadow-sm">
+          <div className="rounded-2xl sm:rounded-3xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0c152a] p-5 sm:p-9 lg:p-10 shadow-sm">
 
-            <h2 className="text-2xl sm:text-3xl font-normal leading-tight text-slate-950 dark:text-white">
+            <h2 className="text-xl sm:text-3xl font-normal leading-tight text-slate-950 dark:text-white break-words">
               <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
                 {isGerman ? 'Moderne Infrastruktur ' : 'Modern infrastructure '}
               </span>
@@ -154,7 +154,7 @@ export default function CompanySimple() {
               </span>
             </h2>
 
-            <p className="mt-4 text-base leading-relaxed text-slate-600 dark:text-slate-300">
+            <p className="mt-3 sm:mt-4 text-sm sm:text-base leading-relaxed text-slate-600 dark:text-slate-300">
               {isGerman
                 ? 'Privatmärkte haben sich schnell entwickelt, während viele Steuerprozesse weiterhin auf fragmentierten Daten und tabellenbasierten Workflows beruhen. ZYVORIS baut die Infrastruktur, um diese Prozesse strukturierter, nachvollziehbarer und skalierbarer zu machen.'
                 : 'Private markets have evolved rapidly, while many tax processes still depend on fragmented data and spreadsheet-based workflows. ZYVORIS is building the infrastructure to make those processes more structured, traceable, and scalable.'}

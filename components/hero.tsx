@@ -62,24 +62,25 @@ export default function ZyvorisHero({
         {/* =====================================================
             CENTERED HERO CONTENT (Clear, Smooth, Easy to Understand)
         ====================================================== */}
-        <div className="relative z-10 mx-auto max-w-4xl w-full px-4 sm:px-6 lg:px-8 pt-32 pb-20 sm:pt-36 sm:pb-24 flex flex-col items-center text-center">
+        <div className="relative z-10 mx-auto max-w-4xl w-full px-4 sm:px-6 lg:px-8 pt-28 pb-16 sm:pt-36 sm:pb-24 flex flex-col items-center text-center">
       
           {/* Main Headline: Simple, Punchy & Clear */}
           <h1
             className="
-              text-[36px] sm:text-[54px] lg:text-[64px]
+              text-[30px] xs:text-[36px] sm:text-[52px] lg:text-[64px]
               font-normal
-              leading-[1.1]
+              leading-[1.14] sm:leading-[1.1]
               tracking-tight
               text-slate-950 dark:text-white
               max-w-4xl
+              break-words
             "
           >
             {language === 'de' ? (
               <>
                 Komplexe Fondsdaten in{' '}
                 <span
-                  className="relative inline-block whitespace-nowrap px-1 cursor-pointer select-none"
+                  className="relative inline-block sm:whitespace-nowrap px-1 cursor-pointer select-none"
                   onMouseEnter={handleUnderlineHover}
                   title="Hover to replay underline"
                 >
@@ -108,7 +109,7 @@ export default function ZyvorisHero({
               <>
                 Turn complex fund data into{' '}
                 <span
-                  className="relative inline-block whitespace-nowrap px-1 cursor-pointer select-none"
+                  className="relative inline-block sm:whitespace-nowrap px-1 cursor-pointer select-none"
                   onMouseEnter={handleUnderlineHover}
                   title="Hover to replay underline"
                 >
@@ -141,11 +142,12 @@ export default function ZyvorisHero({
           {/* Subheadline (Direct, plain language, easy to understand) */}
           <p
             className="
-              mt-6
+              mt-4 sm:mt-6
               max-w-2xl
-              text-base sm:text-lg lg:text-xl
+              text-sm sm:text-lg lg:text-xl
               leading-[1.6]
               text-slate-600 dark:text-slate-300
+              px-1 sm:px-0
             "
           >
             {language === 'de'

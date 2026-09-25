@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { useLanguage } from './language-provider'
+import UnderlinedText from './underlined-text'
 
 export default function PlatformArchitecture() {
   const { language } = useLanguage()
@@ -56,24 +57,24 @@ export default function PlatformArchitecture() {
       <div className="relative mx-auto max-w-[1420px]">
         {/* Section Header */}
         <div className="max-w-3xl">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-slate-950 dark:text-white leading-[1.12]">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-slate-950 dark:text-white leading-[1.12] break-words">
             {isGerman ? (
               <>
                 <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
                   Daten. Steuerlogik. Berechnung. Prüfung.{' '}
                 </span>
-                <span className="font-sans font-semibold text-blue-600 dark:text-blue-400 sm:whitespace-nowrap">
+                <UnderlinedText textClassName="font-sans font-semibold text-blue-700 dark:text-blue-400">
                   Klar getrennt.
-                </span>
+                </UnderlinedText>
               </>
             ) : (
               <>
                 <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
                   Clear separation across data, tax logic,{' '}
                 </span>
-                <span className="font-sans font-semibold text-blue-600 dark:text-blue-400 sm:whitespace-nowrap">
+                <UnderlinedText textClassName="font-sans font-semibold text-blue-700 dark:text-blue-400">
                   calculations, and review.
-                </span>
+                </UnderlinedText>
               </>
             )}
           </h2>

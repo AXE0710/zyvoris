@@ -29,14 +29,14 @@ export default function UseCasesPage() {
             USE CASES HERO
         ========================================================== */}
         <header className="mx-auto max-w-4xl text-center">
-          <h1 className="text-center text-3xl font-normal leading-[1.08] tracking-tight text-slate-950 dark:text-white sm:text-5xl lg:text-6xl">
+          <h1 className="text-center text-3xl font-normal leading-[1.12] sm:leading-[1.08] tracking-tight text-slate-950 dark:text-white sm:text-5xl lg:text-6xl break-words">
             {isGerman ? (
               <>
                 <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
                   Steuer-Workflows{' '}
                 </span>
                 für{' '}
-                <span className="relative inline-block whitespace-nowrap px-1">
+                <span className="relative inline-block sm:whitespace-nowrap px-1">
                   <span className="relative z-10 font-serif italic text-blue-700 dark:text-blue-400">
                     Privatmärkte
                   </span>
@@ -62,7 +62,7 @@ export default function UseCasesPage() {
                   Tax workflows{' '}
                 </span>
                 built for{' '}
-                <span className="relative inline-block whitespace-nowrap px-1">
+                <span className="relative inline-block sm:whitespace-nowrap px-1">
                   <span className="relative z-10 font-serif italic text-blue-700 dark:text-blue-400">
                     private markets
                   </span>

@@ -16,13 +16,13 @@ export default function FinalCTA() {
       className="relative overflow-hidden border-t border-slate-200/80 bg-white px-4 py-16 transition-colors duration-300 dark:border-slate-800/80 dark:bg-[#070d18] sm:px-6 sm:py-24 lg:px-[5vw]"
     >
       <div className="relative mx-auto max-w-[1420px]">
-        <div className="relative overflow-hidden rounded-3xl border-2 border-slate-200 bg-[#f8fafc] p-8 shadow-xl dark:border-slate-800 dark:bg-[#0c152a] sm:p-12 lg:p-16">
+        <div className="relative overflow-hidden rounded-2xl sm:rounded-3xl border-2 border-slate-200 bg-[#f8fafc] p-5 sm:p-12 lg:p-16 shadow-xl dark:border-slate-800 dark:bg-[#0c152a]">
           <div className="relative z-10 mx-auto max-w-3xl text-center">
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal leading-[1.14] tracking-tight text-slate-950 dark:text-white">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-normal leading-[1.14] tracking-tight text-slate-950 dark:text-white break-words">
               {isGerman ? (
                 <>
                   <span
-                    className="relative inline-block whitespace-nowrap px-1 cursor-pointer select-none"
+                    className="relative inline-block sm:whitespace-nowrap px-1 cursor-pointer select-none"
                     onMouseEnter={triggerReplay}
                     title="Hover to trigger double swish"
                   >
@@ -58,7 +58,7 @@ export default function FinalCTA() {
               ) : (
                 <>
                   <span
-                    className="relative inline-block whitespace-nowrap px-1 cursor-pointer select-none"
+                    className="relative inline-block sm:whitespace-nowrap px-1 cursor-pointer select-none"
                     onMouseEnter={triggerReplay}
                     title="Hover to trigger double swish"
                   >
@@ -103,7 +103,7 @@ export default function FinalCTA() {
             <div className="mt-8 flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4">
               <Link
                 href="/contact"
-                className="tap-press shimmer-sweep w-full sm:w-auto inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-slate-950 px-7 font-semibold text-xs uppercase tracking-wider text-white shadow-md transition-all hover:bg-slate-800 dark:bg-blue-600 dark:hover:bg-blue-500"
+                className="tap-press shimmer-sweep w-full sm:w-auto inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-blue-600 px-7 font-bold text-xs uppercase tracking-wider text-white shadow-lg shadow-blue-500/25 transition-all hover:bg-blue-500 hover:shadow-blue-500/35 dark:bg-blue-600 dark:hover:bg-blue-500"
               >
                 <span>{isGerman ? 'Demo anfragen' : 'Book a Demo'}</span>
                 <span className="font-mono text-sm leading-none">→</span>

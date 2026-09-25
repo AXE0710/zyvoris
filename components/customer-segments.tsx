@@ -3,6 +3,7 @@
 import React from 'react'
 import Image from 'next/image'
 import { useLanguage } from './language-provider'
+import UnderlinedText from './underlined-text'
 
 export default function CustomerSegments() {
   const { t, language } = useLanguage()
@@ -82,13 +83,13 @@ export default function CustomerSegments() {
       <div className="relative mx-auto max-w-[1420px]">
         {/* Section Heading - No capsule buttons */}
         <div className="max-w-3xl mb-12 sm:mb-16">
-          <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-slate-950 dark:text-white leading-[1.15]">
+          <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-normal tracking-tight text-slate-950 dark:text-white leading-[1.15] break-words">
             {isGerman ? (
               <>
                 Für die zuständigen Teams <br />
-                <span className="font-serif italic font-normal text-blue-600 dark:text-blue-400">
+                <UnderlinedText textClassName="font-serif italic font-normal text-blue-700 dark:text-blue-400">
                   für komplexes Steuerreporting
-                </span>
+                </UnderlinedText>
               </>
             ) : (
               <>
@@ -97,9 +98,9 @@ export default function CustomerSegments() {
                   responsible
                 </span>
                 <br />
-                <span className="font-sans font-semibold text-blue-600 dark:text-blue-400">
+                <UnderlinedText textClassName="font-sans font-semibold text-blue-700 dark:text-blue-400">
                   for complex fund tax reporting
-                </span>
+                </UnderlinedText>
               </>
             )}
           </h2>

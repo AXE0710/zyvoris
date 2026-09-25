@@ -1,4 +1,4 @@
-import type { Metadata } from 'next'
+import type { Metadata, Viewport } from 'next'
 import { Plus_Jakarta_Sans, Source_Serif_4 } from 'next/font/google'
 import Header from '@/components/header'
 import CallToActionSection from '@/components/footer-simple'
@@ -20,6 +20,13 @@ const serif = Source_Serif_4({
   display: 'swap',
   style: ['normal', 'italic'],
 })
+
+export const viewport: Viewport = {
+  width: 'device-width',
+  initialScale: 1,
+  maximumScale: 5,
+  viewportFit: 'cover',
+}
 
 export const metadata: Metadata = {
   title: 'ZYVORIS — Global Fund Tax Infrastructure for Private Markets',

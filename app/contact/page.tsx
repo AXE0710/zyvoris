@@ -39,7 +39,7 @@ export default function ContactPage() {
     setSubmitted(true)
   }
 
-  const fieldClassName = 'mt-2 h-12 w-full rounded-xl border-2 border-slate-200 bg-slate-50/50 px-4 text-sm text-slate-950 outline-none transition-colors placeholder:text-slate-400 focus:border-blue-600 focus:bg-white dark:border-slate-700 dark:bg-slate-900/80 dark:text-white dark:focus:border-blue-500 dark:focus:bg-slate-900'
+  const fieldClassName = 'mt-2 h-12 w-full rounded-xl border-2 border-slate-200 bg-slate-50/50 px-4 text-base sm:text-sm text-slate-950 outline-none transition-colors placeholder:text-slate-400 focus:border-blue-600 focus:bg-white dark:border-slate-700 dark:bg-slate-900/80 dark:text-white dark:focus:border-blue-500 dark:focus:bg-slate-900'
   const labelClassName = 'font-mono text-[10.5px] font-bold uppercase tracking-[0.14em] text-slate-600 dark:text-slate-400'
 
   return (
@@ -50,16 +50,16 @@ export default function ContactPage() {
       {/* Grid pattern */}
       <div className="pointer-events-none absolute inset-0 opacity-30 dark:opacity-15 bg-[linear-gradient(rgba(30,58,138,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(30,58,138,0.06)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(56,189,248,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(56,189,248,0.08)_1px,transparent_1px)] bg-[size:52px_52px]" />
 
-      <div className="relative z-10 mx-auto max-w-355">
+      <div className="relative z-10 mx-auto max-w-[1420px]">
         <header className="mx-auto max-w-4xl text-center">
-          <h1 className="text-center text-3xl font-normal leading-[1.08] tracking-tight text-slate-950 dark:text-white sm:text-5xl lg:text-6xl">
+          <h1 className="text-center text-3xl font-normal leading-[1.12] sm:leading-[1.08] tracking-tight text-slate-950 dark:text-white sm:text-5xl lg:text-6xl break-words">
             {isGerman ? (
               <>
                 <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
                   Sprechen wir{' '}
                 </span>
                 über Ihren{' '}
-                <span className="relative inline-block whitespace-nowrap px-1">
+                <span className="relative inline-block sm:whitespace-nowrap px-1">
                   <span className="relative z-10 font-serif italic text-blue-700 dark:text-blue-400">
                     Steuer-Workflow
                   </span>
@@ -85,7 +85,7 @@ export default function ContactPage() {
                   Let&apos;s discuss{' '}
                 </span>
                 your{' '}
-                <span className="relative inline-block whitespace-nowrap px-1">
+                <span className="relative inline-block sm:whitespace-nowrap px-1">
                   <span className="relative z-10 font-serif italic text-blue-700 dark:text-blue-400">
                     tax workflow
                   </span>
@@ -108,14 +108,14 @@ export default function ContactPage() {
             )}
           </h1>
 
-          <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg">
+          <p className="mx-auto mt-4 sm:mt-5 max-w-2xl text-center text-sm sm:text-lg leading-relaxed text-slate-700 dark:text-slate-300">
             {isGerman
               ? 'Erzählen Sie uns von Ihren Fondsstrukturen, Reporting-Anforderungen, Jurisdiktionen und Ihrem aktuellen Betriebsmodell.'
               : 'Tell us about your fund structures, reporting requirements, jurisdictions, and current operating model.'}
           </p>
         </header>
 
-        <form onSubmit={handleSubmit} className="mt-12 max-w-4xl rounded-3xl border-2 border-slate-200 bg-white p-6 shadow-xl dark:border-slate-800 dark:bg-[#0c152a] sm:mt-16 sm:p-8 lg:p-10">
+        <form onSubmit={handleSubmit} className="mt-10 sm:mt-16 max-w-4xl mx-auto rounded-2xl sm:rounded-3xl border-2 border-slate-200 bg-white p-5 sm:p-8 lg:p-10 shadow-xl dark:border-slate-800 dark:bg-[#0c152a]">
           <div className="grid grid-cols-1 gap-6 sm:grid-cols-2">
             <label>
               <span className={labelClassName}>{isGerman ? 'Name' : 'Name'}</span>

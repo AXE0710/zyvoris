@@ -29,14 +29,14 @@ export default function ComparisonPage() {
             COMPARISON HERO HEADER
         ========================================================== */}
         <div className="mx-auto max-w-3xl text-center">
-          <h1 className="text-3xl font-normal tracking-tight sm:text-5xl lg:text-6xl text-slate-950 dark:text-white leading-[1.08]">
+          <h1 className="text-3xl font-normal tracking-tight sm:text-5xl lg:text-6xl text-slate-950 dark:text-white leading-[1.12] sm:leading-[1.08] break-words">
             {isGerman ? (
               <>
                 <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
                   Herkömmliche Steueroperationen{' '}
                 </span>
                 vs.{' '}
-                <span className="relative inline-block whitespace-nowrap px-1">
+                <span className="relative inline-block sm:whitespace-nowrap px-1">
                   <span className="relative z-10 font-serif italic text-blue-700 dark:text-blue-400">
                     vernetzte Steuerinfrastruktur
                   </span>
@@ -62,7 +62,7 @@ export default function ComparisonPage() {
                   Traditional Tax Operations{' '}
                 </span>
                 vs.{' '}
-                <span className="relative inline-block whitespace-nowrap px-1">
+                <span className="relative inline-block sm:whitespace-nowrap px-1">
                   <span className="relative z-10 font-serif italic text-blue-700 dark:text-blue-400">
                     Connected Tax Infrastructure
                   </span>

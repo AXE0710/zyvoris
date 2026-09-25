@@ -32,16 +32,16 @@ export default function Header() {
 
   return (
     <header className="fixed inset-x-0 top-0 z-50 pointer-events-none transition-all duration-200">
-      <div className="mx-auto max-w-[1420px] w-full px-4 pt-3.5 sm:pt-4 md:px-6 lg:px-8">
+      <div className="mx-auto max-w-[1420px] w-full px-3 sm:px-4 md:px-6 lg:px-8 pt-2.5 sm:pt-4">
         {/* Main Header Container with strong black border in Light Mode */}
         <div
           className="
             pointer-events-auto
-            flex h-[72px] sm:h-[76px] items-center justify-between
+            flex h-[66px] sm:h-[76px] items-center justify-between
             rounded-2xl
             border-2 border-slate-900 dark:border-slate-700
             bg-white/98 dark:bg-[#0e1628]/98
-            px-4 sm:px-6 lg:px-7
+            px-3 sm:px-6 lg:px-7
             shadow-[0_4px_20px_rgba(0,0,0,0.08)] dark:shadow-[0_12px_40px_rgba(0,0,0,0.45)]
             backdrop-blur-xl
             transition-all duration-200
@@ -61,7 +61,7 @@ export default function Header() {
                 height={56}
                 priority
                 className="
-                  h-[40px] sm:h-[45px] lg:h-[48px]
+                  h-[32px] xs:h-[36px] sm:h-[44px] lg:h-[48px]
                   w-auto
                   object-contain
                   dark:brightness-0 dark:invert
@@ -129,7 +129,7 @@ export default function Header() {
           </div>
 
           {/* Mobile Right Controls */}
-          <div className="flex items-center gap-2 lg:hidden">
+          <div className="flex items-center gap-1.5 sm:gap-2 lg:hidden">
             <LanguageToggle />
             <ThemeToggle />
 
@@ -140,12 +140,12 @@ export default function Header() {
               aria-expanded={menuOpen}
               className="
                 flex items-center justify-center
-                h-9 px-3
+                h-9 px-2.5 sm:px-3
                 rounded-xl
                 border-2 border-slate-900 dark:border-slate-700
                 bg-white dark:bg-slate-800
                 text-slate-900 dark:text-slate-200
-                font-mono text-[11px] font-bold uppercase
+                font-mono text-[10.5px] sm:text-[11px] font-bold uppercase
                 transition-colors
                 hover:bg-slate-900 hover:text-white
               "
@@ -160,8 +160,9 @@ export default function Header() {
           <div
             className="
               pointer-events-auto
-              mt-2.5
-              overflow-hidden
+              mt-2
+              max-h-[calc(100dvh-5.5rem)]
+              overflow-y-auto
               rounded-2xl
               border-2 border-slate-900 dark:border-slate-700
               bg-white dark:bg-[#0e1628]

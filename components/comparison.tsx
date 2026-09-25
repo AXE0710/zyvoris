@@ -2,6 +2,7 @@
 
 import React from 'react'
 import { useLanguage } from './language-provider'
+import UnderlinedText from './underlined-text'
 
 export default function ComparisonSection() {
   const { t, language } = useLanguage()
@@ -145,11 +146,11 @@ export default function ComparisonSection() {
               </span>
             </div>
 
-            <h2 className="text-3xl font-semibold tracking-tight sm:text-4xl lg:text-5xl text-slate-950 dark:text-white leading-tight">
+            <h2 className="text-2xl xs:text-3xl sm:text-4xl lg:text-5xl font-semibold tracking-tight text-slate-950 dark:text-white leading-tight break-words">
               {language === 'de' ? 'Herkömmliche Steueroperationen vs.' : 'Traditional Tax Operations vs.'}{' '}
-              <span className="text-blue-600 dark:text-blue-400 sm:whitespace-nowrap">
+              <UnderlinedText textClassName="font-semibold text-blue-700 dark:text-blue-400">
                 {language === 'de' ? 'vernetzte Steuerinfrastruktur' : 'Connected Tax Infrastructure'}
-              </span>
+              </UnderlinedText>
             </h2>
           </div>
 

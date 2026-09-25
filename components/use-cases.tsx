@@ -288,11 +288,11 @@ export default function UseCases() {
   const activeCase = useCases[selectedIdx]
 
   return (
-    <div className="mt-12 sm:mt-16">
+    <div className="mt-10 sm:mt-16">
       {/* =========================================================
           1. USE CASE SELECTOR TABS (Clean 4-Card Selector)
       ========================================================== */}
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-3 mb-8">
+      <div className="grid grid-cols-2 md:grid-cols-4 gap-2 sm:gap-3 mb-6 sm:mb-8">
         {useCases.map((item, idx) => {
           const isSelected = selectedIdx === idx
 
@@ -302,18 +302,18 @@ export default function UseCases() {
               type="button"
               onClick={() => setSelectedIdx(idx)}
               className={`
-                text-left p-4 sm:p-5 rounded-2xl border-2 transition-all duration-300 ease-out cursor-pointer
+                text-left p-3 sm:p-5 rounded-xl sm:rounded-2xl border-2 transition-all duration-300 ease-out cursor-pointer
                 ${
                   isSelected
-                    ? 'border-slate-400 dark:border-slate-600 bg-white dark:bg-[#0c152a] shadow-lg -translate-y-1'
+                    ? 'border-slate-400 dark:border-slate-600 bg-white dark:bg-[#0c152a] shadow-lg -translate-y-0.5 sm:-translate-y-1'
                     : 'border-slate-200 dark:border-slate-800 bg-white/60 dark:bg-slate-900/40 hover:bg-white dark:hover:bg-slate-900 hover:shadow-md'
                 }
               `}
             >
-              <div className="flex items-center justify-between mb-2">
+              <div className="flex items-center justify-between mb-1.5 sm:mb-2">
                 <span
                   className={`
-                    font-mono text-xs font-bold
+                    font-mono text-[11px] sm:text-xs font-bold
                     ${isSelected ? 'text-blue-600 dark:text-blue-400' : 'text-slate-400 dark:text-slate-500'}
                   `}
                 >
@@ -321,7 +321,7 @@ export default function UseCases() {
                 </span>
                 <span
                   className={`
-                    font-mono text-[9px] uppercase font-bold px-2 py-0.5 rounded
+                    font-mono text-[8.5px] sm:text-[9px] uppercase font-bold px-1.5 sm:px-2 py-0.5 rounded
                     ${
                       item.isPlanned
                         ? 'bg-blue-100/90 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 border border-blue-300/60 dark:border-blue-800/60'
@@ -332,7 +332,7 @@ export default function UseCases() {
                   {item.isPlanned ? (isGerman ? 'GEPLANT' : 'PLANNED') : (isGerman ? 'SZENARIO' : 'SCENARIO')}
                 </span>
               </div>
-              <h4 className="font-bold text-xs sm:text-sm text-slate-950 dark:text-white leading-snug line-clamp-2">
+              <h4 className="font-bold text-[11.5px] xs:text-xs sm:text-sm text-slate-950 dark:text-white leading-snug line-clamp-2">
                 {item.title}
               </h4>
             </button>
@@ -344,7 +344,7 @@ export default function UseCases() {
           2. DETAILED USE CASE BLUEPRINT PANEL
           Streamlined hierarchy: CHALLENGE → HOW ZYVORIS PROCESSES IT → OUTCOME
       ========================================================== */}
-      <div className="rounded-3xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0c152a] p-6 sm:p-10 shadow-sm transition-all duration-300">
+      <div className="rounded-2xl sm:rounded-3xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0c152a] p-4 sm:p-10 shadow-sm transition-all duration-300">
         {/* Top Header of Selected Use Case */}
         <div className="flex flex-col lg:flex-row lg:items-start lg:justify-between gap-4 border-b border-slate-100 dark:border-slate-800 pb-6 mb-7">
           <div className="max-w-3xl">

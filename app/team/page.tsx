@@ -113,13 +113,13 @@ export default function TeamPage() {
             HERO HEADER
         ========================================================== */}
         <div className="mx-auto max-w-3xl text-center">
-          <h1 className="text-3xl font-normal tracking-tight sm:text-5xl lg:text-6xl text-slate-950 dark:text-white leading-[1.08]">
+          <h1 className="text-3xl font-normal tracking-tight sm:text-5xl lg:text-6xl text-slate-950 dark:text-white leading-[1.12] sm:leading-[1.08] break-words">
             {language === 'de' ? (
               <>
                 <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
                   Gegründet von Steuerexperten und{' '}
                 </span>
-                <span className="relative inline-block whitespace-nowrap px-1">
+                <span className="relative inline-block sm:whitespace-nowrap px-1">
                   <span className="relative z-10 font-serif italic text-blue-700 dark:text-blue-400">
                     Infrastruktur-Ingenieuren
                   </span>
@@ -144,7 +144,7 @@ export default function TeamPage() {
                 <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
                   Built by institutional tax leaders and{' '}
                 </span>
-                <span className="relative inline-block whitespace-nowrap px-1">
+                <span className="relative inline-block sm:whitespace-nowrap px-1">
                   <span className="relative z-10 font-serif italic text-blue-700 dark:text-blue-400">
                     infrastructure engineers
                   </span>
@@ -176,9 +176,9 @@ export default function TeamPage() {
         </div>
 
         {/* =========================================================
-            FOUNDERS PROFILE CARDS
+            FOUNDERS PROFILE CARDS (Hidden for now)
         ========================================================== */}
-        <div className="mt-14 sm:mt-18 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
+        {/* <div className="mt-14 sm:mt-18 grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-10">
           {founders.map((founder) => (
             <div
               key={founder.name}
@@ -196,7 +196,6 @@ export default function TeamPage() {
               "
             >
               <div>
-                {/* Profile Header */}
                 <div className="flex flex-col sm:flex-row sm:items-center gap-5 sm:gap-6 pb-6 border-b border-slate-100 dark:border-slate-800/80">
                   {founder.image ? (
                     <div className="relative h-24 w-24 sm:h-28 sm:w-28 shrink-0 overflow-hidden rounded-2xl border-2 border-slate-200 dark:border-slate-700 shadow-sm bg-slate-100 dark:bg-slate-800">
@@ -233,12 +232,10 @@ export default function TeamPage() {
                   </div>
                 </div>
 
-                {/* Biography */}
                 <p className="mt-6 text-sm sm:text-base leading-relaxed text-slate-600 dark:text-slate-300">
                   {founder.bio}
                 </p>
 
-                {/* Founder Quote */}
                 <div className="mt-6 rounded-2xl border border-blue-200/80 bg-blue-50/40 dark:border-blue-900/50 dark:bg-blue-950/30 p-4 sm:p-5">
                   <p className="text-xs sm:text-sm italic leading-relaxed text-slate-800 dark:text-slate-200">
                     &ldquo;{founder.quote}&rdquo;
@@ -247,12 +244,12 @@ export default function TeamPage() {
               </div>
             </div>
           ))}
-        </div>
+        </div> */}
 
         {/* =========================================================
             CORE PHILOSOPHY & VALUES SECTION
         ========================================================== */}
-        <div className="mt-20 sm:mt-28">
+        <div className="mt-10 sm:mt-16">
           <div className="text-center max-w-2xl mx-auto">
             <h2 className="text-2xl sm:text-4xl font-normal tracking-tight text-slate-950 dark:text-white">
               <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
@@ -297,9 +294,9 @@ export default function TeamPage() {
         {/* =========================================================
             BOTTOM CTA BANNER
         ========================================================== */}
-        <div className="mt-16 sm:mt-24 rounded-3xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0c152a] p-8 sm:p-12 shadow-xl relative overflow-hidden">
+        <div className="mt-16 sm:mt-24 rounded-2xl sm:rounded-3xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0c152a] p-6 sm:p-12 shadow-xl relative overflow-hidden">
           <div className="relative z-10 max-w-2xl">
-            <h3 className="text-2xl sm:text-4xl font-normal tracking-tight text-slate-950 dark:text-white">
+            <h3 className="text-2xl sm:text-4xl font-normal tracking-tight text-slate-950 dark:text-white break-words">
               <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
                 {language === 'de' ? 'Sprechen Sie ' : 'Speak directly '}
               </span>
@@ -311,19 +308,20 @@ export default function TeamPage() {
                 : 'Whether you are evaluating cross-border UCITS/AIFM reporting, private equity waterfalls, or integration with existing accounting data feeds, we are ready to discuss your fund structures.'}
             </p>
 
-            <div className="mt-8 flex flex-wrap gap-4">
+            <div className="mt-8 flex flex-col sm:flex-row gap-3 sm:gap-4 w-full">
               <a
                 href="mailto:info@zyvoris.ai?subject=Leadership%20Inquiry%20-%20ZYVORIS"
                 className="
                   tap-press
-                  inline-flex items-center gap-2
+                  w-full sm:w-auto
+                  inline-flex items-center justify-center gap-2
                   rounded-xl
-                  bg-slate-950 dark:bg-blue-600
-                  px-5 py-3
-                  font-semibold text-xs uppercase tracking-wider
+                  bg-blue-600 hover:bg-blue-500
+                  px-5 py-3.5
+                  font-bold text-xs uppercase tracking-wider
                   text-white
-                  hover:bg-slate-800 dark:hover:bg-blue-500
-                  shadow-md
+                  shadow-lg shadow-blue-500/25 hover:shadow-blue-500/35
+                  dark:bg-blue-600 dark:hover:bg-blue-500
                   transition-all
                 "
               >
@@ -335,11 +333,12 @@ export default function TeamPage() {
                 href="/platform"
                 className="
                   tap-press
-                  inline-flex items-center gap-2
+                  w-full sm:w-auto
+                  inline-flex items-center justify-center gap-2
                   rounded-xl
                   border-2 border-slate-200 dark:border-slate-700
                   bg-white dark:bg-slate-800
-                  px-5 py-3
+                  px-5 py-3.5
                   font-semibold text-xs uppercase tracking-wider
                   text-slate-900 dark:text-slate-200
                   hover:bg-slate-50 dark:hover:bg-slate-700

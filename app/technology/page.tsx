@@ -3,6 +3,7 @@
 import React, { useState } from 'react'
 import { useLanguage } from '@/components/language-provider'
 import Link from 'next/link'
+import UnderlinedText from '@/components/underlined-text'
 import { ArrowRight, ArrowDown } from 'lucide-react'
 
 export default function TechnologyPage() {
@@ -124,37 +125,37 @@ export default function TechnologyPage() {
     <main className="min-h-screen bg-white dark:bg-[#070c18] text-slate-900 dark:text-slate-100 transition-colors duration-300">
       
       {/* Top spacing below header */}
-      <div className="mx-auto max-w-5xl px-6 pt-36 pb-28 space-y-32">
+      <div className="mx-auto max-w-5xl px-4 sm:px-6 pt-28 sm:pt-36 pb-16 sm:pb-28 space-y-16 sm:space-y-32">
         
         {/* =========================================================
             1. LARGE OPEN HERO: Bold, Confident, No Cards
         ========================================================== */}
-        <section className="text-center space-y-8">
-          <p className="font-mono text-sm uppercase tracking-widest text-blue-600 dark:text-blue-400 font-semibold">
+        <section className="text-center space-y-6 sm:space-y-8">
+          <p className="font-mono text-xs sm:text-sm uppercase tracking-widest text-blue-600 dark:text-blue-400 font-semibold">
             {isGerman ? 'Technologie & Architektur' : 'Technology & Architecture'}
           </p>
 
-          <h1 className="text-4xl sm:text-6xl lg:text-7xl font-normal tracking-tight text-slate-950 dark:text-white leading-[1.08]">
+          <h1 className="text-3xl sm:text-5xl lg:text-7xl font-normal tracking-tight text-slate-950 dark:text-white leading-[1.12] sm:leading-[1.08] break-words">
             {isGerman ? (
               <>
                 Kontrollierte Automatisierung für{' '}
-                <span className="font-serif italic font-normal text-blue-600 dark:text-blue-400">
+                <UnderlinedText textClassName="font-serif italic font-normal text-blue-700 dark:text-blue-400">
                   komplexe
-                </span>{' '}
+                </UnderlinedText>{' '}
                 Steuerprozesse.
               </>
             ) : (
               <>
                 Controlled automation for{' '}
-                <span className="font-serif italic font-normal text-blue-600 dark:text-blue-400">
+                <UnderlinedText textClassName="font-serif italic font-normal text-blue-700 dark:text-blue-400">
                   complex
-                </span>{' '}
+                </UnderlinedText>{' '}
                 tax workflows.
               </>
             )}
           </h1>
 
-          <p className="text-xl sm:text-2xl leading-relaxed text-slate-600 dark:text-slate-300 max-w-3xl mx-auto font-normal">
+          <p className="text-base sm:text-xl lg:text-2xl leading-relaxed text-slate-600 dark:text-slate-300 max-w-3xl mx-auto font-normal">
             {isGerman
               ? 'ZYVORIS verbindet strukturierte Fondsdaten, kontrollierte Steuerlogik, nachvollziehbare Berechnungen und fachliche Prüfung in einer durchgängigen Plattform.'
               : 'ZYVORIS combines structured fund data, controlled tax logic, traceable calculations, and professional review in one continuous platform.'}
@@ -164,16 +165,16 @@ export default function TechnologyPage() {
         {/* =========================================================
             2. INGRESS: 4 Streams Converging into Core (Open Flow)
         ========================================================== */}
-        <section className="border-t border-slate-200 dark:border-slate-800 pt-16 space-y-12">
+        <section className="border-t border-slate-200 dark:border-slate-800 pt-12 sm:pt-16 space-y-8 sm:space-y-12">
           
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
          
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-slate-950 dark:text-white tracking-tight">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-normal text-slate-950 dark:text-white tracking-tight break-words">
               {isGerman
                 ? 'Integration in Ihre bestehende Datenlandschaft.'
                 : 'Direct integration with your existing data environment.'}
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed">
               {isGerman
                 ? 'Kein Systemwechsel erforderlich. ZYVORIS bindet Daten über bewährte Schnittstellen an und führt unterschiedliche Quellen in einem zentralen Rechenmodell zusammen.'
                 : 'No system replacement required. ZYVORIS connects via standard interfaces, unifying disparate feeds into a single structured calculation model.'}
@@ -213,16 +214,16 @@ export default function TechnologyPage() {
         {/* =========================================================
             3. THE LIFECYCLE: Structure → Validate → Calculate → Allocate → Review → Report
         ========================================================== */}
-        <section className="border-t border-slate-200 dark:border-slate-800 pt-16 space-y-14">
+        <section className="border-t border-slate-200 dark:border-slate-800 pt-12 sm:pt-16 space-y-8 sm:space-y-14">
           
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
           
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-slate-950 dark:text-white tracking-tight">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-normal text-slate-950 dark:text-white tracking-tight break-words">
               {isGerman
                 ? 'Vom Rohdatensatz zum revisionssicheren Ergebnis.'
                 : 'From raw ledger records to certified tax deliverables.'}
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed">
               {isGerman
                 ? 'Sechs klar definierte Phasen gewährleisten Konsistenz, Nachvollziehbarkeit und fachliche Kontrolle.'
                 : 'Six clearly defined stages ensure mathematical consistency, complete traceability, and professional review.'}
@@ -230,33 +231,33 @@ export default function TechnologyPage() {
           </div>
 
           {/* Large Open Step Sequence */}
-          <div className="space-y-8 divide-y divide-slate-200 dark:divide-slate-800">
+          <div className="space-y-6 sm:space-y-8 divide-y divide-slate-200 dark:divide-slate-800">
             {lifecycleStages.map((stg, idx) => (
               <div
                 key={stg.num}
                 onClick={() => setActiveStep(idx)}
-                className={`pt-8 cursor-pointer transition-colors ${
+                className={`pt-6 sm:pt-8 cursor-pointer transition-colors ${
                   activeStep === idx ? 'opacity-100' : 'opacity-85 hover:opacity-100'
                 }`}
               >
-                <div className="grid grid-cols-1 md:grid-cols-12 gap-4 items-baseline">
+                <div className="grid grid-cols-1 md:grid-cols-12 gap-2 sm:gap-4 items-baseline">
                   <div className="md:col-span-3 flex items-center gap-3">
-                    <span className="font-mono text-lg font-bold text-blue-600 dark:text-blue-400">
+                    <span className="font-mono text-base sm:text-lg font-bold text-blue-600 dark:text-blue-400">
                       {stg.num}
                     </span>
-                    <h3 className="text-2xl sm:text-3xl font-bold text-slate-950 dark:text-white">
+                    <h3 className="text-xl sm:text-3xl font-bold text-slate-950 dark:text-white">
                       {stg.title}
                     </h3>
                   </div>
 
                   <div className="md:col-span-4">
-                    <span className="text-lg font-semibold text-slate-800 dark:text-slate-200">
+                    <span className="text-base sm:text-lg font-semibold text-slate-800 dark:text-slate-200">
                       {stg.headline}
                     </span>
                   </div>
 
                   <div className="md:col-span-5">
-                    <p className="text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+                    <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed mt-1 md:mt-0">
                       {stg.desc}
                     </p>
                   </div>
@@ -270,16 +271,16 @@ export default function TechnologyPage() {
         {/* =========================================================
             4. ALLOCATION: Multi-Tier Share Class Breakdown (Open Numbers)
         ========================================================== */}
-        <section className="border-t border-slate-200 dark:border-slate-800 pt-16 space-y-12">
+        <section className="border-t border-slate-200 dark:border-slate-800 pt-12 sm:pt-16 space-y-8 sm:space-y-12">
           
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
           
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-slate-950 dark:text-white tracking-tight">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-normal text-slate-950 dark:text-white tracking-tight break-words">
               {isGerman
                 ? 'Aufteilung des Fondsergebnisses auf Anteilsklassen.'
                 : 'Allocating fund results across distinct share classes.'}
             </h2>
-            <p className="text-lg text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed">
+            <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed">
               {isGerman
                 ? 'Steuerliche Ergebnisse werden exakt entlang der Fondsvereinbarung auf Tranchen, Carried Interest und Anlegerebene aufgeteilt.'
                 : 'Taxable earnings are distributed precisely according to partnership agreements across institutional tranches, retail units, and GP carry.'}
@@ -287,39 +288,39 @@ export default function TechnologyPage() {
           </div>
 
           {/* Large Open Stat Numbers */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-8 pt-4">
-            <div className="space-y-2 border-l-2 border-blue-600 dark:border-blue-400 pl-4">
-              <span className="font-mono text-sm text-slate-500 block">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 pt-2 sm:pt-4">
+            <div className="space-y-1.5 sm:space-y-2 border-l-2 border-blue-600 dark:border-blue-400 pl-4">
+              <span className="font-mono text-xs sm:text-sm text-slate-500 block">
                 {isGerman ? 'TRANCHE A // INSTITUTIONELL' : 'CLASS A // INSTITUTIONAL'}
               </span>
-              <div className="text-3xl sm:text-4xl font-bold text-slate-950 dark:text-white">
+              <div className="text-2xl sm:text-4xl font-bold text-slate-950 dark:text-white">
                 65%
               </div>
-              <p className="text-base text-slate-600 dark:text-slate-300">
+              <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300">
                 {isGerman ? 'Thesaurierend für regulierte institutionelle Investoren.' : 'Accumulating tier for institutional pension capital.'}
               </p>
             </div>
 
-            <div className="space-y-2 border-l-2 border-emerald-600 dark:border-emerald-400 pl-4">
-              <span className="font-mono text-sm text-slate-500 block">
+            <div className="space-y-1.5 sm:space-y-2 border-l-2 border-emerald-600 dark:border-emerald-400 pl-4">
+              <span className="font-mono text-xs sm:text-sm text-slate-500 block">
                 {isGerman ? 'TRANCHE B // AUSSCHÜTTEND' : 'CLASS B // DISTRIBUTING'}
               </span>
-              <div className="text-3xl sm:text-4xl font-bold text-slate-950 dark:text-white">
+              <div className="text-2xl sm:text-4xl font-bold text-slate-950 dark:text-white">
                 25%
               </div>
-              <p className="text-base text-slate-600 dark:text-slate-300">
+              <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300">
                 {isGerman ? 'Ausschüttende Anteilsklasse mit individuellen Ertragsausweisen.' : 'Distributing unit class with separate tax withholding annexes.'}
               </p>
             </div>
 
-            <div className="space-y-2 border-l-2 border-purple-600 dark:border-purple-400 pl-4">
-              <span className="font-mono text-sm text-slate-500 block">
+            <div className="space-y-1.5 sm:space-y-2 border-l-2 border-purple-600 dark:border-purple-400 pl-4">
+              <span className="font-mono text-xs sm:text-sm text-slate-500 block">
                 {isGerman ? 'TRANCHE C // GP CARRY' : 'CLASS C // GP CARRIED INTEREST'}
               </span>
-              <div className="text-3xl sm:text-4xl font-bold text-slate-950 dark:text-white">
+              <div className="text-2xl sm:text-4xl font-bold text-slate-950 dark:text-white">
                 10%
               </div>
-              <p className="text-base text-slate-600 dark:text-slate-300">
+              <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300">
                 {isGerman ? 'Hurdle Rate & Performance Allocation für Initiatoren.' : 'Hurdle rate catch-up and performance return allocation.'}
               </p>
             </div>
@@ -330,24 +331,24 @@ export default function TechnologyPage() {
         {/* =========================================================
             5. SECURITY & INSTITUTIONAL CONTROL (Open 4-Column Layout)
         ========================================================== */}
-        <section className="border-t border-slate-200 dark:border-slate-800 pt-16 space-y-12">
+        <section className="border-t border-slate-200 dark:border-slate-800 pt-12 sm:pt-16 space-y-8 sm:space-y-12">
           
-          <div className="space-y-4">
+          <div className="space-y-3 sm:space-y-4">
            
-            <h2 className="text-3xl sm:text-4xl lg:text-5xl font-normal text-slate-950 dark:text-white tracking-tight">
+            <h2 className="text-2xl sm:text-4xl lg:text-5xl font-normal text-slate-950 dark:text-white tracking-tight break-words">
               {isGerman
                 ? 'Entwickelt für sensible Finanz- und Steuerdaten.'
                 : 'Engineered for sensitive financial and tax data.'}
             </h2>
           </div>
 
-          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-10 pt-2">
+          <div className="grid grid-cols-1 md:grid-cols-2 gap-x-12 gap-y-8 sm:gap-y-10 pt-2">
             {securityPoints.map((item, idx) => (
-              <div key={idx} className="space-y-2">
-                <h3 className="text-xl sm:text-2xl font-semibold text-slate-950 dark:text-white">
+              <div key={idx} className="space-y-1.5 sm:space-y-2">
+                <h3 className="text-lg sm:text-2xl font-semibold text-slate-950 dark:text-white">
                   {item.title}
                 </h3>
-                <p className="text-base text-slate-600 dark:text-slate-300 leading-relaxed">
+                <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300 leading-relaxed">
                   {item.desc}
                 </p>
               </div>
@@ -359,25 +360,25 @@ export default function TechnologyPage() {
         {/* =========================================================
             6. CLEAR CALL TO ACTION
         ========================================================== */}
-        <section className="border-t border-slate-200 dark:border-slate-800 pt-16 text-center space-y-6">
-          <h2 className="text-3xl sm:text-4xl font-normal text-slate-950 dark:text-white tracking-tight">
+        <section className="border-t border-slate-200 dark:border-slate-800 pt-12 sm:pt-16 text-center space-y-6">
+          <h2 className="text-2xl sm:text-4xl font-normal text-slate-950 dark:text-white tracking-tight break-words">
             {isGerman
               ? 'Bereit, Ihre Steuerprozesse zu modernisieren?'
               : 'Ready to modernize your fund tax workflows?'}
           </h2>
           
-          <div className="flex flex-col sm:flex-row items-center justify-center gap-4 pt-2">
+          <div className="flex flex-col sm:flex-row items-center justify-center gap-3 sm:gap-4 pt-2 w-full">
             <Link
               href="/contact"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-base transition-colors"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 sm:py-4 rounded-xl bg-blue-600 hover:bg-blue-700 text-white font-semibold text-sm sm:text-base transition-colors"
             >
               <span>{isGerman ? 'Demo vereinbaren' : 'Book a Demo'}</span>
-              <ArrowRight className="h-5 w-5" />
+              <ArrowRight className="h-4 w-4 sm:h-5 sm:w-5" />
             </Link>
 
             <Link
               href="/platform"
-              className="inline-flex items-center gap-2 px-8 py-4 rounded-xl border border-slate-300 dark:border-slate-700 bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-900 dark:text-slate-100 font-semibold text-base transition-colors"
+              className="w-full sm:w-auto inline-flex items-center justify-center gap-2 px-8 py-3.5 sm:py-4 rounded-xl border border-slate-300 dark:border-slate-700 bg-transparent hover:bg-slate-100 dark:hover:bg-slate-800 text-slate-900 dark:text-slate-100 font-semibold text-sm sm:text-base transition-colors"
             >
               <span>{isGerman ? 'Plattform ansehen' : 'Explore Platform'}</span>
             </Link>

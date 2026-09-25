@@ -37,14 +37,14 @@ export default function PlatformPage() {
 
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
           {/* Headline with Serif Italic & Ink Underline */}
-          <h1 className="text-3xl font-normal leading-[1.08] tracking-tight text-slate-950 dark:text-white sm:text-4xl lg:text-5xl xl:text-6xl">
+          <h1 className="text-3xl font-normal leading-[1.12] sm:leading-[1.08] tracking-tight text-slate-950 dark:text-white sm:text-4xl lg:text-5xl xl:text-6xl break-words">
             {isGerman ? (
               <>
                 <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
                   Steuerinfrastruktur{' '}
                 </span>
                 für{' '}
-                <span className="relative inline-block whitespace-nowrap px-1">
+                <span className="relative inline-block sm:whitespace-nowrap px-1">
                   <span className="relative z-10 font-serif italic text-blue-700 dark:text-blue-400">
                     komplexe
                   </span>
@@ -71,7 +71,7 @@ export default function PlatformPage() {
                   Tax infrastructure{' '}
                 </span>
                 built for{' '}
-                <span className="relative inline-block whitespace-nowrap px-1">
+                <span className="relative inline-block sm:whitespace-nowrap px-1">
                   <span className="relative z-10 font-serif italic text-blue-700 dark:text-blue-400">
                     complex
                   </span>
@@ -104,7 +104,7 @@ export default function PlatformPage() {
           <div className="mt-8 flex justify-center">
             <Link
               href="/contact"
-              className="tap-press inline-flex h-12 items-center gap-2 rounded-xl bg-blue-600 px-7 font-bold text-xs uppercase tracking-wider text-white shadow-lg shadow-blue-500/25 transition-all hover:bg-blue-500 hover:shadow-blue-500/35 dark:bg-blue-600 dark:hover:bg-blue-500"
+              className="tap-press w-full sm:w-auto inline-flex h-12 items-center justify-center gap-2 rounded-xl bg-blue-600 px-7 font-bold text-xs uppercase tracking-wider text-white shadow-lg shadow-blue-500/25 transition-all hover:bg-blue-500 hover:shadow-blue-500/35 dark:bg-blue-600 dark:hover:bg-blue-500"
             >
               <span>{isGerman ? 'DEMO VEREINBAREN' : 'BOOK A DEMO'}</span>
               <span className="font-mono text-sm leading-none">→</span>

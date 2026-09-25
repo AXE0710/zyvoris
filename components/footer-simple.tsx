@@ -64,6 +64,7 @@ export default function SimpleFooter() {
             <ul className="mt-4 space-y-2.5">
               <li><Link href="/privacy" className={linkClass}>{isGerman ? 'Datenschutz' : 'Privacy'}</Link></li>
               <li><Link href="/terms" className={linkClass}>{isGerman ? 'Nutzungsbedingungen' : 'Terms'}</Link></li>
+              <li><Link href="/legal" className={linkClass}>{isGerman ? 'Rechtliche Hinweise' : 'Legal Notice'}</Link></li>
             </ul>
           </div>
         </div>
