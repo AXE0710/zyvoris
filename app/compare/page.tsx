@@ -29,13 +29,6 @@ export default function ComparisonPage() {
             COMPARISON HERO HEADER
         ========================================================== */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-200/80 bg-blue-50/60 px-3.5 py-1.5 backdrop-blur-md dark:border-blue-900/60 dark:bg-blue-950/40">
-            <span className="h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400 animate-pulse" />
-            <span className="font-mono text-[10.5px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-blue-800 dark:text-blue-300">
-              {isGerman ? 'ARCHITEKTUR-VERGLEICH' : 'ARCHITECTURE COMPARISON'}
-            </span>
-          </div>
-
           <h1 className="text-3xl font-normal tracking-tight sm:text-5xl lg:text-6xl text-slate-950 dark:text-white leading-[1.08]">
             {isGerman ? (
               <>

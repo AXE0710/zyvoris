@@ -28,15 +28,8 @@ export default function UseCasesPage() {
         {/* =========================================================
             USE CASES HERO
         ========================================================== */}
-        <header className="max-w-3xl">
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-200/80 bg-blue-50/60 px-3.5 py-1.5 backdrop-blur-md dark:border-blue-900/60 dark:bg-blue-950/40">
-            <span className="h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400 animate-pulse" />
-            <span className="font-mono text-[10.5px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-blue-800 dark:text-blue-300">
-              {isGerman ? 'ANWENDUNGSFÄLLE' : 'USE CASES'}
-            </span>
-          </div>
-
-          <h1 className="text-3xl font-normal leading-[1.08] tracking-tight text-slate-950 dark:text-white sm:text-5xl lg:text-6xl">
+        <header className="mx-auto max-w-4xl text-center">
+          <h1 className="text-center text-3xl font-normal leading-[1.08] tracking-tight text-slate-950 dark:text-white sm:text-5xl lg:text-6xl">
             {isGerman ? (
               <>
                 <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
@@ -92,7 +85,7 @@ export default function UseCasesPage() {
             )}
           </h1>
 
-          <p className="mt-5 max-w-2xl text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg">
+          <p className="mx-auto mt-5 max-w-2xl text-center text-base leading-relaxed text-slate-700 dark:text-slate-300 sm:text-lg">
             {isGerman
               ? 'ZYVORIS überführt komplexe Fondssteuerprozesse in strukturierte, kontrollierte und prüfbare Workflows.'
               : 'ZYVORIS turns complex fund tax processes into structured, controlled, and reviewable workflows.'}

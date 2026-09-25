@@ -173,7 +173,7 @@ export default function VerificationSection() {
                 {/* Connective arrow indicator for desktop */}
                 {idx < 7 && (
                   <div className="hidden lg:block absolute -right-3 top-1/2 -translate-y-1/2 z-20">
-                    <span className="flex h-6 w-6 items-center justify-center rounded-full border-2 border-slate-900 bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 font-mono text-xs font-bold shadow-xs">
+                    <span className="flex h-6 w-6 items-center justify-center rounded-lg border-2 border-slate-900 bg-white dark:bg-slate-800 text-blue-600 dark:text-blue-400 font-mono text-xs font-bold shadow-xs">
                       {idx === 3 ? '↓' : '→'}
                     </span>
                   </div>

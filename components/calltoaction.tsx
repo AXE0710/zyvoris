@@ -41,10 +41,6 @@ export default function Footer() {
             <div className="relative z-10 flex flex-col lg:flex-row lg:items-center lg:justify-between gap-6 lg:gap-10">
               {/* Left Column: Heading & Description */}
               <div className="max-w-2xl">
-                <div className="inline-flex items-center gap-2 rounded-full border border-slate-900/30 dark:border-slate-700 bg-slate-100 dark:bg-slate-800 px-2.5 py-0.5 text-[10px] font-mono font-bold uppercase tracking-[0.16em] text-blue-600 dark:text-blue-400 mb-3">
-                  <span>[ {language === 'de' ? 'NÄCHSTER SCHRITT' : 'NEXT STEP'} ]</span>
-                </div>
-
                 <h2 className="text-xl sm:text-2xl lg:text-3xl font-bold tracking-tight text-slate-950 dark:text-white leading-tight">
                   {language === 'de'
                     ? 'Modernisieren Sie Ihren Steuer-Workflow für Privatmärkte.'

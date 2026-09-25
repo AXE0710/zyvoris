@@ -28,7 +28,7 @@ export default function PlatformPage() {
       {/* =========================================================
           1. PLATFORM HERO — centered text
       ========================================================== */}
-      <section className="relative overflow-hidden border-b-2 border-slate-900 pb-16 pt-28 dark:border-slate-800 sm:pb-20 sm:pt-32 lg:pb-24 lg:pt-36">
+      <section className="relative overflow-hidden  pb-16 pt-28 dark:border-slate-800 sm:pb-20 sm:pt-32 lg:pb-24 lg:pt-36">
         {/* Ambient Blue Radial Glow */}
         <div className="pointer-events-none absolute -top-40 left-1/2 -translate-x-1/2 h-[450px] w-[750px] rounded-full bg-[radial-gradient(ellipse_at_center,rgba(59,130,246,0.12),transparent_70%)] dark:bg-[radial-gradient(ellipse_at_center,rgba(56,189,248,0.12),transparent_70%)] blur-3xl" />
         
@@ -36,14 +36,6 @@ export default function PlatformPage() {
         <div className="pointer-events-none absolute inset-0 opacity-30 dark:opacity-15 bg-[linear-gradient(rgba(30,58,138,0.06)_1px,transparent_1px),linear-gradient(90deg,rgba(30,58,138,0.06)_1px,transparent_1px)] dark:bg-[linear-gradient(rgba(56,189,248,0.08)_1px,transparent_1px),linear-gradient(90deg,rgba(56,189,248,0.08)_1px,transparent_1px)] bg-[size:52px_52px]" />
 
         <div className="relative z-10 mx-auto max-w-4xl px-4 text-center sm:px-6 lg:px-8">
-          {/* Eyebrow Pill */}
-          <div className="mb-6 inline-flex items-center gap-2 rounded-full border border-blue-200/80 bg-blue-50/60 px-3.5 py-1.5 backdrop-blur-md dark:border-blue-900/60 dark:bg-blue-950/40">
-            <span className="h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400 animate-pulse" />
-            <span className="font-sans text-[10.5px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-blue-800 dark:text-blue-300">
-              {isGerman ? 'DIE PLATTFORM' : 'THE PLATFORM'}
-            </span>
-          </div>
-
           {/* Headline with Serif Italic & Ink Underline */}
           <h1 className="text-3xl font-normal leading-[1.08] tracking-tight text-slate-950 dark:text-white sm:text-4xl lg:text-5xl xl:text-6xl">
             {isGerman ? (

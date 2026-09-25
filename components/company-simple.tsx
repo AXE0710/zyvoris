@@ -77,12 +77,6 @@ export default function CompanySimple() {
         <section className="grid grid-cols-1 gap-10 lg:grid-cols-2 lg:gap-14 lg:items-center">
           {/* Left: Company Intro */}
           <div>
-            <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-200/80 bg-blue-50/60 px-3.5 py-1.5 backdrop-blur-md dark:border-blue-900/60 dark:bg-blue-950/40">
-              <span className="h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400 animate-pulse" />
-              <span className="font-mono text-[10.5px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-blue-800 dark:text-blue-300">
-                {isGerman ? 'UNTERNEHMEN' : 'COMPANY'}
-              </span>
-            </div>
 
             <h1 className="text-3xl font-normal leading-[1.08] tracking-tight text-slate-950 dark:text-white sm:text-5xl lg:text-5xl xl:text-6xl">
               {isGerman ? (
@@ -150,11 +144,6 @@ export default function CompanySimple() {
 
           {/* Right: Mission Card */}
           <div className="rounded-3xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0c152a] p-7 sm:p-9 lg:p-10 shadow-sm">
-            <div className="inline-flex items-center gap-2 mb-3 px-3 py-1 rounded-full border border-blue-200/60 dark:border-blue-900/40 bg-blue-50/60 dark:bg-blue-950/40">
-              <span className="font-mono text-[10.5px] font-bold uppercase tracking-[0.2em] text-blue-700 dark:text-blue-300">
-                {isGerman ? 'MISSION' : 'MISSION'}
-              </span>
-            </div>
 
             <h2 className="text-2xl sm:text-3xl font-normal leading-tight text-slate-950 dark:text-white">
               <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
@@ -176,13 +165,8 @@ export default function CompanySimple() {
         {/* =========================================================
             3. COMPANY — FOUNDERS
         ========================================================== */}
-        <section className="mt-16 sm:mt-24">
+        {/* <section className="mt-16 sm:mt-24">
           <div className="mb-8 border-b border-slate-200 dark:border-slate-800 pb-4">
-            <div className="inline-flex items-center gap-2 mb-2 px-3 py-1 rounded-full border border-blue-200/60 dark:border-blue-900/40 bg-blue-50/60 dark:bg-blue-950/40">
-              <span className="font-mono text-[10.5px] font-bold uppercase tracking-[0.2em] text-blue-700 dark:text-blue-300">
-                {isGerman ? 'GRÜNDER' : 'FOUNDERS'}
-              </span>
-            </div>
             <h2 className="mt-2 text-2xl sm:text-3xl font-normal tracking-tight text-slate-950 dark:text-white">
               <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
                 {isGerman ? 'Die Menschen ' : 'The people '}
@@ -223,18 +207,13 @@ export default function CompanySimple() {
               </article>
             ))}
           </div>
-        </section>
+        </section> */}
 
         {/* =========================================================
             4. COMPANY — PRINCIPLES / GRUNDSÄTZE
         ========================================================== */}
         <section className="mt-16 sm:mt-24">
           <div className="mb-8 border-b border-slate-200 dark:border-slate-800 pb-4">
-            <div className="inline-flex items-center gap-2 mb-2 px-3 py-1 rounded-full border border-blue-200/60 dark:border-blue-900/40 bg-blue-50/60 dark:bg-blue-950/40">
-              <span className="font-mono text-[10.5px] font-bold uppercase tracking-[0.2em] text-blue-700 dark:text-blue-300">
-                {isGerman ? 'GRUNDSÄTZE' : 'PRINCIPLES'}
-              </span>
-            </div>
             <h2 className="mt-2 text-2xl sm:text-3xl lg:text-4xl font-normal tracking-tight text-slate-950 dark:text-white">
               {isGerman ? (
                 <>

@@ -130,13 +130,6 @@ export default function Jurisdictions() {
       <div className="relative mx-auto max-w-[1420px]">
         {/* ── Section Header (Without the legend tags above cards) ── */}
         <div className="max-w-3xl">
-          <div className="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full border border-blue-200/80 dark:border-blue-900/60 bg-blue-50/60 dark:bg-blue-950/40 backdrop-blur-md">
-            <span className="h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400" />
-            <span className="text-[10.5px] font-mono font-bold uppercase tracking-[0.2em] text-blue-800 dark:text-blue-300">
-              {isGerman ? 'LÄNDERSPEZIFISCHE ABDECKUNG & ROADMAP' : 'JURISDICTION COVERAGE & ROADMAP'}
-            </span>
-          </div>
-
           <h2 className="max-w-4xl text-3xl sm:text-4xl lg:text-5xl font-normal leading-[1.14] tracking-tight text-slate-950 dark:text-white">
             <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
               {isGerman ? 'Eine Plattform ' : 'One platform '}

@@ -113,13 +113,6 @@ export default function TeamPage() {
             HERO HEADER
         ========================================================== */}
         <div className="mx-auto max-w-3xl text-center">
-          <div className="mb-5 inline-flex items-center gap-2 rounded-full border border-blue-200/80 bg-blue-50/60 px-3.5 py-1.5 backdrop-blur-md dark:border-blue-900/60 dark:bg-blue-950/40">
-            <span className="h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400 animate-pulse" />
-            <span className="font-mono text-[10.5px] sm:text-xs font-semibold uppercase tracking-[0.2em] text-blue-800 dark:text-blue-300">
-              {language === 'de' ? 'FÜHRUNG & ARCHITEKTUR' : 'LEADERSHIP & ARCHITECTURE'}
-            </span>
-          </div>
-
           <h1 className="text-3xl font-normal tracking-tight sm:text-5xl lg:text-6xl text-slate-950 dark:text-white leading-[1.08]">
             {language === 'de' ? (
               <>
@@ -261,12 +254,7 @@ export default function TeamPage() {
         ========================================================== */}
         <div className="mt-20 sm:mt-28">
           <div className="text-center max-w-2xl mx-auto">
-            <div className="inline-flex items-center gap-2 mb-2 px-3 py-1 rounded-full border border-blue-200/60 dark:border-blue-900/40 bg-blue-50/60 dark:bg-blue-950/40">
-              <span className="font-mono text-[10.5px] font-bold uppercase tracking-[0.2em] text-blue-700 dark:text-blue-300">
-                {t('team_principles_kicker', 'Foundational Principles')}
-              </span>
-            </div>
-            <h2 className="mt-2 text-2xl sm:text-4xl font-normal tracking-tight text-slate-950 dark:text-white">
+            <h2 className="text-2xl sm:text-4xl font-normal tracking-tight text-slate-950 dark:text-white">
               <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
                 {language === 'de' ? 'Ingenieursdisziplin ' : 'Engineering discipline '}
               </span>
@@ -311,12 +299,7 @@ export default function TeamPage() {
         ========================================================== */}
         <div className="mt-16 sm:mt-24 rounded-3xl border-2 border-slate-200 dark:border-slate-800 bg-white dark:bg-[#0c152a] p-8 sm:p-12 shadow-xl relative overflow-hidden">
           <div className="relative z-10 max-w-2xl">
-            <div className="inline-flex items-center gap-2 mb-2 px-3 py-1 rounded-full border border-blue-200/60 dark:border-blue-900/40 bg-blue-50/60 dark:bg-blue-950/40">
-              <span className="font-mono text-[10.5px] font-bold uppercase tracking-[0.2em] text-blue-700 dark:text-blue-300">
-                {language === 'de' ? 'Institutioneller Dialog' : 'Institutional Engagement'}
-              </span>
-            </div>
-            <h3 className="mt-2 text-2xl sm:text-4xl font-normal tracking-tight text-slate-950 dark:text-white">
+            <h3 className="text-2xl sm:text-4xl font-normal tracking-tight text-slate-950 dark:text-white">
               <span className="font-serif italic font-normal text-slate-900 dark:text-slate-100">
                 {language === 'de' ? 'Sprechen Sie ' : 'Speak directly '}
               </span>

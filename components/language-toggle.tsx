@@ -98,7 +98,7 @@ export default function LanguageToggle({
         className="
           absolute -bottom-1 -right-1
           flex h-4 min-w-[18px] items-center justify-center
-          rounded-full
+          rounded-md
           border border-white dark:border-slate-900
           bg-blue-600 dark:bg-blue-500
           px-1

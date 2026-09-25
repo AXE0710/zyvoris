@@ -31,11 +31,12 @@ export default function Header() {
   ]
 
   return (
-    <header className="fixed left-0 right-0 top-0 z-50 transition-all duration-200">
-      <div className="mx-auto max-w-[1420px] px-4 pt-3.5 sm:pt-4 md:px-[4vw]">
+    <header className="fixed inset-x-0 top-0 z-50 pointer-events-none transition-all duration-200">
+      <div className="mx-auto max-w-[1420px] w-full px-4 pt-3.5 sm:pt-4 md:px-6 lg:px-8">
         {/* Main Header Container with strong black border in Light Mode */}
         <div
           className="
+            pointer-events-auto
             flex h-[72px] sm:h-[76px] items-center justify-between
             rounded-2xl
             border-2 border-slate-900 dark:border-slate-700
@@ -158,6 +159,7 @@ export default function Header() {
         {menuOpen && (
           <div
             className="
+              pointer-events-auto
               mt-2.5
               overflow-hidden
               rounded-2xl

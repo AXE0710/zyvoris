@@ -64,14 +64,6 @@ export default function ProblemSection() {
           "
         >
           <div>
-            {/* Kicker Eyebrow */}
-            <div className="inline-flex items-center gap-2 mb-4 px-3.5 py-1.5 rounded-full border border-blue-200/80 dark:border-blue-900/60 bg-blue-50/60 dark:bg-blue-950/40 backdrop-blur-md">
-              <span className="h-1.5 w-1.5 rounded-full bg-blue-600 dark:bg-blue-400" />
-              <span className="font-mono text-[10.5px] sm:text-xs uppercase tracking-[0.2em] font-semibold text-blue-800 dark:text-blue-300">
-                {t('problem_kicker', 'THE CHALLENGE')}
-              </span>
-            </div>
-
             <h2
               className="
                 mt-2
