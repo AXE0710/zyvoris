@@ -71,10 +71,10 @@ export default function TechnologyPage() {
     {
       num: '04',
       title: isGerman ? 'Allokieren' : 'Allocate',
-      headline: isGerman ? 'Präziser Tranchen-Split' : 'Multi-Class & Waterfall Allocation',
+      headline: isGerman ? 'Mehrklassen-Steuerallokation' : 'Multi-Class Tax Allocation',
       desc: isGerman
-        ? 'Aufteilung des steuerlichen Gesamtergebnisses auf Anteilsklassen, Anlegergruppen und Carried Interest.'
-        : 'Allocation of fund-level taxable results across institutional tranches, retail share classes, and GP carry.',
+        ? 'Aufteilung des steuerlichen Fondsergebnisses auf Anteilsklassen anhand definierter Allokationstreiber, klassenspezifischer Merkmale, Währungsparameter und anwendbarer Steuerlogik.'
+        : 'Allocate fund-level tax results across share classes using defined allocation drivers, class-specific characteristics, currency parameters, and applicable tax logic.',
     },
     {
       num: '05',
@@ -87,7 +87,7 @@ export default function TechnologyPage() {
     {
       num: '06',
       title: isGerman ? 'Berichten' : 'Report',
-      headline: isGerman ? 'Revisionssichere Steuerberichte' : 'Certified Reporting Deliverables',
+      headline: isGerman ? 'Prüfbereite Reporting-Outputs' : 'Review-Ready Reporting Outputs',
       desc: isGerman
         ? 'Erstellung prüffähiger Steuerberichte, behördlicher XML-Meldungen und individueller Anleger-Ertragsaufstellungen.'
         : 'Production of review-ready tax reporting packages, regulatory XML exports, and individualized investor tax statements.',
@@ -204,9 +204,10 @@ export default function TechnologyPage() {
           <div className="border-t border-slate-200 dark:border-slate-800 pt-8 flex items-center justify-between flex-wrap gap-4 text-slate-500 font-mono text-sm">
             <span className="text-slate-900 dark:text-white font-semibold flex items-center gap-2">
               <span className="h-2.5 w-2.5 rounded-full bg-blue-600 dark:bg-blue-400" />
-              {isGerman ? 'Zentraler Datenkern: Einheitliches Schema' : 'Structured Data Core: Unified Schema'}
+              {isGerman
+                ? 'Zentraler Datenkern · Einheitliches Schema · Saldenabstimmung'
+                : 'Structured Data Core · Unified Schema · Trial Balance Reconciliation'}
             </span>
-            <span>{isGerman ? '100% Saldenabstimmung' : '100% Trial Balance Parity'}</span>
           </div>
 
         </section>
@@ -220,8 +221,8 @@ export default function TechnologyPage() {
           
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-normal text-slate-950 dark:text-white tracking-tight break-words">
               {isGerman
-                ? 'Vom Rohdatensatz zum revisionssicheren Ergebnis.'
-                : 'From raw ledger records to certified tax deliverables.'}
+                ? 'Vom Rohdatensatz zum prüfbereiten Steuerergebnis.'
+                : 'From raw ledger records to review-ready tax deliverables.'}
             </h2>
             <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed">
               {isGerman
@@ -277,13 +278,13 @@ export default function TechnologyPage() {
           
             <h2 className="text-2xl sm:text-4xl lg:text-5xl font-normal text-slate-950 dark:text-white tracking-tight break-words">
               {isGerman
-                ? 'Aufteilung des Fondsergebnisses auf Anteilsklassen.'
-                : 'Allocating fund results across distinct share classes.'}
+                ? 'Aufteilung des steuerlichen Fondsergebnisses auf Anteilsklassen.'
+                : 'Allocating fund-level tax results across distinct share classes.'}
             </h2>
             <p className="text-base sm:text-lg text-slate-600 dark:text-slate-300 max-w-3xl leading-relaxed">
               {isGerman
-                ? 'Steuerliche Ergebnisse werden exakt entlang der Fondsvereinbarung auf Tranchen, Carried Interest und Anlegerebene aufgeteilt.'
-                : 'Taxable earnings are distributed precisely according to partnership agreements across institutional tranches, retail units, and GP carry.'}
+                ? 'Steuerliche Fondsergebnisse werden anhand definierter Allokationstreiber, klassenspezifischer Merkmale, Währungsparameter und anwendbarer Steuerlogik auf Anteilsklassen aufgeteilt.'
+                : 'Fund-level tax results are allocated across share classes using defined allocation drivers, class-specific characteristics, currency parameters, and applicable tax logic.'}
             </p>
           </div>
 
@@ -291,39 +292,49 @@ export default function TechnologyPage() {
           <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 sm:gap-8 pt-2 sm:pt-4">
             <div className="space-y-1.5 sm:space-y-2 border-l-2 border-blue-600 dark:border-blue-400 pl-4">
               <span className="font-mono text-xs sm:text-sm text-slate-500 block">
-                {isGerman ? 'TRANCHE A // INSTITUTIONELL' : 'CLASS A // INSTITUTIONAL'}
+                {isGerman ? 'KLASSE A // CHF INSTITUTIONELL' : 'CLASS A // CHF INSTITUTIONAL'}
               </span>
-              <div className="text-2xl sm:text-4xl font-bold text-slate-950 dark:text-white">
-                65%
+              <div className="text-2xl sm:text-4xl font-bold text-slate-950 dark:text-white font-mono">
+                CHF
               </div>
               <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300">
-                {isGerman ? 'Thesaurierend für regulierte institutionelle Investoren.' : 'Accumulating tier for institutional pension capital.'}
+                {isGerman ? 'Thesaurierend · Institutionell' : 'Accumulating · Institutional'}
               </p>
             </div>
 
             <div className="space-y-1.5 sm:space-y-2 border-l-2 border-emerald-600 dark:border-emerald-400 pl-4">
               <span className="font-mono text-xs sm:text-sm text-slate-500 block">
-                {isGerman ? 'TRANCHE B // AUSSCHÜTTEND' : 'CLASS B // DISTRIBUTING'}
+                {isGerman ? 'KLASSE B // EUR AUSSCHÜTTEND' : 'CLASS B // EUR DISTRIBUTING'}
               </span>
-              <div className="text-2xl sm:text-4xl font-bold text-slate-950 dark:text-white">
-                25%
+              <div className="text-2xl sm:text-4xl font-bold text-slate-950 dark:text-white font-mono">
+                EUR
               </div>
               <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300">
-                {isGerman ? 'Ausschüttende Anteilsklasse mit individuellen Ertragsausweisen.' : 'Distributing unit class with separate tax withholding annexes.'}
+                {isGerman ? 'Ausschüttend · Retail' : 'Distributing · Retail'}
               </p>
             </div>
 
             <div className="space-y-1.5 sm:space-y-2 border-l-2 border-purple-600 dark:border-purple-400 pl-4">
               <span className="font-mono text-xs sm:text-sm text-slate-500 block">
-                {isGerman ? 'TRANCHE C // GP CARRY' : 'CLASS C // GP CARRIED INTEREST'}
+                {isGerman ? 'KLASSE C // USD INSTITUTIONELL' : 'CLASS C // USD INSTITUTIONAL'}
               </span>
-              <div className="text-2xl sm:text-4xl font-bold text-slate-950 dark:text-white">
-                10%
+              <div className="text-2xl sm:text-4xl font-bold text-slate-950 dark:text-white font-mono">
+                USD
               </div>
               <p className="text-sm sm:text-base text-slate-600 dark:text-slate-300">
-                {isGerman ? 'Hurdle Rate & Performance Allocation für Initiatoren.' : 'Hurdle rate catch-up and performance return allocation.'}
+                {isGerman ? 'Thesaurierend · Institutionell' : 'Accumulating · Institutional'}
               </p>
             </div>
+          </div>
+
+          {/* Allocation Section Connector */}
+          <div className="border-t border-slate-200 dark:border-slate-800 pt-8 flex items-center justify-between flex-wrap gap-4 text-slate-500 font-mono text-sm">
+            <span className="text-slate-900 dark:text-white font-semibold flex items-center gap-2">
+              <span className="h-2.5 w-2.5 rounded-full bg-blue-600 dark:bg-blue-400" />
+              {isGerman
+                ? 'Kontrollierte Allokation · Multi-Währungs-Support · Steuerergebnisse je Anteilsklasse'
+                : 'Controlled allocation · Multi-currency support · Share-class-level tax outputs'}
+            </span>
           </div>
 
         </section>
