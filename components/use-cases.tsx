@@ -310,7 +310,7 @@ export default function UseCases() {
                 }
               `}
             >
-              <div className="flex items-center justify-between mb-1.5 sm:mb-2">
+              <div className="mb-1.5 sm:mb-2">
                 <span
                   className={`
                     font-mono text-[11px] sm:text-xs font-bold
@@ -318,18 +318,6 @@ export default function UseCases() {
                   `}
                 >
                   [{item.number}]
-                </span>
-                <span
-                  className={`
-                    font-mono text-[8.5px] sm:text-[9px] uppercase font-bold px-1.5 sm:px-2 py-0.5 rounded
-                    ${
-                      item.isPlanned
-                        ? 'bg-blue-100/90 dark:bg-blue-950/80 text-blue-700 dark:text-blue-300 border border-blue-300/60 dark:border-blue-800/60'
-                        : 'bg-slate-100 dark:bg-slate-800 text-slate-600 dark:text-slate-400'
-                    }
-                  `}
-                >
-                  {item.isPlanned ? (isGerman ? 'GEPLANT' : 'PLANNED') : (isGerman ? 'SZENARIO' : 'SCENARIO')}
                 </span>
               </div>
               <h4 className="font-bold text-[11.5px] xs:text-xs sm:text-sm text-slate-950 dark:text-white leading-snug line-clamp-2">

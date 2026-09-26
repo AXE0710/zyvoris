@@ -190,7 +190,7 @@ export default function HomeCapabilities() {
             {/* Header: Pure Bold Heading with Interactive Stage Progress Indicator */}
             <div className="pb-3.5 sm:pb-6 border-b border-slate-200/80 dark:border-slate-800/80 flex flex-col sm:flex-row sm:items-center justify-between gap-2.5">
               <h3 className="text-lg xs:text-xl sm:text-2xl md:text-3xl font-extrabold tracking-tight text-slate-950 dark:text-white">
-                {activeStep === 0 && (isGerman ? 'Excel-Zahlen generieren' : 'Excel Data Generation')}
+                {activeStep === 0 && (isGerman ? 'Steuerberechnungs-Engine' : 'Tax Calculation Engine')}
                 {activeStep === 1 && (isGerman ? 'Aggregation nach oben' : 'Consolidation Ascent')}
                 {activeStep === 2 && (isGerman ? 'Mehrebenen-Allokation' : 'Multi-Tier Distribution')}
                 {activeStep === 3 && (isGerman ? 'Automatische Audit-Logs' : 'Live Audit Trail')}

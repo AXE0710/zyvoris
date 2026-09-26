@@ -1,6 +1,6 @@
 'use client'
 
-import React from 'react'
+import React, { useState } from 'react'
 import { useLanguage } from './language-provider'
 import UnderlinedText from './underlined-text'
 
@@ -21,11 +21,27 @@ const STATUS_BADGE: Record<StatusType, string> = {
     'bg-slate-100 dark:bg-slate-800 border-slate-300 dark:border-slate-700 text-slate-600 dark:text-slate-400',
 }
 
+interface JurisdictionSlide {
+  title: string
+  items: string[]
+}
+
+interface JurisdictionItem {
+  code: string
+  flag: string
+  country: string
+  status: StatusType
+  modulesTitle?: string
+  modules?: string[]
+  slides?: JurisdictionSlide[]
+}
+
 export default function Jurisdictions() {
   const { language } = useLanguage()
   const isGerman = language === 'de'
+  const [deSlide, setDeSlide] = useState(0)
 
-  const jurisdictions = [
+  const jurisdictions: JurisdictionItem[] = [
     {
       code: 'CH',
       flag: '/flags/ch.svg',
@@ -75,22 +91,50 @@ export default function Jurisdictions() {
       flag: '/flags/de.svg',
       country: isGerman ? 'Deutschland' : 'Germany',
       status: 'planned' as StatusType,
-      modulesTitle: isGerman ? 'KERNFUNKTIONEN' : 'CORE CAPABILITIES',
-      modules: isGerman
-        ? [
-            'Steuerliche Klassifizierung nach dem InvStG',
-            'Berechnung der Vorabpauschale',
-            'Gesonderte und einheitliche Feststellung nach § 180 AO',
-            'Allokationen auf Fonds- und Anteilsklassenebene',
-            'Steuerliche Reporting-Outputs für Deutschland',
-          ]
-        : [
-            'InvStG Tax Classification',
-            'Advance Lump Sum (Vorabpauschale)',
-            'Separate and Uniform Tax Declaration according to § 180 German Tax Code',
-            'Fund & Share-Class Allocations',
-            'German Tax Reporting Outputs',
-          ],
+      slides: [
+        {
+          title: isGerman
+            ? 'Deutsches Investmentfonds-Steuerreporting'
+            : 'German Investment Fund Tax Reporting',
+          items: isGerman
+            ? [
+                'Steuerliche Klassifizierung nach dem Investmentsteuergesetz (InvStG)',
+                'Steuerberechnungen auf Fonds- und Anteilklassenebene',
+                'Teilfreistellungs- und Kapitalbeteiligungsquotenlogik',
+                'Reporting-relevante Berechnungen und Daten für die Vorabpauschale',
+                'Strukturierte steuerliche Reporting-Outputs für deutsche Anleger',
+              ]
+            : [
+                'Investment tax classification under the German Investment Tax Act (InvStG)',
+                'Fund and share-class tax calculations',
+                'Partial exemption / equity ratio logic',
+                'Vorabpauschale-related reporting inputs',
+                'Tax reporting outputs for German investors',
+              ],
+        },
+        {
+          title: isGerman
+            ? 'Deutsches Personengesellschafts- & Anlegersteuerreporting'
+            : 'German Partnership & Investor Tax Reporting',
+          items: isGerman
+            ? [
+                'Steuerliche Reporting-Workflows auf Ebene von Personengesellschaften',
+                'Gesonderte und einheitliche Feststellung von Besteuerungsgrundlagen nach § 180 AO',
+                'Anlegerbezogene steuerliche Allokationen',
+                'Verteilung steuerpflichtiger Einkünfte auf Gesellschafter und Anleger',
+                'Strukturierte steuerliche Reporting-Outputs auf Anlegerebene',
+                'Unterstützung mehrstufiger Personengesellschaftsstrukturen',
+              ]
+            : [
+                'Partnership-level tax reporting workflows',
+                'Separate and uniform determination of income under § 180 AO',
+                'Investor-level tax allocations',
+                'Taxable income allocation across partners/investors',
+                'Structured investor tax reporting outputs',
+                'Support for multi-tier partnership structures',
+              ],
+        },
+      ],
     },
     {
       code: 'US',
@@ -144,15 +188,15 @@ export default function Jurisdictions() {
         </div>
 
         {/* ── Unified Jurisdiction Cards (Modules Inside, No Highlight Rings, Soft Shadow Lift) ── */}
-        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4">
+        <div className="mt-12 grid grid-cols-1 gap-6 md:grid-cols-2 xl:grid-cols-4 items-stretch">
           {jurisdictions.map((j) => (
             <article
               key={j.code}
-              className="
+              className={`
                 tap-press
                 relative flex flex-col justify-between
                 rounded-2xl
-                border-2 border-slate-200 dark:border-slate-800
+                border-2
                 bg-white dark:bg-[#0c152a]
                 p-5 sm:p-6
                 shadow-sm
@@ -161,7 +205,12 @@ export default function Jurisdictions() {
                 hover:shadow-xl
                 hover:shadow-slate-900/10
                 dark:hover:shadow-blue-950/40
-              "
+                ${
+                  j.status === 'mvp'
+                    ? 'border-blue-500/70 shadow-lg shadow-blue-500/10 dark:border-blue-500/60 dark:shadow-blue-500/10'
+                    : 'border-slate-200 dark:border-slate-800'
+                }
+              `}
             >
               <div>
                 {/* Card header: Code & Status inside card */}
@@ -188,25 +237,82 @@ export default function Jurisdictions() {
                     </span>
                     <span className="truncate">{j.country}</span>
                   </h3>
-                
                 </div>
 
                 {/* Integrated Engine Modules (Inside the Card) */}
                 <div className="mt-5 pt-4 border-t border-slate-100 dark:border-slate-800/80">
-                  <span className="font-mono text-[9.5px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 block mb-2.5">
-                    {j.modulesTitle}
-                  </span>
-                  <div className="space-y-1.5">
-                    {j.modules.map((mod, idx) => (
-                      <div
-                        key={idx}
-                        className="flex items-center gap-2 text-xs font-mono text-slate-700 dark:text-slate-300"
-                      >
-                        <span className="h-1.5 w-1.5 rounded-full bg-blue-500 shrink-0" />
-                        <span>{mod}</span>
+                  {j.slides ? (
+                    <div>
+                      {/* Slider Header with Title and Dot Controls (Click & Hover) */}
+                      <div className="flex items-center justify-between mb-2.5">
+                        <span className="font-mono text-[9.5px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 truncate mr-2">
+                          {j.slides[deSlide].title}
+                        </span>
+                        <div className="flex items-center gap-1 shrink-0 py-0.5">
+                          <button
+                            type="button"
+                            onMouseEnter={() => setDeSlide(0)}
+                            onClick={() => setDeSlide(0)}
+                            aria-label="Slide 1: German Investment Fund Tax Reporting"
+                            className="p-1 cursor-pointer group"
+                          >
+                            <div
+                              className={`h-1.5 rounded-full transition-all duration-300 ${
+                                deSlide === 0
+                                  ? 'w-4 bg-blue-500'
+                                  : 'w-1.5 bg-slate-300 dark:bg-slate-700 group-hover:bg-blue-400'
+                              }`}
+                            />
+                          </button>
+                          <button
+                            type="button"
+                            onMouseEnter={() => setDeSlide(1)}
+                            onClick={() => setDeSlide(1)}
+                            aria-label="Slide 2: German Partnership & Investor Tax Reporting"
+                            className="p-1 cursor-pointer group"
+                          >
+                            <div
+                              className={`h-1.5 rounded-full transition-all duration-300 ${
+                                deSlide === 1
+                                  ? 'w-4 bg-blue-500'
+                                  : 'w-1.5 bg-slate-300 dark:bg-slate-700 group-hover:bg-blue-400'
+                              }`}
+                            />
+                          </button>
+                        </div>
                       </div>
-                    ))}
-                  </div>
+
+                      {/* Slide Items */}
+                      <div className="space-y-1.5 min-h-[175px]">
+                        {j.slides[deSlide].items.map((mod, idx) => (
+                          <div
+                            key={idx}
+                            className="flex items-start gap-2 text-xs font-mono text-slate-700 dark:text-slate-300"
+                          >
+                            <span className="h-1.5 w-1.5 rounded-full bg-blue-500 shrink-0 mt-1.5" />
+                            <span>{mod}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  ) : (
+                    <div>
+                      <span className="font-mono text-[9.5px] font-bold uppercase tracking-wider text-slate-400 dark:text-slate-500 block mb-2.5">
+                        {j.modulesTitle}
+                      </span>
+                      <div className="space-y-1.5 min-h-[175px]">
+                        {j.modules?.map((mod, idx) => (
+                          <div
+                            key={idx}
+                            className="flex items-start gap-2 text-xs font-mono text-slate-700 dark:text-slate-300"
+                          >
+                            <span className="h-1.5 w-1.5 rounded-full bg-blue-500 shrink-0 mt-1.5" />
+                            <span>{mod}</span>
+                          </div>
+                        ))}
+                      </div>
+                    </div>
+                  )}
                 </div>
               </div>
             </article>

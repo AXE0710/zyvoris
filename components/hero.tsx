@@ -151,8 +151,8 @@ export default function ZyvorisHero({
             "
           >
             {language === 'de'
-              ? 'ZYVORIS automatisiert Fondssteuer-Berechnungen, Allokationen und das Investoren-Reporting in einer zentralen, verlässlichen Plattform.'
-              : 'ZYVORIS automates fund tax calculations, multi-tier allocations, and investor reporting in one structured, reliable platform.'}
+              ? 'ZYVORIS automatisiert Fondssteuer-Berechnungen, mehrstufige Allokationen und Steuerreporting-Workflows in einer strukturierten, verlässlichen Plattform.'
+              : 'ZYVORIS automates fund tax calculations, multi-tier allocations, and tax reporting workflows in one structured, reliable platform.'}
           </p>
 
           {/* Action Buttons: Book a Demo & Explore the Platform */}
